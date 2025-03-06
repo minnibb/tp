@@ -346,7 +346,42 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case resumes at step 2.
 
 *{More to be added}*
+## Use case: Categorize Contacts by Role**
 
+**MSS (Main Success Scenario)**
+
+1. User requests to group contacts by a specific role (e.g., `group by Student`).
+2. ClassHive check the errors in input
+3. ClassHive displays the grouped contacts and the number of contacts found.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The user does not provide a role.
+    * 1a1. AddressBook shows an error message: `Error: Please provide a role to filter by.`
+    * Use case ends.
+
+* 2b. The user provides an invalid role.
+    * 1b1. AddressBook shows an error message: `Error: Please provide a valid role.`
+    * Use case ends.
+
+* 2c. The user provides multiple roles.
+    * 1c1. AddressBook shows an error message: `Error: Only one role can be selected at a time.`
+    * Use case ends.
+
+* 2d. The user misses a whitespace after `group by`.
+    * 1d1. AddressBook shows an error message: `Missing whitespace in command. Please ensure there is a space after "group by", before adding the name of the contact.`
+    * Use case ends.
+
+* 3a. No contacts are found for the specified role.
+    * 3a1. AddressBook shows a message: `No contacts found for specified role.`
+    * Use case ends.
+
+* 3b. The system is slow due to a large contact list.
+    * 3b1. AddressBook shows a message: `Currently filtering <ROLE>. This may take a while.`
+    * Use case continues normally.
+  
 ### Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
