@@ -274,7 +274,7 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* teacher in a school 
+* teacher in a primary or secondary school 
 * interacts with many different students, parents and colleagues
 * uses a computer or laptop very often
 * prefers typing to mouse interactions
