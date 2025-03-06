@@ -274,29 +274,49 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
-* prefer desktop apps over other types
-* can type fast
+* teacher in a primary or secondary school 
+* interacts with many different students, parents and colleagues
+* uses a computer or laptop very often
 * prefers typing to mouse interactions
-* is reasonably comfortable using CLI apps
+* needs help to track all her students' progress
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: manage contacts and provide convenient access to all the people teachers may work with
 
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                 | So that I can…​                                                        |
-|----------|--------------------------------------------|------------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user                                   | see usage instructions       | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person             |                                                                        |
-| `* * *`  | user                                       | delete a person              | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name        | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name         | locate a person easily                                                 |
+| Priority | As a …​                                                     | I want to …​                                                              | So that I can…​                                                                |
+|----------|-------------------------------------------------------------|---------------------------------------------------------------------------|--------------------------------------------------------------------------------|
+| `* * *`  | first time user                                             | keep track of all my school contacts                                      | quickly find their details                                                     |
+| `* * *`  | first time user                                             | add a new person                                                          | store all of the contacts                                                      |
+| `* * *`  | first time user                                             | delete a person                                                           | remove contacts that I no longer need                                          |
+| `* * *`  | first time user                                             | find a person by name                                                     | find them without scrolling through the entire list                            |
+| `* * *`  | beginner user                                               | sort contacts in alphabetical order or some sort                          | easily find the contacts                                                       |
+| `* * *`  | expert user                                                 | categorize different contacts                                             | better organize my contact lists for easier management                         |
+| `* * *`  | expert                                                      | get a child's grade and tasks by searching for their name                 | quickly see performance and pending tasks related to a student                 |
+| `* *`    | beginner                                                    | access a tutorial for the app                                             | navigate and find the functions I struggle with easier                         |
+| `* *`    | user familiar with the basics of the product                | find a user guide on the advanced features                                | make full use of the product                                                   | 
+| `* *`    | first time user                                             | go back and edit the contact's information                                | make corrections                                                               |
+| `* *`    | beginner user                                               | easily find out if a contact has already been added                       | the address book is not flooded with duplicate entries                         |
+| `* *`    | beginner                                                    | favourite/mark certain contacts                                           | I can easily access them                                                       |
+| `* *`    | teacher who does not use the product during school holidays | get a quick refresher on the basic functions of the product               | better recall how to use the basic functions                                   |
+| `* *`    | expert                                                      | create custom tags to categorize contacts more efficiently                | manage my contacts more systematically and find them faster                    |
+| `* *`    | expert                                                      | export data and reports                                                   | generate necessary reports for record-keeping or sharing                       |
+| `* *`    | expert                                                      | edit information synchronously on different devices                       | access the address book using different devices                                |
+| `*`      | beginner                                                    | report a bug found on the app                                             | necessary fixes can be carried out                                             |
+| `*`      | first time user                                             | add notes to each contact                                                 | keep relevant information                                                      |
+| `*`      | expert user                                                 | customize app settings like notifications                                 | it works the way that i would like it to                                       |
+| `*`      | beginner                                                    | view a list of students                                                   | access the details of class efficiently                                        |
+| `*`      | user familiar with the basics of the product                | access a list of contacts I frequently search for                         | I can efficiently find their information whenever I need to contact them       |
+| `*`      | user of the product for a month                             | delete tasks that I have completed long ago                               | my to-do lists do not seem so messy and long                                   |                                                 
+| `*`      | user familiar with the basics of the product                | change the contact information of many contacts at once                   | edit contact information of families quicker                                   |                               
+| `*`      | user with many contacts outside of school                   | access a separate list of contacts of my friends and family               | all my contacts (not only school-related contacts) are managed in the same app |
+| `*`      | user familiar with the basics of the product                | quickly access an overview of all my tasks to complete                    | have a rough idea of what I need to do once I launch the app                   |                     
+| `*`      | expert	                                                     | set reminders which can alert me about upcoming deadlines                 | stay organized and never miss important deadlines                              |
+| `*`      | expert	                                                     | set frequent contact indicators for a list of frequently contacted people | quickly access my most-used contacts without searching repeatedly              |
 
-*{More to be added}*
 
 ### Use cases
 
