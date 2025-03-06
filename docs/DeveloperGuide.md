@@ -359,6 +359,22 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **Private contact detail**: A contact detail that is not meant to be shared with others
+* **API**: Defines how software components interact
+* **CLI (Command Line Interface)**: Text-based command input
+* **GUI (Graphical User Interface)**: Visual interaction with software
+* **Parser**: Converts user input into executable commands
+* **Version Control**: Tracks changes in files (e.g., Git)
+* **JavaFX**: Platform for building desktop applications
+* **PlantUML**: Text-based tool for creating UML diagrams
+* **Activity Diagram**: UML diagram for workflow representation
+* **Sequence Diagram**: UML diagram for object interactions
+* **Class Diagram**: UML diagram for system structure
+* **Undo/Redo Mechanism**: Reverses or reapplies changes
+* **Performance Testing**: Evaluates system speed and stability
+* **Unit Testing**: Tests individual software components
+* **Integration Testing**: Tests combined software components
+* **DevOps**: Combines development and operations for efficiency
+
 
 --------------------------------------------------------------------------------------------------------------------
 
