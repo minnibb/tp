@@ -317,70 +317,186 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `*`      | expert	                                                     | set reminders which can alert me about upcoming deadlines                 | stay organized and never miss important deadlines                              |
 | `*`      | expert	                                                     | set frequent contact indicators for a list of frequently contacted people | quickly access my most-used contacts without searching repeatedly              |
 
-
 ### Use cases
 
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
-
-**MSS**
-
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
-
-    Use case ends.
-
-**Extensions**
-
-* 2a. The list is empty.
-
-  Use case ends.
-
-* 3a. The given index is invalid.
-
-    * 3a1. AddressBook shows an error message.
-
-      Use case resumes at step 2.
-
-*{More to be added}*
 ## Use case: Categorize Contacts by Role**
 
 **MSS (Main Success Scenario)**
 
 1. User requests to group contacts by a specific role (e.g., `group by Student`).
-2. ClassHive check the errors in input
-3. ClassHive displays the grouped contacts and the number of contacts found.
+2. System check the errors in input
+3. System displays the grouped contacts and the number of contacts found.
 
    Use case ends.
 
 **Extensions**
 
 * 2a. The user does not provide a role.
-    * 1a1. AddressBook shows an error message: `Error: Please provide a role to filter by.`
-    * Use case ends.
+  * 1a1. System shows an error message: `Error: Please provide a role to filter by.`
+  * Use case ends.
 
 * 2b. The user provides an invalid role.
-    * 1b1. AddressBook shows an error message: `Error: Please provide a valid role.`
-    * Use case ends.
+  * 1b1. System shows an error message: `Error: Please provide a valid role.`
+  * Use case ends.
 
 * 2c. The user provides multiple roles.
-    * 1c1. AddressBook shows an error message: `Error: Only one role can be selected at a time.`
-    * Use case ends.
+  * 1c1. System shows an error message: `Error: Only one role can be selected at a time.`
+  * Use case ends.
 
 * 2d. The user misses a whitespace after `group by`.
-    * 1d1. AddressBook shows an error message: `Missing whitespace in command. Please ensure there is a space after "group by", before adding the name of the contact.`
-    * Use case ends.
+  * 1d1. System shows an error message: `Missing whitespace in command. Please ensure there is a space after "group by", before adding the name of the contact.`
+  * Use case ends.
 
 * 3a. No contacts are found for the specified role.
-    * 3a1. AddressBook shows a message: `No contacts found for specified role.`
-    * Use case ends.
+  * 3a1. System shows a message: `No contacts found for specified role.`
+  * Use case ends.
 
 * 3b. The system is slow due to a large contact list.
-    * 3b1. AddressBook shows a message: `Currently filtering <ROLE>. This may take a while.`
-    * Use case continues normally.
+  * 3b1. System shows a message: `Currently filtering <ROLE>. This may take a while.`
+  * Use case continues normally.
+
+## Use case: Add a new contact
+
+**MSS (Main Success Scenario)**
+
+1. User selects "Add New Contact" option.
+2. System displays a page to input details of the new contact.
+3. User enters required details (name, phone, email, role are compulsory).
+4. System validates the information.
+5. System checks for duplicates based on exact name and phone number.
+6. System saves the contact and displays a confirmation message.
+
+   Use case ends.
+
+**Extensions**
+
+* 3a. User enters incomplete information (missing required fields).
+  * 3a1. System shows an error message: `Error: Missing required field(s). Please minimally provide: NAME, PHONE, EMAIL, and ROLE.`
+  * 3a2. Use case resumes at step 3.
+
+* 3b. User specifies a parameter more than once.
+  * 3b1. System shows an error message: `Error: Duplicate parameter detected for <PARAMETER NAME>. Each parameter should be specified only once.`
+  * 3b2. Use case resumes at step 3.
+
+* 4a. System detects invalid parameter values.
+  * 4a1. System shows an error message for the invalid parameter.
+  * 4a2. Use case resumes at step 4.
+
+* 5a. System detects a duplicate contact.
+  * 5a1. System shows an error message: `This contact already exists.`
+  * 5a2. Use case ends or resumes at step 3.
+
+* 5b. System storage is full.
+  * 5b1. System shows an error message: `Unable to add new contact because system storage is full`
+  * 5b2. Use case ends.
+
+* 5c. White space error causes validation issues.
+  * 5c1. System shows an error message: `Please ensure there is no invalid white space after input`
+  * 5c2. Use case resumes at step 3.
+
+## Use case: Delete a contact
+
+**MSS (Main Success Scenario)**
+
+1. User requests to find a contact by name or view the list of contacts.
+2. System shows matching contacts or the full contact list.
+3. User requests to delete a specific contact using the command format: `delete NAME PHONE`.
+4. System validates the contact information.
+5. System deletes the contact and shows a confirmation message.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The contact list is empty.
+  * 2a1. System shows an error message.
+  * Use case ends.
+
+* 3a. User enters incomplete command information.
+  * 3a1. System shows an error message: `Error: Missing required field. Please provide the NAME and PHONE of the contact to be deleted.`
+  * Use case resumes at step 3.
+
+* 3b. User forgets whitespace after "delete" command.
+  * 3b1. System shows an error message: `Missing whitespace in command. Please ensure there is a space after "delete", before adding the name of the contact.`
+  * Use case resumes at step 3.
+
+* 4a. The specified NAME doesn't exist in the system.
+  * 4a1. System shows an error message: `The name added in the command cannot be found.`
+  * Use case resumes at step 3.
+
+* 4b. The specified PHONE doesn't exist in the system.
+  * 4b1. System shows an error message: `The phone added in the command cannot be found.`
+  * Use case resumes at step 3.
+
+* 4c. The NAME exists but doesn't match with the provided PHONE.
+  * 4c1. System shows an error message.
+  * Use case resumes at step 3.
+
+## Use case: Search
+
+**MSS (Main Success Scenario)**
+
+1. User decides to find a specific contact.
+2. User enters the search command with a name: `search NAME`.
+3. System processes the search request.
+4. System displays the search results with matching contacts.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. User enters an empty search term.
+  * 2a1. System shows an error message: `Error: Missing NAME. Please specify a name.`
+  * Use case resumes at step 2.
+
+* 2b. User forgets whitespace after "search" command.
+  * 2b1. System shows an error message: `Missing whitespace in command. Please ensure there is a space after "search", before adding the name of the contact.`
+  * Use case resumes at step 2.
+
+* 3a. The system is processing a large contact list.
+  * 3a1. System shows a message: `Currently searching for <NAME>. This may take a while.`
+  * 3a2. System completes the search.
+  * Use case resumes at step 4.
+
+* 4a. No contacts match the search term.
+  * 4a1. System shows a message: `No contacts found for '[search term]'.`
+  * Use case ends.
+
+## Use case: Sort contact
+
+**MSS (Main Success Scenario)**
+
+1. User requests to view the contact list.
+2. System displays the contact list.
+3. User requests to sort the list using the command format: `sort by/[FIELD] [ORDER]`.
+4. System validates the sorting parameters.
+5. System sorts and displays the contacts according to the specified criteria.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The contact list is empty.
+  * 2a1. System shows an error message: `No contacts available to sort. Please add contacts before sorting.`
+  * Use case ends.
+
+* 3a. User enters incomplete command information.
+  * 3a1. System shows error message: `Error missing required field(s). Please provide proper FIELD(name/date) or ORDER(asc/desc).`
+  * Use case resumes at step 3.
+
+* 3b. User forgets whitespace after "sort" command.
+  * 3b1. System shows an error message: `Please ensure there is one white space after "sort", before adding "name".`
+  * Use case resumes at step 3.
+
+* 4a. User specifies an invalid sorting field.
+  * 4a1. System shows an error message: `Invalid sorting field used. Please use "name" or "date" only.`
+  * Use case resumes at step 3.
+
+* 4b. User specifies an invalid sorting order.
+  * 4b1. System shows an error message: `Error: Invalid sorting order. Use 'asc' for ascending or 'desc' for descending.`
+  * Use case resumes at step 3.
   
 ### Non-Functional Requirements
 
