@@ -357,8 +357,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 6.  Command exceution should be processed within a second.
 7.  The interface should be easy to navigate and intuitive enough for users who are not IT-savy.
 
-*{More to be added}*
-
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
