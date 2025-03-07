@@ -321,7 +321,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
 
-## Use case: Categorize Contacts by Role**
+## Use case: UC01 - Categorize Contacts by Role
 
 **MSS (Main Success Scenario)**
 
@@ -333,23 +333,23 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 2a. User does not provide a role.
+* 2a. The user does not provide a role.
   * 2a1. System shows an appropriate error message.
-  * 2a2. Use case ends.
+  * 2a1. Use case ends.
 
-* 2b. User provides an invalid role.
+* 2b. The user provides an invalid role.
   * 2b1. System shows an appropriate error message.
   * 2b2. Use case ends.
 
-* 2c. User provides multiple roles.
+* 2c. The user provides multiple roles.
   * 2c1. System indicates that only one role can be selected.
   * 2c2. Use case ends.
 
-* 2d. User provides a role with incorrect format.
+* 2d. The user provides a role with incorrect format.
   * 2d1. System shows a format guidance message.
   * 2d2. Use case ends.
 
-* 3a. No contacts found for the specified role.
+* 3a. No contacts are found for the specified role.
   * 3a1. System indicates no matching contacts.
   * 3a2. Use case ends.
 
@@ -357,11 +357,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   * 3b1. System indicates processing is in progress.
   * 3b2. Use case continues normally.
 
-## Use case: Add a new contact**
+## Use case: UC02 - Add a new contact
 
 **MSS (Main Success Scenario)**
 
-1. User requests to add a new contact.
+1. User selects option to add new contact.
 2. System displays contact input form.
 3. User enters contact details.
 4. System validates the information.
@@ -392,7 +392,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   * 5b1. System indicates storage limitation.
   * 5b2. Use case ends.
 
-## Use case: Delete a contact**
+## Use case: UC03 - Delete a contact
 
 **MSS (Main Success Scenario)**
 
@@ -409,21 +409,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 2a. The contact list is empty.
   * 2a1. System indicates no contacts available.
-  * Use case ends.
+  * 2a2. Use case ends.
 
 * 3a. User provides incomplete selection information.
   * 3a1. System indicates required selection criteria.
-  * Use case resumes at step 3.
+  * 3a2. Use case resumes at step 3.
 
 * 4a. The specified contact cannot be found.
   * 4a1. System indicates contact not found.
-  * Use case resumes at step 3.
+  * 4a2. Use case resumes at step 3.
 
-## Use case: Search for contacts**
+## Use case: UC04 - Search for contacts
 
 **MSS (Main Success Scenario)**
 
-1. User requests to find a specific contact.
+1. User requests to find contacts.
 2. User enters search criteria.
 3. System processes the search.
 4. System displays matching contacts.
@@ -434,23 +434,23 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 2a. User enters empty search criteria.
   * 2a1. System indicates search criteria required.
-  * Use case resumes at step 2.
+  * 2a2. Use case resumes at step 2.
 
 * 3a. System is processing a large contact list.
   * 3a1. System indicates search is in progress.
-  * Use case continues normally.
+  * 3a2. Use case continues normally.
 
 * 4a. No contacts match the search criteria.
   * 4a1. System indicates no matches found.
-  * Use case ends.
+  * 4a2. Use case ends.
 
-## Use case: Sort contacts**
+## Use case: UC05 - Sort contacts
 
 **MSS (Main Success Scenario)**
 
 1. User requests to view contacts.
 2. System displays the contact list.
-3. User requests to sort contacts by a specific field and order.
+3. User requests to sort contacts by a field and order.
 4. System validates sorting parameters.
 5. System displays sorted contacts.
 
@@ -460,15 +460,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 2a. The contact list is empty.
   * 2a1. System indicates no contacts to sort.
-  * Use case ends.
+  * 2a2. Use case ends.
 
 * 3a. User provides incomplete sorting parameters.
   * 3a1. System indicates proper sorting parameters required.
-  * Use case resumes at step 3.
+  * 3a2. Use case resumes at step 3.
 
 * 4a. User specifies invalid sorting criteria.
   * 4a1. System indicates valid sorting options.
-  * Use case resumes at step 3.
+  * 4a2. Use case resumes at step 3.
   
 ### Non-Functional Requirements
 
