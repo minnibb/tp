@@ -499,8 +499,19 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * **Unit Testing**: Tests individual software components
 * **Integration Testing**: Tests combined software components
 * **DevOps**: Combines development and operations for efficiency
+* **Role**: Defines the type of contact (**Student**, **Parent**, or **Staff**) and determines required information fields.
+* **Grade**: Represents a **Student**'s academic level, restricted to **PRI1-PRI6** or **SEC1-SEC5**.
+* **Tasks**: To-do items associated with a contact, such as scheduling meetings or tracking progress. Stored in the system but not executed.
+* **Parent**: A **Student**'s guardian, required to provide a name, phone number, and email.
+* **Class**: A **Student**'s class designation with no format restrictions, allowing flexibility across different schools.
+* **Phone**: An **8-digit integer** representing a contact's phone number. If a **Student** lacks a phone number, their **Parent**'s phone number is used.
+* **Email**: Must contain **"@"** and **".com"** to ensure validity.
+* **Add Command**: Command used to register a new contact, with fields varying by role. Example formats:
+    - **Student**: `add n/Johnny Tan ph/09876543 e/john.tan@email.com r/Student p/James Tan c/1A g/Sec 1`
+    - **Parent**: `add n/James Tan ph/98765432 e/james.tan@email.com r/Parent`
+    - **Staff**: `add n/Regina Hancox ph/29312432 e/regina.hancox@email.com r/Staff`
 
-
+    
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Instructions for manual testing**
