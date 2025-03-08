@@ -317,70 +317,158 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `*`      | expert	                                                     | set reminders which can alert me about upcoming deadlines                 | stay organized and never miss important deadlines                              |
 | `*`      | expert	                                                     | set frequent contact indicators for a list of frequently contacted people | quickly access my most-used contacts without searching repeatedly              |
 
-
 ### Use cases
 
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
-
-**MSS**
-
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
-
-    Use case ends.
-
-**Extensions**
-
-* 2a. The list is empty.
-
-  Use case ends.
-
-* 3a. The given index is invalid.
-
-    * 3a1. AddressBook shows an error message.
-
-      Use case resumes at step 2.
-
-*{More to be added}*
-## Use case: Categorize Contacts by Role**
+## Use case: UC01 - Categorize Contacts by Role
 
 **MSS (Main Success Scenario)**
 
-1. User requests to group contacts by a specific role (e.g., `group by Student`).
-2. ClassHive check the errors in input
-3. ClassHive displays the grouped contacts and the number of contacts found.
+1. User requests to group contacts by a specific role.
+2. System validates the input.
+3. System displays the grouped contacts and their count.
 
    Use case ends.
 
 **Extensions**
 
 * 2a. The user does not provide a role.
-    * 1a1. AddressBook shows an error message: `Error: Please provide a role to filter by.`
-    * Use case ends.
+  * 2a1. System shows an appropriate error message.
+  * 2a1. Use case ends.
 
 * 2b. The user provides an invalid role.
-    * 1b1. AddressBook shows an error message: `Error: Please provide a valid role.`
-    * Use case ends.
+  * 2b1. System shows an appropriate error message.
+  * 2b2. Use case ends.
 
 * 2c. The user provides multiple roles.
-    * 1c1. AddressBook shows an error message: `Error: Only one role can be selected at a time.`
-    * Use case ends.
+  * 2c1. System indicates that only one role can be selected.
+  * 2c2. Use case ends.
 
-* 2d. The user misses a whitespace after `group by`.
-    * 1d1. AddressBook shows an error message: `Missing whitespace in command. Please ensure there is a space after "group by", before adding the name of the contact.`
-    * Use case ends.
+* 2d. The user provides a role with incorrect format.
+  * 2d1. System shows a format guidance message.
+  * 2d2. Use case ends.
 
 * 3a. No contacts are found for the specified role.
-    * 3a1. AddressBook shows a message: `No contacts found for specified role.`
-    * Use case ends.
+  * 3a1. System indicates no matching contacts.
+  * 3a2. Use case ends.
 
-* 3b. The system is slow due to a large contact list.
-    * 3b1. AddressBook shows a message: `Currently filtering <ROLE>. This may take a while.`
-    * Use case continues normally.
+* 3b. The system is processing a large contact list.
+  * 3b1. System indicates processing is in progress.
+  * 3b2. Use case continues normally.
+
+## Use case: UC02 - Add a new contact
+
+**MSS (Main Success Scenario)**
+
+1. User selects option to add new contact.
+2. System displays contact input form.
+3. User enters contact details.
+4. System validates the information.
+5. System checks for duplicates.
+6. System saves the contact and confirms successful addition.
+
+   Use case ends.
+
+**Extensions**
+
+* 3a. User enters incomplete information.
+  * 3a1. System indicates missing required fields.
+  * 3a2. Use case resumes at step 3.
+
+* 3b. User enters duplicate parameters.
+  * 3b1. System indicates the duplication issue.
+  * 3b2. Use case resumes at step 3.
+
+* 4a. System detects invalid values.
+  * 4a1. System indicates the validation issues.
+  * 4a2. Use case resumes at step 3.
+
+* 5a. System detects a duplicate contact.
+  * 5a1. System indicates the contact already exists.
+  * 5a2. Use case ends.
+
+* 5b. System storage is full.
+  * 5b1. System indicates storage limitation.
+  * 5b2. Use case ends.
+
+## Use case: UC03 - Delete a contact
+
+**MSS (Main Success Scenario)**
+
+1. User requests to list contacts.
+2. System shows the contact list.
+3. User selects a contact to delete.
+4. System requests confirmation.
+5. User confirms the deletion.
+6. System deletes the contact and shows confirmation.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The contact list is empty.
+  * 2a1. System indicates no contacts available.
+  * 2a2. Use case ends.
+
+* 3a. User provides incomplete selection information.
+  * 3a1. System indicates required selection criteria.
+  * 3a2. Use case resumes at step 3.
+
+* 4a. The specified contact cannot be found.
+  * 4a1. System indicates contact not found.
+  * 4a2. Use case resumes at step 3.
+
+## Use case: UC04 - Search for contacts
+
+**MSS (Main Success Scenario)**
+
+1. User requests to find contacts.
+2. User enters search criteria.
+3. System processes the search.
+4. System displays matching contacts.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. User enters empty search criteria.
+  * 2a1. System indicates search criteria required.
+  * 2a2. Use case resumes at step 2.
+
+* 3a. System is processing a large contact list.
+  * 3a1. System indicates search is in progress.
+  * 3a2. Use case continues normally.
+
+* 4a. No contacts match the search criteria.
+  * 4a1. System indicates no matches found.
+  * 4a2. Use case ends.
+
+## Use case: UC05 - Sort contacts
+
+**MSS (Main Success Scenario)**
+
+1. User requests to view contacts.
+2. System displays the contact list.
+3. User requests to sort contacts by a field and order.
+4. System validates sorting parameters.
+5. System displays sorted contacts.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The contact list is empty.
+  * 2a1. System indicates no contacts to sort.
+  * 2a2. Use case ends.
+
+* 3a. User provides incomplete sorting parameters.
+  * 3a1. System indicates proper sorting parameters required.
+  * 3a2. Use case resumes at step 3.
+
+* 4a. User specifies invalid sorting criteria.
+  * 4a1. System indicates valid sorting options.
+  * 4a2. Use case resumes at step 3.
   
 ### Non-Functional Requirements
 
