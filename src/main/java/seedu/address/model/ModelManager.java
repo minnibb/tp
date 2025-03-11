@@ -6,6 +6,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.nio.file.Path;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
+import java.util.Comparator;
 
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -143,6 +144,11 @@ public class ModelManager implements Model {
         return addressBook.equals(otherModelManager.addressBook)
                 && userPrefs.equals(otherModelManager.userPrefs)
                 && filteredPersons.equals(otherModelManager.filteredPersons);
+    }
+    @Override
+    public void updateSortedPersonList(Comparator<Person> comparator) {
+        requireNonNull(comparator);
+        addressBook.getPersonList().sort(comparator);
     }
 
 }
