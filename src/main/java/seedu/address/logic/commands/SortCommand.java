@@ -26,12 +26,29 @@ public class SortCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         
-        model.updateSortedPersonList(Comparator.comparing(person -> 
-                person.getName().toString().toLowerCase()));
-        
-        model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
-                
-        return new CommandResult(MESSAGE_SUCCESS);
+        try {
+            // Print debug info
+            System.out.println("Before sorting - first person: " + 
+                (model.getFilteredPersonList().isEmpty() ? "none" : 
+                 model.getFilteredPersonList().get(0).getName()));
+            
+            // Sort by name in ascending order
+            model.updateSortedPersonList(Comparator.comparing(person -> 
+                    person.getName().toString().toLowerCase()));
+            
+            // Force UI refresh by resetting the predicate
+            model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
+            
+            // Print debug info again
+            System.out.println("After sorting - first person: " + 
+                (model.getFilteredPersonList().isEmpty() ? "none" : 
+                 model.getFilteredPersonList().get(0).getName()));
+                    
+            return new CommandResult(MESSAGE_SUCCESS);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new CommandResult("Error sorting: " + e.getMessage());
+        }
     }
 
     @Override
