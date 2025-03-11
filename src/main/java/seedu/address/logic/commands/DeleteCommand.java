@@ -35,6 +35,12 @@ public class DeleteCommand extends Command {
     private final Name targetName;
     private final Phone targetPhone;
 
+    /**
+     * Creates a new delete command.
+     *
+     * @param targetName Name of the contact to be deleted.
+     * @param targetPhone Phone number of the contact to be deleted.
+     */
     public DeleteCommand(Name targetName, Phone targetPhone) {
         this.targetName = targetName;
         this.targetPhone = targetPhone;
