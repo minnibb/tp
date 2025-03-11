@@ -2,9 +2,12 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 
@@ -27,23 +30,31 @@ public class SortCommand extends Command {
         requireNonNull(model);
         
         try {
-            // Print debug info
-            System.out.println("Before sorting - first person: " + 
-                (model.getFilteredPersonList().isEmpty() ? "none" : 
-                 model.getFilteredPersonList().get(0).getName()));
+            // Get current contacts
+            List<Person> persons = new ArrayList<>(model.getFilteredPersonList());
             
-            // Sort by name in ascending order
-            model.updateSortedPersonList(Comparator.comparing(person -> 
+            // Skip if empty
+            if (persons.isEmpty()) {
+                return new CommandResult("No contacts to sort.");
+            }
+            
+            System.out.println("Before sorting - first person: " + persons.get(0).getName());
+            
+            // Sort the list
+            persons.sort(Comparator.comparing(person -> 
                     person.getName().toString().toLowerCase()));
-            
-            // Force UI refresh by resetting the predicate
-            model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
-            
-            // Print debug info again
-            System.out.println("After sorting - first person: " + 
-                (model.getFilteredPersonList().isEmpty() ? "none" : 
-                 model.getFilteredPersonList().get(0).getName()));
                     
+            System.out.println("After sorting - first person: " + persons.get(0).getName());
+            
+            // Create a new AddressBook with the sorted list
+            AddressBook newAddressBook = new AddressBook();
+            for (Person person : persons) {
+                newAddressBook.addPerson(person);
+            }
+            
+            // Replace the address book
+            model.setAddressBook(newAddressBook);
+            
             return new CommandResult(MESSAGE_SUCCESS);
         } catch (Exception e) {
             e.printStackTrace();
