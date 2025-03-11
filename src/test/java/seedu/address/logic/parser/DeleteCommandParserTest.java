@@ -81,6 +81,9 @@ public class DeleteCommandParserTest {
     public void parse_compulsoryFieldMissing_failure() {
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE);
 
+        // no parameters added
+        assertParseFailure(parser, "", expectedMessage);
+
         // missing name prefix
         assertParseFailure(parser, VALID_NAME_BOB + PHONE_DESC_BOB,
                 expectedMessage);
