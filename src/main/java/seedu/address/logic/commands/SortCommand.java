@@ -28,6 +28,8 @@ public class SortCommand extends Command {
         
         model.updateSortedPersonList(Comparator.comparing(person -> 
                 person.getName().toString().toLowerCase()));
+        
+        model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
                 
         return new CommandResult(MESSAGE_SUCCESS);
     }
