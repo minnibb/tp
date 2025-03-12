@@ -114,11 +114,9 @@ public class SortCommandTest {
             Person alice = new PersonBuilder().withName("Alice").build();
             Person bob = new PersonBuilder().withName("Bob").build();
             Person charlie = new PersonBuilder().withName("Charlie").build();
-            
             addressBook.addPerson(bob);
             addressBook.addPerson(charlie);
             addressBook.addPerson(alice);
-            
             filteredPersons = FXCollections.observableArrayList(bob, charlie, alice);
         }
 
