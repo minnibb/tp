@@ -85,7 +85,6 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
-    
     /**
      * Updates the sorting of the filtered person list.
      * @param comparator used to sort the filtered person list
