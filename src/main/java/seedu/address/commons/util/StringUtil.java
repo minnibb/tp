@@ -18,9 +18,9 @@ public class StringUtil {
      *       containsSubstringIgnoreCase("Alice Charles", "rles") == true
      *       containsSubstringIgnoreCase("Bernice Yu", "nice u") == true
      *       </pre>
-     * @param sentence the full name to be searched, it cannot be null.
-     * @param word the keyword to search within the full name, it cannot be null or empty.
-     * @return true if the {@code sentence} contains the {@code word}.
+     * @param sentence The full name to be searched, it cannot be null.
+     * @param word The keyword to search within the full name, it cannot be null or empty.
+     * @return true If the {@code sentence} contains the {@code word}.
      */
     public static boolean containsSubstringIgnoreCase(String sentence, String word) {
         requireNonNull(sentence);
