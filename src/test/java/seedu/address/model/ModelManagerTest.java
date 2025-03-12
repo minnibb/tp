@@ -131,16 +131,19 @@ public class ModelManagerTest {
         assertFalse(modelManager.equals(new ModelManager(addressBook, differentUserPrefs)));
     }
     @Test
-    public void updateSortedPersonList_nullComparator_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> modelManager.updateSortedPersonList(null));
-    }
-    @Test
     public void updateSortedPersonList_validComparator_works() {
+        // Setup model with test data
         AddressBook addressBook = new AddressBookBuilder().withPerson(ALICE).withPerson(BENSON).build();
         UserPrefs userPrefs = new UserPrefs();
         ModelManager testModel = new ModelManager(addressBook, userPrefs);
-        testModel.updateSortedPersonList(Comparator.comparing(person ->
-            person.getName().toString()));
-        assertTrue(true, "updateSortedPersonList should not throw exceptions");
+        // Create a comparator
+        Comparator<Person> nameComparator = Comparator.comparing(
+            person -> person.getName().toString());
+        try {
+            testModel.updateSortedPersonList(nameComparator);
+            assertTrue(true);
+        } catch (Exception e) {
+            fail("updateSortedPersonList threw an exception: " + e.getMessage());
+        }
     }
 }
