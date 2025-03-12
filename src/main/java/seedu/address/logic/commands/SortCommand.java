@@ -12,18 +12,28 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 
 /**
- * Sorts all persons in the address book by name in ascending order.
- * Will support sorting by different fields and in different orders.
+ * Sorts all persons in the address book by name in ascending or descending order.
  */
 public class SortCommand extends Command {
 
     public static final String COMMAND_WORD = "sort";
     
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts all persons in the address book "
-            + "by name in ascending order.\n"
-            + "Example: " + COMMAND_WORD;
+            + "by name in the specified order.\n"
+            + "Parameters: [asc/desc] (optional - default is ascending)\n"
+            + "Example: " + COMMAND_WORD + " desc";
             
-    public static final String MESSAGE_SUCCESS = "Sorted all persons by name in ascending order";
+    public static final String MESSAGE_SUCCESS_ASC = "Sorted all persons by name in ascending order";
+    public static final String MESSAGE_SUCCESS_DESC = "Sorted all persons by name in descending order";
+    
+    private boolean isAscending;
+
+    /**
+     * Creates a SortCommand with the specified order.
+     */
+    public SortCommand(boolean isAscending) {
+        this.isAscending = isAscending;
+    }
 
     @Override
     public CommandResult execute(Model model) {
@@ -38,13 +48,17 @@ public class SortCommand extends Command {
                 return new CommandResult("No contacts to sort.");
             }
             
-            System.out.println("Before sorting - first person: " + persons.get(0).getName());
+            // Create comparator
+            Comparator<Person> comparator = Comparator.comparing(person -> 
+                    person.getName().toString().toLowerCase());
+            
+            // Reverse if descending order is requested
+            if (!isAscending) {
+                comparator = comparator.reversed();
+            }
             
             // Sort the list
-            persons.sort(Comparator.comparing(person -> 
-                    person.getName().toString().toLowerCase()));
-                    
-            System.out.println("After sorting - first person: " + persons.get(0).getName());
+            persons.sort(comparator);
             
             // Create a new AddressBook with the sorted list
             AddressBook newAddressBook = new AddressBook();
@@ -55,21 +69,30 @@ public class SortCommand extends Command {
             // Replace the address book
             model.setAddressBook(newAddressBook);
             
-            return new CommandResult(MESSAGE_SUCCESS);
+            // Return success message based on sort order
+            return new CommandResult(isAscending ? MESSAGE_SUCCESS_ASC : MESSAGE_SUCCESS_DESC);
+            
         } catch (Exception e) {
-            e.printStackTrace();
             return new CommandResult("Error sorting: " + e.getMessage());
         }
     }
 
     @Override
     public boolean equals(Object other) {
-        return other == this 
-                || (other instanceof SortCommand); 
+        if (other == this) {
+            return true;
+        }
+        if (!(other instanceof SortCommand)) {
+            return false;
+        }
+        SortCommand otherSortCommand = (SortCommand) other;
+        return isAscending == otherSortCommand.isAscending;
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).toString();
+        return new ToStringBuilder(this)
+                .add("isAscending", isAscending)
+                .toString();
     }
 }
