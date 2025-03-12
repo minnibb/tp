@@ -16,24 +16,19 @@ import seedu.address.model.person.Person;
  */
 public class SortCommand extends Command {
     public static final String COMMAND_WORD = "sort";
-    
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts all persons in the address book "
             + "by name in the specified order.\n"
             + "Parameters: [asc/desc] (optional - default is ascending)\n"
             + "Example: " + COMMAND_WORD + " desc";
-    
     public static final String MESSAGE_SUCCESS_ASC = "Sorted all persons by name in ascending order";
     public static final String MESSAGE_SUCCESS_DESC = "Sorted all persons by name in descending order";
-    
     private boolean isAscending;
-    
     /**
      * Creates a SortCommand with the specified order.
      */
     public SortCommand(boolean isAscending) {
         this.isAscending = isAscending;
     }
-    
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
@@ -53,7 +48,6 @@ public class SortCommand extends Command {
             }
             // Sort the list
             persons.sort(comparator);
-            
             // Create a new AddressBook with the sorted list
             AddressBook newAddressBook = new AddressBook();
             for (Person person : persons) {
@@ -67,7 +61,6 @@ public class SortCommand extends Command {
             return new CommandResult("Error sorting: " + e.getMessage());
         }
     }
-    
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -79,7 +72,6 @@ public class SortCommand extends Command {
         SortCommand otherSortCommand = (SortCommand) other;
         return isAscending == otherSortCommand.isAscending;
     }
-    
     @Override
     public String toString() {
         return new ToStringBuilder(this)
