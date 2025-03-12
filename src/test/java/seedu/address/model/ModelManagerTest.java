@@ -129,4 +129,25 @@ public class ModelManagerTest {
         differentUserPrefs.setAddressBookFilePath(Paths.get("differentFilePath"));
         assertFalse(modelManager.equals(new ModelManager(addressBook, differentUserPrefs)));
     }
+    @Test
+    public void updateSortedPersonList_nullComparator_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.updateSortedPersonList(null));
+    }
+    @Test
+    public void updateSortedPersonList_validComparator_sortsList() {
+        // Setup model with test data
+        AddressBook addressBook = new AddressBookBuilder().withPerson(ALICE).withPerson(BENSON).build();
+        UserPrefs userPrefs = new UserPrefs();
+        ModelManager testModel = new ModelManager(addressBook, userPrefs);
+        // Get initial order
+        String firstPersonNameBefore = testModel.getFilteredPersonList().get(0).getName().toString();
+        // Sort by name in reverse order
+        testModel.updateSortedPersonList(
+            (p1, p2) -> p2.getName().toString().compareToIgnoreCase(p1.getName().toString()));
+        // Get new order
+        String firstPersonNameAfter = testModel.getFilteredPersonList().get(0).getName().toString();
+        // Verify sort worked (names should be different if sort changed order)
+        assertFalse(firstPersonNameBefore.equals(firstPersonNameAfter),
+            "Person list should be sorted in a different order");
+    }
 }
