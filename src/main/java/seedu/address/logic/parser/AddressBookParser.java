@@ -79,9 +79,9 @@ public class AddressBookParser {
             } else if ("desc".equalsIgnoreCase(sortArg)) {
                 return new SortCommand(false); // Descending
             } else {
-        throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                 SortCommand.MESSAGE_USAGE));
-        }
+            }
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
