@@ -4,8 +4,16 @@ package seedu.address.logic.parser;
 import seedu.address.logic.commands.GroupCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
+/**
+ * parse Group command
+ */
 public class GroupCommandParser implements Parser<GroupCommand> {
 
+    /**
+     * @param args
+     * @return GroupCommand
+     * @throws ParseException
+     */
     @Override
     public GroupCommand parse(String args) throws ParseException {
         String trimmedArgs = args.trim();

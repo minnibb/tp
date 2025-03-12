@@ -12,12 +12,21 @@ public class Role {
     public static final String MESSAGE_CONSTRAINTS = "Choose only one from Student, Parent or Staff";
     public final String value;
 
+
+    /**
+     * @param role parent student or staff
+     */
     public Role(String role) {
         requireNonNull(role);
         checkArgument(isValidRole(role), MESSAGE_CONSTRAINTS);
         value = role;
     }
 
+
+    /**
+     * @param test test
+     * @return true or false
+     */
     public static boolean isValidRole(String test) {
         for (String validRole : VALID_ROLES) {
             if (validRole.equalsIgnoreCase(test)) {
