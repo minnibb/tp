@@ -98,4 +98,24 @@ public class AddressBookParserTest {
     public void parseCommand_unknownCommand_throwsParseException() {
         assertThrows(ParseException.class, MESSAGE_UNKNOWN_COMMAND, () -> parser.parseCommand("unknownCommand"));
     }
+    @Test
+    public void parseCommand_sortDefault() throws Exception {
+        SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD);
+        assertEquals(new SortCommand(true), command); // Default is ascending (true)
+    }
+    @Test
+    public void parseCommand_sortAscending() throws Exception {
+        SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " asc");
+        assertEquals(new SortCommand(true), command);
+    }
+    @Test
+    public void parseCommand_sortDescending() throws Exception {
+        SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " desc");
+        assertEquals(new SortCommand(false), command);
+    }
+    @Test
+    public void parseCommand_sortInvalid() throws Exception {
+        assertThrows(ParseException.class, () ->
+        parser.parseCommand(SortCommand.COMMAND_WORD + " invalid"));
+    }
 }
