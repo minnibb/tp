@@ -73,7 +73,15 @@ public class AddressBookParser {
             return new ListCommand();
 
         case SortCommand.COMMAND_WORD:
-            return new SortCommand();
+            String sortArg = arguments.trim();
+            if (sortArg.isEmpty() || "asc".equalsIgnoreCase(sortArg)) {
+                return new SortCommand(true); // Ascending
+            } else if ("desc".equalsIgnoreCase(sortArg)) {
+                return new SortCommand(false); // Descending
+            } else {
+        throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, 
+                SortCommand.MESSAGE_USAGE));
+        }
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
