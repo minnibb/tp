@@ -40,7 +40,7 @@ public class SortCommand extends Command {
                 return new CommandResult("No contacts to sort.");
             }
             // Create comparator
-            Comparator<Person> comparator = Comparator.comparing(person -> 
+            Comparator<Person> comparator = Comparator.comparing(person ->
                     person.getName().toString().toLowerCase());
             // Reverse if descending order is requested
             if (!isAscending) {
