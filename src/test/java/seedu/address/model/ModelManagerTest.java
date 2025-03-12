@@ -142,8 +142,8 @@ public class ModelManagerTest {
         // Get initial order
         String firstPersonNameBefore = testModel.getFilteredPersonList().get(0).getName().toString();
         // Sort by name in reverse order
-        testModel.updateSortedPersonList((
-            p1, p2) -> p2.getName().toString().compareToIgnoreCase(p1.getName().toString()));
+        testModel.updateSortedPersonList(Comparator.comparing(p ->
+            p.getName().toString(), String.CASE_INSENSITIVE_ORDER.reversed()));
         // Get new order
         String firstPersonNameAfter = testModel.getFilteredPersonList().get(0).getName().toString();
         // Verify sort worked (names should be different if sort changed order)
