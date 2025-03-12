@@ -117,6 +117,6 @@ public class AddressBookParserTest {
     @Test
     public void parseCommand_sortInvalid() throws Exception {
         assertThrows(ParseException.class, () ->
-        parser.parseCommand(SortCommand.COMMAND_WORD + " invalid"));
+            parser.parseCommand(SortCommand.COMMAND_WORD + " invalid"));
     }
 }
