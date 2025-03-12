@@ -139,7 +139,7 @@ public class ModelManagerTest {
         AddressBook addressBook = new AddressBookBuilder().withPerson(ALICE).withPerson(BENSON).build();
         UserPrefs userPrefs = new UserPrefs();
         ModelManager testModel = new ModelManager(addressBook, userPrefs);
-        testModel.updateSortedPersonList(Comparator.comparing(person -> 
+        testModel.updateSortedPersonList(Comparator.comparing(person ->
             person.getName().toString()));
         assertTrue(true, "updateSortedPersonList should not throw exceptions");
     }
