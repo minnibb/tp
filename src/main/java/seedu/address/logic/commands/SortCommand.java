@@ -56,7 +56,7 @@ public class SortCommand extends Command {
             model.setAddressBook(newAddressBook);
             // Return success message based on sort order
             return new CommandResult(isAscending ? MESSAGE_SUCCESS_ASC : MESSAGE_SUCCESS_DESC);
-        } catch (NullPointerException | IllegalArgumentException e) {
+        } catch (NullPointerException | IllegalArgumentException | RuntimeException e) {
             return new CommandResult("Error sorting: " + e.getMessage());
         }
     }
