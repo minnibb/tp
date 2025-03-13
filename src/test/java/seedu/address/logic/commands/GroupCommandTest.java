@@ -96,7 +96,6 @@ public class GroupCommandTest {
 
     @Test
     public void execute_caseSensitiveRoleValidation() {
-       
         GroupCommand lowerCaseCommand = new GroupCommand("student");
         GroupCommand upperCaseCommand = new GroupCommand("STUDENT");
 
@@ -111,7 +110,5 @@ public class GroupCommandTest {
                 .toString();
         assertEquals(expected, command.toString());
     }
-
-
 
 }
