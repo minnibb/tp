@@ -1,16 +1,12 @@
 package seedu.address.logic.commands;
-
 import static java.util.Objects.requireNonNull;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
-
 /**
  * Sorts all persons in the address book by name in ascending or descending order.
  */
@@ -32,20 +28,20 @@ public class SortCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
+        // Get current contacts
+        List<Person> persons = new ArrayList<>(model.getFilteredPersonList());
+        // Skip if empty
+        if (persons.isEmpty()) {
+            return new CommandResult("No contacts to sort.");
+        }
+        // Create comparator
+        Comparator<Person> comparator = Comparator.comparing(person ->
+                person.getName().toString().toLowerCase());
+        // Reverse if descending order is requested
+        if (!isAscending) {
+            comparator = comparator.reversed();
+        }
         try {
-            // Get current contacts
-            List<Person> persons = new ArrayList<>(model.getFilteredPersonList());
-            // Skip if empty
-            if (persons.isEmpty()) {
-                return new CommandResult("No contacts to sort.");
-            }
-            // Create comparator
-            Comparator<Person> comparator = Comparator.comparing(person ->
-                    person.getName().toString().toLowerCase());
-            // Reverse if descending order is requested
-            if (!isAscending) {
-                comparator = comparator.reversed();
-            }
             // Sort the list
             persons.sort(comparator);
             // Create a new AddressBook with the sorted list
@@ -57,7 +53,7 @@ public class SortCommand extends Command {
             model.setAddressBook(newAddressBook);
             // Return success message based on sort order
             return new CommandResult(isAscending ? MESSAGE_SUCCESS_ASC : MESSAGE_SUCCESS_DESC);
-        } catch (Exception e) {
+        } catch (NullPointerException | IllegalArgumentException e) {
             return new CommandResult("Error sorting: " + e.getMessage());
         }
     }
