@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.nio.file.Path;
 import java.util.Comparator;
 import java.util.function.Predicate;
+import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
@@ -78,7 +79,23 @@ public class SortCommandTest {
         String expected = "SortCommand{isAscending=true}";
         assertTrue(sortCommand.toString().contains("isAscending=true"));
     }
-
+    @Test
+    public void execute_exceptionThrown_returnsErrorMessage() {
+        ModelStub modelStub = new ModelStub() {
+        @Override
+        public ObservableList<Person> getFilteredPersonList() {
+            Person person = new PersonBuilder().build();
+            return FXCollections.observableArrayList(person);
+        }
+        @Override
+        public void setAddressBook(ReadOnlyAddressBook addressBook) {
+            throw new RuntimeException("Test exception");
+        }
+    };
+    SortCommand sortCommand = new SortCommand(true);
+    CommandResult result = sortCommand.execute(modelStub);
+    assertEquals("Error sorting: Test exception", result.getFeedbackToUser());
+    }
     /**
      * A Model stub with an empty address book.
      */
