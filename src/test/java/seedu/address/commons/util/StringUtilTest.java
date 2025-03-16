@@ -160,4 +160,11 @@ public class StringUtilTest {
         assertThrows(NullPointerException.class, () -> StringUtil.getDetails(null));
     }
 
+    @Test
+    public void containsPhoneSubstring_emptySubstring_throwsIllegalArgumentException() {
+        assertThrows(IllegalArgumentException.class, "Substring parameter cannot be empty", () -> {
+            StringUtil.containsPhoneSubstring("87654321", "  ");
+        });
+    }
+
 }
