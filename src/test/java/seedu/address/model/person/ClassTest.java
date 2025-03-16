@@ -20,16 +20,16 @@ public class ClassTest {
     }
 
     @Test
-    public void isValidName() {
-        // null name
+    public void isValidClass() {
+        // null class
         assertThrows(NullPointerException.class, () -> Class.isValidClass(null));
 
-        // invalid name
+        // invalid class
         assertFalse(Class.isValidClass("")); // empty string
         assertFalse(Class.isValidClass(" ")); // spaces only
         assertFalse(Class.isValidClass(" 1A")); // start with space
 
-        // valid name
+        // valid class
         assertTrue(Class.isValidClass("Class A")); // alphabets only
         assertTrue(Class.isValidClass("1-2")); // numbers and symbols
         assertTrue(Class.isValidClass("1A")); // alphanumeric characters

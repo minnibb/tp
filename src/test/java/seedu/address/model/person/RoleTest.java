@@ -20,16 +20,16 @@ public class RoleTest {
     }
 
     @Test
-    public void isValidName() {
-        // null name
+    public void isValidRole() {
+        // null role
         assertThrows(NullPointerException.class, () -> Role.isValidRole(null));
 
-        // invalid name
+        // invalid role
         assertFalse(Role.isValidRole("")); // empty string
         assertFalse(Role.isValidRole(" ")); // spaces only
         assertFalse(Role.isValidRole("admin")); // not staff, student or parent
 
-        // valid name
+        // valid role
         assertTrue(Role.isValidRole("student")); // no capital letters
         assertTrue(Role.isValidRole("StudENt")); // mix of capital and small letters
         assertTrue(Role.isValidRole("STUDENT")); // all capital letters
