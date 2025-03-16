@@ -28,11 +28,19 @@ public class FindCommand extends Command {
 
     private final Predicate<Person> predicate;
 
+    /**
+     * Constructs a FindCommand that searches by name.
+     * @param nameKeywords A list of keywords to search for in names.
+     */
     public FindCommand(List<String> nameKeywords) {
         requireNonNull(nameKeywords);
         this.predicate = new NameContainsKeywordsPredicate(nameKeywords);
     }
 
+    /**
+     * Constructs a FindCommand that searches by phone number.
+     * @param phoneKeyword A substring to search for in phone numbers.
+     */
     public FindCommand(String phoneKeyword) {
         requireNonNull(phoneKeyword);
         this.predicate = new PhoneContainsSubstringPredicate(phoneKeyword);
