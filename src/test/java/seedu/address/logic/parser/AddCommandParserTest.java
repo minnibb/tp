@@ -90,23 +90,6 @@ public class AddCommandParserTest {
                 NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB + TAG_DESC_HUSBAND
                         + TAG_DESC_FRIEND + ROLE_DESC_BOB,
                 new AddCommand(expectedPersonMultipleTags));
-
-        // create new person of type STUDENT
-        Person expectedStudent = new PersonBuilder(AMY).withTags(VALID_TAG_FRIEND).withGrade(VALID_GRADE_AMY)
-                .withClass(VALID_CLASS_AMY).withParent(VALID_PARENT_AMY).build();
-
-        // whitespace only preamble
-        assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
-                + ADDRESS_DESC_AMY + TAG_DESC_FRIEND + ROLE_DESC_AMY + GRADE_DESC_AMY
-                + CLASS_DESC_AMY + PARENT_DESC_AMY, new AddCommand(expectedStudent));
-
-        // multiple tags - all accepted
-        Person expectedStudentMultipleTags = new PersonBuilder(AMY)
-                .withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND).build();
-        assertParseSuccess(parser,
-                NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY + ADDRESS_DESC_AMY + TAG_DESC_HUSBAND
-                        + TAG_DESC_FRIEND + ROLE_DESC_AMY + GRADE_DESC_AMY + CLASS_DESC_AMY + PARENT_DESC_AMY,
-                new AddCommand(expectedStudentMultipleTags));
     }
 
     @Test
@@ -282,6 +265,35 @@ public class AddCommandParserTest {
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
                         + ROLE_DESC_BOB + VALID_ROLE_BOB, expectedMessage);
 
+        // all prefixes missing
+        assertParseFailure(parser, VALID_NAME_BOB + VALID_PHONE_BOB + VALID_EMAIL_BOB
+                        + VALID_ADDRESS_BOB + VALID_ROLE_BOB, expectedMessage);
+    }
+
+    @Test
+    public void parse_compulsoryStudentPrefixesPresent_failure() {
+        // create new person of type STUDENT
+        Person expectedStudent = new PersonBuilder(AMY).withTags(VALID_TAG_FRIEND).withGrade(VALID_GRADE_AMY)
+                .withClass(VALID_CLASS_AMY).withParent(VALID_PARENT_AMY).build();
+
+        // whitespace only preamble
+        assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
+                + ADDRESS_DESC_AMY + TAG_DESC_FRIEND + ROLE_DESC_AMY + GRADE_DESC_AMY
+                + CLASS_DESC_AMY + PARENT_DESC_AMY, new AddCommand(expectedStudent));
+
+        // multiple tags - all accepted
+        Person expectedStudentMultipleTags = new PersonBuilder(AMY)
+                .withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND).build();
+        assertParseSuccess(parser,
+                NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY + ADDRESS_DESC_AMY + TAG_DESC_HUSBAND
+                        + TAG_DESC_FRIEND + ROLE_DESC_AMY + GRADE_DESC_AMY + CLASS_DESC_AMY + PARENT_DESC_AMY,
+                new AddCommand(expectedStudentMultipleTags));
+    }
+
+    @Test
+    public void parse_missingStudentPrefixes_failure() {
+        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE);
+
         // missing grade prefix
         assertParseFailure(parser, NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY + ROLE_DESC_AMY
                 + ROLE_DESC_AMY + VALID_GRADE_AMY + CLASS_DESC_AMY + PARENT_DESC_AMY, expectedMessage);
@@ -293,10 +305,6 @@ public class AddCommandParserTest {
         // missing parent prefix
         assertParseFailure(parser, NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY + ROLE_DESC_AMY
                 + ROLE_DESC_AMY + GRADE_DESC_AMY + CLASS_DESC_AMY + VALID_PARENT_AMY, expectedMessage);
-
-        // all prefixes missing
-        assertParseFailure(parser, VALID_NAME_BOB + VALID_PHONE_BOB + VALID_EMAIL_BOB
-                        + VALID_ADDRESS_BOB + VALID_ROLE_BOB, expectedMessage);
     }
 
     @Test
