@@ -129,23 +129,23 @@ class JsonAdaptedPerson {
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
-        if (role == "Student" && grade == null) {
+        if (role.equals("Student") && grade == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Grade.class.getSimpleName()));
         }
         if (!Grade.isValidGrade(grade)) {
-            throw new IllegalValueException(Role.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(Grade.MESSAGE_CONSTRAINTS);
         }
         final Grade modelGrade = new Grade(grade);
 
-        if (role == "Student" && studentClass == null) {
+        if (role.equals("Student") && studentClass == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Class.class.getSimpleName()));
         }
         if (!Class.isValidClass(studentClass)) {
-            throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(Class.MESSAGE_CONSTRAINTS);
         }
         final Class modelClass = new Class(studentClass);
 
-        if (role == "Student" && parentName == null) {
+        if (role.equals("Student") && parentName == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
         }
         if (!Name.isValidName(parentName)) {
