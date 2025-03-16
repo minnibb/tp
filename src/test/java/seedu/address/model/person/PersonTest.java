@@ -4,13 +4,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_CLASS_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_GRADE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PARENT_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ROLE_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ROLE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
+import static seedu.address.testutil.TypicalPersons.BENSON;
 import static seedu.address.testutil.TypicalPersons.BOB;
 
 import org.junit.jupiter.api.Test;
@@ -95,9 +99,20 @@ public class PersonTest {
         assertFalse(ALICE.equals(editedAlice));
 
         // different roles -> return false
-        editedAlice = new PersonBuilder(ALICE).withRole(VALID_ROLE_BOB).build();
+        editedAlice = new PersonBuilder(ALICE).withRole(VALID_ROLE_AMY).build();
         assertFalse(ALICE.equals(editedAlice));
 
+        // different grade -> return false
+        Person editedBenson = new PersonBuilder(BENSON).withGrade(VALID_GRADE_AMY).build();
+        assertFalse(BENSON.equals(editedBenson));
+
+        // different class -> return false
+        editedBenson = new PersonBuilder(BENSON).withClass(VALID_CLASS_AMY).build();
+        assertFalse(BENSON.equals(editedBenson));
+
+        // different parent name -> return false
+        editedBenson = new PersonBuilder(BENSON).withParent(VALID_PARENT_AMY).build();
+        assertFalse(BENSON.equals(editedBenson));
     }
 
     @Test
@@ -105,6 +120,12 @@ public class PersonTest {
         String expected = Person.class.getCanonicalName() + "{name=" + ALICE.getName() + ", phone=" + ALICE.getPhone()
                 + ", email=" + ALICE.getEmail() + ", address=" + ALICE.getAddress() + ", tags=" + ALICE.getTags()
                 + ", role=" + ALICE.getRole() + "}";
+        assertEquals(expected, ALICE.toString());
+
+        String expectedStudent = Person.class.getCanonicalName() + "{name=" + BENSON.getName()
+                + ", phone=" + BENSON.getPhone() + ", email=" + BENSON.getEmail() + ", address=" + BENSON.getAddress()
+                + ", tags=" + BENSON.getTags() + ", role=" + BENSON.getRole() + ", grade=" + BENSON.getGrade()
+                + ", class=" + BENSON.getStudentClass() + ", parent=" + BENSON.getParentName() + "}";
         assertEquals(expected, ALICE.toString());
     }
 }
