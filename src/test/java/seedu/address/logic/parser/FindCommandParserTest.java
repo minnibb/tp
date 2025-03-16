@@ -30,4 +30,10 @@ public class FindCommandParserTest {
         assertParseSuccess(parser, " \n Alice \n \t Bob  \t", expectedFindCommand);
     }
 
+    @Test
+    public void parse_numericArg_returnsFindCommandWithNumber() {
+        // Test case where the argument is a numeric string
+        FindCommand expectedFindCommand = new FindCommand("12345");
+        assertParseSuccess(parser, "12345", expectedFindCommand);
+    }
 }
