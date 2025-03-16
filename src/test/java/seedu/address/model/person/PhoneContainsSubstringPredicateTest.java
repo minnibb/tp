@@ -27,6 +27,9 @@ public class PhoneContainsSubstringPredicateTest {
 
         // Null -> returns false
         assertFalse(firstPredicate.equals(null));
+
+        // Same instance -> returns true (Testing for self-equality)
+        assertTrue(firstPredicate.equals(firstPredicate));
     }
 
     @Test
