@@ -1,16 +1,21 @@
 package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Person's role in the address book.
  */
 public class Role {
-    public static final String[] VALID_ROLES = {"Student", "Parent", "Staff"};
+    /**
+     * All possible types of contacts in the address book.
+     */
+    public enum Type {
+        STUDENT, STAFF, PARENT
+    }
 
     public static final String MESSAGE_CONSTRAINTS = "Choose only one from Student, Parent or Staff";
-    public final String value;
+
+    private final Type value;
 
 
     /**
@@ -18,35 +23,65 @@ public class Role {
      */
     public Role(String role) {
         requireNonNull(role);
-        checkArgument(isValidRole(role), MESSAGE_CONSTRAINTS);
-        value = role;
+        this.value = checkRole(role);
     }
-
 
     /**
-     * @param test test
-     * @return true or false
+     * Returns the type of Role of a person.
+     *
+     * @param input Role that the user has input.
+     * @return The type of role of a person.
      */
-    public static boolean isValidRole(String test) {
-        for (String validRole : VALID_ROLES) {
-            if (validRole.equalsIgnoreCase(test)) {
-                return true;
-            }
+    public static Type checkRole(String input) {
+        if (input.equalsIgnoreCase(Type.PARENT.name())) {
+            return Type.PARENT;
+        } else if (input.equalsIgnoreCase(Type.STAFF.name())) {
+            return Type.STAFF;
+        } else if (input.equalsIgnoreCase(Type.STUDENT.name())) {
+            return Type.STUDENT;
+        } else {
+            throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);
         }
-        return false;
     }
 
-    @Override
-    public String toString() {
+    /**
+     * Checks if a String input is a valid role.
+     *
+     * @param input The user input.
+     * @return True if the input is a valid role, and false otherwise.
+     */
+    public static boolean isValidRole(String input) {
+        boolean isParent = input.equalsIgnoreCase(Type.PARENT.name());
+        boolean isStaff = input.equalsIgnoreCase(Type.STAFF.name());
+        boolean isStudent = input.equalsIgnoreCase(Type.STUDENT.name());
+        return (isStaff || isParent) || isStudent;
+    }
+
+    public Type getType() {
         return value;
     }
 
     @Override
-    public boolean equals(Object other) {
-        return other == this
-                || (other instanceof Role)
-                && value.equalsIgnoreCase(((Role) other).value);
+    public String toString() {
+        String role = value.name();
+        return role.charAt(0) + role.substring(1).toLowerCase();
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof Role)) {
+            return false;
+        }
+
+        Role otherRole = (Role) other;
+        return value.equals(otherRole.value);
+    }
+
     @Override
     public int hashCode() {
         return value.hashCode();
