@@ -137,7 +137,7 @@ public class StringUtilTest {
         assertTrue(StringUtil.containsPhoneSubstring("87654321", " 876 ")); // Substring with leading/trailing spaces
 
         // Matches multiple occurrences of substring
-        assertTrue(StringUtil.containsPhoneSubstring("8765432187654321", "765")); // Multiple occurrences of the substring
+        assertTrue(StringUtil.containsPhoneSubstring("8765432187654321", "765"));
 
         // Non-matching substring
         assertFalse(StringUtil.containsPhoneSubstring("90123456", "789")); // No match for the substring
