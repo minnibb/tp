@@ -4,12 +4,18 @@
     "phone": "9482424",
     "email": "hans@example.com",
     "address": "4th street",
-    "role": "parent"
+    "role": "Parent",
+    "grade": "Not applicable",
+    "class": "Not applicable",
+    "parent": "Not applicable"
   }, {
     "name": "Person With Invalid Phone Field",
     "phone": "948asdf2424",
     "email": "hans@example.com",
     "address": "4th street",
-    "role": "parent"
+    "role": "Parent",
+    "grade": "Not applicable",
+    "class": "Not applicable",
+    "parent": "Not applicable"
   } ]
 }
