@@ -120,6 +120,29 @@ public class StringUtilTest {
         assertTrue(StringUtil.containsSubstringIgnoreCase("AAA bBb ccc  bbb", "bbB"));
     }
 
+    @Test
+    public void containsPhoneSubstring_validInputs_correctResult() {
+
+        // Empty phone number
+        assertFalse(StringUtil.containsSubstringIgnoreCase("", "123")); // Boundary case
+        assertFalse(StringUtil.containsSubstringIgnoreCase("    ", "123"));
+
+        //  Matches a partial substring
+        assertTrue(StringUtil.containsSubstringIgnoreCase("91234567", "1234")); // Phone number contains the substring
+
+        // Matches the entire phone number
+        assertTrue(StringUtil.containsPhoneSubstring("87654321", "87654321")); // Full match
+
+        // Substring with leading/trailing spaces
+        assertTrue(StringUtil.containsPhoneSubstring("87654321", " 876 ")); // Substring with leading/trailing spaces
+
+        // Matches multiple occurrences of substring
+        assertTrue(StringUtil.containsPhoneSubstring("8765432187654321", "765")); // Multiple occurrences of the substring
+
+        // Non-matching substring
+        assertFalse(StringUtil.containsPhoneSubstring("90123456", "789")); // No match for the substring
+    }
+
     //---------------- Tests for getDetails --------------------------------------
 
     /*
