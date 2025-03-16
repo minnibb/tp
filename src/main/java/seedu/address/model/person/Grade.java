@@ -103,14 +103,6 @@ public class Grade {
 
     @Override
     public boolean equals(Object other) {
-        if (this == null) {
-            if (other == null) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-
         if (other == this) {
             return true;
         }
