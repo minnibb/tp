@@ -46,7 +46,7 @@ public class PersonUtil {
         person.getTags().stream().forEach(
             s -> sb.append(PREFIX_TAG + s.tagName + " ")
         );
-        sb.append(PREFIX_ROLE + person.getRole().value + " ");
+        sb.append(PREFIX_ROLE + person.getRole().toString() + " ");
         return sb.toString();
     }
 
@@ -77,7 +77,7 @@ public class PersonUtil {
                 tags.forEach(tag -> sb.append(PREFIX_TAG).append(tag.tagName).append(" "));
             }
         }
-        descriptor.getRole().ifPresent(role -> sb.append(PREFIX_ROLE).append(role.value).append(" "));
+        descriptor.getRole().ifPresent(role -> sb.append(PREFIX_ROLE).append(role.getType()).append(" "));
         return sb.toString();
     }
 }
