@@ -36,6 +36,27 @@ public class StringUtil {
     }
 
     /**
+     *   Checks if a phone number contains a given substring.
+     *   <br>examples:<pre>
+     *       containsPhoneSubstring("91234567", "1234") == true
+     *  *     containsPhoneSubstring("87654321", "876") == true
+     *  *     containsPhoneSubstring("90123456", "789") == false
+     *       </pre>
+     * @param phoneNumber The phone number to be searched, it cannot be null.
+     * @param substring The keyword to search within the phone number, it cannot be null or empty.
+     * @return true If the {@code phoneNumber} contains the {@code substring}.
+     */
+    public static boolean containsPhoneSubstring(String phoneNumber, String substring) {
+        requireNonNull(phoneNumber);
+        requireNonNull(substring);
+
+        String trimmedSubstring = substring.trim();
+        checkArgument(!trimmedSubstring.isEmpty(), "Substring parameter cannot be empty");
+
+        return phoneNumber.contains(trimmedSubstring);
+    }
+
+    /**
      * Returns a detailed message of the t, including the stack trace.
      */
     public static String getDetails(Throwable t) {
