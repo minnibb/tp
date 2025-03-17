@@ -10,7 +10,9 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Class;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Grade;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Role;
@@ -135,5 +137,50 @@ public class ParserUtil {
             throw new ParseException(Role.MESSAGE_CONSTRAINTS);
         }
         return new Role(trimmedRole);
+    }
+
+    /**
+     * Parses a {@code String input} into a student's {@code Grade}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code input} is invalid.
+     */
+    public static Grade parseGrade(String grade) throws ParseException {
+        requireNonNull(grade);
+        String trimmedGrade = grade.trim();
+        if (!Grade.isValidGrade(trimmedGrade)) {
+            throw new ParseException(Grade.MESSAGE_CONSTRAINTS);
+        }
+        return new Grade(trimmedGrade);
+    }
+
+    /**
+     * Parses a {@code String input} into a student's {@code Class}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code input} is invalid.
+     */
+    public static Class parseClass(String studentClass) throws ParseException {
+        requireNonNull(studentClass);
+        String trimmedClass = studentClass.trim();
+        if (!Class.isValidClass(trimmedClass)) {
+            throw new ParseException(Class.MESSAGE_CONSTRAINTS);
+        }
+        return new Class(trimmedClass);
+    }
+
+    /**
+     * Parses a {@code String name} into a {@code Name} of a Student's Parent.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code name} is invalid.
+     */
+    public static Name parseParent(String name) throws ParseException {
+        requireNonNull(name);
+        String trimmedName = name.trim();
+        if (!Name.isValidName(trimmedName)) {
+            throw new ParseException(Name.MESSAGE_CONSTRAINTS);
+        }
+        return new Name(trimmedName);
     }
 }

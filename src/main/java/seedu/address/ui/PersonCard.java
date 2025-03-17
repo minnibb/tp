@@ -58,6 +58,6 @@ public class PersonCard extends UiPart<Region> {
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
 
-        role.setText(person.getRole().value);
+        role.setText(person.getRole().toString());
     }
 }

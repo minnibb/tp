@@ -16,6 +16,9 @@ import seedu.address.model.tag.Tag;
  */
 public class Person {
 
+    public static final String MESSAGE_CONSTRAINTS = "The Grade and Class attributes should be added for students "
+            + "but not for staff and parents.";
+
     // Identity fields
     private final Name name;
     private final Phone phone;
@@ -26,6 +29,9 @@ public class Person {
     private final Set<Tag> tags = new HashSet<>();
 
     private final Role role;
+    private Grade grade;
+    private Name parentName;
+    private Class studentClass;
 
 
     /**
@@ -39,6 +45,26 @@ public class Person {
         this.address = address;
         this.tags.addAll(tags);
         this.role = role;
+        this.grade = new Grade("Not applicable");
+        this.studentClass = new Class("Not applicable");
+        this.parentName = new Name("Not applicable");
+    }
+
+    /**
+     * Every field must be present and not null.
+     */
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Role role,
+                  Grade grade, Class studentClass, Name parentName) {
+        requireAllNonNull(name, phone, email, address, tags, role, grade, studentClass);
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.tags.addAll(tags);
+        this.role = role;
+        this.grade = grade;
+        this.studentClass = studentClass;
+        this.parentName = parentName;
     }
 
     public Name getName() {
@@ -68,8 +94,20 @@ public class Person {
         return Collections.unmodifiableSet(tags);
     }
 
+    public Grade getGrade() {
+        return grade;
+    }
+
+    public Class getStudentClass() {
+        return studentClass;
+    }
+
+    public Name getParentName() {
+        return parentName;
+    }
+
     /**
-     * Returns true if both persons have the same name.
+     * Returns true if both persons have the same name and phone number.
      * This defines a weaker notion of equality between two persons.
      */
     public boolean isSamePerson(Person otherPerson) {
@@ -107,17 +145,34 @@ public class Person {
                 && email.equals(otherPerson.email)
                 && address.equals(otherPerson.address)
                 && tags.equals(otherPerson.tags)
-                && role.equals(otherPerson.role);
+                && role.equals(otherPerson.role)
+                && grade.equals(otherPerson.grade)
+                && studentClass.equals(otherPerson.studentClass)
+                && parentName.equals(otherPerson.parentName);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags, role);
+        return Objects.hash(name, phone, email, address, tags, role, grade, studentClass, parentName);
     }
 
     @Override
     public String toString() {
+        if (role.equals(new Role("Student"))) {
+            return new ToStringBuilder(this)
+                    .add("name", name)
+                    .add("phone", phone)
+                    .add("email", email)
+                    .add("address", address)
+                    .add("tags", tags)
+                    .add("role", role)
+                    .add("grade", grade)
+                    .add("class", studentClass)
+                    .add("parent", parentName)
+                    .toString();
+        }
+
         return new ToStringBuilder(this)
                 .add("name", name)
                 .add("phone", phone)
