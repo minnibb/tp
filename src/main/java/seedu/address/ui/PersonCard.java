@@ -1,5 +1,6 @@
 package seedu.address.ui;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 
 import javafx.fxml.FXML;
@@ -8,6 +9,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Role;
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -41,7 +43,9 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private FlowPane tags;
     @FXML
-    private Label role;
+    private FlowPane details;
+    @FXML
+    private FlowPane parents;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -58,6 +62,19 @@ public class PersonCard extends UiPart<Region> {
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
 
-        role.setText(person.getRole().toString());
+        ArrayList<String> schoolDetails = new ArrayList<>();
+        schoolDetails.add(person.getRole().toString() + " ");
+        if (person.getRole().equals(new Role("Student"))) {
+            schoolDetails.add(person.getGrade().toString() + ": " + person.getStudentClass().toString() + " ");
+        }
+
+        schoolDetails.forEach(detail -> details.getChildren().add(new Label(detail)));
+
+        ArrayList<String> parent = new ArrayList<>();
+        if (person.getRole().equals(new Role("Student"))) {
+            parent.add("Parent: " + person.getParentName().fullName);
+        }
+
+        parent.forEach(name -> parents.getChildren().add(new Label(name)));
     }
 }
