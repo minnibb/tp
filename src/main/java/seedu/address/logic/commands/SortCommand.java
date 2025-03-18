@@ -29,6 +29,8 @@ public class SortCommand extends Command {
     public static final String MESSAGE_SUCCESS_NAME_DESC = "Sorted all persons by name in descending order";
     public static final String MESSAGE_SUCCESS_DATE_ASC = "Sorted all persons by date added in ascending order";
     public static final String MESSAGE_SUCCESS_DATE_DESC = "Sorted all persons by date added in descending order";
+    public static final String MESSAGE_EMPTY_LIST = "No contacts to sort.";
+    public static final String MESSAGE_ERROR_PREFIX = "Error sorting: ";
 
     private final String sortField;
     private final boolean isAscending;
@@ -46,9 +48,10 @@ public class SortCommand extends Command {
         requireNonNull(model);
         // Get current contacts
         List<Person> persons = new ArrayList<>(model.getFilteredPersonList());
+        
         // Skip if empty
         if (persons.isEmpty()) {
-            return new CommandResult("No contacts to sort.");
+            return new CommandResult(MESSAGE_EMPTY_LIST);
         }
 
         // Create comparator based on sort field
@@ -69,11 +72,13 @@ public class SortCommand extends Command {
         try {
             // Sort the list
             persons.sort(comparator);
+            
             // Create a new AddressBook with the sorted list
             AddressBook newAddressBook = new AddressBook();
             for (Person person : persons) {
                 newAddressBook.addPerson(person);
             }
+            
             // Replace the address book
             model.setAddressBook(newAddressBook);
             
@@ -84,7 +89,7 @@ public class SortCommand extends Command {
                 return new CommandResult(isAscending ? MESSAGE_SUCCESS_DATE_ASC : MESSAGE_SUCCESS_DATE_DESC);
             }
         } catch (RuntimeException e) {
-            return new CommandResult("Error sorting: " + e.getMessage());
+            return new CommandResult(MESSAGE_ERROR_PREFIX + e.getMessage());
         }
     }
 
