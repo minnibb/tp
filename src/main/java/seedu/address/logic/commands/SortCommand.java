@@ -17,13 +17,16 @@ import seedu.address.model.person.Person;
 public class SortCommand extends Command {
 
     public static final String COMMAND_WORD = "sort";
+    
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts all persons in the address book "
             + "by the specified field in the specified order.\n"
             + "Parameters: by/[FIELD] [ORDER]\n"
-            + "FIELD: name, date\n"
+            + "FIELD: name, date\n" 
             + "ORDER: asc, desc\n"
             + "Example: " + COMMAND_WORD + " by/name desc";
 
+    public static final String MESSAGE_SUCCESS_ASC = "Sorted all persons by name in ascending order";
+    public static final String MESSAGE_SUCCESS_DESC = "Sorted all persons by name in descending order";
     public static final String MESSAGE_SUCCESS_NAME_ASC = "Sorted all persons by name in ascending order";
     public static final String MESSAGE_SUCCESS_NAME_DESC = "Sorted all persons by name in descending order";
     public static final String MESSAGE_SUCCESS_DATE_ASC = "Sorted all persons by date added in ascending order";
@@ -33,6 +36,14 @@ public class SortCommand extends Command {
 
     private final String sortField;
     private final boolean isAscending;
+
+    /**
+     * Creates a SortCommand with the specified order (for backward compatibility).
+     */
+    public SortCommand(boolean isAscending) {
+        this.sortField = "name";
+        this.isAscending = isAscending;
+    }
 
     /**
      * Creates a SortCommand with the specified field and order.
@@ -47,6 +58,7 @@ public class SortCommand extends Command {
         requireNonNull(model);
         // Get current contacts
         List<Person> persons = new ArrayList<>(model.getFilteredPersonList());
+        
         // Skip if empty
         if (persons.isEmpty()) {
             return new CommandResult(MESSAGE_EMPTY_LIST);
@@ -54,8 +66,9 @@ public class SortCommand extends Command {
 
         // Create comparator based on sort field
         Comparator<Person> comparator;
+        
         if (sortField.equals("name")) {
-            comparator = Comparator.comparing(person ->
+            comparator = Comparator.comparing(person -> 
                     person.getName().toString().toLowerCase());
         } else { // date
             comparator = Comparator.comparing(Person::getTimeAdded);
@@ -69,13 +82,16 @@ public class SortCommand extends Command {
         try {
             // Sort the list
             persons.sort(comparator);
+            
             // Create a new AddressBook with the sorted list
             AddressBook newAddressBook = new AddressBook();
             for (Person person : persons) {
                 newAddressBook.addPerson(person);
             }
+            
             // Replace the address book
             model.setAddressBook(newAddressBook);
+            
             // Return success message based on sort field and order
             if (sortField.equals("name")) {
                 return new CommandResult(isAscending ? MESSAGE_SUCCESS_NAME_ASC : MESSAGE_SUCCESS_NAME_DESC);
