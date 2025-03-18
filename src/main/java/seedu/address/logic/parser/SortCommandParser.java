@@ -19,20 +19,27 @@ public class SortCommandParser implements Parser<SortCommand> {
     public SortCommand parse(String args) throws ParseException {
         requireNonNull(args);
         String trimmedArgs = args.trim();
+        
         if (trimmedArgs.isEmpty()) {
-            // Default to sorting by name
+            // Default to sorting by name ascending if no arguments provided
             return new SortCommand("name", true);
         }
+        
+        // Parse the format: by/[FIELD] [ORDER]
         String[] parts = trimmedArgs.split("\\s+", 2);
+        
         if (!parts[0].startsWith("by/")) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
         }
+        
         String field = parts[0].substring(3).toLowerCase(); // Remove "by/" prefix
+        
         // Determine sort field
         if (!field.equals("name") && !field.equals("date")) {
             throw new ParseException("Invalid sorting field. Please use 'name' or 'date' only.");
         }
+        
         // Determine sort order (default to ascending if not specified)
         boolean isAscending = true;
         if (parts.length > 1) {
@@ -45,6 +52,7 @@ public class SortCommandParser implements Parser<SortCommand> {
                 throw new ParseException("Invalid sorting order. Use 'asc' for ascending or 'desc' for descending.");
             }
         }
+        
         return new SortCommand(field, isAscending);
     }
 }
