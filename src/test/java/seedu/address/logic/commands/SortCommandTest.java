@@ -26,58 +26,85 @@ public class SortCommandTest {
     @Test
     public void execute_emptyList_success() {
         ModelStubWithEmptyAddressBook modelStub = new ModelStubWithEmptyAddressBook();
-        SortCommand sortCommand = new SortCommand(true);
+        SortCommand sortCommand = new SortCommand("name", true);
 
         CommandResult commandResult = sortCommand.execute(modelStub);
-        assertEquals("No contacts to sort.", commandResult.getFeedbackToUser());
+        assertEquals(SortCommand.MESSAGE_EMPTY_LIST, commandResult.getFeedbackToUser());
     }
 
     @Test
-    public void execute_nonEmptyListAscending_success() {
+    public void execute_nonEmptyListNameAscending_success() {
         ModelStubWithPersons modelStub = new ModelStubWithPersons();
-        SortCommand sortCommand = new SortCommand(true);
+        SortCommand sortCommand = new SortCommand("name", true);
 
         CommandResult commandResult = sortCommand.execute(modelStub);
-        assertEquals(SortCommand.MESSAGE_SUCCESS_ASC, commandResult.getFeedbackToUser());
+        assertEquals(SortCommand.MESSAGE_SUCCESS_NAME_ASC, commandResult.getFeedbackToUser());
     }
 
     @Test
-    public void execute_nonEmptyListDescending_success() {
+    public void execute_nonEmptyListNameDescending_success() {
         ModelStubWithPersons modelStub = new ModelStubWithPersons();
-        SortCommand sortCommand = new SortCommand(false);
+        SortCommand sortCommand = new SortCommand("name", false);
 
         CommandResult commandResult = sortCommand.execute(modelStub);
-        assertEquals(SortCommand.MESSAGE_SUCCESS_DESC, commandResult.getFeedbackToUser());
+        assertEquals(SortCommand.MESSAGE_SUCCESS_NAME_DESC, commandResult.getFeedbackToUser());
+    }
+
+    @Test
+    public void execute_nonEmptyListDateAscending_success() {
+        ModelStubWithPersons modelStub = new ModelStubWithPersons();
+        SortCommand sortCommand = new SortCommand("date", true);
+
+        CommandResult commandResult = sortCommand.execute(modelStub);
+        assertEquals(SortCommand.MESSAGE_SUCCESS_DATE_ASC, commandResult.getFeedbackToUser());
+    }
+
+    @Test
+    public void execute_nonEmptyListDateDescending_success() {
+        ModelStubWithPersons modelStub = new ModelStubWithPersons();
+        SortCommand sortCommand = new SortCommand("date", false);
+
+        CommandResult commandResult = sortCommand.execute(modelStub);
+        assertEquals(SortCommand.MESSAGE_SUCCESS_DATE_DESC, commandResult.getFeedbackToUser());
     }
 
     @Test
     public void equals() {
-        SortCommand ascendingCommand = new SortCommand(true);
-        SortCommand descendingCommand = new SortCommand(false);
+        SortCommand nameAscCommand = new SortCommand("name", true);
+        SortCommand nameDescCommand = new SortCommand("name", false);
+        SortCommand dateAscCommand = new SortCommand("date", true);
+        SortCommand dateDescCommand = new SortCommand("date", false);
 
         // same object -> returns true
-        assertTrue(ascendingCommand.equals(ascendingCommand));
+        assertTrue(nameAscCommand.equals(nameAscCommand));
 
         // same values -> returns true
-        SortCommand ascendingCommandCopy = new SortCommand(true);
-        assertTrue(ascendingCommand.equals(ascendingCommandCopy));
+        SortCommand nameAscCommandCopy = new SortCommand("name", true);
+        assertTrue(nameAscCommand.equals(nameAscCommandCopy));
 
         // different types -> returns false
-        assertFalse(ascendingCommand.equals(1));
+        assertFalse(nameAscCommand.equals(1));
 
         // null -> returns false
-        assertFalse(ascendingCommand.equals(null));
+        assertFalse(nameAscCommand.equals(null));
 
         // different direction -> returns false
-        assertFalse(ascendingCommand.equals(descendingCommand));
+        assertFalse(nameAscCommand.equals(nameDescCommand));
+
+        // different field -> returns false
+        assertFalse(nameAscCommand.equals(dateAscCommand));
+
+        // different field and direction -> returns false
+        assertFalse(nameAscCommand.equals(dateDescCommand));
     }
 
     @Test
     public void toStringMethod() {
-        SortCommand sortCommand = new SortCommand(true);
-        String expected = "SortCommand{isAscending=true}";
+        SortCommand sortCommand = new SortCommand("name", true);
+        assertTrue(sortCommand.toString().contains("sortField=name"));
         assertTrue(sortCommand.toString().contains("isAscending=true"));
     }
+
     @Test
     public void execute_exceptionThrown_returnsErrorMessage() {
         ModelStub modelStub = new ModelStub() {
@@ -91,10 +118,11 @@ public class SortCommandTest {
                 throw new RuntimeException("Test exception");
             }
         };
-        SortCommand sortCommand = new SortCommand(true);
+        SortCommand sortCommand = new SortCommand("name", true);
         CommandResult result = sortCommand.execute(modelStub);
-        assertEquals("Error sorting: Test exception", result.getFeedbackToUser());
+        assertEquals(SortCommand.MESSAGE_ERROR_PREFIX + "Test exception", result.getFeedbackToUser());
     }
+
     /**
      * A Model stub with an empty address book.
      */
