@@ -95,6 +95,9 @@ public class AddressBookParser {
         case GroupCommand.COMMAND_WORD:
             return new GroupCommandParser().parse(arguments);
 
+        case UngroupCommand.COMMAND_WORD:
+            return new UngroupCommandParser().parse(arguments);
+
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
