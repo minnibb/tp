@@ -39,8 +39,8 @@ public class StringUtil {
      *   Checks if a phone number contains a given substring.
      *   <br>examples:<pre>
      *       containsPhoneSubstring("91234567", "1234") == true
-     *  *     containsPhoneSubstring("87654321", "876") == true
-     *  *     containsPhoneSubstring("90123456", "789") == false
+     *       containsPhoneSubstring("87654321", "876") == true
+     *       containsPhoneSubstring("90123456", "789") == false
      *       </pre>
      * @param phoneNumber The phone number to be searched, it cannot be null.
      * @param substring The keyword to search within the phone number, it cannot be null or empty.

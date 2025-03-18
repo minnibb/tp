@@ -38,15 +38,26 @@ public class PhoneContainsSubstringPredicateTest {
         PhoneContainsSubstringPredicate predicate = new PhoneContainsSubstringPredicate("678");
         assertFalse(predicate.test(new PersonBuilder().withPhone("12345").build()));
 
-        // Phone number does not contain the substring
-        predicate = new PhoneContainsSubstringPredicate("789");
-        assertFalse(predicate.test(new PersonBuilder().withPhone("12345").build()));
+        // Keywords match name but does not match phone
+        predicate = new PhoneContainsSubstringPredicate("Alice");
+        assertFalse(predicate.test(new PersonBuilder().withName("Alice").withPhone("12345")
+                .withEmail("alice@email.com").withAddress("Main Street").build()));
+
+        // Keywords match email, but does not match phone
+        predicate = new PhoneContainsSubstringPredicate("alice@email.com");
+        assertFalse(predicate.test(new PersonBuilder().withName("Alice").withPhone("12345")
+                .withEmail("alice@email.com").withAddress("Main Street").build()));
+
+        // Keywords match address, but does not match phone
+        predicate = new PhoneContainsSubstringPredicate("Main Street");
+        assertFalse(predicate.test(new PersonBuilder().withName("Alice").withPhone("12345")
+                .withEmail("alice@email.com").withAddress("Main Street").build()));
     }
 
     @Test
     public void test_phoneContainsSubstring_returnsTrue() {
         // Exact match
-        PhoneContainsSubstringPredicate predicate = new PhoneContainsSubstringPredicate("123");
+        PhoneContainsSubstringPredicate predicate = new PhoneContainsSubstringPredicate("12345");
         assertTrue(predicate.test(new PersonBuilder().withPhone("12345").build()));
 
         // Substring match
