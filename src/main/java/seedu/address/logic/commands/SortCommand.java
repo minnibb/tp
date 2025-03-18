@@ -10,24 +10,37 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
+
 /**
- * Sorts all persons in the address book by name in ascending or descending order.
+ * Sorts all persons in the address book by name or date in ascending or descending order.
  */
 public class SortCommand extends Command {
+
     public static final String COMMAND_WORD = "sort";
+    
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts all persons in the address book "
-            + "by name in the specified order.\n"
-            + "Parameters: [asc/desc] (optional - default is ascending)\n"
-            + "Example: " + COMMAND_WORD + " desc";
-    public static final String MESSAGE_SUCCESS_ASC = "Sorted all persons by name in ascending order";
-    public static final String MESSAGE_SUCCESS_DESC = "Sorted all persons by name in descending order";
-    private boolean isAscending;
+            + "by the specified field in the specified order.\n"
+            + "Parameters: by/[FIELD] [ORDER]\n"
+            + "FIELD: name, date\n" 
+            + "ORDER: asc, desc\n"
+            + "Example: " + COMMAND_WORD + " by/name desc";
+
+    public static final String MESSAGE_SUCCESS_NAME_ASC = "Sorted all persons by name in ascending order";
+    public static final String MESSAGE_SUCCESS_NAME_DESC = "Sorted all persons by name in descending order";
+    public static final String MESSAGE_SUCCESS_DATE_ASC = "Sorted all persons by date added in ascending order";
+    public static final String MESSAGE_SUCCESS_DATE_DESC = "Sorted all persons by date added in descending order";
+
+    private final String sortField;
+    private final boolean isAscending;
+
     /**
-     * Creates a SortCommand with the specified order.
+     * Creates a SortCommand with the specified field and order.
      */
-    public SortCommand(boolean isAscending) {
+    public SortCommand(String sortField, boolean isAscending) {
+        this.sortField = sortField;
         this.isAscending = isAscending;
     }
+
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
@@ -37,13 +50,22 @@ public class SortCommand extends Command {
         if (persons.isEmpty()) {
             return new CommandResult("No contacts to sort.");
         }
-        // Create comparator
-        Comparator<Person> comparator = Comparator.comparing(person ->
-                person.getName().toString().toLowerCase());
+
+        // Create comparator based on sort field
+        Comparator<Person> comparator;
+        
+        if (sortField.equals("name")) {
+            comparator = Comparator.comparing(person -> 
+                    person.getName().toString().toLowerCase());
+        } else { // date
+            comparator = Comparator.comparing(Person::getTimeAdded);
+        }
+
         // Reverse if descending order is requested
         if (!isAscending) {
             comparator = comparator.reversed();
         }
+
         try {
             // Sort the list
             persons.sort(comparator);
@@ -54,12 +76,18 @@ public class SortCommand extends Command {
             }
             // Replace the address book
             model.setAddressBook(newAddressBook);
-            // Return success message based on sort order
-            return new CommandResult(isAscending ? MESSAGE_SUCCESS_ASC : MESSAGE_SUCCESS_DESC);
+            
+            // Return success message based on sort field and order
+            if (sortField.equals("name")) {
+                return new CommandResult(isAscending ? MESSAGE_SUCCESS_NAME_ASC : MESSAGE_SUCCESS_NAME_DESC);
+            } else { // date
+                return new CommandResult(isAscending ? MESSAGE_SUCCESS_DATE_ASC : MESSAGE_SUCCESS_DATE_DESC);
+            }
         } catch (RuntimeException e) {
             return new CommandResult("Error sorting: " + e.getMessage());
         }
     }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -69,11 +97,14 @@ public class SortCommand extends Command {
             return false;
         }
         SortCommand otherSortCommand = (SortCommand) other;
-        return isAscending == otherSortCommand.isAscending;
+        return isAscending == otherSortCommand.isAscending
+                && sortField.equals(otherSortCommand.sortField);
     }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this)
+                .add("sortField", sortField)
                 .add("isAscending", isAscending)
                 .toString();
     }
