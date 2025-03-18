@@ -32,7 +32,6 @@ public class Person {
     private Name parentName;
     private Class studentClass;
 
-
     /**
      * Every field must be present and not null.
      */
@@ -43,6 +42,7 @@ public class Person {
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
+        this.timeAdded = System.currentTimeMillis();
         this.role = role;
         this.grade = new Grade("Not applicable");
         this.studentClass = new Class("Not applicable");
@@ -60,6 +60,7 @@ public class Person {
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
+        this.timeAdded = System.currentTimeMillis();
         this.role = role;
         this.grade = grade;
         this.studentClass = studentClass;
@@ -81,6 +82,7 @@ public class Person {
     public Address getAddress() {
         return address;
     }
+
     public Role getRole() {
         return role;
     }
