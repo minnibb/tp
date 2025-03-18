@@ -1,5 +1,6 @@
 package seedu.address.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
@@ -35,4 +36,15 @@ public class UngroupCommandTest {
                 expectedModel
         );
     }
+    @Test
+    void hashCode_equalsClassHashCode() {
+
+        UngroupCommand command = new UngroupCommand();
+        assertEquals(
+                command.getClass().hashCode(),
+                command.hashCode(),
+                "should be equal"
+        );
+    }
+
 }
