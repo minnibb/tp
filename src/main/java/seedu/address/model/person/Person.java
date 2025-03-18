@@ -31,7 +31,6 @@ public class Person {
     private Grade grade;
     private Name parentName;
     private Class studentClass;
-
     /**
      * Every field must be present and not null.
      */
@@ -48,7 +47,6 @@ public class Person {
         this.studentClass = new Class("Not applicable");
         this.parentName = new Name("Not applicable");
     }
-
     /**
      * Every field must be present and not null.
      */
@@ -66,34 +64,27 @@ public class Person {
         this.studentClass = studentClass;
         this.parentName = parentName;
     }
-
     public Name getName() {
         return name;
     }
-
     public Phone getPhone() {
         return phone;
     }
-
     public Email getEmail() {
         return email;
     }
-
     public Address getAddress() {
         return address;
     }
-
     public Role getRole() {
         return role;
     }
-
     /**
      * Returns the timestamp when this person was added.
      */
     public long getTimeAdded() {
         return timeAdded;
     }
-
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
@@ -101,19 +92,15 @@ public class Person {
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
     }
-
     public Grade getGrade() {
         return grade;
     }
-
     public Class getStudentClass() {
         return studentClass;
     }
-
     public Name getParentName() {
         return parentName;
     }
-
     /**
      * Returns true if both persons have the same name and phone number.
      * This defines a weaker notion of equality between two persons.
@@ -129,7 +116,6 @@ public class Person {
         return otherPerson.getName().equals(getName())
                 && otherPerson.getPhone().equals(getPhone());
     }
-
     /**
      * Returns true if both persons have the same identity and data fields.
      * This defines a stronger notion of equality between two persons.
