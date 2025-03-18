@@ -24,8 +24,6 @@ public class SortCommand extends Command {
             + "ORDER: asc, desc\n"
             + "Example: " + COMMAND_WORD + " by/name desc";
 
-    public static final String MESSAGE_SUCCESS_ASC = "Sorted all persons by name in ascending order";
-    public static final String MESSAGE_SUCCESS_DESC = "Sorted all persons by name in descending order";
     public static final String MESSAGE_SUCCESS_NAME_ASC = "Sorted all persons by name in ascending order";
     public static final String MESSAGE_SUCCESS_NAME_DESC = "Sorted all persons by name in descending order";
     public static final String MESSAGE_SUCCESS_DATE_ASC = "Sorted all persons by date added in ascending order";
@@ -35,14 +33,6 @@ public class SortCommand extends Command {
 
     private final String sortField;
     private final boolean isAscending;
-
-    /**
-     * Creates a SortCommand with the specified order (for backward compatibility).
-     */
-    public SortCommand(boolean isAscending) {
-        this.sortField = "name";
-        this.isAscending = isAscending;
-    }
 
     /**
      * Creates a SortCommand with the specified field and order.
@@ -61,7 +51,6 @@ public class SortCommand extends Command {
         if (persons.isEmpty()) {
             return new CommandResult(MESSAGE_EMPTY_LIST);
         }
-
         // Create comparator based on sort field
         Comparator<Person> comparator;
         if (sortField.equals("name")) {
@@ -70,7 +59,6 @@ public class SortCommand extends Command {
         } else { // date
             comparator = Comparator.comparing(Person::getTimeAdded);
         }
-
         // Reverse if descending order is requested
         if (!isAscending) {
             comparator = comparator.reversed();
