@@ -6,48 +6,69 @@
     "email" : "alice@example.com",
     "address" : "123, Jurong West Ave 6, #08-111",
     "tags" : [ "friends" ],
-    "role": "parent"
+    "role": "Parent",
+    "grade": "Not applicable",
+    "class": "Not applicable",
+    "parent": "Not applicable"
   }, {
     "name" : "Benson Meier",
     "phone" : "98765432",
     "email" : "johnd@example.com",
     "address" : "311, Clementi Ave 2, #02-25",
     "tags" : [ "owesMoney", "friends" ],
-    "role": "parent"
+    "role": "Student",
+    "grade": "Sec 2",
+    "class": "2D",
+    "parent": "Daniel Meier"
   }, {
     "name" : "Carl Kurz",
     "phone" : "95352563",
     "email" : "heinz@example.com",
     "address" : "wall street",
     "tags" : [ ],
-    "role": "parent"
+    "role": "Staff",
+    "grade": "Not applicable",
+    "class": "Not applicable",
+    "parent": "Not applicable"
   }, {
     "name" : "Daniel Meier",
     "phone" : "87652533",
     "email" : "cornelia@example.com",
     "address" : "10th street",
     "tags" : [ "friends" ],
-    "role": "parent"
+    "role": "Parent",
+    "grade": "Not applicable",
+    "class": "Not applicable",
+    "parent": "Not applicable"
   }, {
     "name" : "Elle Meyer",
     "phone" : "9482224",
     "email" : "werner@example.com",
     "address" : "michegan ave",
     "tags" : [ ],
-    "role": "parent"
+    "role": "Student",
+    "grade": "Pri 3",
+    "class": "3K",
+    "parent": "Alice Pauline"
   }, {
     "name" : "Fiona Kunz",
     "phone" : "9482427",
     "email" : "lydia@example.com",
     "address" : "little tokyo",
     "tags" : [ ],
-    "role": "parent"
+    "role": "Staff",
+    "grade": "Not applicable",
+    "class": "Not applicable",
+    "parent": "Not applicable"
   }, {
     "name" : "George Best",
     "phone" : "9482442",
     "email" : "anna@example.com",
     "address" : "4th street",
     "tags" : [ ],
-    "role": "parent"
+    "role": "Parent",
+    "grade": "Not applicable",
+    "class": "Not applicable",
+    "parent": "Not applicable"
   } ]
 }

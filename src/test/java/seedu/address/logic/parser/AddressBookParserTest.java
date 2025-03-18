@@ -22,9 +22,12 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.person.Name;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Phone;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.PersonUtil;
@@ -48,9 +51,11 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_delete() throws Exception {
-        DeleteCommand command = (DeleteCommand) parser.parseCommand(
-                DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
-        assertEquals(new DeleteCommand(INDEX_FIRST_PERSON), command);
+        Person person = new PersonBuilder().build();
+        Name name = person.getName();
+        Phone phone = person.getPhone();
+        DeleteCommand command = (DeleteCommand) parser.parseCommand(PersonUtil.getDeleteCommand(person));
+        assertEquals(new DeleteCommand(name, phone), command);
     }
 
     @Test
@@ -97,5 +102,25 @@ public class AddressBookParserTest {
     @Test
     public void parseCommand_unknownCommand_throwsParseException() {
         assertThrows(ParseException.class, MESSAGE_UNKNOWN_COMMAND, () -> parser.parseCommand("unknownCommand"));
+    }
+    @Test
+    public void parseCommand_sortDefault() throws Exception {
+        SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD);
+        assertEquals(new SortCommand(true), command); // Default is ascending (true)
+    }
+    @Test
+    public void parseCommand_sortAscending() throws Exception {
+        SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " asc");
+        assertEquals(new SortCommand(true), command);
+    }
+    @Test
+    public void parseCommand_sortDescending() throws Exception {
+        SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " desc");
+        assertEquals(new SortCommand(false), command);
+    }
+    @Test
+    public void parseCommand_sortInvalid() throws Exception {
+        assertThrows(ParseException.class, () ->
+            parser.parseCommand(SortCommand.COMMAND_WORD + " invalid"));
     }
 }

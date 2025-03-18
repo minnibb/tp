@@ -23,7 +23,9 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Class;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Grade;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
@@ -103,9 +105,13 @@ public class EditCommand extends Command {
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
+        Role updatedRole = editPersonDescriptor.getRole().orElse(personToEdit.getRole());
+        Grade updatedGrade = editPersonDescriptor.getGrade().orElse(personToEdit.getGrade());
+        Class updatedClass = editPersonDescriptor.getStudentClass().orElse(personToEdit.getStudentClass());
+        Name updatedParent = editPersonDescriptor.getParent().orElse(personToEdit.getParentName());
 
-        Role updatedRole = editPersonDescriptor.getRole().orElse(personToEdit.getRole());;
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedRole);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedRole,
+                updatedGrade, updatedClass, updatedParent);
     }
 
     @Override
@@ -143,6 +149,9 @@ public class EditCommand extends Command {
         private Address address;
         private Set<Tag> tags;
         private Role role;
+        private Grade grade;
+        private Class studentClass;
+        private Name parentName;
 
         public EditPersonDescriptor() {}
 
@@ -157,6 +166,9 @@ public class EditCommand extends Command {
             setAddress(toCopy.address);
             setTags(toCopy.tags);
             setRole(toCopy.role);
+            setGrade(toCopy.grade);
+            setStudentClass(toCopy.studentClass);
+            setParent(toCopy.parentName);
         }
 
         /**
@@ -223,6 +235,30 @@ public class EditCommand extends Command {
             return Optional.ofNullable(role);
         }
 
+        public void setGrade(Grade grade) {
+            this.grade = grade;
+        }
+
+        public Optional<Grade> getGrade() {
+            return Optional.ofNullable(grade);
+        }
+
+        public void setStudentClass(Class studentClass) {
+            this.studentClass = studentClass;
+        }
+
+        public Optional<Class> getStudentClass() {
+            return Optional.ofNullable(studentClass);
+        }
+
+        public void setParent(Name parentName) {
+            this.parentName = parentName;
+        }
+
+        public Optional<Name> getParent() {
+            return Optional.ofNullable(parentName);
+        }
+
         @Override
         public boolean equals(Object other) {
             if (other == this) {
@@ -240,7 +276,10 @@ public class EditCommand extends Command {
                     && Objects.equals(email, otherEditPersonDescriptor.email)
                     && Objects.equals(address, otherEditPersonDescriptor.address)
                     && Objects.equals(tags, otherEditPersonDescriptor.tags)
-                    && Objects.equals(role, otherEditPersonDescriptor.role);
+                    && Objects.equals(role, otherEditPersonDescriptor.role)
+                    && Objects.equals(grade, otherEditPersonDescriptor.grade)
+                    && Objects.equals(studentClass, otherEditPersonDescriptor.studentClass)
+                    && Objects.equals(parentName, otherEditPersonDescriptor.parentName);
         }
 
         @Override
@@ -252,6 +291,9 @@ public class EditCommand extends Command {
                     .add("address", address)
                     .add("tags", tags)
                     .add("role", role)
+                    .add("grade", grade)
+                    .add("class", studentClass)
+                    .add("parent", parentName)
                     .toString();
         }
     }

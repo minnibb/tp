@@ -4,7 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Class;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Grade;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
@@ -21,7 +23,10 @@ public class PersonBuilder {
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
-    public static final String DEFAULT_ROLE = "parent";
+    public static final String DEFAULT_ROLE = "Student";
+    public static final String DEFAULT_GRADE = "Sec 1";
+    public static final String DEFAULT_CLASS = "1A";
+    public static final String DEFAULT_PARENT = "Charles Bee";
 
     private Name name;
     private Phone phone;
@@ -29,6 +34,9 @@ public class PersonBuilder {
     private Address address;
     private Set<Tag> tags;
     private Role role;
+    private Grade grade;
+    private Class studentClass;
+    private Name parentName;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -40,6 +48,9 @@ public class PersonBuilder {
         address = new Address(DEFAULT_ADDRESS);
         tags = new HashSet<>();
         role = new Role(DEFAULT_ROLE);
+        grade = new Grade(DEFAULT_GRADE);
+        studentClass = new Class(DEFAULT_CLASS);
+        parentName = new Name(DEFAULT_PARENT);
     }
 
     /**
@@ -52,6 +63,9 @@ public class PersonBuilder {
         address = personToCopy.getAddress();
         tags = new HashSet<>(personToCopy.getTags());
         role = personToCopy.getRole();
+        grade = personToCopy.getGrade();
+        studentClass = personToCopy.getStudentClass();
+        parentName = personToCopy.getParentName();
     }
 
     /**
@@ -95,16 +109,46 @@ public class PersonBuilder {
     }
 
     /**
-     * @param role
-     * @return
+     * Sets the {@code Role} of the {@code Person} that we are building.
      */
     public PersonBuilder withRole(String role) {
         this.role = new Role(role);
         return this;
     }
 
+    /**
+     * Sets the {@code Grade} of the {@code Student} that we are building.
+     */
+    public PersonBuilder withGrade(String grade) {
+        this.grade = new Grade(grade);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Class} of the {@code Student} that we are building.
+     */
+    public PersonBuilder withClass(String studentClass) {
+        this.studentClass = new Class(studentClass);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Name of Parent} of the {@code Student} that we are building.
+     */
+    public PersonBuilder withParent(String name) {
+        this.parentName = new Name(name);
+        return this;
+    }
+
+    /**
+     * Builds a {@code Person} with the attributes in this instance of {@code PersonBuilder}.
+     */
     public Person build() {
-        return new Person(name, phone, email, address, tags, role);
+        if (role.getType().equals(Role.Type.STUDENT)) {
+            return new Person(name, phone, email, address, tags, role, grade, studentClass, parentName);
+        } else {
+            return new Person(name, phone, email, address, tags, role);
+        }
     }
 
 }

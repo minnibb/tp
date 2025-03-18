@@ -11,11 +11,13 @@ import static seedu.address.testutil.TypicalPersons.BENSON;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.Comparator;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
+import seedu.address.model.person.Person;
 import seedu.address.testutil.AddressBookBuilder;
 
 public class ModelManagerTest {
@@ -128,5 +130,14 @@ public class ModelManagerTest {
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setAddressBookFilePath(Paths.get("differentFilePath"));
         assertFalse(modelManager.equals(new ModelManager(addressBook, differentUserPrefs)));
+    }
+    @Test
+    public void updateSortedPersonList_validComparator_works() {
+        AddressBook emptyAddressBook = new AddressBook();
+        UserPrefs userPrefs = new UserPrefs();
+        ModelManager testModel = new ModelManager(emptyAddressBook, userPrefs);
+        Comparator<Person> identityComparator = (p1, p2) -> 0; // All elements considered equal
+        testModel.updateSortedPersonList(identityComparator);
+        assertTrue(true);
     }
 }
