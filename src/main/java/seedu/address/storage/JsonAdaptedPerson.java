@@ -11,10 +11,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Class;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Grade;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.Role;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -28,7 +31,11 @@ class JsonAdaptedPerson {
     private final String phone;
     private final String email;
     private final String address;
+    private final String role;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
+    private final String grade;
+    private final String studentClass;
+    private final String parentName;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -36,14 +43,20 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("tags") List<JsonAdaptedTag> tags) {
+            @JsonProperty("tags") List<JsonAdaptedTag> tags, @JsonProperty("role") String role,
+            @JsonProperty("grade") String grade, @JsonProperty("class") String studentClass,
+            @JsonProperty("parent") String parentName) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.role = role;
         if (tags != null) {
             this.tags.addAll(tags);
         }
+        this.grade = grade;
+        this.studentClass = studentClass;
+        this.parentName = parentName;
     }
 
     /**
@@ -54,9 +67,13 @@ class JsonAdaptedPerson {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
+        role = source.getRole().toString();
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
+        grade = source.getGrade().toString();
+        studentClass = source.getStudentClass().value;
+        parentName = source.getParentName().fullName;
     }
 
     /**
@@ -102,8 +119,42 @@ class JsonAdaptedPerson {
         }
         final Address modelAddress = new Address(address);
 
+        if (role == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Role.class.getSimpleName()));
+        }
+        if (!Role.isValidRole(role)) {
+            throw new IllegalValueException(Role.MESSAGE_CONSTRAINTS);
+        }
+        final Role modelRole = new Role(role);
+
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags);
+
+        if (role.equals("Student") && grade == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Grade.class.getSimpleName()));
+        }
+        if (!Grade.isValidGrade(grade)) {
+            throw new IllegalValueException(Grade.MESSAGE_CONSTRAINTS);
+        }
+        final Grade modelGrade = new Grade(grade);
+
+        if (role.equals("Student") && studentClass == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Class.class.getSimpleName()));
+        }
+        if (!Class.isValidClass(studentClass)) {
+            throw new IllegalValueException(Class.MESSAGE_CONSTRAINTS);
+        }
+        final Class modelClass = new Class(studentClass);
+
+        if (role.equals("Student") && parentName == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
+        }
+        if (!Name.isValidName(parentName)) {
+            throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
+        }
+        final Name modelParent = new Name(parentName);
+
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelRole, modelGrade,
+                modelClass, modelParent);
     }
 
 }

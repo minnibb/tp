@@ -5,7 +5,6 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.util.Arrays;
 
 /**
  * Helper functions for handling strings.
@@ -13,29 +12,27 @@ import java.util.Arrays;
 public class StringUtil {
 
     /**
-     * Returns true if the {@code sentence} contains the {@code word}.
-     *   Ignores case, but a full word match is required.
+     *   Ignores case, but a partial word match is required.
      *   <br>examples:<pre>
-     *       containsWordIgnoreCase("ABc def", "abc") == true
-     *       containsWordIgnoreCase("ABc def", "DEF") == true
-     *       containsWordIgnoreCase("ABc def", "AB") == false //not a full word match
+     *       containsSubstringIgnoreCase("Alice Charles", "ali") == true
+     *       containsSubstringIgnoreCase("Alice Charles", "rles") == true
+     *       containsSubstringIgnoreCase("Bernice Yu", "nice u") == true
      *       </pre>
-     * @param sentence cannot be null
-     * @param word cannot be null, cannot be empty, must be a single word
+     * @param sentence The full name to be searched, it cannot be null.
+     * @param word The keyword to search within the full name, it cannot be null or empty.
+     * @return true If the {@code sentence} contains the {@code word}.
      */
-    public static boolean containsWordIgnoreCase(String sentence, String word) {
+    public static boolean containsSubstringIgnoreCase(String sentence, String word) {
         requireNonNull(sentence);
         requireNonNull(word);
 
-        String preppedWord = word.trim();
-        checkArgument(!preppedWord.isEmpty(), "Word parameter cannot be empty");
-        checkArgument(preppedWord.split("\\s+").length == 1, "Word parameter should be a single word");
+        String trimmedWord = word.trim();
+        checkArgument(!trimmedWord.isEmpty(), "Word parameter cannot be empty");
 
-        String preppedSentence = sentence;
-        String[] wordsInPreppedSentence = preppedSentence.split("\\s+");
+        String preppedSentence = sentence.toLowerCase();
+        String preppedWord = trimmedWord.toLowerCase();
 
-        return Arrays.stream(wordsInPreppedSentence)
-                .anyMatch(preppedWord::equalsIgnoreCase);
+        return preppedSentence.contains(preppedWord);
     }
 
     /**
