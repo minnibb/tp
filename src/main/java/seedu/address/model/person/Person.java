@@ -15,15 +15,15 @@ import seedu.address.model.tag.Tag;
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Person {
-
     // Identity fields
     private final Name name;
     private final Phone phone;
     private final Email email;
-
     // Data fields
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
+    // Timestamp when this person was added
+    private final long timeAdded;
 
     /**
      * Every field must be present and not null.
@@ -35,6 +35,7 @@ public class Person {
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
+        this.timeAdded = System.currentTimeMillis();
     }
 
     public Name getName() {
@@ -54,6 +55,13 @@ public class Person {
     }
 
     /**
+     * Returns the timestamp when this person was added.
+     */
+    public long getTimeAdded() {
+        return timeAdded;
+    }
+
+    /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
      */
@@ -69,7 +77,6 @@ public class Person {
         if (otherPerson == this) {
             return true;
         }
-
         return otherPerson != null
                 && otherPerson.getName().equals(getName());
     }
@@ -83,12 +90,10 @@ public class Person {
         if (other == this) {
             return true;
         }
-
         // instanceof handles nulls
         if (!(other instanceof Person)) {
             return false;
         }
-
         Person otherPerson = (Person) other;
         return name.equals(otherPerson.name)
                 && phone.equals(otherPerson.phone)
@@ -113,5 +118,4 @@ public class Person {
                 .add("tags", tags)
                 .toString();
     }
-
 }
