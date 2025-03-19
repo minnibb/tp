@@ -1,5 +1,6 @@
 package seedu.address.ui;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 
 import javafx.fxml.FXML;
@@ -8,6 +9,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Role;
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -41,7 +43,9 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private FlowPane tags;
     @FXML
-    private Label role;
+    private FlowPane details;
+    @FXML
+    private FlowPane parents;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -58,6 +62,52 @@ public class PersonCard extends UiPart<Region> {
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
 
-        role.setText(person.getRole().toString());
+        ArrayList<String> schoolDetails = getSchoolRelatedInformation(person);
+        schoolDetails.forEach(detail -> details.getChildren().add(new Label(detail)));
+
+        ArrayList<String> parent = getParentName(person);
+        parent.forEach(name -> parents.getChildren().add(new Label(name)));
     }
+
+    /**
+     * Adds the role, grade and class of a Student into an ArrayList, and adds the role
+     * of a Staff or Parent into an ArrayList.
+     *
+     * @param person Person to be reflected in PersonCard.
+     * @return An ArrayList of school-related details.
+     */
+    public static ArrayList<String> getSchoolRelatedInformation(Person person) {
+        ArrayList<String> result = new ArrayList<>();
+
+        Role role = person.getRole();
+        result.add(role.toString());
+
+        if (role.getType().equals(Role.Type.STUDENT)) {
+            String grade = person.getGrade().toString();
+            String studentClass = person.getStudentClass().toString();
+            String gradeAndClass = grade + ": " + studentClass;
+            result.add(gradeAndClass);
+        }
+
+        return result;
+    }
+
+    /**
+     * Adds the name of parent of the contact, if any, into an ArrayList.
+     *
+     * @param person Person to be reflected in PersonCard.
+     * @return An empty ArrayList or an ArrayList containing a parent's name.
+     */
+    public static ArrayList<String> getParentName(Person person) {
+        ArrayList<String> result = new ArrayList<>();
+
+        Role role = person.getRole();
+        if (role.getType().equals(Role.Type.STUDENT)) {
+            String parentName = person.getParentName().fullName;
+            result.add("Parent: " + parentName);
+        }
+
+        return result;
+    }
+
 }

@@ -350,3 +350,27 @@
     -fx-background-radius: 2;
     -fx-font-size: 11;
 }
+
+/* format display of grade, class and role information */
+#details {
+    -fx-hgap: 7;
+    -fx-vgap: 3;
+    -fx-padding: 3
+}
+
+/* format display of grade, class and role information */
+#details .label {
+    -fx-text-fill: white;
+    -fx-background-color: #006666;
+    -fx-padding: 0 3 0 3;
+    -fx-border-radius: 2;
+    -fx-background-radius: 2;
+    -fx-font-size: 11;
+}
+
+/* change colour of parent attribute */
+#parents .label {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 13px;
+    -fx-text-fill: #ffabaf;
+}
