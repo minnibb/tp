@@ -102,24 +102,46 @@ public class AddressBookParserTest {
     public void parseCommand_unknownCommand_throwsParseException() {
         assertThrows(ParseException.class, MESSAGE_UNKNOWN_COMMAND, () -> parser.parseCommand("unknownCommand"));
     }
+
     @Test
     public void parseCommand_sortDefault() throws Exception {
         SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD);
-        assertEquals(new SortCommand(true), command); // Default is ascending (true)
+        assertEquals(new SortCommand("name", true), command); // Default is name, ascending
     }
+
     @Test
-    public void parseCommand_sortAscending() throws Exception {
-        SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " asc");
-        assertEquals(new SortCommand(true), command);
+    public void parseCommand_sortNameAscending() throws Exception {
+        SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " by/name asc");
+        assertEquals(new SortCommand("name", true), command);
     }
+
     @Test
-    public void parseCommand_sortDescending() throws Exception {
-        SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " desc");
-        assertEquals(new SortCommand(false), command);
+    public void parseCommand_sortNameDescending() throws Exception {
+        SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " by/name desc");
+        assertEquals(new SortCommand("name", false), command);
     }
+
+    @Test
+    public void parseCommand_sortDateAscending() throws Exception {
+        SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " by/date asc");
+        assertEquals(new SortCommand("date", true), command);
+    }
+
+    @Test
+    public void parseCommand_sortDateDescending() throws Exception {
+        SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " by/date desc");
+        assertEquals(new SortCommand("date", false), command);
+    }
+
     @Test
     public void parseCommand_sortInvalid() throws Exception {
         assertThrows(ParseException.class, () ->
-            parser.parseCommand(SortCommand.COMMAND_WORD + " invalid"));
+            parser.parseCommand(SortCommand.COMMAND_WORD + " by/invalid asc"));
+    }
+
+    @Test
+    public void parseCommand_sortInvalidOrder() throws Exception {
+        assertThrows(ParseException.class, () ->
+            parser.parseCommand(SortCommand.COMMAND_WORD + " by/name invalid"));
     }
 }
