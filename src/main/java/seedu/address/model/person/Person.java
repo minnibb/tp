@@ -109,9 +109,17 @@ public class Person {
         return favourite;
     }
 
+    /**
+     * Toggles the 'favourite' status of the person. If the person is a student,
+     * the method updates the student's favourite status along with their grade and class details.
+     * For non-students, only the favourite status is toggled.
+     *
+     * @return A new Person object with the updated favourite status.
+     */
     public Person toggleFavourite() {
         if (role.getType() == Role.Type.STUDENT) {
-            return new Person(name, phone, email, address, tags, role, grade, studentClass, parentName, favourite.toggle());
+            return new Person(name, phone, email, address, tags, role, grade, studentClass,
+                    parentName, favourite.toggle());
         }
         return new Person(name, phone, email, address, tags, role, favourite.toggle());
     }

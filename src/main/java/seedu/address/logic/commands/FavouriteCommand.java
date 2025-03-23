@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
 
 import java.util.List;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -24,6 +25,9 @@ public class FavouriteCommand extends Command {
 
     private final Index index;
 
+    /**
+     * @param index of the person in the filtered person list to toggle favourite
+     */
     public FavouriteCommand(Index index) {
         requireNonNull(index);
         this.index = index;
