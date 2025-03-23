@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_CLASS_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_FAVOURITE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_FAVOURITE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_GRADE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PARENT_AMY;
@@ -113,19 +115,24 @@ public class PersonTest {
         // different parent name -> return false
         editedBenson = new PersonBuilder(BENSON).withParent(VALID_PARENT_AMY).build();
         assertFalse(BENSON.equals(editedBenson));
+
+        // different favourite status -> returns false
+        editedAlice = new PersonBuilder(ALICE).withFavourite(VALID_FAVOURITE).build();
+        assertFalse(ALICE.equals(editedAlice));
     }
 
     @Test
     public void toStringMethod() {
         String expected = Person.class.getCanonicalName() + "{name=" + ALICE.getName() + ", phone=" + ALICE.getPhone()
                 + ", email=" + ALICE.getEmail() + ", address=" + ALICE.getAddress() + ", tags=" + ALICE.getTags()
-                + ", role=" + ALICE.getRole() + "}";
+                + ", role=" + ALICE.getRole() + ", favourite=" + ALICE.getFavourite() + "}";
         assertEquals(expected, ALICE.toString());
 
         String expectedStudent = Person.class.getCanonicalName() + "{name=" + BENSON.getName()
                 + ", phone=" + BENSON.getPhone() + ", email=" + BENSON.getEmail() + ", address=" + BENSON.getAddress()
                 + ", tags=" + BENSON.getTags() + ", role=" + BENSON.getRole() + ", grade=" + BENSON.getGrade()
-                + ", class=" + BENSON.getStudentClass() + ", parent=" + BENSON.getParentName() + "}";
+                + ", class=" + BENSON.getStudentClass() + ", parent=" + BENSON.getParentName()
+                + ", favourite=" + ALICE.getFavourite() + "}";
         assertEquals(expected, ALICE.toString());
     }
 }
