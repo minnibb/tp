@@ -6,6 +6,7 @@ import java.util.Set;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Class;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Favourite;
 import seedu.address.model.person.Grade;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
@@ -27,6 +28,7 @@ public class PersonBuilder {
     public static final String DEFAULT_GRADE = "Sec 1";
     public static final String DEFAULT_CLASS = "1A";
     public static final String DEFAULT_PARENT = "Charles Bee";
+    public static final boolean DEFAULT_FAVOURITE = false;
 
     private Name name;
     private Phone phone;
@@ -37,6 +39,7 @@ public class PersonBuilder {
     private Grade grade;
     private Class studentClass;
     private Name parentName;
+    private Favourite favourite;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -51,6 +54,7 @@ public class PersonBuilder {
         grade = new Grade(DEFAULT_GRADE);
         studentClass = new Class(DEFAULT_CLASS);
         parentName = new Name(DEFAULT_PARENT);
+        favourite = new Favourite(DEFAULT_FAVOURITE);
     }
 
     /**
@@ -66,6 +70,7 @@ public class PersonBuilder {
         grade = personToCopy.getGrade();
         studentClass = personToCopy.getStudentClass();
         parentName = personToCopy.getParentName();
+        favourite = personToCopy.getFavourite();
     }
 
     /**
@@ -141,13 +146,21 @@ public class PersonBuilder {
     }
 
     /**
+     * Sets the {@code Phone} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withFavourite(boolean favourite) {
+        this.favourite = new Favourite(favourite);
+        return this;
+    }
+
+    /**
      * Builds a {@code Person} with the attributes in this instance of {@code PersonBuilder}.
      */
     public Person build() {
         if (role.getType().equals(Role.Type.STUDENT)) {
-            return new Person(name, phone, email, address, tags, role, grade, studentClass, parentName);
+            return new Person(name, phone, email, address, tags, role, grade, studentClass, parentName, favourite);
         } else {
-            return new Person(name, phone, email, address, tags, role);
+            return new Person(name, phone, email, address, tags, role, favourite);
         }
     }
 
