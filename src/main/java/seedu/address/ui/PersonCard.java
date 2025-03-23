@@ -46,6 +46,8 @@ public class PersonCard extends UiPart<Region> {
     private FlowPane details;
     @FXML
     private FlowPane parents;
+    @FXML
+    private Label favourite;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -67,6 +69,9 @@ public class PersonCard extends UiPart<Region> {
 
         ArrayList<String> parent = getParentName(person);
         parent.forEach(name -> parents.getChildren().add(new Label(name)));
+
+        setFavouriteStatus(person);
+
     }
 
     /**
@@ -90,6 +95,14 @@ public class PersonCard extends UiPart<Region> {
         }
 
         return result;
+    }
+
+    private void setFavouriteStatus(Person person) {
+        if (person.getFavourite() != null && person.getFavourite().isFavourite()) {
+            favourite.setText("★");
+        } else {
+            favourite.setText("");
+        }
     }
 
     /**

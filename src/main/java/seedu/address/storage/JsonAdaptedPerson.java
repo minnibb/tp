@@ -13,6 +13,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Class;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Favourite;
 import seedu.address.model.person.Grade;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
@@ -36,6 +37,7 @@ class JsonAdaptedPerson {
     private final String grade;
     private final String studentClass;
     private final String parentName;
+    private final Boolean favourite;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -45,7 +47,7 @@ class JsonAdaptedPerson {
             @JsonProperty("email") String email, @JsonProperty("address") String address,
             @JsonProperty("tags") List<JsonAdaptedTag> tags, @JsonProperty("role") String role,
             @JsonProperty("grade") String grade, @JsonProperty("class") String studentClass,
-            @JsonProperty("parent") String parentName) {
+            @JsonProperty("parent") String parentName, @JsonProperty("favourite") Boolean favourite) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -57,6 +59,7 @@ class JsonAdaptedPerson {
         this.grade = grade;
         this.studentClass = studentClass;
         this.parentName = parentName;
+        this.favourite = (favourite == null) ? false : favourite;
     }
 
     /**
@@ -74,6 +77,7 @@ class JsonAdaptedPerson {
         grade = source.getGrade().toString();
         studentClass = source.getStudentClass().value;
         parentName = source.getParentName().fullName;
+        favourite = source.getFavourite().isFavourite();
     }
 
     /**
@@ -129,6 +133,8 @@ class JsonAdaptedPerson {
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
+        final Favourite modelFavourite = new Favourite(favourite);
+
         if (role.equals("Student") && grade == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Grade.class.getSimpleName()));
         }
@@ -154,7 +160,7 @@ class JsonAdaptedPerson {
         final Name modelParent = new Name(parentName);
 
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelRole, modelGrade,
-                modelClass, modelParent);
+                modelClass, modelParent, modelFavourite);
     }
 
 }
