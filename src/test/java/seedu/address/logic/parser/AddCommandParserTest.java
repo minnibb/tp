@@ -440,7 +440,7 @@ public class AddCommandParserTest {
                 .withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND).build();
         assertParseSuccess(parser,
                 NAME_DESC_CHARLES + PHONE_DESC_CHARLES + EMAIL_DESC_CHARLES + ADDRESS_DESC_CHARLES
-                        + TAG_DESC_HUSBAND + TAG_DESC_FRIEND+ ROLE_DESC_CHARLES + GRADE_DESC_AMY
+                        + TAG_DESC_HUSBAND + TAG_DESC_FRIEND + ROLE_DESC_CHARLES + GRADE_DESC_AMY
                         + CLASS_DESC_AMY + CHILD_DESC_CHARLES + CHILD_PHONE_DESC_CHARLES,
                 new AddCommand(expectedParentMultipleTags));
     }
