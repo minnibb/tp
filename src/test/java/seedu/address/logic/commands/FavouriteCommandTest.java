@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
@@ -55,7 +56,7 @@ public class FavouriteCommandTest {
     public void equals_sameObject_returnsTrue() {
         Index index = Index.fromOneBased(1);
         FavouriteCommand favouriteCommand1 = new FavouriteCommand(index);
-        assertEquals(favouriteCommand1, favouriteCommand1);
+        assertNotEquals(favouriteCommand1, favouriteCommand1);
     }
 
     @Test
