@@ -28,9 +28,10 @@ public class GroupCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Results are grouped by: %1$s\n"
             + "%2$d contacts found.";
-    public static final String MESSAGE_NO_RESULTS = "No contacts found for specified role.";
+    public static final String MESSAGE_NO_RESULTS = "No contacts found for specified group criteria.";
     public static final String MESSAGE_INVALID_GROUP = "Invalid group, please use Parent, Student or Staff,"
             + " or favourite.";
+    public static final String FAVOURITE = "favourite";
 
     private final String groupCriteria;
 
@@ -49,7 +50,7 @@ public class GroupCommand extends Command {
 
         List<Person> filteredList;
 
-        if (groupCriteria.equals("favourite")) {
+        if (groupCriteria.equals(FAVOURITE)) {
             // Group by favourite status
             filteredList = model.getFilteredPersonList().stream()
                     .filter(person -> person.getFavourite() != null && person.getFavourite().isFavourite())

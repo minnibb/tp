@@ -20,51 +20,57 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Role;
 
 
-
-
-
 public class GroupCommandTest {
 
     private String validRole = "student";
-
-
-    private final String invalidRole = "InvalidRole";
+    private final String invalidGroupCommand = "InvalidRole";
+    private final String favouriteGroup = GroupCommand.FAVOURITE;
 
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
     private Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
     @Test
     public void execute_invalidRole_throwsCommandException() {
-        String invalidRole = "invalidRole";
-        GroupCommand groupCommand = new GroupCommand(invalidRole);
+        GroupCommand groupCommand = new GroupCommand(invalidGroupCommand);
 
         assertCommandFailure(groupCommand, model, GroupCommand.MESSAGE_INVALID_GROUP);
     }
 
     @Test
     void equals_sameObject_returnsTrue() {
-        GroupCommand command = new GroupCommand(validRole);
-        assertTrue(command.equals(command));
+        GroupCommand commandRole = new GroupCommand(validRole);
+        assertTrue(commandRole.equals(commandRole));
+
+        GroupCommand commandFavourite = new GroupCommand(favouriteGroup);
+        assertTrue(commandFavourite.equals(commandFavourite));
     }
 
     @Test
     void equals_differentObjectsSameValues_returnsTrue() {
-        GroupCommand command1 = new GroupCommand(validRole);
-        GroupCommand command2 = new GroupCommand(validRole);
-        assertTrue(command1.equals(command2));
+        GroupCommand commandRole1 = new GroupCommand(validRole);
+        GroupCommand commandRole2 = new GroupCommand(validRole);
+        assertTrue(commandRole1.equals(commandRole2));
+
+        GroupCommand commandFavourite1 = new GroupCommand(favouriteGroup);
+        GroupCommand commandFavourite2 = new GroupCommand(favouriteGroup);
+        assertTrue(commandFavourite1.equals(commandFavourite2));
     }
 
     @Test
     void equals_differentRoles_returnsFalse() {
         GroupCommand command1 = new GroupCommand(validRole);
-        GroupCommand command2 = new GroupCommand("Teacher");
+        GroupCommand command2 = new GroupCommand("Parent");
         assertFalse(command1.equals(command2));
+
     }
 
     @Test
     void equals_null_returnsFalse() {
-        GroupCommand command = new GroupCommand(validRole);
-        assertFalse(command.equals(null));
+        GroupCommand commandRole = new GroupCommand(validRole);
+        assertFalse(commandRole.equals(null));
+
+        GroupCommand commandFavourite = new GroupCommand(favouriteGroup);
+        assertFalse(commandFavourite.equals(null));
     }
     @Test
     public void toStringMethod() {
@@ -93,6 +99,18 @@ public class GroupCommandTest {
                 String.format(GroupCommand.MESSAGE_SUCCESS, validRole, expectedSize), expectedModel);
     }
 
+    @Test
+    public void execute_validFavouriteGroup_filtersFavouriteContacts() {
+        GroupCommand command = new GroupCommand(favouriteGroup);
+        Predicate<Person> predicate = person -> person.getFavourite() != null && person.getFavourite().isFavourite();
+        expectedModel.updateFilteredPersonList(predicate);
+        int expectedSize = expectedModel.getFilteredPersonList().size();
+        System.out.println(model.getFilteredPersonList());
+        System.out.println(expectedModel.getFilteredPersonList());
+
+        assertCommandSuccess(command, model,
+                String.format(GroupCommand.MESSAGE_SUCCESS, favouriteGroup, expectedSize), expectedModel);
+    }
 
     @Test
     public void execute_caseSensitiveRoleValidation() {
@@ -104,11 +122,17 @@ public class GroupCommandTest {
 
     @Test
     public void toString_correctRepresentation() {
-        GroupCommand command = new GroupCommand("Student");
-        String expected = new ToStringBuilder(command)
+        GroupCommand commandRole = new GroupCommand("Student");
+        String expectedRole = new ToStringBuilder(commandRole)
                 .add("groupCriteria", "Student")
                 .toString();
-        assertEquals(expected, command.toString());
+        assertEquals(expectedRole, commandRole.toString());
+
+        GroupCommand commandFavourite = new GroupCommand(favouriteGroup);
+        String expectedFavourite = new ToStringBuilder(commandRole)
+                .add("groupCriteria", "favourite")
+                .toString();
+        assertEquals(expectedFavourite, commandFavourite.toString());
     }
 
 }

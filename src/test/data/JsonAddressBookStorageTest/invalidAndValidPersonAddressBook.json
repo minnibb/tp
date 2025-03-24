@@ -7,7 +7,8 @@
     "role": "Parent",
     "grade": "Not applicable",
     "class": "Not applicable",
-    "parent": "Not applicable"
+    "parent": "Not applicable",
+    "favourite": false
   }, {
     "name": "Person With Invalid Phone Field",
     "phone": "948asdf2424",
@@ -16,6 +17,7 @@
     "role": "Parent",
     "grade": "Not applicable",
     "class": "Not applicable",
-    "parent": "Not applicable"
+    "parent": "Not applicable",
+    "favourite": false
   } ]
 }

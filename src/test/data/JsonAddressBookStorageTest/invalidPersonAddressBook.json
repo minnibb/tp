@@ -7,6 +7,7 @@
     "role": "Parent",
     "grade": "Not applicable",
     "class": "Not applicable",
-    "parent": "Not applicable"
+    "parent": "Not applicable",
+    "favourite": false
   } ]
 }
