@@ -64,7 +64,7 @@ public class FavouriteCommandTest {
         Index index_2 = Index.fromOneBased(1);
         FavouriteCommand favouriteCommand1 = new FavouriteCommand(index_1);
         FavouriteCommand favouriteCommand2 = new FavouriteCommand(index_2);
-        assertFalse(favouriteCommand1.equals(favouriteCommand2));
+        assertEquals(favouriteCommand1, favouriteCommand2);
     }
 
     @Test
