@@ -38,7 +38,7 @@ public class GroupCommandTest {
         String invalidRole = "invalidRole";
         GroupCommand groupCommand = new GroupCommand(invalidRole);
 
-        assertCommandFailure(groupCommand, model, GroupCommand.MESSAGE_INVALID_ROLE);
+        assertCommandFailure(groupCommand, model, GroupCommand.MESSAGE_INVALID_GROUP);
     }
 
     @Test
@@ -106,7 +106,7 @@ public class GroupCommandTest {
     public void toString_correctRepresentation() {
         GroupCommand command = new GroupCommand("Student");
         String expected = new ToStringBuilder(command)
-                .add("role", "Student")
+                .add("groupCriteria", "Student")
                 .toString();
         assertEquals(expected, command.toString());
     }
