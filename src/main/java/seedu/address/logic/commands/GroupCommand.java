@@ -76,7 +76,7 @@ public class GroupCommand extends Command {
     /**
      * Checks if the person matches the group criteria (role or favourite).
      */
-    private boolean isMatchingGroup(Person person) {
+    public boolean isMatchingGroup(Person person) {
         if (groupCriteria.equalsIgnoreCase(FAVOURITE)) {
             return person.getFavourite() != null && person.getFavourite().isFavourite();
         } else if (Role.isValidRole(groupCriteria)) {
@@ -88,7 +88,7 @@ public class GroupCommand extends Command {
     /**
      * Checks if the group criteria is valid.
      */
-    private boolean isValidGroup(String groupCriteria) {
+    public boolean isValidGroup(String groupCriteria) {
         return Role.isValidRole(groupCriteria) || groupCriteria.equalsIgnoreCase(FAVOURITE);
     }
 

@@ -18,12 +18,13 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Role;
+import seedu.address.testutil.PersonBuilder;
 
 
 public class GroupCommandTest {
 
     private String validRole = "student";
-    private final String invalidGroupCommand = "InvalidRole";
+    private final String invalidGroupCommand = "InvalidGroup";
     private final String favouriteGroup = GroupCommand.FAVOURITE;
 
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
@@ -121,6 +122,14 @@ public class GroupCommandTest {
     }
 
     @Test
+    public void execute_caseSensitiveFavouriteValidation() {
+        GroupCommand lowerCaseCommand = new GroupCommand("favourite");
+        GroupCommand upperCaseCommand = new GroupCommand("FAVOURITE");
+
+        assertFalse(lowerCaseCommand.equals(upperCaseCommand));
+    }
+
+    @Test
     public void toString_correctRepresentation() {
         GroupCommand commandRole = new GroupCommand("Student");
         String expectedRole = new ToStringBuilder(commandRole)
@@ -133,6 +142,17 @@ public class GroupCommandTest {
                 .add("groupCriteria", "favourite")
                 .toString();
         assertEquals(expectedFavourite, commandFavourite.toString());
+    }
+
+    @Test
+    public void isMatchingGroup_invalidGroupCriteria_returnsFalse() {
+        String invalidGroupCriteria = "InvalidGroup";
+
+        GroupCommand groupCommand = new GroupCommand(invalidGroupCriteria);
+
+        Person person = new PersonBuilder().withRole("student").build();
+
+        assertFalse(groupCommand.isMatchingGroup(person));
     }
 
 }
