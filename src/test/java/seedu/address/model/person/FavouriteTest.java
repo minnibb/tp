@@ -51,7 +51,7 @@ public class FavouriteTest {
 
     @Test
     public void equals_differentType_returnsFalse() {
-        Favourite favourite= new Favourite(false);
+        Favourite favourite = new Favourite(false);
         String otherObject = "Not a Favourite";
         assertFalse(favourite.equals(otherObject));
     }
