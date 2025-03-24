@@ -58,7 +58,7 @@ public class PersonCardTest {
         ArrayList<String> actual = PersonCard.getParentName(VALID_STUDENT);
 
         ArrayList<String> expected = new ArrayList<>();
-        String parent = String.format("Parent: %s", VALID_STUDENT.getParentName().fullName);
+        String parent = String.format("Parent: %s", VALID_STUDENT.getRelativeName().fullName);
         expected.add(parent);
 
         assertEquals(expected.size(), actual.size());

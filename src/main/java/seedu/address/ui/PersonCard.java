@@ -116,7 +116,7 @@ public class PersonCard extends UiPart<Region> {
 
         Role role = person.getRole();
         if (role.getType().equals(Role.Type.STUDENT)) {
-            String parentName = person.getParentName().fullName;
+            String parentName = person.getRelativeName().fullName;
             result.add("Parent: " + parentName);
         }
 

@@ -52,7 +52,7 @@ public class PersonUtil {
         sb.append(PREFIX_ROLE + person.getRole().toString() + " ");
         sb.append(PREFIX_GRADE + person.getGrade().toString() + " ");
         sb.append(PREFIX_CLASS + person.getStudentClass().toString() + " ");
-        sb.append(PREFIX_PARENT + person.getParentName().toString() + " ");
+        sb.append(PREFIX_PARENT + person.getRelativeName().toString() + " ");
         return sb.toString();
     }
 

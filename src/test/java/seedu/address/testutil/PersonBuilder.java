@@ -38,7 +38,8 @@ public class PersonBuilder {
     private Role role;
     private Grade grade;
     private Class studentClass;
-    private Name parentName;
+    private Name relativeName;
+    private Phone relativePhone;
     private Favourite favourite;
 
     /**
@@ -53,7 +54,8 @@ public class PersonBuilder {
         role = new Role(DEFAULT_ROLE);
         grade = new Grade(DEFAULT_GRADE);
         studentClass = new Class(DEFAULT_CLASS);
-        parentName = new Name(DEFAULT_PARENT);
+        relativeName = new Name(DEFAULT_PARENT);
+        relativePhone = new Phone(DEFAULT_PHONE);
         favourite = new Favourite(DEFAULT_FAVOURITE);
     }
 
@@ -69,8 +71,9 @@ public class PersonBuilder {
         role = personToCopy.getRole();
         grade = personToCopy.getGrade();
         studentClass = personToCopy.getStudentClass();
-        parentName = personToCopy.getParentName();
         favourite = personToCopy.getFavourite();
+        relativeName = personToCopy.getRelativeName();
+        relativePhone = personToCopy.getRelativePhone();
     }
 
     /**
@@ -141,7 +144,7 @@ public class PersonBuilder {
      * Sets the {@code Name of Parent} of the {@code Student} that we are building.
      */
     public PersonBuilder withParent(String name) {
-        this.parentName = new Name(name);
+        this.relativeName = new Name(name);
         return this;
     }
 
@@ -158,7 +161,8 @@ public class PersonBuilder {
      */
     public Person build() {
         if (role.getType().equals(Role.Type.STUDENT)) {
-            return new Person(name, phone, email, address, tags, role, grade, studentClass, parentName, favourite);
+            return new Person(name, phone, email, address, tags, role, grade, studentClass, relativeName,
+                    relativePhone, favourite);
         } else {
             return new Person(name, phone, email, address, tags, role, favourite);
         }
