@@ -164,11 +164,11 @@ class JsonAdaptedPerson {
         }
         final Name modelRelativeName = new Name(familyMemberName);
 
-        if ((role.equals("Student") || role.equals("Parent")) && familyMemberName == null) {
+        if ((role.equals("Student") || role.equals("Parent")) && familyMemberPhone == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Phone.class.getSimpleName()));
         }
         if (!Phone.isValidPhone(familyMemberPhone)) {
-            throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(Phone.MESSAGE_CONSTRAINTS);
         }
         final Phone modelRelativePhone = new Phone(familyMemberPhone);
 
