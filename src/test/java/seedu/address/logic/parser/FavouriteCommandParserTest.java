@@ -11,15 +11,11 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.FavouriteCommand;
 
-
-
-
 public class FavouriteCommandParserTest {
-
-    private final FavouriteCommandParser parser = new FavouriteCommandParser();
-
     private static final String MESSAGE_INVALID_FORMAT =
             String.format(MESSAGE_INVALID_COMMAND_FORMAT, FavouriteCommand.MESSAGE_USAGE);
+
+    private final FavouriteCommandParser parser = new FavouriteCommandParser();
 
     @Test
     public void parse_validIndex_returnsFavouriteCommand() {
