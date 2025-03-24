@@ -70,7 +70,7 @@ public class CommandTestUtil {
     public static final String PARENT_DESC_AMY = " " + PREFIX_RELATIVE_NAME + VALID_PARENT_AMY;
     public static final String PARENT_PHONE_DESC_AMY = " " + PREFIX_RELATIVE_PHONE + VALID_PARENT_PHONE_AMY;
     public static final String CHILD_DESC_CHARLES = " " + PREFIX_RELATIVE_NAME + VALID_CHILD_CHARLES;
-    public static final String CHILD_PHONE_DESC_AMY = " " + PREFIX_RELATIVE_PHONE + VALID_CHILD_PHONE_CHARLES;
+    public static final String CHILD_PHONE_DESC_CHARLES = " " + PREFIX_RELATIVE_PHONE + VALID_CHILD_PHONE_CHARLES;
     public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;
     public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
 
@@ -83,7 +83,7 @@ public class CommandTestUtil {
     public static final String INVALID_CLASS_DESC = " " + PREFIX_CLASS + " "; // not allowed to have a space only
     public static final String INVALID_GRADE_DESC = " " + PREFIX_GRADE + "Pri 7"; // must be from Pri 1-6 or Sec 1-5
     public static final String INVALID_RELATIVE_DESC = " " + PREFIX_RELATIVE_NAME + "James&"; // '&' not allowed
-    public static final String INVALID_RELATIVE_PHONE_DESC = " " + PREFIX_RELATIVE_NAME + "911a"; // letters not allowed
+    public static final String INVALID_RELATIVE_PHONE_DESC = " " + PREFIX_RELATIVE_PHONE + "911a"; // letters disallowed
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
