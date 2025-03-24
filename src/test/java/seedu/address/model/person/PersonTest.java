@@ -17,6 +17,7 @@ import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BENSON;
 import static seedu.address.testutil.TypicalPersons.BOB;
+import static seedu.address.testutil.TypicalPersons.HOON;
 
 import org.junit.jupiter.api.Test;
 
@@ -125,6 +126,10 @@ public class PersonTest {
         Person aliceCopy = new PersonBuilder(ALICE).build();
         Person updatedPerson = aliceCopy.toggleFavourite();
         assertEquals(true, updatedPerson.getFavourite().isFavourite());
+
+        Person hoonCopy = new PersonBuilder(HOON).build();
+        Person updatedStudent = hoonCopy.toggleFavourite();
+        assertEquals(false, updatedStudent.getFavourite().isFavourite());
     }
 
     @Test
