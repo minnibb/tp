@@ -31,11 +31,12 @@ public class Person {
     private Grade grade;
     private Name parentName;
     private Class studentClass;
+    private final Favourite favourite;
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Role role) {
-        requireAllNonNull(name, phone, email, address, tags, role);
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Role role, Favourite favourite) {
+        requireAllNonNull(name, phone, email, address, tags, role, favourite);
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -46,13 +47,14 @@ public class Person {
         this.grade = new Grade("Not applicable");
         this.studentClass = new Class("Not applicable");
         this.parentName = new Name("Not applicable");
+        this.favourite = favourite;
     }
     /**
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Role role,
-                  Grade grade, Class studentClass, Name parentName) {
-        requireAllNonNull(name, phone, email, address, tags, role, grade, studentClass);
+                  Grade grade, Class studentClass, Name parentName, Favourite favourite) {
+        requireAllNonNull(name, phone, email, address, tags, role, grade, studentClass, favourite);
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -63,6 +65,7 @@ public class Person {
         this.grade = grade;
         this.studentClass = studentClass;
         this.parentName = parentName;
+        this.favourite = favourite;
     }
     public Name getName() {
         return name;
@@ -101,6 +104,26 @@ public class Person {
     public Name getParentName() {
         return parentName;
     }
+
+    public Favourite getFavourite() {
+        return favourite;
+    }
+
+    /**
+     * Toggles the 'favourite' status of the person. If the person is a student,
+     * the method updates the student's favourite status along with their grade and class details.
+     * For non-students, only the favourite status is toggled.
+     *
+     * @return A new Person object with the updated favourite status.
+     */
+    public Person toggleFavourite() {
+        if (role.getType() == Role.Type.STUDENT) {
+            return new Person(name, phone, email, address, tags, role, grade, studentClass,
+                    parentName, favourite.toggle());
+        }
+        return new Person(name, phone, email, address, tags, role, favourite.toggle());
+    }
+
     /**
      * Returns true if both persons have the same name and phone number.
      * This defines a weaker notion of equality between two persons.
@@ -138,13 +161,14 @@ public class Person {
                 && role.equals(otherPerson.role)
                 && grade.equals(otherPerson.grade)
                 && studentClass.equals(otherPerson.studentClass)
-                && parentName.equals(otherPerson.parentName);
+                && parentName.equals(otherPerson.parentName)
+                && favourite.equals(otherPerson.favourite);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags, role, grade, studentClass, parentName);
+        return Objects.hash(name, phone, email, address, tags, role, grade, studentClass, parentName, favourite);
     }
 
     @Override
@@ -160,6 +184,7 @@ public class Person {
                     .add("grade", grade)
                     .add("class", studentClass)
                     .add("parent", parentName)
+                    .add("favourite", favourite)
                     .toString();
         }
 
@@ -170,6 +195,7 @@ public class Person {
                 .add("address", address)
                 .add("tags", tags)
                 .add("role", role)
+                .add("favourite", favourite)
                 .toString();
     }
 }

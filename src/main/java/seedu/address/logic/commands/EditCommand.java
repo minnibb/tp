@@ -25,6 +25,7 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Class;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Favourite;
 import seedu.address.model.person.Grade;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
@@ -109,9 +110,10 @@ public class EditCommand extends Command {
         Grade updatedGrade = editPersonDescriptor.getGrade().orElse(personToEdit.getGrade());
         Class updatedClass = editPersonDescriptor.getStudentClass().orElse(personToEdit.getStudentClass());
         Name updatedParent = editPersonDescriptor.getParent().orElse(personToEdit.getParentName());
+        Favourite updatedFavourite = editPersonDescriptor.getFavourite().orElse(personToEdit.getFavourite());
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedRole,
-                updatedGrade, updatedClass, updatedParent);
+                updatedGrade, updatedClass, updatedParent, updatedFavourite);
     }
 
     @Override
@@ -152,6 +154,7 @@ public class EditCommand extends Command {
         private Grade grade;
         private Class studentClass;
         private Name parentName;
+        private Favourite favourite;
 
         public EditPersonDescriptor() {}
 
@@ -169,6 +172,7 @@ public class EditCommand extends Command {
             setGrade(toCopy.grade);
             setStudentClass(toCopy.studentClass);
             setParent(toCopy.parentName);
+            setFavourite(toCopy.favourite);
         }
 
         /**
@@ -257,6 +261,14 @@ public class EditCommand extends Command {
 
         public Optional<Name> getParent() {
             return Optional.ofNullable(parentName);
+        }
+
+        public void setFavourite(Favourite favourite) {
+            this.favourite = favourite;
+        }
+
+        public Optional<Favourite> getFavourite() {
+            return Optional.ofNullable(favourite);
         }
 
         @Override

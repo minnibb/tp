@@ -19,6 +19,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Class;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Favourite;
 import seedu.address.model.person.Grade;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
@@ -30,8 +31,6 @@ import seedu.address.model.tag.Tag;
  * Parses input arguments and creates a new AddCommand object
  */
 public class AddCommandParser implements Parser<AddCommand> {
-
-
 
     /**
      * Parses the given {@code String} of arguments in the context of the AddCommand
@@ -57,8 +56,10 @@ public class AddCommandParser implements Parser<AddCommand> {
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
         Role role = ParserUtil.parseRole(argMultimap.getValue(PREFIX_ROLE).get());
 
+        Favourite favourite = new Favourite(false);
+
         if (!role.getType().equals(Role.Type.STUDENT)) {
-            Person person = new Person(name, phone, email, address, tagList, role);
+            Person person = new Person(name, phone, email, address, tagList, role, favourite);
             return new AddCommand(person);
         }
 
@@ -70,7 +71,8 @@ public class AddCommandParser implements Parser<AddCommand> {
         Grade grade = ParserUtil.parseGrade(argMultimap.getValue(PREFIX_GRADE).get());
         Class studentClass = ParserUtil.parseClass(argMultimap.getValue(PREFIX_CLASS).get());
         Name parentName = ParserUtil.parseParent(argMultimap.getValue(PREFIX_PARENT).get());
-        Person person = new Person(name, phone, email, address, tagList, role, grade, studentClass, parentName);
+        Person person = new Person(name, phone, email, address, tagList, role, grade, studentClass, parentName,
+                favourite);
 
         return new AddCommand(person);
     }
