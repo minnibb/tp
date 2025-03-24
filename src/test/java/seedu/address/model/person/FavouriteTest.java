@@ -10,43 +10,43 @@ public class FavouriteTest {
 
     @Test
     public void constructor_initializesCorrectly() {
-        Favourite fav = new Favourite(true);
-        Favourite notFav = new Favourite(false);
+        Favourite favourite = new Favourite(true);
+        Favourite notFavourite = new Favourite(false);
 
-        assertTrue(fav.isFavourite());
-        assertFalse(notFav.isFavourite());
+        assertTrue(favourite.isFavourite());
+        assertFalse(notFavourite.isFavourite());
     }
 
     @Test
     public void toggle_changesState() {
-        Favourite fav = new Favourite(true);
-        Favourite notFav = new Favourite(false);
+        Favourite favourite = new Favourite(true);
+        Favourite notFavourite = new Favourite(false);
 
         // Toggling true -> false
-        assertFalse(fav.toggle().isFavourite());
+        assertFalse(favourite.toggle().isFavourite());
         // Toggling false -> true
-        assertTrue(notFav.toggle().isFavourite());
+        assertTrue(notFavourite.toggle().isFavourite());
     }
 
     @Test
     public void toString_correctOutput() {
-        Favourite fav = new Favourite(true);
-        Favourite notFav = new Favourite(false);
+        Favourite favourite = new Favourite(true);
+        Favourite notFavourite = new Favourite(false);
 
-        assertEquals("Favourite", fav.toString());
-        assertEquals("Not applicable", notFav.toString());
+        assertEquals("Favourite", favourite.toString());
+        assertEquals("Not applicable", notFavourite.toString());
     }
 
     @Test
     public void equals_sameValuesAreEqual() {
-        Favourite fav1 = new Favourite(true);
-        Favourite fav2 = new Favourite(true);
-        Favourite notFav1 = new Favourite(false);
-        Favourite notFav2 = new Favourite(false);
+        Favourite favourite1 = new Favourite(true);
+        Favourite favourite2 = new Favourite(true);
+        Favourite notFavourite1 = new Favourite(false);
+        Favourite notFavourite2 = new Favourite(false);
 
-        assertTrue(fav1.equals(fav2));
-        assertTrue(notFav1.equals(notFav2));
-        assertFalse(fav1.equals(notFav1));
+        assertTrue(favourite1.equals(favourite2));
+        assertTrue(notFavourite1.equals(notFavourite2));
+        assertFalse(favourite1.equals(notFavourite1));
     }
 
     @Test
