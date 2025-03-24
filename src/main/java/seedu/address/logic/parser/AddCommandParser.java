@@ -59,11 +59,6 @@ public class AddCommandParser implements Parser<AddCommand> {
 
         Favourite favourite = new Favourite(false);
 
-        if (!role.getType().equals(Role.Type.STUDENT)) {
-            Person person = new Person(name, phone, email, address, tagList, role, favourite);
-            return new AddCommand(person);
-        }
-
         if (!role.getType().equals(Role.Type.STAFF)) {
             return parseNonStaff(argMultimap, name, phone, email, address, tagList, role, favourite);
         }
