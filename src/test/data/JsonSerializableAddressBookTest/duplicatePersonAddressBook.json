@@ -9,7 +9,7 @@
     "grade": "Not applicable",
     "class": "Not applicable",
     "parent": "Not applicable",
-    "favourite": "Not applicable"
+    "favourite": false
   }, {
     "name": "Alice Pauline",
     "phone": "94351253",
