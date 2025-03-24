@@ -54,8 +54,21 @@ public class Messages {
                     .append(person.getGrade())
                     .append("; Class: ")
                     .append(person.getStudentClass())
-                    .append("; Parent: ")
-                    .append(person.getParentName());
+                    .append("; Parent's Name: ")
+                    .append(person.getRelativeName())
+                    .append("; Parent's Phone: ")
+                    .append(person.getRelativePhone());
+        }
+
+        if (person.getRole().equals(new Role("Parent"))) {
+            builder.append("; Child's Name: ")
+                    .append(person.getRelativeName())
+                    .append("; Child's Phone: ")
+                    .append(person.getRelativePhone())
+                    .append("; Child's Grade: ")
+                    .append(person.getGrade())
+                    .append("; Child's Class: ")
+                    .append(person.getStudentClass());
         }
 
         builder.append("; Tags: ");
