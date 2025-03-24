@@ -141,10 +141,18 @@ public class PersonBuilder {
     }
 
     /**
-     * Sets the {@code Name of Parent} of the {@code Student} that we are building.
+     * Sets the {@code Name of Parent or Student} of the {@code Person} that we are building.
      */
-    public PersonBuilder withParent(String name) {
+    public PersonBuilder withRelativeName(String name) {
         this.relativeName = new Name(name);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Phone of Parent or Student} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withRelativePhone(String phone) {
+        this.relativePhone = new Phone(phone);
         return this;
     }
 
@@ -160,7 +168,7 @@ public class PersonBuilder {
      * Builds a {@code Person} with the attributes in this instance of {@code PersonBuilder}.
      */
     public Person build() {
-        if (role.getType().equals(Role.Type.STUDENT)) {
+        if (!role.getType().equals(Role.Type.STAFF)) {
             return new Person(name, phone, email, address, tags, role, grade, studentClass, relativeName,
                     relativePhone, favourite);
         } else {
