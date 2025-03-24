@@ -44,9 +44,24 @@ public class FavouriteTest {
         Favourite notFav1 = new Favourite(false);
         Favourite notFav2 = new Favourite(false);
 
-        assertEquals(fav1, fav2);
-        assertEquals(notFav1, notFav2);
-        assertNotEquals(fav1, notFav1);
+        assertTrue(fav1.equals(fav2));
+        assertTrue(notFav1.equals(notFav2));
+        assertFalse(fav1.equals(notFav1));
+    }
+
+    @Test
+    public void equals_differentType_returnsFalse() {
+        Favourite favourite= new Favourite(false);
+        String otherObject = "Not a Favourite";
+        assertFalse(favourite.equals(otherObject));
+    }
+
+    @Test
+    public void hashCode_differentIsFavourite_returnsDifferentHashCode() {
+        // Test the hashCode method with different isFavourite values
+        Favourite favourite1 = new Favourite(true);
+        Favourite favourite2 = new Favourite(false);
+        assertNotEquals(favourite1.hashCode(), favourite2.hashCode());
     }
 
 }
