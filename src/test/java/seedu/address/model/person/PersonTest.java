@@ -121,6 +121,13 @@ public class PersonTest {
     }
 
     @Test
+    public void toggleFavourite_student_toggleStatusCorrectly() {
+        Person aliceCopy = new PersonBuilder(ALICE).build();
+        Person updatedPerson = aliceCopy.toggleFavourite();
+        assertEquals(true, updatedPerson.getFavourite().isFavourite());
+    }
+
+    @Test
     public void toStringMethod() {
         String expected = Person.class.getCanonicalName() + "{name=" + ALICE.getName() + ", phone=" + ALICE.getPhone()
                 + ", email=" + ALICE.getEmail() + ", address=" + ALICE.getAddress() + ", tags=" + ALICE.getTags()
