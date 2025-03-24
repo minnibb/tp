@@ -56,7 +56,7 @@ public class FavouriteCommandTest {
     public void equals_sameObject_returnsTrue() {
         Index index = Index.fromOneBased(1);
         FavouriteCommand favouriteCommand1 = new FavouriteCommand(index);
-        assertNotEquals(favouriteCommand1, favouriteCommand1);
+        assertEquals(favouriteCommand1, favouriteCommand1);
     }
 
     @Test
@@ -65,7 +65,7 @@ public class FavouriteCommandTest {
         Index index_2 = Index.fromOneBased(1);
         FavouriteCommand favouriteCommand1 = new FavouriteCommand(index_1);
         FavouriteCommand favouriteCommand2 = new FavouriteCommand(index_2);
-        assertEquals(favouriteCommand1, favouriteCommand2);
+        assertNotEquals(favouriteCommand1, favouriteCommand2);
     }
 
     @Test
