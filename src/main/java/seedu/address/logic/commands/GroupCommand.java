@@ -12,7 +12,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Role;
 
 /**
- * Groups contacts by specified role (Student/Parent/Staff).
+ * Groups contacts by specified group criteria (Student/Parent/Staff/Favourite).
  */
 public class GroupCommand extends Command {
 
@@ -22,15 +22,15 @@ public class GroupCommand extends Command {
             + ": Groups contacts by specified role or favourite status.\n"
             + "Format: group by ROLE\n"
             + "Valid roles: Student, Parent, Staff\n"
-            + "Valid groupings: favourite\n"
+            + "Valid groupings: Favourite\n"
             + "Example: " + COMMAND_WORD + " by Student"
-            + "Example: " + COMMAND_WORD + "by favourite";
+            + "Example: " + COMMAND_WORD + "by Favourite";
 
     public static final String MESSAGE_SUCCESS = "Results are grouped by: %1$s\n"
             + "%2$d contacts found.";
     public static final String MESSAGE_NO_RESULTS = "No contacts found for specified group criteria.";
     public static final String MESSAGE_INVALID_GROUP = "Invalid group, please use Parent, Student or Staff,"
-            + " or favourite.";
+            + " or Favourite.";
     public static final String FAVOURITE = "favourite";
 
     private final String groupCriteria;
@@ -50,7 +50,7 @@ public class GroupCommand extends Command {
 
         List<Person> filteredList;
 
-        if (groupCriteria.equals(FAVOURITE)) {
+        if (groupCriteria.equalsIgnoreCase(FAVOURITE)) {
             // Group by favourite status
             filteredList = model.getFilteredPersonList().stream()
                     .filter(person -> person.getFavourite() != null && person.getFavourite().isFavourite())
@@ -77,7 +77,7 @@ public class GroupCommand extends Command {
      * Checks if the person matches the group criteria (role or favourite).
      */
     private boolean isMatchingGroup(Person person) {
-        if (groupCriteria.equals("favourite")) {
+        if (groupCriteria.equalsIgnoreCase(FAVOURITE)) {
             return person.getFavourite() != null && person.getFavourite().isFavourite();
         } else if (Role.isValidRole(groupCriteria)) {
             return person.getRole().equals(new Role(groupCriteria));
@@ -89,7 +89,7 @@ public class GroupCommand extends Command {
      * Checks if the group criteria is valid.
      */
     private boolean isValidGroup(String groupCriteria) {
-        return Role.isValidRole(groupCriteria) || groupCriteria.equals("favourite");
+        return Role.isValidRole(groupCriteria) || groupCriteria.equalsIgnoreCase(FAVOURITE);
     }
 
     @Override
