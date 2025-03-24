@@ -48,6 +48,7 @@ public class AddCommand extends Command {
             + PREFIX_TAG + "owesMoney "
             + PREFIX_ROLE + "Parent "
             + PREFIX_RELATIVE_NAME + "Ben Doe "
+            + PREFIX_RELATIVE_PHONE + "92818309 "
             + PREFIX_GRADE + "Sec 1 "
             + PREFIX_CLASS + "1B";
 
