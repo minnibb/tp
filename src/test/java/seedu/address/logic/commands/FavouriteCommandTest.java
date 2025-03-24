@@ -62,10 +62,10 @@ public class FavouriteCommandTest {
     @Test
     public void equals_differentIndex_returnsFalse() {
         Index index_1 = Index.fromOneBased(1);
-        Index index_2 = Index.fromOneBased(1);
+        Index index_2 = Index.fromOneBased(2);
         FavouriteCommand favouriteCommand1 = new FavouriteCommand(index_1);
         FavouriteCommand favouriteCommand2 = new FavouriteCommand(index_2);
-        assertNotEquals(favouriteCommand1, favouriteCommand2);
+        assertFalse(favouriteCommand1.equals(favouriteCommand2));
     }
 
     @Test
