@@ -56,7 +56,7 @@ public class FavouriteCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof EditCommand)) {
+        if (!(other instanceof FavouriteCommand)) {
             return false;
         }
 
