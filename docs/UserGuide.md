@@ -144,17 +144,15 @@ Examples:
 
 ### Deleting a person : `delete`
 
-Deletes the specified person from the address book.
+Deletes the specified person from the ClassHive app.
 
-Format: `delete INDEX`
+Format: `delete n/NAME p/PHONE_NUMBER`
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* Deletes the person with the specified `NAME` and `PHONE_NUMBER`.
+* The person specified in the command must already be a contact in the app. 
 
 Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+* `delete n/Betsy Crowe p/12345678` deletes `Betsy Crowe` with the phone number `12345678` from the app.
 
 ### Clearing all entries : `clear`
 
@@ -210,7 +208,7 @@ _Details coming soon ..._
 |------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]… r/Student g/GRADE c/CLASS rn/KIN'S_NAME rp/KIN'S_PHONE​` <br> e.g., `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/Student g/Sec 1 c/1A rn/Bob Doe rp/92932011` |
 | **Clear**  | `clear`                                                                                                                                                                                                                                                  |
-| **Delete** | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                                                      |
+| **Delete** | `delete n/NAME p/PHONE`<br> e.g., `delete n/Betsy Crowe p/12345678`                                                                                                                                                                                      |
 | **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                                              |
 | **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                                                                                               |
 | **List**   | `list`                                                                                                                                                                                                                                                   |
