@@ -46,7 +46,7 @@ Getting started with ClassHive is easy! Just follow these steps:
 1. Start using ClassHive!
       * After a few seconds, the ClassHive window should appear, ready to help you manage your contacts easily.
       * It should look like this. <br>
-   ![Ui](images/Ui.png)
+   ![Ui](images/v1.3Ui.png)
 1. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -136,8 +136,8 @@ Format for searching phone number: `find NUMBER`
 Examples:
 * `find 9876` returns `987665432`, `97654678` and `90873648`
 * `find John` returns `Johnny Lee` and `John Doe`
-* `find al` returns `Alex Yeoh`, `Roy Balakrishnan`<br>
-  ![result for 'find ale'](images/findAlexDavidResult.png)
+* `find al` returns `Roy Balakrishnan` and `Alex Yeoh`<br>
+  ![result for 'find ale'](images/findFeatureExample.png)
 
 ### Deleting a person : `delete`
 
