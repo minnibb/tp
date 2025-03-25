@@ -170,17 +170,32 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String name} into a {@code Name} of a Student's Parent.
+     * Parses a {@code String name} into a {@code Name} of a Contact's Parent or Child.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code name} is invalid.
      */
-    public static Name parseParent(String name) throws ParseException {
+    public static Name parseRelativeName(String name) throws ParseException {
         requireNonNull(name);
         String trimmedName = name.trim();
         if (!Name.isValidName(trimmedName)) {
             throw new ParseException(Name.MESSAGE_CONSTRAINTS);
         }
         return new Name(trimmedName);
+    }
+
+    /**
+     * Parses a {@code String phone} into a {@code Phone} of a Contact's Parent or Child.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code name} is invalid.
+     */
+    public static Phone parseRelativePhone(String phone) throws ParseException {
+        requireNonNull(phone);
+        String trimmedPhone = phone.trim();
+        if (!Phone.isValidPhone(trimmedPhone)) {
+            throw new ParseException(Phone.MESSAGE_CONSTRAINTS);
+        }
+        return new Phone(trimmedPhone);
     }
 }

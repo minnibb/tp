@@ -6,8 +6,9 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_CLASS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PARENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_RELATIVE_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_RELATIVE_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
@@ -25,7 +26,8 @@ public class AddCommand extends Command {
     public static final String COMMAND_WORD = "add";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a person to the address book. "
-            + "Add only the Grade, Class and Name of Parent if the person to be added is a student. "
+            + "Add the Grade, Class and Name of Parent only if the person to be added is a student. "
+            + "Add the Grade, Class and Name of Child only if the person to be added is a parent. "
             + "Parameters: "
             + PREFIX_NAME + "NAME "
             + PREFIX_PHONE + "PHONE "
@@ -33,9 +35,10 @@ public class AddCommand extends Command {
             + PREFIX_ADDRESS + "ADDRESS "
             + "[" + PREFIX_TAG + "TAG]..."
             + PREFIX_ROLE + "ROLE "
+            + PREFIX_RELATIVE_NAME + "PARENT'S OR CHILD'S NAME "
+            + PREFIX_RELATIVE_PHONE + "PARENT'S OR CHILD'S PHONE "
             + PREFIX_GRADE + "GRADE "
-            + PREFIX_CLASS + "CLASS "
-            + PREFIX_PARENT + "PARENT'S NAME\n"
+            + PREFIX_CLASS + "CLASS\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe "
             + PREFIX_PHONE + "98765432 "
@@ -43,7 +46,11 @@ public class AddCommand extends Command {
             + PREFIX_ADDRESS + "311, Clementi Ave 2, #02-25 "
             + PREFIX_TAG + "friends "
             + PREFIX_TAG + "owesMoney "
-            + PREFIX_ROLE + "Parent";
+            + PREFIX_ROLE + "Parent "
+            + PREFIX_RELATIVE_NAME + "Ben Doe "
+            + PREFIX_RELATIVE_PHONE + "92818309 "
+            + PREFIX_GRADE + "Sec 1 "
+            + PREFIX_CLASS + "1B";
 
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";

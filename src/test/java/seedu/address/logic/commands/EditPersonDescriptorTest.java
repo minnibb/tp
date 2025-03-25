@@ -73,8 +73,9 @@ public class EditPersonDescriptorTest {
                 + editPersonDescriptor.getTags().orElse(null) + ", role="
                 + editPersonDescriptor.getRole().orElse(null) + ", grade="
                 + editPersonDescriptor.getGrade().orElse(null) + ", class="
-                + editPersonDescriptor.getStudentClass().orElse(null) + ", parent="
-                + editPersonDescriptor.getParent().orElse(null) + "}";
+                + editPersonDescriptor.getStudentClass().orElse(null) + ", relative's name="
+                + editPersonDescriptor.getRelativeName().orElse(null) + ", relative's phone="
+                + editPersonDescriptor.getRelativePhone().orElse(null) + "}";
         assertEquals(expected, editPersonDescriptor.toString());
     }
 }
