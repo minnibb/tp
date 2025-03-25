@@ -4,9 +4,12 @@
   pageNav: 3
 ---
 
-# AB-3 User Guide
+# ClassHive User Guide
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+:rotating_light: ATTENTION ALL TEACHERS! :rotating_light: Introducing ClassHive, a **desktop app for managing all your 
+school contacts**! ClassHive is a fast and easy to use app that helps you keep track of all the people you will need to 
+contact, including colleagues, parents and students. In ClassHive, instead of clicking many buttons, you can simply type 
+in commands to access any function! Let's now explore the different features that were built just for you! :rocket:
 
 <!-- * Table of Contents -->
 <page-nav-print />
