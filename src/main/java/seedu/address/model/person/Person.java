@@ -33,6 +33,8 @@ public class Person {
     private Phone relativePhone;
     private Class studentClass;
     private final Favourite favourite;
+    private final String notes;
+
     /**
      * Every field must be present and not null.
      */
@@ -50,6 +52,7 @@ public class Person {
         this.relativeName = new Name("Not applicable");
         this.relativePhone = new Phone("Not applicable");
         this.favourite = favourite;
+        this.notes = "";
     }
     /**
      * Every field must be present and not null.
@@ -69,6 +72,52 @@ public class Person {
         this.relativeName = relativeName;
         this.relativePhone = relativePhone;
         this.favourite = favourite;
+        this.notes = "";
+    }
+
+    /**
+     * Every field must be present and not null.
+     * Constructor with notes field included.
+     */
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Role role,
+                  Grade grade, Class studentClass, Name relativeName, Phone relativePhone, 
+                  Favourite favourite, String notes) {
+        requireAllNonNull(name, phone, email, address, tags, role, grade, studentClass, favourite);
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.tags.addAll(tags);
+        this.timeAdded = System.currentTimeMillis();
+        this.role = role;
+        this.grade = grade;
+        this.studentClass = studentClass;
+        this.relativeName = relativeName;
+        this.relativePhone = relativePhone;
+        this.favourite = favourite;
+        this.notes = notes == null ? "" : notes;
+    }
+
+    /**
+     * Every field must be present and not null.
+     * Constructor with notes field included for staff.
+     */
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Role role, 
+                  Favourite favourite, String notes) {
+        requireAllNonNull(name, phone, email, address, tags, role, favourite);
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.tags.addAll(tags);
+        this.timeAdded = System.currentTimeMillis();
+        this.role = role;
+        this.grade = new Grade("Not applicable");
+        this.studentClass = new Class("Not applicable");
+        this.relativeName = new Name("Not applicable");
+        this.relativePhone = new Phone("Not applicable");
+        this.favourite = favourite;
+        this.notes = notes == null ? "" : notes;
     }
 
     public Name getName() {
@@ -118,6 +167,24 @@ public class Person {
         return favourite;
     }
 
+    public String getNotes() {
+        return notes;
+    }
+
+    /**
+     * Creates a new Person with updated notes.
+     *
+     * @param notes The new notes to be added to the person
+     * @return A new Person object with the updated notes
+     */
+    public Person withNotes(String notes) {
+        if (!role.getType().equals(Role.Type.STAFF)) {
+            return new Person(name, phone, email, address, tags, role, grade, studentClass,
+                    relativeName, relativePhone, favourite, notes);
+        }
+        return new Person(name, phone, email, address, tags, role, favourite, notes);
+    }
+
     /**
      * Toggles the 'favourite' status of the person. If the person is a student,
      * the method updates the student's favourite status along with their grade and class details.
@@ -128,9 +195,9 @@ public class Person {
     public Person toggleFavourite() {
         if (!role.getType().equals(Role.Type.STAFF)) {
             return new Person(name, phone, email, address, tags, role, grade, studentClass,
-                    relativeName, relativePhone, favourite.toggle());
+                    relativeName, relativePhone, favourite.toggle(), notes);
         }
-        return new Person(name, phone, email, address, tags, role, favourite.toggle());
+        return new Person(name, phone, email, address, tags, role, favourite.toggle(), notes);
     }
 
     /**
@@ -172,14 +239,15 @@ public class Person {
                 && studentClass.equals(otherPerson.studentClass)
                 && favourite.equals(otherPerson.favourite)
                 && relativeName.equals(otherPerson.relativeName)
-                && relativePhone.equals(otherPerson.relativePhone);
+                && relativePhone.equals(otherPerson.relativePhone)
+                && notes.equals(otherPerson.notes);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
         return Objects.hash(name, phone, email, address, tags, role, grade, studentClass,
-                relativeName, relativePhone, favourite);
+                relativeName, relativePhone, favourite, notes);
     }
 
     @Override
@@ -197,6 +265,7 @@ public class Person {
                     .add("parent", relativeName)
                     .add("parent's phone", relativePhone)
                     .add("favourite", favourite)
+                    .add("notes", notes)
                     .toString();
         }
 
@@ -213,6 +282,7 @@ public class Person {
                     .add("child's name", relativeName)
                     .add("child's phone", relativePhone)
                     .add("favourite", favourite)
+                    .add("notes", notes)
                     .toString();
         }
 
@@ -224,6 +294,7 @@ public class Person {
                 .add("tags", tags)
                 .add("role", role)
                 .add("favourite", favourite)
+                .add("notes", notes)
                 .toString();
     }
 }
