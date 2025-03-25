@@ -16,4 +16,5 @@ public class CliSyntax {
     public static final Prefix PREFIX_CLASS = new Prefix("c/");
     public static final Prefix PREFIX_RELATIVE_NAME = new Prefix("rn/");
     public static final Prefix PREFIX_RELATIVE_PHONE = new Prefix("rp/");
+    public static final Prefix PREFIX_NOTE = new Prefix("nt/");
 }
