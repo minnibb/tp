@@ -90,9 +90,9 @@ Format:
 <box type="tip" seamless>
 
 **Note:** 
-- A person can have any number of tags (including 0)
-- The role of each contact must be either a "Student", "Staff" or "Parent" (roles are not case-sensitive)
-- Only grades from Primary 1 to 6 and Secondary 1 to 5 are currently supported
+- A person can have any number of tags (including 0).
+- The role of each contact must be either a "Student", "Staff" or "Parent" (roles are not case-sensitive).
+- Only grades from Primary 1 to 6 and Secondary 1 to 5 are currently supported.
 - For Staff contacts, do not add the grade, class, family member's name and family member's phone number.
 </box>
 
