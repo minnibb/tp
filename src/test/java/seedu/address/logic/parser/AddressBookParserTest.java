@@ -76,7 +76,6 @@ public class AddressBookParserTest {
             NoteCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() + " nt/" + noteText);
         assertEquals(new NoteCommand(INDEX_FIRST_PERSON, noteText), command);
     }
-    
     @Test
     public void parseCommand_exit() throws Exception {
         assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD) instanceof ExitCommand);
