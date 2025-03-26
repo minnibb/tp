@@ -80,7 +80,7 @@ public class Person {
      * Constructor with notes field included.
      */
     public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Role role,
-                  Grade grade, Class studentClass, Name relativeName, Phone relativePhone, 
+                  Grade grade, Class studentClass, Name relativeName, Phone relativePhone,
                   Favourite favourite, String notes) {
         requireAllNonNull(name, phone, email, address, tags, role, grade, studentClass, favourite);
         this.name = name;
@@ -102,7 +102,7 @@ public class Person {
      * Every field must be present and not null.
      * Constructor with notes field included for staff.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Role role, 
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Role role,
                   Favourite favourite, String notes) {
         requireAllNonNull(name, phone, email, address, tags, role, favourite);
         this.name = name;
