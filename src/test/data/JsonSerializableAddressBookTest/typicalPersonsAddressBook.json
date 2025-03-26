@@ -7,9 +7,11 @@
     "address" : "123, Jurong West Ave 6, #08-111",
     "tags" : [ "friends" ],
     "role": "Parent",
-    "grade": "Not applicable",
-    "class": "Not applicable",
-    "parent": "Not applicable"
+    "grade": "Sec 3",
+    "favourite": false,
+    "studentClass": "3K",
+    "familyMemberName": "Elle Meyer",
+    "familyMemberPhone": "9482224"
   }, {
     "name" : "Benson Meier",
     "phone" : "98765432",
@@ -18,8 +20,10 @@
     "tags" : [ "owesMoney", "friends" ],
     "role": "Student",
     "grade": "Sec 2",
+    "favourite": false,
     "class": "2D",
-    "parent": "Daniel Meier"
+    "familyMemberName": "Daniel Meier",
+    "familyMemberPhone": "87652533"
   }, {
     "name" : "Carl Kurz",
     "phone" : "95352563",
@@ -28,8 +32,10 @@
     "tags" : [ ],
     "role": "Staff",
     "grade": "Not applicable",
+    "favourite": false,
     "class": "Not applicable",
-    "parent": "Not applicable"
+    "familyMemberName": "Not applicable",
+    "familyMemberPhone": "Not applicable"
   }, {
     "name" : "Daniel Meier",
     "phone" : "87652533",
@@ -37,9 +43,11 @@
     "address" : "10th street",
     "tags" : [ "friends" ],
     "role": "Parent",
-    "grade": "Not applicable",
-    "class": "Not applicable",
-    "parent": "Not applicable"
+    "grade": "Sec 2",
+    "favourite": false,
+    "class": "2D",
+    "familyMemberName": "Benson Meier",
+    "familyMemberPhone": "98765432"
   }, {
     "name" : "Elle Meyer",
     "phone" : "9482224",
@@ -48,8 +56,10 @@
     "tags" : [ ],
     "role": "Student",
     "grade": "Pri 3",
-    "class": "3K",
-    "parent": "Alice Pauline"
+    "favourite": false,
+    "studentClass": "3K",
+    "familyMemberName": "Alice Pauline",
+    "familyMemberPhone": "94351253"
   }, {
     "name" : "Fiona Kunz",
     "phone" : "9482427",
@@ -58,8 +68,10 @@
     "tags" : [ ],
     "role": "Staff",
     "grade": "Not applicable",
+    "favourite": false,
     "class": "Not applicable",
-    "parent": "Not applicable"
+    "familyMemberName": "Not applicable",
+    "familyMemberPhone": "Not applicable"
   }, {
     "name" : "George Best",
     "phone" : "9482442",
@@ -67,8 +79,10 @@
     "address" : "4th street",
     "tags" : [ ],
     "role": "Parent",
-    "grade": "Not applicable",
-    "class": "Not applicable",
-    "parent": "Not applicable"
+    "grade": "Sec 2",
+    "favourite": false,
+    "class": "2D",
+    "familyMemberName": "Mason Best",
+    "familyMemberPhone": "98769532"
   } ]
 }

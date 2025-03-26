@@ -4,9 +4,12 @@
   pageNav: 3
 ---
 
-# AB-3 User Guide
+# ClassHive User Guide
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+:rotating_light: ATTENTION ALL TEACHERS! :rotating_light: Introducing ClassHive, a **desktop app for managing all your 
+school contacts**! ClassHive is a fast and easy to use app that helps you keep track of all the people you will need to 
+contact, including colleagues, parents and students. In ClassHive, instead of clicking many buttons, you can simply type 
+in commands to access any function! Let's now explore the different features that were built just for you! :rocket:
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -47,6 +50,7 @@ Getting started with ClassHive is easy! Just follow these steps:
       * After a few seconds, the ClassHive window should appear, ready to help you manage your contacts easily.
       * It should look like this. <br>
    ![Ui](images/v1.3Ui.png)
+
 6. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -77,31 +81,41 @@ Getting started with ClassHive is easy! Just follow these steps:
 
 ### Viewing help : `help`
 
-Shows a message explaning how to access the help page.
+Shows a message explaning how to access the help page. Help page contains instructions for all the features in ClassHive. 
 
 ![help message](images/helpMessage.png)
 
 Format: `help`
 
+<box type="tip" seamless>
+**Tip:** You can also access help window by clicking on F1 or the help menu on the top left.
+</box>
 
 ### Adding a person: `add`
 
-Adds a person to the address book.
+Adds a new contact into the ClassHive app.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
-
+Format: 
+- For adding Students: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]… r/Student g/GRADE c/CLASS rn/PARENT'S_NAME rp/PARENT'S_PHONE​`
+- For adding Parents: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]… r/Parent g/CHILD'S_GRADE c/CHILD'S_CLASS rn/CHILD'S_NAME rp/CHILD'S_PHONE​`
+- For adding Staffs/Colleagues: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDESS [t/TAG]… r/Staff​`
 <box type="tip" seamless>
 
-**Tip:** A person can have any number of tags (including 0)
+**Note:** 
+- A person can have any number of tags (including 0).
+- The role of each contact must be either a "Student", "Staff" or "Parent" (roles are not case-sensitive).
+- Only grades from Primary 1 to 6 and Secondary 1 to 5 are currently supported.
+- For Staff contacts, do not add the grade, class, family member's name and family member's phone number.
 </box>
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/Student g/Sec 1 c/1A rn/Bob Doe rp/92932011`
+* `add n/Bob Doe p/92932011 e/bobd@example.com a/John street, block 123, #01-01 r/Parent rn/John Doe rp/98765432 g/Sec 1 c/1A`
+* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Serangoon Avenue 2 p/12345678 r/Staff`
 
-### Listing all persons : `list`
+### Listing all contacts : `list`
 
-Shows a list of all persons in the address book.
+Shows a list of all contacts in ClassHive.
 
 Format: `list`
 
@@ -111,6 +125,7 @@ Edits an existing person in the address book.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 
+**Note:**
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
@@ -139,20 +154,40 @@ Examples:
 * `find John` returns `Johnny Lee` and `John Doe`
 * `find al` returns `Roy Balakrishnan` and `Alex Yeoh`<br>
   ![result for 'find ale'](images/findFeatureExample.png)
+  
+### Sorting contacts : `sort`
+
+Sorts all contacts in the address book based on specified criteria.
+
+Format: `sort by/[FIELD] [ORDER]`
+
+**Note:**
+- Sorts the contacts based on the specified `FIELD` (name or date) and `ORDER` (asc or desc)
+- `FIELD` can be either `name` or `date` (referring to when the contact was added)
+- `ORDER` can be either `asc` (ascending) or `desc` (descending)
+
+Examples:
+* `sort by/name asc` sorts all contacts alphabetically by name from A to Z
+* `sort by/name desc` sorts all contacts alphabetically by name from Z to A
+* `sort by/date asc` sorts all contacts from oldest to newest added
+* `sort by/date desc` sorts all contacts from newest to oldest added
+
+<box type="tip" seamless>
+**Tip:** Simply typing `sort` without any parameters will sort contacts alphabetically by name from A to Z.
+</box>
 
 ### Deleting a person : `delete`
 
-Deletes the specified person from the address book.
+Deletes the specified person from the ClassHive app.
 
-Format: `delete INDEX`
+Format: `delete n/NAME p/PHONE_NUMBER`
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+**Note:**
+* Deletes the person with the specified `NAME` and `PHONE_NUMBER`.
+* The person specified in the command must already be a contact in the app. 
 
 Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+* `delete n/Betsy Crowe p/12345678` deletes `Betsy Crowe` with the phone number `12345678` from the app.
 
 ### Clearing all entries : `clear`
 
@@ -198,17 +233,20 @@ _Details coming soon ..._
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
+3. **Adding more than one family member is currently not supported.** Only one family member can be added per contact. Currently, the developer team is working to allow support for the addition of more than one child or parent!
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Command summary
 
-Action     | Format, Examples
------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-**Clear**  | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Tan` <br> `find NUMBER` <br> e.g, `find 98765432`
-**List**   | `list`
-**Help**   | `help`
+| Action     | Format, Examples                                                                                                                                                                                                                                         |
+|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]… r/Student g/GRADE c/CLASS rn/KIN'S_NAME rp/KIN'S_PHONE` <br> e.g., `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/Student g/Sec 1 c/1A rn/Bob Doe rp/92932011` |
+| **Clear**  | `clear`                                                                                                                                                                                                                                                  |
+| **Delete** | `delete n/NAME p/PHONE`<br> e.g., `delete n/Betsy Crowe p/12345678`                                                                                                                                                                                      |
+| **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                                              |
+| **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Tan` <br> `find NUMBER` <br> e.g, `find 98765432`                                                                                                                                                                                             |
+| **Sort**   | `sort by/[FIELD] [ORDER]`<br> e.g., `sort by/name asc`, `sort by/date desc`                                                                                                                                                                             |
+| **List**   | `list`                                                                                                                                                                                                                                                   |
+| **Help**   | `help`                                                                                                                                                                                                                                                   |
+

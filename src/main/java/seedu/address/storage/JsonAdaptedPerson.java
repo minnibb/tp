@@ -13,6 +13,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Class;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Favourite;
 import seedu.address.model.person.Grade;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
@@ -35,7 +36,9 @@ class JsonAdaptedPerson {
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
     private final String grade;
     private final String studentClass;
-    private final String parentName;
+    private final Boolean favourite;
+    private final String familyMemberName;
+    private final String familyMemberPhone;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -45,7 +48,9 @@ class JsonAdaptedPerson {
             @JsonProperty("email") String email, @JsonProperty("address") String address,
             @JsonProperty("tags") List<JsonAdaptedTag> tags, @JsonProperty("role") String role,
             @JsonProperty("grade") String grade, @JsonProperty("class") String studentClass,
-            @JsonProperty("parent") String parentName) {
+            @JsonProperty("family member's name") String familyMemberName,
+            @JsonProperty("family member's phone") String familyMemberPhone,
+            @JsonProperty("favourite") Boolean favourite) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -56,7 +61,9 @@ class JsonAdaptedPerson {
         }
         this.grade = grade;
         this.studentClass = studentClass;
-        this.parentName = parentName;
+        this.favourite = (favourite == null) ? false : favourite;
+        this.familyMemberName = familyMemberName;
+        this.familyMemberPhone = familyMemberPhone;
     }
 
     /**
@@ -73,7 +80,9 @@ class JsonAdaptedPerson {
                 .collect(Collectors.toList()));
         grade = source.getGrade().toString();
         studentClass = source.getStudentClass().value;
-        parentName = source.getParentName().fullName;
+        favourite = source.getFavourite().isFavourite();
+        familyMemberName = source.getRelativeName().fullName;
+        familyMemberPhone = source.getRelativePhone().value;
     }
 
     /**
@@ -129,6 +138,8 @@ class JsonAdaptedPerson {
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
+        final Favourite modelFavourite = new Favourite(favourite);
+
         if (role.equals("Student") && grade == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Grade.class.getSimpleName()));
         }
@@ -145,16 +156,24 @@ class JsonAdaptedPerson {
         }
         final Class modelClass = new Class(studentClass);
 
-        if (role.equals("Student") && parentName == null) {
+        if ((role.equals("Student") || role.equals("Parent")) && familyMemberName == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
         }
-        if (!Name.isValidName(parentName)) {
+        if (!Name.isValidName(familyMemberName)) {
             throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
         }
-        final Name modelParent = new Name(parentName);
+        final Name modelRelativeName = new Name(familyMemberName);
+
+        if ((role.equals("Student") || role.equals("Parent")) && familyMemberPhone == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Phone.class.getSimpleName()));
+        }
+        if (!Phone.isValidPhone(familyMemberPhone)) {
+            throw new IllegalValueException(Phone.MESSAGE_CONSTRAINTS);
+        }
+        final Phone modelRelativePhone = new Phone(familyMemberPhone);
 
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelRole, modelGrade,
-                modelClass, modelParent);
+                modelClass, modelRelativeName, modelRelativePhone, modelFavourite);
     }
 
 }

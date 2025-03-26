@@ -25,6 +25,7 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Class;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Favourite;
 import seedu.address.model.person.Grade;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
@@ -108,10 +109,14 @@ public class EditCommand extends Command {
         Role updatedRole = editPersonDescriptor.getRole().orElse(personToEdit.getRole());
         Grade updatedGrade = editPersonDescriptor.getGrade().orElse(personToEdit.getGrade());
         Class updatedClass = editPersonDescriptor.getStudentClass().orElse(personToEdit.getStudentClass());
-        Name updatedParent = editPersonDescriptor.getParent().orElse(personToEdit.getParentName());
+        Favourite updatedFavourite = editPersonDescriptor.getFavourite().orElse(personToEdit.getFavourite());
+
+        Name updatedFamilyMember = editPersonDescriptor.getRelativeName().orElse(personToEdit.getRelativeName());
+        Phone updatedFamilyMemberPhone = editPersonDescriptor.getRelativePhone()
+                .orElse(personToEdit.getRelativePhone());
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedRole,
-                updatedGrade, updatedClass, updatedParent);
+                updatedGrade, updatedClass, updatedFamilyMember, updatedFamilyMemberPhone, updatedFavourite);
     }
 
     @Override
@@ -151,7 +156,9 @@ public class EditCommand extends Command {
         private Role role;
         private Grade grade;
         private Class studentClass;
-        private Name parentName;
+        private Favourite favourite;
+        private Name relativeName;
+        private Phone relativePhone;
 
         public EditPersonDescriptor() {}
 
@@ -168,14 +175,17 @@ public class EditCommand extends Command {
             setRole(toCopy.role);
             setGrade(toCopy.grade);
             setStudentClass(toCopy.studentClass);
-            setParent(toCopy.parentName);
+            setFavourite(toCopy.favourite);
+            setRelativeName(toCopy.relativeName);
+            setRelativePhone(toCopy.relativePhone);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags, role);
+            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags, role, grade, studentClass,
+                    relativeName, relativePhone, favourite);
         }
 
         public void setName(Name name) {
@@ -251,12 +261,28 @@ public class EditCommand extends Command {
             return Optional.ofNullable(studentClass);
         }
 
-        public void setParent(Name parentName) {
-            this.parentName = parentName;
+        public void setRelativeName(Name relativeName) {
+            this.relativeName = relativeName;
         }
 
-        public Optional<Name> getParent() {
-            return Optional.ofNullable(parentName);
+        public Optional<Name> getRelativeName() {
+            return Optional.ofNullable(relativeName);
+        }
+
+        public void setRelativePhone(Phone relativePhone) {
+            this.relativePhone = relativePhone;
+        }
+
+        public Optional<Phone> getRelativePhone() {
+            return Optional.ofNullable(relativePhone);
+        }
+
+        public void setFavourite(Favourite favourite) {
+            this.favourite = favourite;
+        }
+
+        public Optional<Favourite> getFavourite() {
+            return Optional.ofNullable(favourite);
         }
 
         @Override
@@ -279,7 +305,8 @@ public class EditCommand extends Command {
                     && Objects.equals(role, otherEditPersonDescriptor.role)
                     && Objects.equals(grade, otherEditPersonDescriptor.grade)
                     && Objects.equals(studentClass, otherEditPersonDescriptor.studentClass)
-                    && Objects.equals(parentName, otherEditPersonDescriptor.parentName);
+                    && Objects.equals(relativeName, otherEditPersonDescriptor.relativeName)
+                    && Objects.equals(relativePhone, otherEditPersonDescriptor.relativePhone);
         }
 
         @Override
@@ -293,7 +320,8 @@ public class EditCommand extends Command {
                     .add("role", role)
                     .add("grade", grade)
                     .add("class", studentClass)
-                    .add("parent", parentName)
+                    .add("relative's name", relativeName)
+                    .add("relative's phone", relativePhone)
                     .toString();
         }
     }

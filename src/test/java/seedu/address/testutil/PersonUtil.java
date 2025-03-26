@@ -5,8 +5,9 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_CLASS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PARENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_RELATIVE_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_RELATIVE_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
@@ -52,7 +53,8 @@ public class PersonUtil {
         sb.append(PREFIX_ROLE + person.getRole().toString() + " ");
         sb.append(PREFIX_GRADE + person.getGrade().toString() + " ");
         sb.append(PREFIX_CLASS + person.getStudentClass().toString() + " ");
-        sb.append(PREFIX_PARENT + person.getParentName().toString() + " ");
+        sb.append(PREFIX_RELATIVE_NAME + person.getRelativeName().toString() + " ");
+        sb.append(PREFIX_RELATIVE_PHONE + person.getRelativePhone().toString() + " ");
         return sb.toString();
     }
 
@@ -84,10 +86,12 @@ public class PersonUtil {
             }
         }
         descriptor.getRole().ifPresent(role -> sb.append(PREFIX_ROLE).append(role.getType()).append(" "));
-        descriptor.getGrade().ifPresent(grade -> sb.append(PREFIX_ROLE).append(grade.toString()).append(" "));
+        descriptor.getGrade().ifPresent(grade -> sb.append(PREFIX_GRADE).append(grade.toString()).append(" "));
         descriptor.getStudentClass()
-                .ifPresent(studentClass -> sb.append(PREFIX_ROLE).append(studentClass.value).append(" "));
-        descriptor.getParent().ifPresent(parent -> sb.append(PREFIX_ROLE).append(parent.fullName).append(" "));
+                .ifPresent(studentClass -> sb.append(PREFIX_CLASS).append(studentClass.value).append(" "));
+        descriptor.getRelativeName().ifPresent(kin -> sb.append(PREFIX_RELATIVE_NAME).append(kin.fullName).append(" "));
+        descriptor.getRelativePhone()
+                .ifPresent(phone -> sb.append(PREFIX_RELATIVE_PHONE).append(phone.value).append(" "));
         return sb.toString();
     }
 }

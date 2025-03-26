@@ -6,9 +6,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_CLASS_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_FAVOURITE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_GRADE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PARENT_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PARENT_PHONE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ROLE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
@@ -16,6 +18,8 @@ import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BENSON;
 import static seedu.address.testutil.TypicalPersons.BOB;
+import static seedu.address.testutil.TypicalPersons.CARL;
+import static seedu.address.testutil.TypicalPersons.HOON;
 
 import org.junit.jupiter.api.Test;
 
@@ -110,22 +114,53 @@ public class PersonTest {
         editedBenson = new PersonBuilder(BENSON).withClass(VALID_CLASS_AMY).build();
         assertFalse(BENSON.equals(editedBenson));
 
-        // different parent name -> return false
-        editedBenson = new PersonBuilder(BENSON).withParent(VALID_PARENT_AMY).build();
+        // different relative name -> return false
+        editedBenson = new PersonBuilder(BENSON).withRelativeName(VALID_PARENT_AMY).build();
         assertFalse(BENSON.equals(editedBenson));
+
+        // different relative phone -> return false
+        editedBenson = new PersonBuilder(BENSON).withRelativePhone(VALID_PARENT_PHONE_AMY).build();
+        assertFalse(BENSON.equals(editedBenson));
+
+        // different favourite status -> returns false
+        editedAlice = new PersonBuilder(ALICE).withFavourite(VALID_FAVOURITE).build();
+        assertFalse(ALICE.equals(editedAlice));
+    }
+
+    @Test
+    public void toggleFavourite_student_toggleStatusCorrectly() {
+        Person aliceCopy = new PersonBuilder(ALICE).build();
+        Person updatedPerson = aliceCopy.toggleFavourite();
+        assertEquals(true, updatedPerson.getFavourite().isFavourite());
+
+        Person hoonCopy = new PersonBuilder(HOON).build();
+        Person updatedStudent = hoonCopy.toggleFavourite();
+        assertEquals(false, updatedStudent.getFavourite().isFavourite());
     }
 
     @Test
     public void toStringMethod() {
-        String expected = Person.class.getCanonicalName() + "{name=" + ALICE.getName() + ", phone=" + ALICE.getPhone()
-                + ", email=" + ALICE.getEmail() + ", address=" + ALICE.getAddress() + ", tags=" + ALICE.getTags()
-                + ", role=" + ALICE.getRole() + "}";
-        assertEquals(expected, ALICE.toString());
+        // staff
+        String expectedStaff = Person.class.getCanonicalName() + "{name=" + CARL.getName()
+                + ", phone=" + CARL.getPhone() + ", email=" + CARL.getEmail() + ", address="
+                + CARL.getAddress() + ", tags=" + CARL.getTags()
+                + ", role=" + CARL.getRole() + ", favourite=" + CARL.getFavourite() + "}";
+        assertEquals(expectedStaff, CARL.toString());
 
+        // parent
+        String expectedParent = Person.class.getCanonicalName() + "{name=" + ALICE.getName()
+                + ", phone=" + ALICE.getPhone() + ", email=" + ALICE.getEmail() + ", address=" + ALICE.getAddress()
+                + ", tags=" + ALICE.getTags() + ", role=" + ALICE.getRole() + ", child's grade=" + ALICE.getGrade()
+                + ", child's class=" + ALICE.getStudentClass() + ", child's name=" + ALICE.getRelativeName()
+                + ", child's phone=" + ALICE.getRelativePhone() + ", favourite=" + ALICE.getFavourite() + "}";
+        assertEquals(expectedParent, ALICE.toString());
+
+        // student
         String expectedStudent = Person.class.getCanonicalName() + "{name=" + BENSON.getName()
                 + ", phone=" + BENSON.getPhone() + ", email=" + BENSON.getEmail() + ", address=" + BENSON.getAddress()
                 + ", tags=" + BENSON.getTags() + ", role=" + BENSON.getRole() + ", grade=" + BENSON.getGrade()
-                + ", class=" + BENSON.getStudentClass() + ", parent=" + BENSON.getParentName() + "}";
-        assertEquals(expected, ALICE.toString());
+                + ", class=" + BENSON.getStudentClass() + ", parent=" + BENSON.getRelativeName()
+                + ", parent's phone=" + BENSON.getRelativePhone() + ", favourite=" + ALICE.getFavourite() + "}";
+        assertEquals(expectedStudent, BENSON.toString());
     }
 }

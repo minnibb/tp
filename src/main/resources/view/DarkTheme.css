@@ -369,7 +369,7 @@
 }
 
 /* change colour of parent attribute */
-#parents .label {
+#family .label {
     -fx-font-family: "Segoe UI";
     -fx-font-size: 13px;
     -fx-text-fill: #ffabaf;
