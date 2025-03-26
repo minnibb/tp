@@ -23,8 +23,8 @@ public class NoteCommandTest {
     @Test
     public void execute_addNoteUnfilteredList_success() {
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Person editedPerson = firstPerson.withNotes("Test Note");
-        NoteCommand noteCommand = new NoteCommand(INDEX_FIRST_PERSON, "Test Note");
+        Person editedPerson = firstPerson.withNotes("Test note");
+        NoteCommand noteCommand = new NoteCommand(INDEX_FIRST_PERSON, "Test note");
         String expectedMessage = String.format(NoteCommand.MESSAGE_ADD_NOTE_SUCCESS, editedPerson);
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setPerson(firstPerson, editedPerson);
@@ -34,15 +34,15 @@ public class NoteCommandTest {
     @Test
     public void execute_invalidPersonIndexUnfilteredList_throwsCommandException() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
-        NoteCommand noteCommand = new NoteCommand(outOfBoundIndex, "Test Note");
+        NoteCommand noteCommand = new NoteCommand(outOfBoundIndex, "Test note");
         assertCommandFailure(noteCommand, model, MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
 
     @Test
     public void equals() {
-        final NoteCommand standardCommand = new NoteCommand(INDEX_FIRST_PERSON, "Test Note");
+        final NoteCommand standardCommand = new NoteCommand(INDEX_FIRST_PERSON, "Test note");
         // same values -> returns true
-        NoteCommand commandWithSameValues = new NoteCommand(INDEX_FIRST_PERSON, "Test Note");
+        NoteCommand commandWithSameValues = new NoteCommand(INDEX_FIRST_PERSON, "Test note");
         assertTrue(standardCommand.equals(commandWithSameValues));
         // same object -> returns true
         assertTrue(standardCommand.equals(standardCommand));
@@ -51,8 +51,8 @@ public class NoteCommandTest {
         // different types -> returns false
         assertFalse(standardCommand.equals(new ClearCommand()));
         // different index -> returns false
-        assertFalse(standardCommand.equals(new NoteCommand(INDEX_SECOND_PERSON, "Test Note")));
+        assertFalse(standardCommand.equals(new NoteCommand(INDEX_SECOND_PERSON, "Test note")));
         // different note -> returns false
-        assertFalse(standardCommand.equals(new NoteCommand(INDEX_FIRST_PERSON, "Different Note")));
+        assertFalse(standardCommand.equals(new NoteCommand(INDEX_FIRST_PERSON, "Different note")));
     }
 }
