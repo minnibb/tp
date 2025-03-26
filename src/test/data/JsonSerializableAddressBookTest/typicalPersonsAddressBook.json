@@ -44,7 +44,7 @@
     "tags" : [ "friends" ],
     "role": "Parent",
     "grade": "Sec 2",
-    "favourite": false,
+    "favourite": true,
     "class": "2D",
     "familyMemberName": "Benson Meier",
     "familyMemberPhone": "98765432"
