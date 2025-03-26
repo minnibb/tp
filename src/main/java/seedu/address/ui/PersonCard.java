@@ -74,7 +74,7 @@ public class PersonCard extends UiPart<Region> {
 
         setFavouriteStatus(person);
         if (person.getNotes() != null && !person.getNotes().isEmpty()) {
-            notes.setText("Notes: " + person.getNotes());
+            notes.setText("Note: " + person.getNotes());
         } else {
             notes.setText("");
         }
