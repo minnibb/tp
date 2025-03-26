@@ -48,6 +48,8 @@ public class PersonCard extends UiPart<Region> {
     private FlowPane family;
     @FXML
     private Label favourite;
+    @FXML
+    private Label notes;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -71,7 +73,12 @@ public class PersonCard extends UiPart<Region> {
         familyInformation.forEach(information -> family.getChildren().add(new Label(information)));
 
         setFavouriteStatus(person);
-
+        
+        if (person.getNotes() != null && !person.getNotes().isEmpty()) {
+            notes.setText("Notes: " + person.getNotes());
+        } else {
+            notes.setText("");
+        }
     }
 
     /**
@@ -131,5 +138,4 @@ public class PersonCard extends UiPart<Region> {
 
         return result;
     }
-
 }
