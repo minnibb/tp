@@ -28,14 +28,14 @@ Getting started with ClassHive is easy! Just follow these steps:
 
 1. Open ClassHive
     * On Windows
-      * Open the folder where you saved the file
+      * Open the folder where you saved the file.
       * Hold **Shift**, right-click in the folder, and select "Open command window here" (or "Open PowerShell window here").
       * Type the following command and press **Enter**: <br>
       ```sh
         java -jar ClassHive.jar
       ```
     * On Mac
-      * Open **Terminal** (uyou can find it using spotlight search),
+      * Open **Terminal** (you can find it using spotlight search).
       * Type `cd ` (followed by a space), then **drag and drop** the folder where you saved ClassHive into the Terminal window.
       * Press **Enter**, then type:
        ```sh
@@ -208,6 +208,6 @@ Action     | Format, Examples
 **Clear**  | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Tan` <br> `find NUMBER` <br> `find 98765432`
+**Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Tan` <br> `find NUMBER` <br> e.g, `find 98765432`
 **List**   | `list`
 **Help**   | `help`
