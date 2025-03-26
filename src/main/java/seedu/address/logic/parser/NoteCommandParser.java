@@ -32,6 +32,9 @@ public class NoteCommandParser implements Parser<NoteCommand> {
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, NoteCommand.MESSAGE_USAGE), pe);
         }
         String note = argMultimap.getValue(PREFIX_NOTE).orElse("");
+        if (note.trim().isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, NoteCommand.MESSAGE_USAGE));
+        }
         return new NoteCommand(index, note);
     }
     /**
