@@ -88,7 +88,8 @@ Shows a message explaning how to access the help page. Help page contains instru
 Format: `help`
 
 <box type="tip" seamless>
-**Tip:** You can also access help window by clicking on F1 or the help menu on the top left.
+
+  **Tip**: You can also access help window by clicking on F1 or the help menu on the top left.
 </box>
 
 ### Adding a person: `add`
@@ -125,6 +126,8 @@ Edits an existing person in the address book.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 
+<box type="tip" seamless>
+
 **Note:**
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
@@ -132,6 +135,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 * When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
 * You can remove all the person’s tags by typing `t/` without
     specifying any tags after it.
+</box>
 
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
@@ -145,10 +149,13 @@ Format:
 - For searching name: `find KEYWORD [MORE_KEYWORDS]` <br>
 - For searching phone number: `find NUMBER`
 
+<box type="tip" seamless>
+
 **Note:** 
 * The search is case-insensitive. e.g `hans` will match `Hans`.
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`.
 * Partial words/numbers will be matched e.g. `Han` will match with `Hans` or '9876' will match with '98765432'.
+</box>
 
 Examples:
 * `find 9876` returns `987665432`, `97654678` and `90873648`
@@ -161,11 +168,13 @@ Examples:
 Sorts all contacts in the address book based on specified criteria.
 
 Format: `sort by/[FIELD] [ORDER]`
+<box type="tip" seamless>
 
 **Note:**
 - Sorts the contacts based on the specified `FIELD` (name or date) and `ORDER` (asc or desc)
 - `FIELD` can be either `name` or `date` (referring to when the contact was added)
 - `ORDER` can be either `asc` (ascending) or `desc` (descending)
+</box>
 
 Examples:
 * `sort by/name asc` sorts all contacts alphabetically by name from A to Z
@@ -174,6 +183,7 @@ Examples:
 * `sort by/date desc` sorts all contacts from newest to oldest added
 
 <box type="tip" seamless>
+
 **Tip:** Simply typing `sort` without any parameters will sort contacts alphabetically by name from A to Z.
 </box>
 
@@ -182,10 +192,12 @@ Examples:
 Deletes the specified person from the ClassHive app.
 
 Format: `delete n/NAME p/PHONE_NUMBER`
+<box type="tip" seamless>
 
 **Note:**
 * Deletes the person with the specified `NAME` and `PHONE_NUMBER`.
 * The person specified in the command must already be a contact in the app. 
+</box>
 
 Examples:
 * `delete n/Betsy Crowe p/12345678` deletes `Betsy Crowe` with the phone number `12345678` from the app.
