@@ -151,15 +151,20 @@ Sorts all contacts in the address book based on specified criteria.
 
 Format: `sort by/[FIELD] [ORDER]`
 
-* Sorts the contacts based on the specified `FIELD` (name or date) and `ORDER` (asc or desc)
-* `FIELD` can be either `name` or `date` (referring to when the contact was added)
-* `ORDER` can be either `asc` (ascending) or `desc` (descending)
+**Note:**
+- Sorts the contacts based on the specified `FIELD` (name or date) and `ORDER` (asc or desc)
+- `FIELD` can be either `name` or `date` (referring to when the contact was added)
+- `ORDER` can be either `asc` (ascending) or `desc` (descending)
 
 Examples:
 * `sort by/name asc` sorts all contacts alphabetically by name from A to Z
 * `sort by/name desc` sorts all contacts alphabetically by name from Z to A
 * `sort by/date asc` sorts all contacts from oldest to newest added
 * `sort by/date desc` sorts all contacts from newest to oldest added
+
+<box type="tip" seamless>
+**Tip:** Simply typing `sort` without any parameters will sort contacts alphabetically by name from A to Z.
+</box>
 
 ### Deleting a person : `delete`
 
