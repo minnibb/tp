@@ -39,7 +39,8 @@ class JsonAdaptedPerson {
     private final Boolean favourite;
     private final String familyMemberName;
     private final String familyMemberPhone;
-
+    private final String notes;
+    
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
      */
@@ -50,7 +51,8 @@ class JsonAdaptedPerson {
             @JsonProperty("grade") String grade, @JsonProperty("class") String studentClass,
             @JsonProperty("family member's name") String familyMemberName,
             @JsonProperty("family member's phone") String familyMemberPhone,
-            @JsonProperty("favourite") Boolean favourite) {
+            @JsonProperty("favourite") Boolean favourite),
+            @JsonProperty("notes") String notes) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -64,6 +66,7 @@ class JsonAdaptedPerson {
         this.favourite = (favourite == null) ? false : favourite;
         this.familyMemberName = familyMemberName;
         this.familyMemberPhone = familyMemberPhone;
+        this.notes = notes;
     }
 
     /**
@@ -83,6 +86,7 @@ class JsonAdaptedPerson {
         favourite = source.getFavourite().isFavourite();
         familyMemberName = source.getRelativeName().fullName;
         familyMemberPhone = source.getRelativePhone().value;
+        notes = source.getNotes();
     }
 
     /**
@@ -173,7 +177,7 @@ class JsonAdaptedPerson {
         final Phone modelRelativePhone = new Phone(familyMemberPhone);
 
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelRole, modelGrade,
-                modelClass, modelRelativeName, modelRelativePhone, modelFavourite);
+            modelClass, modelRelativeName, modelRelativePhone, modelFavourite, notes);
     }
 
 }
