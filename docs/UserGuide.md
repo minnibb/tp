@@ -72,12 +72,15 @@ in commands to access any function! Let's now explore the different features tha
 
 ### Viewing help : `help`
 
-Shows a message explaning how to access the help page.
+Shows a message explaning how to access the help page. Help page contains instructions for all the features in ClassHive. 
 
 ![help message](images/helpMessage.png)
 
 Format: `help`
 
+<box type="tip" seamless>
+**Tip:** You can also access help window by clicking on F1 or the help menu on the top left.
+</box>
 
 ### Adding a person: `add`
 
@@ -101,9 +104,9 @@ Examples:
 * `add n/Bob Doe p/92932011 e/bobd@example.com a/John street, block 123, #01-01 r/Parent rn/John Doe rp/98765432 g/Sec 1 c/1A`
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Serangoon Avenue 2 p/12345678 r/Staff`
 
-### Listing all persons : `list`
+### Listing all contacts : `list`
 
-Shows a list of all persons in the address book.
+Shows a list of all contacts in ClassHive.
 
 Format: `list`
 
@@ -141,6 +144,22 @@ Examples:
 * `find John` returns `john` and `John Doe`
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
+  
+### Sorting contacts : `sort`
+
+Sorts all contacts in the address book based on specified criteria.
+
+Format: `sort by/[FIELD] [ORDER]`
+
+* Sorts the contacts based on the specified `FIELD` (name or date) and `ORDER` (asc or desc)
+* `FIELD` can be either `name` or `date` (referring to when the contact was added)
+* `ORDER` can be either `asc` (ascending) or `desc` (descending)
+
+Examples:
+* `sort by/name asc` sorts all contacts alphabetically by name from A to Z
+* `sort by/name desc` sorts all contacts alphabetically by name from Z to A
+* `sort by/date asc` sorts all contacts from oldest to newest added
+* `sort by/date desc` sorts all contacts from newest to oldest added
 
 ### Deleting a person : `delete`
 
@@ -206,10 +225,11 @@ _Details coming soon ..._
 
 | Action     | Format, Examples                                                                                                                                                                                                                                         |
 |------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]… r/Student g/GRADE c/CLASS rn/KIN'S_NAME rp/KIN'S_PHONE​` <br> e.g., `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/Student g/Sec 1 c/1A rn/Bob Doe rp/92932011` |
+| **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]… r/Student g/GRADE c/CLASS rn/KIN'S_NAME rp/KIN'S_PHONE` <br> e.g., `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/Student g/Sec 1 c/1A rn/Bob Doe rp/92932011` |
 | **Clear**  | `clear`                                                                                                                                                                                                                                                  |
 | **Delete** | `delete n/NAME p/PHONE`<br> e.g., `delete n/Betsy Crowe p/12345678`                                                                                                                                                                                      |
-| **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                                              |
+| **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                                              |
 | **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                                                                                               |
+| **Sort**   | `sort by/[FIELD] [ORDER]`<br> e.g., `sort by/name asc`, `sort by/date desc`                                                                                                                                                                             |
 | **List**   | `list`                                                                                                                                                                                                                                                   |
 | **Help**   | `help`                                                                                                                                                                                                                                                   |
