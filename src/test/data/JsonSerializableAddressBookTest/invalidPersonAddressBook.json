@@ -4,10 +4,11 @@
     "phone": "9482424",
     "email": "invalid@email!3e",
     "address": "4th street",
-    "role": "parent",
-    "grade": "Not applicable",
-    "class": "Not applicable",
-    "parent": "Not applicable",
-    "favourite": false
+    "role": "staff",
+    "grade" : "Not applicable",
+    "favourite" : false,
+    "studentClass" : "Not applicable",
+    "familyMemberName" : "Not applicable",
+    "familyMemberPhone" : "Not applicable"
   } ]
 }

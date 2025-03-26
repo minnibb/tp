@@ -45,7 +45,7 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private FlowPane details;
     @FXML
-    private FlowPane parents;
+    private FlowPane family;
     @FXML
     private Label favourite;
 
@@ -67,8 +67,8 @@ public class PersonCard extends UiPart<Region> {
         ArrayList<String> schoolDetails = getSchoolRelatedInformation(person);
         schoolDetails.forEach(detail -> details.getChildren().add(new Label(detail)));
 
-        ArrayList<String> parent = getParentName(person);
-        parent.forEach(name -> parents.getChildren().add(new Label(name)));
+        ArrayList<String> familyInformation = getFamilyInformation(person);
+        familyInformation.forEach(information -> family.getChildren().add(new Label(information)));
 
         setFavouriteStatus(person);
 
@@ -111,13 +111,22 @@ public class PersonCard extends UiPart<Region> {
      * @param person Person to be reflected in PersonCard.
      * @return An empty ArrayList or an ArrayList containing a parent's name.
      */
-    public static ArrayList<String> getParentName(Person person) {
+    public static ArrayList<String> getFamilyInformation(Person person) {
         ArrayList<String> result = new ArrayList<>();
 
         Role role = person.getRole();
         if (role.getType().equals(Role.Type.STUDENT)) {
-            String parentName = person.getParentName().fullName;
-            result.add("Parent: " + parentName);
+            String parentName = person.getRelativeName().fullName;
+            String parentPhone = person.getRelativePhone().value;
+            result.add(String.format("Parent: %s (%s)", parentName, parentPhone));
+        } else if (role.getType().equals(Role.Type.PARENT)) {
+            String childName = person.getRelativeName().fullName;
+            String childPhone = person.getRelativePhone().value;
+            String childClass = person.getStudentClass().value;
+            String childGrade = person.getGrade().toString();
+            String childInformation = String.format("Child: %s - %s: %s (%s)", childName, childGrade,
+                    childClass, childPhone);
+            result.add(childInformation);
         }
 
         return result;
