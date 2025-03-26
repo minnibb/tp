@@ -52,7 +52,7 @@ class JsonAdaptedPerson {
             @JsonProperty("family member's name") String familyMemberName,
             @JsonProperty("family member's phone") String familyMemberPhone,
             @JsonProperty("favourite") Boolean favourite,
-            @JsonProperty("notes") String notes {
+            @JsonProperty("notes") String notes) {
         this.name = name;
         this.phone = phone;
         this.email = email;
