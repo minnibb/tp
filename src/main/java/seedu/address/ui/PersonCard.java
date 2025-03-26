@@ -73,7 +73,6 @@ public class PersonCard extends UiPart<Region> {
         familyInformation.forEach(information -> family.getChildren().add(new Label(information)));
 
         setFavouriteStatus(person);
-        
         if (person.getNotes() != null && !person.getNotes().isEmpty()) {
             notes.setText("Notes: " + person.getNotes());
         } else {
