@@ -124,7 +124,7 @@ Examples:
 
 ### Locating persons by name or phone number: `find`
 
-The 'find' command allows you to search for people by either their name or phone number, and handles partial matches.
+The `find` command allows you to search for people by either their name or phone number, and handles partial matches.
 
 Format for searching name: `find KEYWORD [MORE_KEYWORDS]` <br>
 Format for searching phone number: `find NUMBER`
