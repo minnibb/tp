@@ -131,6 +131,22 @@ Examples:
 * `find John` returns `john` and `John Doe`
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
+  
+### Sorting contacts : `sort`
+
+Sorts all contacts in the address book based on specified criteria.
+
+Format: `sort by/[FIELD] [ORDER]`
+
+* Sorts the contacts based on the specified `FIELD` (name or date) and `ORDER` (asc or desc)
+* `FIELD` can be either `name` or `date` (referring to when the contact was added)
+* `ORDER` can be either `asc` (ascending) or `desc` (descending)
+
+Examples:
+* `sort by/name asc` sorts all contacts alphabetically by name from A to Z
+* `sort by/name desc` sorts all contacts alphabetically by name from Z to A
+* `sort by/date asc` sorts all contacts from oldest to newest added
+* `sort by/date desc` sorts all contacts from newest to oldest added
 
 ### Deleting a person : `delete`
 
@@ -202,5 +218,6 @@ Action     | Format, Examples
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**Sort**   | `sort by/[FIELD] [ORDER]`<br> e.g., `sort by/name asc`, `sort by/date desc`
 **List**   | `list`
 **Help**   | `help`
