@@ -25,7 +25,7 @@ public class NoteCommandTest {
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person editedPerson = firstPerson.withNotes("Test note");
         NoteCommand noteCommand = new NoteCommand(INDEX_FIRST_PERSON, "Test note");
-        String expectedMessage = String.format(NoteCommand.MESSAGE_ADD_NOTE_SUCCESS, editedPerson);
+        String expectedMessage = String.format(NoteCommand.MESSAGE_ADD_NOTE_SUCCESS, Messages.format(editedPerson));
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setPerson(firstPerson, editedPerson);
         assertCommandSuccess(noteCommand, model, expectedMessage, expectedModel);
