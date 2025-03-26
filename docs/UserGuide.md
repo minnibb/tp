@@ -18,29 +18,38 @@ in commands to access any function! Let's now explore the different features tha
 
 ## Quick start
 
-1. Ensure you have Java `17` or above installed in your Computer.<br>
-   **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
+Getting started with ClassHive is easy! Just follow these steps:
+1. Check your Java Version
+    * To use ClassHive, you need Java `17` or above installed in your Computer.<br>
+    * **Mac users:** If you're unsure, follow [this guide](https://se-education.org/guides/tutorials/javaInstallationMac.html) to set it up.
 
-2. Download the latest `.jar` file from [here](https://github.com/se-edu/addressbook-level3/releases).
+2. Download ClassHive
+    * Click [here](https://github.com/AY2425S2-CS2103T-F13-4/tp/releases) to download the latest version of ClassHive (`.jar` file).
 
-3. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+3. Choose where to keep ClassHive
+    * Move the downloaded file to a folder where you'd like to store ClassHive (e.g., "Documents" or "Desktop").
 
-4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
+4. Open ClassHive
+    * On Windows
+      * Open the folder where you saved the file.
+      * Hold **Shift**, right-click in the folder, and select "Open command window here" (or "Open PowerShell window here").
+      * Type the following command and press **Enter**: <br>
+      ```sh
+        java -jar ClassHive.jar
+      ```
+    * On Mac
+      * Open **Terminal** (you can find it using spotlight search, `Command (⌘) + Space`).
+      * Type `cd ` (followed by a space), then **drag and drop** the folder where you saved ClassHive into the Terminal window.
+      * Press **Enter**, then type:
+       ```sh
+        java -jar ClassHive.jar
+      ```
+       * Press **Enter** again. <br>
 
-5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
-   Some example commands you can try:
-
-   * `list` : Lists all contacts.
-
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
-
-   * `delete 3` : Deletes the 3rd contact shown in the current list.
-
-   * `clear` : Deletes all contacts.
-
-   * `exit` : Exits the app.
+5. Start using ClassHive!
+      * After a few seconds, the ClassHive window should appear, ready to help you manage your contacts easily.
+      * It should look like this. <br>
+   ![Ui](images/v1.3Ui.png)
 
 6. Refer to the [Features](#features) below for details of each command.
 
@@ -116,6 +125,7 @@ Edits an existing person in the address book.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 
+**Note:**
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
@@ -127,23 +137,23 @@ Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
 
-### Locating persons by name: `find`
+### Locating persons by name or phone number: `find`
 
-Finds persons whose names contain any of the given keywords.
+The `find` command allows you to search for people by either their name or phone number, and handles partial matches.
 
-Format: `find KEYWORD [MORE_KEYWORDS]`
+Format for searching name: `find KEYWORD [MORE_KEYWORDS]` <br>
+Format for searching phone number: `find NUMBER`
 
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+**Note:** 
+* The search is case-insensitive. e.g `hans` will match `Hans`.
+* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`.
+* Partial words/numbers will be matched e.g. `Han` will match with `Hans` or '9876' will match with '98765432'.
 
 Examples:
-* `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+* `find 9876` returns `987665432`, `97654678` and `90873648`
+* `find John` returns `Johnny Lee` and `John Doe`
+* `find al` returns `Roy Balakrishnan` and `Alex Yeoh`<br>
+  ![result for 'find ale'](images/findFeatureExample.png)
   
 ### Sorting contacts : `sort`
 
@@ -172,6 +182,7 @@ Deletes the specified person from the ClassHive app.
 
 Format: `delete n/NAME p/PHONE_NUMBER`
 
+**Note:**
 * Deletes the person with the specified `NAME` and `PHONE_NUMBER`.
 * The person specified in the command must already be a contact in the app. 
 
@@ -234,7 +245,8 @@ _Details coming soon ..._
 | **Clear**  | `clear`                                                                                                                                                                                                                                                  |
 | **Delete** | `delete n/NAME p/PHONE`<br> e.g., `delete n/Betsy Crowe p/12345678`                                                                                                                                                                                      |
 | **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                                              |
-| **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                                                                                               |
+| **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Tan` <br> `find NUMBER` <br> e.g, `find 98765432`                                                                                                                                                                                             |
 | **Sort**   | `sort by/[FIELD] [ORDER]`<br> e.g., `sort by/name asc`, `sort by/date desc`                                                                                                                                                                             |
 | **List**   | `list`                                                                                                                                                                                                                                                   |
 | **Help**   | `help`                                                                                                                                                                                                                                                   |
+
