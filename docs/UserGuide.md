@@ -141,8 +141,9 @@ Examples:
 
 The `find` command allows you to search for people by either their name or phone number, and handles partial matches.
 
-Format for searching name: `find KEYWORD [MORE_KEYWORDS]` <br>
-Format for searching phone number: `find NUMBER`
+Format:
+- For searching name: `find KEYWORD [MORE_KEYWORDS]` <br>
+- For searching phone number: `find NUMBER`
 
 **Note:** 
 * The search is case-insensitive. e.g `hans` will match `Hans`.
@@ -220,6 +221,37 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 
 _Details coming soon ..._
 
+### Grouping contacts : group
+
+Filters and groups contacts by a specific role.
+
+**Format:**  
+`group by SPECIFIC_VALUE`
+
+* **Supported criteria**:
+    - `Parent`/`Student`/`Staff`  
+      Example: `group by Parent`
+
+<box type="tip" seamless>
+
+**Note**:
+1. **Strict format**:
+    - Criterion and value must be separated by a space.
+    - Values are case-insensitive (e.g., `Parent` = `parent`).
+
+2. **Validation rules**:
+    - Role: Only `Parent`, `Student`, `Staff`.
+    
+3. Non-matching contacts will be hidden from view.
+   </box>
+
+**Examples**:
+1. `group by student`   
+   *Shows all contacts with the **Student** role.*
+
+
+---
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
@@ -239,14 +271,15 @@ _Details coming soon ..._
 
 ## Command summary
 
-| Action     | Format, Examples                                                                                                                                                                                                                                         |
-|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Action     | Format, Examples                                                                                                                                                                                                                                        |
+|------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]… r/Student g/GRADE c/CLASS rn/KIN'S_NAME rp/KIN'S_PHONE` <br> e.g., `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/Student g/Sec 1 c/1A rn/Bob Doe rp/92932011` |
-| **Clear**  | `clear`                                                                                                                                                                                                                                                  |
-| **Delete** | `delete n/NAME p/PHONE`<br> e.g., `delete n/Betsy Crowe p/12345678`                                                                                                                                                                                      |
+| **Clear**  | `clear`                                                                                                                                                                                                                                                 |
+| **Delete** | `delete n/NAME p/PHONE`<br> e.g., `delete n/Betsy Crowe p/12345678`                                                                                                                                                                                     |
 | **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                                              |
-| **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Tan` <br> `find NUMBER` <br> e.g, `find 98765432`                                                                                                                                                                                             |
+| **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Tan` <br> `find NUMBER` <br> e.g, `find 98765432`                                                                                                                                                  |
 | **Sort**   | `sort by/[FIELD] [ORDER]`<br> e.g., `sort by/name asc`, `sort by/date desc`                                                                                                                                                                             |
-| **List**   | `list`                                                                                                                                                                                                                                                   |
-| **Help**   | `help`                                                                                                                                                                                                                                                   |
+| **List**   | `list`                                                                                                                                                                                                                                                  |
+| **Help**   | `help`                                                                                                                                                                                                                                                  |
+| **Group**  | `group by [VALUE]`<br>e.g., `group by student`, `group by staff`                                                                                                                                                                                        |
 
