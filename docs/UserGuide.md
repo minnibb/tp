@@ -20,13 +20,13 @@ Getting started with ClassHive is easy! Just follow these steps:
     * To use ClassHive, you need Java `17` or above installed in your Computer.<br>
     * **Mac users:** If you're unsure, follow [this guide](https://se-education.org/guides/tutorials/javaInstallationMac.html) to set it up.
 
-1. Download ClassHive
+2. Download ClassHive
     * Click [here](https://github.com/AY2425S2-CS2103T-F13-4/tp/releases) to download the latest version of ClassHive (`.jar` file).
 
-1. Choose where to keep ClassHive
+3. Choose where to keep ClassHive
     * Move the downloaded file to a folder where you'd like to store ClassHive (e.g., "Documents" or "Desktop").
 
-1. Open ClassHive
+4. Open ClassHive
     * On Windows
       * Open the folder where you saved the file.
       * Hold **Shift**, right-click in the folder, and select "Open command window here" (or "Open PowerShell window here").
@@ -35,7 +35,7 @@ Getting started with ClassHive is easy! Just follow these steps:
         java -jar ClassHive.jar
       ```
     * On Mac
-      * Open **Terminal** (you can find it using spotlight search).
+      * Open **Terminal** (you can find it using spotlight search, `Command (⌘) + Space`).
       * Type `cd ` (followed by a space), then **drag and drop** the folder where you saved ClassHive into the Terminal window.
       * Press **Enter**, then type:
        ```sh
@@ -43,11 +43,11 @@ Getting started with ClassHive is easy! Just follow these steps:
       ```
        * Press **Enter** again. <br>
 
-1. Start using ClassHive!
+5. Start using ClassHive!
       * After a few seconds, the ClassHive window should appear, ready to help you manage your contacts easily.
       * It should look like this. <br>
    ![Ui](images/v1.3Ui.png)
-1. Refer to the [Features](#features) below for details of each command.
+6. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -129,9 +129,10 @@ The `find` command allows you to search for people by either their name or phone
 Format for searching name: `find KEYWORD [MORE_KEYWORDS]` <br>
 Format for searching phone number: `find NUMBER`
 
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Partial words/numbers will be matched e.g. `Han` will match with `Hans` or '9876' will match with '98765432'
+**Note:** 
+* The search is case-insensitive. e.g `hans` will match `Hans`.
+* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`.
+* Partial words/numbers will be matched e.g. `Han` will match with `Hans` or '9876' will match with '98765432'.
 
 Examples:
 * `find 9876` returns `987665432`, `97654678` and `90873648`
