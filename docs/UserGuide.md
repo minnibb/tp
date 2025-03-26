@@ -69,12 +69,15 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
 ### Viewing help : `help`
 
-Shows a message explaning how to access the help page.
+Shows a message explaning how to access the help page. Help page contains instructions for all the features in ClassHive. 
 
 ![help message](images/helpMessage.png)
 
 Format: `help`
 
+<box type="tip" seamless>
+**Tip:** You can also access help window by clicking on F1 or the help menu on the top left.
+</box>
 
 ### Adding a person: `add`
 
