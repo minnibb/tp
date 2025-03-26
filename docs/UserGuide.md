@@ -126,7 +126,7 @@ Examples:
 
 The 'find' command allows you to search for people by either their name or phone number, and handles partial matches.
 
-Format for searching name: `find KEYWORD [MORE_KEYWORDS]`
+Format for searching name: `find KEYWORD [MORE_KEYWORDS]` <br>
 Format for searching phone number: `find NUMBER`
 
 * The search is case-insensitive. e.g `hans` will match `Hans`
@@ -208,6 +208,6 @@ Action     | Format, Examples
 **Clear**  | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Tan` <br> `find NUMBER` <br> `find 98765432`
 **List**   | `list`
 **Help**   | `help`
