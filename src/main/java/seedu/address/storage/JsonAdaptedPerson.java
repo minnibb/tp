@@ -51,8 +51,8 @@ class JsonAdaptedPerson {
             @JsonProperty("grade") String grade, @JsonProperty("class") String studentClass,
             @JsonProperty("family member's name") String familyMemberName,
             @JsonProperty("family member's phone") String familyMemberPhone,
-            @JsonProperty("favourite") Boolean favourite),
-            @JsonProperty("notes") String notes) {
+            @JsonProperty("favourite") Boolean favourite,
+            @JsonProperty("notes") String notes {
         this.name = name;
         this.phone = phone;
         this.email = email;
