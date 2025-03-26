@@ -144,7 +144,7 @@ public class PersonTest {
         String expectedStaff = Person.class.getCanonicalName() + "{name=" + CARL.getName()
                 + ", phone=" + CARL.getPhone() + ", email=" + CARL.getEmail() + ", address="
                 + CARL.getAddress() + ", tags=" + CARL.getTags()
-                + ", role=" + CARL.getRole() + ", favourite=" + CARL.getFavourite() 
+                + ", role=" + CARL.getRole() + ", favourite=" + CARL.getFavourite()
                 + ", notes=" + CARL.getNotes() + "}";
         assertEquals(expectedStaff, CARL.toString());
 
@@ -153,7 +153,7 @@ public class PersonTest {
                 + ", phone=" + ALICE.getPhone() + ", email=" + ALICE.getEmail() + ", address=" + ALICE.getAddress()
                 + ", tags=" + ALICE.getTags() + ", role=" + ALICE.getRole() + ", child's grade=" + ALICE.getGrade()
                 + ", child's class=" + ALICE.getStudentClass() + ", child's name=" + ALICE.getRelativeName()
-                + ", child's phone=" + ALICE.getRelativePhone() + ", favourite=" + ALICE.getFavourite() 
+                + ", child's phone=" + ALICE.getRelativePhone() + ", favourite=" + ALICE.getFavourite()
                 + ", notes=" + ALICE.getNotes() + "}";
         assertEquals(expectedParent, ALICE.toString());
 
@@ -162,7 +162,7 @@ public class PersonTest {
                 + ", phone=" + BENSON.getPhone() + ", email=" + BENSON.getEmail() + ", address=" + BENSON.getAddress()
                 + ", tags=" + BENSON.getTags() + ", role=" + BENSON.getRole() + ", grade=" + BENSON.getGrade()
                 + ", class=" + BENSON.getStudentClass() + ", parent=" + BENSON.getRelativeName()
-                + ", parent's phone=" + BENSON.getRelativePhone() + ", favourite=" + ALICE.getFavourite() 
+                + ", parent's phone=" + BENSON.getRelativePhone() + ", favourite=" + ALICE.getFavourite()
                 + ", notes=" + BENSON.getNotes() + "}";
         assertEquals(expectedStudent, BENSON.toString());
     }
