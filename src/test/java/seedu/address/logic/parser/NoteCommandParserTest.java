@@ -17,7 +17,6 @@ public class NoteCommandParserTest {
     private static final String MESSAGE_INVALID_FORMAT =
             String.format(MESSAGE_INVALID_COMMAND_FORMAT, NoteCommand.MESSAGE_USAGE);
     private NoteCommandParser parser = new NoteCommandParser();
-  
     @Test
     public void parse_validArgs_returnsNoteCommand() {
         // valid index and note
@@ -43,7 +42,6 @@ public class NoteCommandParserTest {
     public void parse_emptyNote_throwsParseException() {
         // empty note
         assertParseFailure(parser, "1 nt/", MESSAGE_INVALID_FORMAT);
-        
         // missing prefix
         assertParseFailure(parser, "1 Test note", MESSAGE_INVALID_FORMAT);
     }
