@@ -40,7 +40,6 @@ class JsonAdaptedPerson {
     private final String familyMemberName;
     private final String familyMemberPhone;
     private final String notes;
-    
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
      */
