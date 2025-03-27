@@ -468,6 +468,20 @@ public class GroupCommandTest {
         GroupCommand command = new GroupCommand("GRADE", "sec 2");
         assertFalse(command.isMatchingGroup(person));
     }
+    @Test
+    public void isMatchingGroup_validFavourite_returnsTrue() {
+        Person person = new PersonBuilder().withFavourite(true).build();
+        GroupCommand command = new GroupCommand("FAVOURITE", "");
+        assertTrue(command.isMatchingGroup(person));
+    }
+
+    @Test
+    public void isMatchingGroup_invalidFavourite_returnsFalse() {
+        Person person = new PersonBuilder().withFavourite(false).build();
+        GroupCommand command = new GroupCommand("FAVOURITE", "");
+        assertFalse(command.isMatchingGroup(person));
+    }
+
 }
 
 
