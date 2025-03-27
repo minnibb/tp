@@ -4,6 +4,7 @@ package seedu.address.logic.parser;
 import seedu.address.logic.commands.GroupCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
+
 /**
  * parse Group command
  */
@@ -26,12 +27,22 @@ public class GroupCommandParser implements Parser<GroupCommand> {
             throw new ParseException("Invalid format. Usage: group by ROLE");
         }
 
-        String role = trimmedArgs.substring(3).trim();
+        String content = trimmedArgs.substring(3).trim();
+        String[] parts = content.split(" ", 2);
 
-        if (role.contains(" ")) {
-            throw new ParseException("Error: Only one role can be selected at a time.");
+
+        String category = parts[0].toUpperCase();
+
+
+        String criteria = (parts.length == 2) ? parts[1].trim() : "";
+
+        if (!category.equals("FAVOURITE") && criteria.isEmpty()) {
+            throw new ParseException("Error: " + category + " requires a specified criteria.");
+        }
+        if (category.equals("FAVOURITE") && !criteria.isEmpty()) {
+            throw new ParseException("Error: " + category + " doesn't requires a specified criteria.");
         }
 
-        return new GroupCommand(role);
+        return new GroupCommand(category, criteria);
     }
 }
