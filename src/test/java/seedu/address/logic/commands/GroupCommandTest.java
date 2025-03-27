@@ -364,6 +364,12 @@ public class GroupCommandTest {
         GroupCommand command2 = new GroupCommand("ROLE", "Student");
         assertTrue(command1.equals(command2));
     }
+    @Test
+    public void execute_caseInsensitiveCategory_success() {
+        GroupCommand lowerCommand = new GroupCommand("grade", "sec 3");
+        GroupCommand upperCommand = new GroupCommand("GRADE", "sec 3");
+        assertTrue(lowerCommand.equals(upperCommand));
+    }
 }
 
 
