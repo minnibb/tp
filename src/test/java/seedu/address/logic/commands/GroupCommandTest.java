@@ -108,6 +108,7 @@ public class GroupCommandTest {
         assertCommandSuccess(command, model,
                 String.format(GroupCommand.MESSAGE_SUCCESS, "ROLE", validRole, expectedSize), expectedModel);
     }
+
     @Test
     public void equals_differentCriteria_returnsFalse() {
         GroupCommand cmd1 = new GroupCommand("GRADE", "sec 1");
