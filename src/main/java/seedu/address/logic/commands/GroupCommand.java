@@ -69,7 +69,8 @@ public class GroupCommand extends Command {
                     .collect(Collectors.toList());
         } else if (category.equalsIgnoreCase("CLASS") && Class.isValidClass(criteria)) {
             filteredList = model.getFilteredPersonList().stream()
-                    .filter(person -> person.getClass() != null && person.getClass().equals(new Class(criteria)))
+                    .filter(person -> person.getStudentClass() != null
+                            && person.getStudentClass().equals(new Class(criteria)))
                     .collect(Collectors.toList());
         } else if (category.equalsIgnoreCase("GRADE") && Grade.isValidGrade(criteria)) {
             filteredList = model.getFilteredPersonList().stream()
@@ -100,8 +101,8 @@ public class GroupCommand extends Command {
         case "FAVOURITE": return person.getFavourite() != null && person.getFavourite().isFavourite();
         case "ROLE": return Role.isValidRole(criteria) && person.getRole().equals(new Role(criteria));
 
-        case "CLASS": return person.getClass() != null
-                && Class.isValidClass(criteria) && person.getClass().equals(new Class(criteria));
+        case "CLASS": return person.getStudentClass() != null
+                && Class.isValidClass(criteria) && person.getStudentClass().equals(new Class(criteria));
         case "GRADE": return person.getGrade() != null
                 && Grade.isValidGrade(criteria) && person.getGrade().equals(new Grade(criteria));
         default: return false;

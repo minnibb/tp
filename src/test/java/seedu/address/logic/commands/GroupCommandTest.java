@@ -46,28 +46,35 @@ public class GroupCommandTest {
         );
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
     }
-    public void execute_groupByClass_success() {
 
+    @Test
+    public void execute_groupByClass_success() {
         Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
         Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());
-        GroupCommand command = new GroupCommand("CLASS", "2025");
 
-        Predicate<Person> expectedPredicate = person -> person.getClass() != null
-                        && person.getClass().equals(new Class("2025"));
+        GroupCommand command = new GroupCommand("CLASS", "3K");
+
+        Predicate<Person> expectedPredicate = person ->
+                person.getStudentClass() != null
+                        && person.getStudentClass().equals(new Class("3K"));
         expectedModel.updateFilteredPersonList(expectedPredicate);
 
         int expectedSize = expectedModel.getFilteredPersonList().size();
 
         String expectedMessage = String.format(
-                GroupCommand.MESSAGE_NO_RESULTS,
+                GroupCommand.MESSAGE_SUCCESS,
                 "CLASS",
-                "2025",
+                "3K",
                 expectedSize
         );
-        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+
+        assertCommandSuccess(
+                command,
+                model,
+                expectedMessage,
+                expectedModel
+        );
     }
-
-
 
     @Test
     public void equals_withCriteria() {
