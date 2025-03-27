@@ -310,6 +310,60 @@ public class GroupCommandTest {
         boolean isMatched = person.getFavourite() != null && person.getFavourite().isFavourite();
         assertFalse(isMatched);
     }
+    @Test
+    public void equals_sameCategoryAndCriteria_returnsTrue() {
+        GroupCommand command1 = new GroupCommand("ROLE", "Student");
+        GroupCommand command2 = new GroupCommand("ROLE", "Student");
+        assertTrue(command1.equals(command2));
+    }
+
+    @Test
+    public void equals_sameCategoryDifferentCriteria_returnsFalse() {
+        GroupCommand command1 = new GroupCommand("ROLE", "Student");
+        GroupCommand command2 = new GroupCommand("ROLE", "Teacher");
+        assertFalse(command1.equals(command2));
+    }
+
+    @Test
+    public void equals_differentCategorySameCriteria_returnsFalse() {
+        GroupCommand command1 = new GroupCommand("ROLE", "Student");
+        GroupCommand command2 = new GroupCommand("CLASS", "Student");
+        assertFalse(command1.equals(command2));
+    }
+
+    @Test
+    public void equals_differentCategoryAndCriteria_returnsFalse() {
+        GroupCommand command1 = new GroupCommand("ROLE", "Student");
+        GroupCommand command2 = new GroupCommand("CLASS", "2025");
+        assertFalse(command1.equals(command2));
+    }
+
+    @Test
+    public void equals_favouriteCategoryEmptyCriteria_returnsTrue() {
+        GroupCommand command1 = new GroupCommand("FAVOURITE", "");
+        GroupCommand command2 = new GroupCommand("FAVOURITE", "");
+        assertTrue(command1.equals(command2));
+    }
+
+    @Test
+    public void equals_notGroupCommandInstance_returnsFalse() {
+        GroupCommand command = new GroupCommand("GRADE", "sec 3");
+        String notGroupCommand = "group by GRADE sec 3";
+        assertFalse(command.equals(notGroupCommand));
+    }
+
+    @Test
+    public void equals_null_returnsFalse() {
+        GroupCommand command = new GroupCommand("CLASS", "3K");
+        assertFalse(command.equals(null));
+    }
+
+    @Test
+    public void equals_caseInsensitiveCategory_returnsTrue() {
+        GroupCommand command1 = new GroupCommand("role", "Student");
+        GroupCommand command2 = new GroupCommand("ROLE", "Student");
+        assertTrue(command1.equals(command2));
+    }
 }
 
 
