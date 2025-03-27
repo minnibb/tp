@@ -19,6 +19,7 @@ import seedu.address.model.person.Class;
 import seedu.address.model.person.Grade;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Role;
+import seedu.address.testutil.PersonBuilder;
 
 public class GroupCommandTest {
 
@@ -132,6 +133,81 @@ public class GroupCommandTest {
         );
 
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
+    }
+    @Test
+    public void isMatchingGroup_favourite_returnsCorrectBoolean() {
+        Person favouritePerson = new PersonBuilder().withFavourite(true).build();
+        Person nonFavouritePerson = new PersonBuilder().withFavourite(false).build();
+
+        GroupCommand command = new GroupCommand("FAVOURITE", "");
+
+        assertTrue(command.isMatchingGroup(favouritePerson));
+        assertFalse(command.isMatchingGroup(nonFavouritePerson));
+    }
+
+    @Test
+    public void isMatchingGroup_roleValidAndMatches_returnsTrue() {
+        Person student = new PersonBuilder().withRole("Student").build();
+        GroupCommand command = new GroupCommand("ROLE", "Student");
+
+        assertTrue(command.isMatchingGroup(student));
+    }
+
+
+    @Test
+    public void isMatchingGroup_classValidAndMatches_returnsTrue() {
+        Person person = new PersonBuilder().withClass("3K").build();
+        GroupCommand command = new GroupCommand("CLASS", "3K");
+
+        assertTrue(command.isMatchingGroup(person));
+    }
+
+    @Test
+    public void isMatchingGroup_classNull_returnsFalse() {
+        Person person = new PersonBuilder().build();
+        GroupCommand command = new GroupCommand("CLASS", "3K");
+
+        assertFalse(command.isMatchingGroup(person));
+    }
+
+    @Test
+    public void isMatchingClass_invalidCriteria_returnsFalse() {
+        Person person = new PersonBuilder().withClass("3K").build();
+        GroupCommand command = new GroupCommand("CLASS", "InvalidClass");
+
+        assertFalse(command.isMatchingGroup(person));
+    }
+
+    @Test
+    public void isMatchingGrade_validAndMatches_returnsTrue() {
+        Person person = new PersonBuilder().withGrade("sec 3").build();
+        GroupCommand command = new GroupCommand("GRADE", "sec 3");
+
+        assertTrue(command.isMatchingGroup(person));
+    }
+
+    @Test
+    public void isMatchingGrade_gradeNull_returnsFalse() {
+        Person person = new PersonBuilder().build();
+        GroupCommand command = new GroupCommand("GRADE", "sec 3");
+
+        assertFalse(command.isMatchingGroup(person));
+    }
+
+    @Test
+    public void isMatchingGrade_invalidCriteria_returnsFalse() {
+        Person person = new PersonBuilder().withGrade("pri 6").build();
+        GroupCommand command = new GroupCommand("GRADE", "invalid_grade");
+
+        assertFalse(command.isMatchingGroup(person));
+    }
+
+    @Test
+    public void isMatchingGroup_defaultCase_returnsFalse() {
+        Person person = new PersonBuilder().build();
+        GroupCommand command = new GroupCommand("INVALID_CATEGORY", "any");
+
+        assertFalse(command.isMatchingGroup(person));
     }
 
 
