@@ -32,10 +32,7 @@ public class GroupCommandParser implements Parser<GroupCommand> {
         String content = trimmedArgs.substring(3).trim();
         String[] parts = content.split(" ", 2);
 
-        if (parts.length < 1) {
-            throw new ParseException("Error: Missing grouping category. "
-                    + "Usage: group by ROLE/CLASS/GRADE/FAVOURITE [specified_criteria]");
-        }
+
         String category = parts[0].toUpperCase();
 
 

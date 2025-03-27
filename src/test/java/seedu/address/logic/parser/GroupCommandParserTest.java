@@ -52,4 +52,10 @@ public class GroupCommandParserTest {
         assertParseFailure(parser, "by GRADE",
                 "Error: GRADE requires a specified criteria.");
     }
+
+    @Test
+    public void parse_favouriteWithCriteria_throwsParseException() {
+        assertParseFailure(parser, "by FAVOURITE A",
+                "Error: " + "FAVOURITE" + " doesn't requires a specified criteria.");
+    }
 }
