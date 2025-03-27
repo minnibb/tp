@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -480,6 +481,23 @@ public class GroupCommandTest {
         Person person = new PersonBuilder().withFavourite(false).build();
         GroupCommand command = new GroupCommand("FAVOURITE", "");
         assertFalse(command.isMatchingGroup(person));
+    }
+    @Test
+    public void groupCommand_validClassCriteria_returnsTrue() {
+        GroupCommand command = new GroupCommand("CLASS", "2025");
+        assertTrue(Class.isValidClass("2025"));
+    }
+
+    @Test
+    public void groupCommand_emptyClassCriteria_returnsFalse() {
+        GroupCommand command = new GroupCommand("CLASS", "");
+        assertFalse(Class.isValidClass(""));
+    }
+
+    @Test
+    public void groupCommand_categoryNotClass_doesNotCheckClassValidity() {
+        GroupCommand command = new GroupCommand("ROLE", "2025");
+        assertDoesNotThrow(() -> new GroupCommand("ROLE", "2025"));
     }
 
 }
