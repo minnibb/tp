@@ -378,6 +378,23 @@ public class GroupCommandTest {
         GroupCommand upperCommand = new GroupCommand("GRADE", "sec 3");
         assertTrue(lowerCommand.equals(upperCommand));
     }
+    @Test
+    public void execute_roleCategoryWithValidCriteria_success() {
+        String validRole = "Student";
+        GroupCommand upperCommand = new GroupCommand("ROLE", validRole);
+        Model expectedModelUpper = new ModelManager(model.getAddressBook(), new UserPrefs());
+        expectedModelUpper.updateFilteredPersonList(p -> p.getRole().equals(new Role(validRole)));
+        assertCommandSuccess(upperCommand, model,
+                String.format(GroupCommand.MESSAGE_SUCCESS, "ROLE", validRole,
+                        expectedModelUpper.getFilteredPersonList().size()),
+                expectedModelUpper);
+
+        GroupCommand lowerCommand = new GroupCommand("role", validRole);
+        assertCommandSuccess(lowerCommand, model,
+                String.format(GroupCommand.MESSAGE_SUCCESS, "ROLE", validRole,
+                        expectedModelUpper.getFilteredPersonList().size()),
+                expectedModelUpper);
+    }
 }
 
 

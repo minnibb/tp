@@ -49,7 +49,7 @@ public class GroupCommandParserTest {
 
     @Test
     public void parse_favouriteWithCriteria_throwsParseException() {
-        assertParseFailure(parser, "by FAVOURITE A",
+        assertParseFailure(parser, "by favourite A",
                 "Error: " + "FAVOURITE" + " doesn't requires a specified criteria.");
     }
 }
