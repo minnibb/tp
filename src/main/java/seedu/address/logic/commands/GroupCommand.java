@@ -12,27 +12,31 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Role;
 
 /**
- * Groups contacts by specified role (Student/Parent/Staff).
+ * Groups contacts by specified group criteria (Student/Parent/Staff/Favourite).
  */
 public class GroupCommand extends Command {
 
     public static final String COMMAND_WORD = "group";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Groups contacts by specified role.\n"
+            + ": Groups contacts by specified role or favourite status.\n"
             + "Format: group by ROLE\n"
             + "Valid roles: Student, Parent, Staff\n"
-            + "Example: " + COMMAND_WORD + " by Student";
+            + "Valid groupings: Favourite\n"
+            + "Example: " + COMMAND_WORD + " by Student"
+            + "Example: " + COMMAND_WORD + "by Favourite";
 
     public static final String MESSAGE_SUCCESS = "Results are grouped by: %1$s\n"
             + "%2$d contacts found.";
-    public static final String MESSAGE_NO_RESULTS = "No contacts found for specified role.";
-    public static final String MESSAGE_INVALID_ROLE = "Invalid role, please use Parent, Student or Staff.";
+    public static final String MESSAGE_NO_RESULTS = "No contacts found for specified group criteria.";
+    public static final String MESSAGE_INVALID_GROUP = "Invalid group, please use Parent, Student or Staff,"
+            + " or Favourite.";
+    public static final String FAVOURITE = "favourite";
 
-    private final String role;
+    private final String groupCriteria;
 
-    public GroupCommand(String role) {
-        this.role = role;
+    public GroupCommand(String groupCriteria) {
+        this.groupCriteria = groupCriteria;
     }
 
     @Override
@@ -40,22 +44,52 @@ public class GroupCommand extends Command {
         requireNonNull(model);
 
 
-        if (!Role.isValidRole(role)) {
-            throw new CommandException(MESSAGE_INVALID_ROLE);
+        if (!isValidGroup(groupCriteria)) {
+            throw new CommandException(MESSAGE_INVALID_GROUP);
         }
 
-        List<Person> filteredList = model.getFilteredPersonList().stream()
-                .filter(person -> person.getRole().equals(new Role(role)))
-                .collect(Collectors.toList());
+        List<Person> filteredList;
+
+        if (groupCriteria.equalsIgnoreCase(FAVOURITE)) {
+            // Group by favourite status
+            filteredList = model.getFilteredPersonList().stream()
+                    .filter(person -> person.getFavourite() != null && person.getFavourite().isFavourite())
+                    .collect(Collectors.toList());
+        } else if (Role.isValidRole(groupCriteria)) {
+            filteredList = model.getFilteredPersonList().stream()
+                    .filter(person -> person.getRole().equals(new Role(groupCriteria)))
+                    .collect(Collectors.toList());
+        } else {
+            throw new CommandException(MESSAGE_INVALID_GROUP);
+        }
 
         if (filteredList.isEmpty()) {
             return new CommandResult(MESSAGE_NO_RESULTS);
         }
 
-        model.updateFilteredPersonList(person -> person.getRole().equals(new Role(role)));
+        model.updateFilteredPersonList(this::isMatchingGroup);
 
         return new CommandResult(
-                String.format(MESSAGE_SUCCESS, role, filteredList.size()));
+                String.format(MESSAGE_SUCCESS, groupCriteria, filteredList.size()));
+    }
+
+    /**
+     * Checks if the person matches the group criteria (role or favourite).
+     */
+    public boolean isMatchingGroup(Person person) {
+        if (groupCriteria.equalsIgnoreCase(FAVOURITE)) {
+            return person.getFavourite() != null && person.getFavourite().isFavourite();
+        } else if (Role.isValidRole(groupCriteria)) {
+            return person.getRole().equals(new Role(groupCriteria));
+        }
+        return false;
+    }
+
+    /**
+     * Checks if the group criteria is valid.
+     */
+    public boolean isValidGroup(String groupCriteria) {
+        return Role.isValidRole(groupCriteria) || groupCriteria.equalsIgnoreCase(FAVOURITE);
     }
 
     @Override
@@ -69,13 +103,13 @@ public class GroupCommand extends Command {
         }
 
         GroupCommand otherGroupCommand = (GroupCommand) other;
-        return role.equals(otherGroupCommand.role);
+        return groupCriteria.equals(otherGroupCommand.groupCriteria);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("role", role)
+                .add("groupCriteria", groupCriteria)
                 .toString();
     }
 }

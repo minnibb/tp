@@ -68,7 +68,7 @@ public class TypicalPersons {
             .withRole("Parent").withGrade("Sec 2").withClass("2D")
             .withRelativeName("Benson Meier")
             .withRelativePhone("98765432")
-            .withFavourite(false).build();
+            .withFavourite(true).build();
     public static final Person ELLE = new PersonBuilder().withName("Elle Meyer").withPhone("9482224")
             .withEmail("werner@example.com").withAddress("michegan ave")
             .withRole("Student")
