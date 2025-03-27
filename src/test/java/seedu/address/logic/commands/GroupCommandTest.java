@@ -291,8 +291,28 @@ public class GroupCommandTest {
         boolean isMatched = person.getFavourite() != null && person.getFavourite().isFavourite();
         assertTrue(isMatched);
     }
+    @Test
+    public void filter_nonFavouritePerson_false() {
+        Person person = new PersonBuilder()
+                .withFavourite(false)
+                .build();
 
+        boolean isMatched = person.getFavourite() != null && person.getFavourite().isFavourite();
+        assertFalse(isMatched);
+    }
+
+
+
+    @Test
+    public void filter_defaultFavouriteState_false() {
+        Person person = new PersonBuilder().build();
+
+        boolean isMatched = person.getFavourite() != null && person.getFavourite().isFavourite();
+        assertFalse(isMatched);
+    }
 }
+
+
 
 
 
