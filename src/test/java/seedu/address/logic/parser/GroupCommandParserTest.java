@@ -40,12 +40,6 @@ public class GroupCommandParserTest {
                 "Missing space after 'by'. Usage: group by ROLE");
     }
 
-    @Test
-    public void parse_invalidCategory_throwsParseException() {
-        assertParseFailure(parser, "by DEPARTMENT CS",
-                "Error: Invalid category. Allowed: ROLE, CLASS, GRADE, FAVOURITE");
-    }
-
 
     @Test
     public void parse_gradeWithoutCriteria_throwsParseException() {

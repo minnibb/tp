@@ -4,6 +4,7 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
@@ -107,6 +108,13 @@ public class GroupCommandTest {
 
         assertCommandSuccess(command, model,
                 String.format(GroupCommand.MESSAGE_SUCCESS, "ROLE", validRole, expectedSize), expectedModel);
+    }
+    @Test
+    public void execute_invalidInput() {
+        String validRole = "Parent";
+        GroupCommand command = new GroupCommand("ROOE", validRole);
+
+        assertCommandFailure(command, model, GroupCommand.MESSAGE_INVALID_GROUP);
     }
 
     @Test

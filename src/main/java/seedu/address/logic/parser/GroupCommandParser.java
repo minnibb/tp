@@ -1,7 +1,5 @@
 package seedu.address.logic.parser;
 
-import java.util.Arrays;
-import java.util.List;
 
 import seedu.address.logic.commands.GroupCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -34,13 +32,6 @@ public class GroupCommandParser implements Parser<GroupCommand> {
 
 
         String category = parts[0].toUpperCase();
-
-
-        List<String> validCategories = Arrays.asList("ROLE", "CLASS", "GRADE", "FAVOURITE");
-
-        if (!validCategories.contains(category)) {
-            throw new ParseException("Error: Invalid category. Allowed: ROLE, CLASS, GRADE, FAVOURITE");
-        }
 
 
         String criteria = (parts.length == 2) ? parts[1].trim() : "";
