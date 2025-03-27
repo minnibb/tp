@@ -13,6 +13,7 @@ import java.util.function.Predicate;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
@@ -116,6 +117,16 @@ public class GroupCommandTest {
 
         assertCommandFailure(command, model, GroupCommand.MESSAGE_INVALID_GROUP);
     }
+    @Test
+    public void execute_groupByClass_emptyResults() throws CommandException {
+        Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        GroupCommand command = new GroupCommand("CLASS", "11111");
+
+        CommandResult result = command.execute(model);
+
+        assertEquals(GroupCommand.MESSAGE_NO_RESULTS, result.getFeedbackToUser());
+    }
+
 
     @Test
     public void equals_differentCriteria_returnsFalse() {
@@ -394,6 +405,13 @@ public class GroupCommandTest {
                 String.format(GroupCommand.MESSAGE_SUCCESS, "ROLE", validRole,
                         expectedModelUpper.getFilteredPersonList().size()),
                 expectedModelUpper);
+    }
+
+    @Test
+    public void isMatchingGroup_gradeWithSpaces_returnsTrue() {
+        Person person = new PersonBuilder().withGrade("sec 3").build();
+        GroupCommand command = new GroupCommand("GRADE", "sec 3");
+        assertTrue(command.isMatchingGroup(person));
     }
 }
 
