@@ -282,6 +282,16 @@ public class GroupCommandTest {
         GroupCommand command = new GroupCommand("INVALID_CATEGORY", "any");
         assertFalse(command.isMatchingGroup(person));
     }
+    @Test
+    public void filter_favouritePerson_true() {
+        Person person = new PersonBuilder()
+                .withFavourite(true)
+                .build();
+
+        boolean isMatched = person.getFavourite() != null && person.getFavourite().isFavourite();
+        assertTrue(isMatched);
+    }
+
 }
 
 
