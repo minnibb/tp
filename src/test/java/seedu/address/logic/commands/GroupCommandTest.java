@@ -15,6 +15,7 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.person.Class;
 import seedu.address.model.person.Grade;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Role;
@@ -43,9 +44,30 @@ public class GroupCommandTest {
                 "sec 3",
                 expectedSize
         );
-
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
     }
+    public void execute_groupByClass_success() {
+
+        Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        GroupCommand command = new GroupCommand("CLASS", "2025");
+
+        Predicate<Person> expectedPredicate = person -> person.getClass() != null
+                        && person.getClass().equals(new Class("2025"));
+        expectedModel.updateFilteredPersonList(expectedPredicate);
+
+        int expectedSize = expectedModel.getFilteredPersonList().size();
+
+        String expectedMessage = String.format(
+                GroupCommand.MESSAGE_NO_RESULTS,
+                "CLASS",
+                "2025",
+                expectedSize
+        );
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+    }
+
+
 
     @Test
     public void equals_withCriteria() {
