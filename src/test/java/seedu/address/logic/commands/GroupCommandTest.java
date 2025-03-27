@@ -441,6 +441,33 @@ public class GroupCommandTest {
         GroupCommand command = new GroupCommand("ROLE", "Student");
         assertFalse(command.equals("Not a Command"));
     }
+    @Test
+    public void isMatchingGroup_validClass_returnsTrue() {
+        Person person = new PersonBuilder().withClass("1A").build();
+        GroupCommand command = new GroupCommand("CLASS", "1A");
+        assertTrue(command.isMatchingGroup(person));
+    }
+
+    @Test
+    public void isMatchingGroup_invalidClass_returnsFalse() {
+        Person person = new PersonBuilder().withClass("2B").build();
+        GroupCommand command = new GroupCommand("CLASS", "1A");
+        assertFalse(command.isMatchingGroup(person));
+    }
+
+    @Test
+    public void isMatchingGroup_validGrade_returnsTrue() {
+        Person person = new PersonBuilder().withGrade("sec 2").build();
+        GroupCommand command = new GroupCommand("GRADE", "sec 2");
+        assertTrue(command.isMatchingGroup(person));
+    }
+
+    @Test
+    public void isMatchingGroup_invalidGrade_returnsFalse() {
+        Person person = new PersonBuilder().withGrade("pri 4").build();
+        GroupCommand command = new GroupCommand("GRADE", "sec 2");
+        assertFalse(command.isMatchingGroup(person));
+    }
 }
 
 
