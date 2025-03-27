@@ -107,5 +107,32 @@ public class GroupCommandTest {
         assertCommandSuccess(command, model,
                 String.format(GroupCommand.MESSAGE_SUCCESS, "ROLE", validRole, expectedSize), expectedModel);
     }
+    @Test
+    public void equals_differentCriteria_returnsFalse() {
+        GroupCommand cmd1 = new GroupCommand("GRADE", "sec 1");
+        GroupCommand cmd2 = new GroupCommand("GRADE", "sec 2");
+        assertFalse(cmd1.equals(cmd2));
+    }
+    @Test
+    public void execute_groupByFavouriteNoCriteria_success() {
+        Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        GroupCommand command = new GroupCommand("FAVOURITE", "");
+
+        Predicate<Person> predicate = person ->
+                person.getFavourite() != null
+                        && person.getFavourite().isFavourite();
+        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        expectedModel.updateFilteredPersonList(predicate);
+
+        String expectedMessage = String.format(
+                GroupCommand.MESSAGE_SUCCESS,
+                "FAVOURITE",
+                "",
+                expectedModel.getFilteredPersonList().size()
+        );
+
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+    }
+
 
 }
