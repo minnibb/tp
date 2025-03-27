@@ -2,7 +2,6 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -79,7 +78,7 @@ public class GroupCommand extends Command {
                     .collect(Collectors.toList());
 
         } else {
-            filteredList = new ArrayList<>();
+            throw new CommandException(MESSAGE_INVALID_GROUP);
         }
 
         if (filteredList.isEmpty()) {

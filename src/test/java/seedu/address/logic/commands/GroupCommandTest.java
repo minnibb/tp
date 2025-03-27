@@ -211,5 +211,78 @@ public class GroupCommandTest {
         assertFalse(command.isMatchingGroup(person));
     }
 
+    @Test
+    public void isMatchingGroup_validRoleMatching_returnsTrue() {
+        Person person = new PersonBuilder().withRole("Student").build();
+        GroupCommand command = new GroupCommand("ROLE", "Student");
+        assertTrue(command.isMatchingGroup(person));
+    }
 
+    @Test
+    public void isMatchingGroup_validRoleNotMatching_returnsFalse() {
+        Person person = new PersonBuilder().withRole("Parent").build();
+        GroupCommand command = new GroupCommand("ROLE", "Student");
+        assertFalse(command.isMatchingGroup(person));
+    }
+
+    @Test
+    public void isMatchingGroup_invalidRoleCriteria_returnsFalse() {
+        Person person = new PersonBuilder().withRole("Student").build();
+        GroupCommand command = new GroupCommand("ROLE", "InvalidRole");
+        assertFalse(command.isMatchingGroup(person));
+    }
+
+
+    @Test
+    public void isMatchingGroup_validClassMatching_returnsTrue() {
+        Person person = new PersonBuilder().withClass("3K").build();
+        GroupCommand command = new GroupCommand("CLASS", "3K");
+        assertTrue(command.isMatchingGroup(person));
+    }
+
+    @Test
+    public void isMatchingGroup_classFieldNull_returnsFalse() {
+        Person person = new PersonBuilder().build(); // 默认 class 为 null
+        GroupCommand command = new GroupCommand("CLASS", "3K");
+        assertFalse(command.isMatchingGroup(person));
+    }
+
+    @Test
+    public void isMatchingGroup_invalidClassCriteria_returnsFalse() {
+        Person person = new PersonBuilder().withClass("3K").build();
+        GroupCommand command = new GroupCommand("CLASS", "InvalidClass");
+        assertFalse(command.isMatchingGroup(person));
+    }
+
+    @Test
+    public void isMatchingGroup_validGradeMatching_returnsTrue() {
+        Person person = new PersonBuilder().withGrade("sec 3").build();
+        GroupCommand command = new GroupCommand("GRADE", "sec 3");
+        assertTrue(command.isMatchingGroup(person));
+    }
+
+    @Test
+    public void isMatchingGroup_gradeFieldNull_returnsFalse() {
+        Person person = new PersonBuilder().build(); // 默认 grade 为 null
+        GroupCommand command = new GroupCommand("GRADE", "sec 3");
+        assertFalse(command.isMatchingGroup(person));
+    }
+
+    @Test
+    public void isMatchingGroup_invalidGradeCriteria_returnsFalse() {
+        Person person = new PersonBuilder().withGrade("pri 6").build();
+        GroupCommand command = new GroupCommand("GRADE", "invalid_grade");
+        assertFalse(command.isMatchingGroup(person));
+    }
+
+
+    @Test
+    public void isMatchingGroup_unknownCategory_returnsFalse() {
+        Person person = new PersonBuilder().build();
+        GroupCommand command = new GroupCommand("INVALID_CATEGORY", "any");
+        assertFalse(command.isMatchingGroup(person));
+    }
 }
+
+
+
