@@ -413,6 +413,34 @@ public class GroupCommandTest {
         GroupCommand command = new GroupCommand("GRADE", "sec 3");
         assertTrue(command.isMatchingGroup(person));
     }
+
+    @Test
+    public void equals_sameObject_returnsTrue() {
+        GroupCommand command = new GroupCommand("ROLE", "Student");
+        assertTrue(command.equals(command));
+    }
+
+    @Test
+    public void equals_sameValues_returnsTrue() {
+        GroupCommand command1 = new GroupCommand("ROLE", "Student");
+        GroupCommand command2 = new GroupCommand("ROLE", "Student");
+        assertTrue(command1.equals(command2));
+    }
+
+    @Test
+    public void equals_differentCategory_returnsFalse() {
+        GroupCommand command1 = new GroupCommand("ROLE", "Student");
+        GroupCommand command2 = new GroupCommand("CLASS", "Student");
+        assertFalse(command1.equals(command2));
+    }
+
+
+
+    @Test
+    public void equals_differentType_returnsFalse() {
+        GroupCommand command = new GroupCommand("ROLE", "Student");
+        assertFalse(command.equals("Not a Command"));
+    }
 }
 
 
