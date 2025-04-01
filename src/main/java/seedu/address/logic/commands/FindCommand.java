@@ -46,10 +46,6 @@ public class FindCommand extends Command {
         this.predicate = new PhoneContainsSubstringPredicate(phoneKeyword);
     }
 
-    public boolean isValid(List<String> nameKeywords) {
-        return nameKeywords.stream().allMatch(keyword -> keyword.matches("[a-zA-Z ]+"));
-    }
-
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
