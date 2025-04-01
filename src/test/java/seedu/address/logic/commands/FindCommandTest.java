@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.Messages.MESSAGE_NO_RESULTS;
 import static seedu.address.logic.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalPersons.BENSON;
@@ -100,7 +101,7 @@ public class FindCommandTest {
 
     @Test
     public void execute_noMatchingKeywords_noPersonFound() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
+        String expectedMessage = MESSAGE_NO_RESULTS;
         NameContainsKeywordsPredicate predicate = preparePredicate("Edward");
         List<String> keywords = Collections.singletonList("Edward");
         FindCommand command = new FindCommand(keywords);
@@ -127,7 +128,7 @@ public class FindCommandTest {
 
     @Test
     public void execute_noMatchingNumbers_noPersonFound() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
+        String expectedMessage = MESSAGE_NO_RESULTS;
         PhoneContainsSubstringPredicate predicate = new PhoneContainsSubstringPredicate("000000");
         String number = "000000";
         FindCommand command = new FindCommand(number);
