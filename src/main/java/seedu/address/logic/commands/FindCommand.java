@@ -26,6 +26,9 @@ public class FindCommand extends Command {
             + "Search by phone number (partial match allowed):\n"
             + "  Example: " + COMMAND_WORD + " 91234567\n";
 
+    public static final String MESSAGE_NO_RESULTS = "No contacts found.";
+    public static final String MESSAGE_INVALID_NAME = "Names can only contain alphabetic characters and spaces.";
+
     private final Predicate<Person> predicate;
 
     /**
@@ -46,10 +49,26 @@ public class FindCommand extends Command {
         this.predicate = new PhoneContainsSubstringPredicate(phoneKeyword);
     }
 
+    public boolean isValid(List<String> nameKeywords) {
+        return nameKeywords.stream().allMatch(keyword -> keyword.matches("[a-zA-Z ]+"));
+    }
+
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
+
+        if (predicate instanceof NameContainsKeywordsPredicate namePredicate) {
+            if (!namePredicate.isValid()) {
+                return new CommandResult(MESSAGE_INVALID_NAME);
+            }
+        }
+
         model.updateFilteredPersonList(predicate);
+
+        if (model.getFilteredPersonList().isEmpty()) {
+            return new CommandResult(MESSAGE_NO_RESULTS);
+        }
+
         return new CommandResult(
                 String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size()));
     }
