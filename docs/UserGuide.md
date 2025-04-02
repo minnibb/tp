@@ -8,8 +8,8 @@
 
 :rotating_light: ATTENTION ALL TEACHERS! :rotating_light: Introducing ClassHive, a **desktop app for managing all your 
 school contacts**! ClassHive is a fast and easy to use app that helps you keep track of all the people you will need to 
-contact, including colleagues, parents and students. In ClassHive, instead of clicking many buttons, you can simply type 
-in commands to access any function! Let's now explore the different features that were built just for you! :rocket:
+contact, including colleagues, parents and students. In ClassHive, instead of having to click many buttons, you can 
+simply type in commands to access any function! Let's now explore the different features that were built just for you! :rocket:
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -59,7 +59,9 @@ Getting started with ClassHive is easy! Just follow these steps:
 
 <box type="info" seamless>
 
-**Notes about the command format:**<br>
+It will be useful to know some information about the command format before getting started on the features!
+
+**Here are some notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
@@ -81,7 +83,8 @@ Getting started with ClassHive is easy! Just follow these steps:
 
 ### Viewing help : `help`
 
-Shows a message explaning how to access the help page. Help page contains instructions for all the features in ClassHive. 
+Help is always near when using ClassHive! At any point in time, if you need instructions on how to use the app, 
+type `help`.
 
 ![help message](images/helpMessage.png)
 
@@ -97,7 +100,9 @@ Format: `help`
 When you first download ClassHive, you might want to use the `clear` command to ensure you're starting with a
 fresh database. The `clear` command allows you to remove all contacts from ClassHive with a single command.
 
+_Before clearing the entries:_
 ![clear command before](images/clearCommand.png)
+_After clearing the entries:_
 ![clear command result](images/clearCommand2.png)
 
 Format: `clear`
@@ -110,7 +115,12 @@ on transferring data).
 
 ### Adding a person: `add`
 
-Adds a new contact into the ClassHive app.
+To make ClassHive ready for your personal use, add contacts into the app using the `add` command!
+
+_Before adding the new contact:_
+![add command before](images/beforeAddCommand.png)
+_After adding the new contact:_
+![add command result](images/afterAddCommand.png)
 
 Format: 
 - For adding Students: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]… r/Student g/GRADE c/CLASS rn/PARENT'S_NAME rp/PARENT'S_PHONE​`
@@ -130,9 +140,44 @@ Examples:
 * `add n/Bob Doe p/92932011 e/bobd@example.com a/John street, block 123, #01-01 r/Parent rn/John Doe rp/98765432 g/Sec 1 c/1A`
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Serangoon Avenue 2 p/12345678 r/Staff`
 
+### Editing a person : `edit`
+
+If a contact's information has changed, simply use the `edit` command to change the contact's details. 
+
+_Before editing the second contact in the list:_
+![edit command before](images/beforeEditCommand.png)
+_After editing the second contact in the list:_
+![edit command result](images/afterEditCommand.png)
+
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
+
+<box type="tip" seamless>
+
+**Note:**
+* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+* At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
+* You can remove all the person’s tags by typing `t/` without specifying any tags after it.
+* If you are changing the role to `Staff`, make sure that the fields `[g/GRADE]`, `[c/CLASS]`, `[rn/RELATIVE'S_NAME]` and
+  `[rp/RELATIVE'S_PHONE]` are not included. 
+* If you are changing the role to `Student` or `Parent`, make sure that the fields `[g/GRADE]`, `[c/CLASS]`, `[rn/RELATIVE'S_NAME]` and
+  `[rp/RELATIVE'S_PHONE]` are included.
+    </box>
+
+Examples:
+*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
+*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+
 ### Deleting a person : `delete`
 
-Deletes the specified person from the ClassHive app.
+As you use ClassHive, there may be some contacts that will leave the school. Since you no longer need to contact them, 
+you can use the `delete` command to delete their information, ensuring ClassHive remains uncluttered with unnecessary information.
+
+_Before deleting the old contact:_
+![add command before](images/beforeAddCommand.png)
+_After deleting the old contact:_
+![add command result](images/afterAddCommand.png)
 
 Format: `delete n/NAME p/PHONE_NUMBER`
 <box type="tip" seamless>
@@ -145,33 +190,14 @@ Format: `delete n/NAME p/PHONE_NUMBER`
 Examples:
 * `delete n/Betsy Crowe p/12345678` deletes `Betsy Crowe` with the phone number `12345678` from the app.
 
-### Editing a person : `edit`
-
-Edits an existing person in the address book.
-
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
-
-<box type="tip" seamless>
-
-**Note:**
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
-* At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person’s tags by typing `t/` without
-  specifying any tags after it.
-  </box>
-
-Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
-
 ### Adding note to a contact : `note`
 
 As you add more contacts into ClassHive, you might want to remember important details about them. The `note` command 
 allows you to add this information to specific contacts for easy reference later.
 
+_Before adding a note to the first contact in the list:_
 ![note command before](images/noteCommand.png)
+_After adding a note to the first contact in the list:_
 ![note command result](images/noteCommand2.png)
 
 Format: `note INDEX nt/NOTE`
@@ -222,7 +248,9 @@ As a teacher managing multiple classes, your contact list will eventually get la
 ClassHive contacts organized in a logical order, the `sort` command lets you arrange your contacts alphabetically by name 
 or chronologically by when they were added, making it easier to scan through your list.
 
+_Before sorting by contacts' names in descending order:_
 ![sort command before](images/sortCommand.png)
+_After sorting by contacts' names in descending order:_
 ![sort command result](images/sortCommand2.png)
 
 Format: `sort by/[FIELD] [ORDER]`
