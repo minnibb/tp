@@ -22,12 +22,23 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.person.Class;
+import seedu.address.model.person.Grade;
+import seedu.address.model.person.Name;
+import seedu.address.model.person.Phone;
+import seedu.address.model.person.Role;
 import seedu.address.model.tag.Tag;
 
 /**
  * Parses input arguments and creates a new EditCommand object
  */
 public class EditCommandParser implements Parser<EditCommand> {
+
+    public static final String MESSAGE_PARSE_STAFF_ERROR = "Prefixes for grade, class, relative's name "
+            + "and relative's phone should not be present when changing to the Staff role.";
+
+    public static final String MESSAGE_PARSE_NON_STAFF_ERROR = "Prefixes for grade, class, relative's name "
+            + "and relative's phone must be present when changing to the Student or Parent role.";
 
     /**
      * Parses the given {@code String} of arguments in the context of the EditCommand
@@ -66,27 +77,25 @@ public class EditCommandParser implements Parser<EditCommand> {
             editPersonDescriptor.setAddress(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get()));
         }
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editPersonDescriptor::setTags);
-
-        if (argMultimap.getValue(PREFIX_ROLE).isPresent()) {
-            editPersonDescriptor.setRole(ParserUtil.parseRole(argMultimap.getValue(PREFIX_ROLE).get()));
-        }
-
         if (argMultimap.getValue(PREFIX_GRADE).isPresent()) {
             editPersonDescriptor.setGrade(ParserUtil.parseGrade(argMultimap.getValue(PREFIX_GRADE).get()));
         }
-
         if (argMultimap.getValue(PREFIX_CLASS).isPresent()) {
             editPersonDescriptor.setStudentClass(ParserUtil.parseClass(argMultimap.getValue(PREFIX_CLASS).get()));
         }
-
         if (argMultimap.getValue(PREFIX_RELATIVE_NAME).isPresent()) {
             editPersonDescriptor
                     .setRelativeName(ParserUtil.parseRelativeName(argMultimap.getValue(PREFIX_RELATIVE_NAME).get()));
         }
-
         if (argMultimap.getValue(PREFIX_RELATIVE_PHONE).isPresent()) {
             editPersonDescriptor
                     .setRelativePhone(ParserUtil.parseRelativePhone(argMultimap.getValue(PREFIX_RELATIVE_PHONE).get()));
+        }
+
+        // parse role the last so that it can override any changes in grade, class, relative's name
+        // and relative's phone if necessary
+        if (argMultimap.getValue(PREFIX_ROLE).isPresent()) {
+            parseRole(argMultimap, editPersonDescriptor);
         }
 
         if (!editPersonDescriptor.isAnyFieldEdited()) {
@@ -94,6 +103,42 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
 
         return new EditCommand(index, editPersonDescriptor);
+    }
+
+    /**
+     * Parses the {@code Role} of the edited Person.
+     */
+    private EditPersonDescriptor parseRole(ArgumentMultimap argMultimap,
+                                           EditPersonDescriptor editPersonDescriptor) throws ParseException {
+
+        boolean isGradePresent = argMultimap.getValue(PREFIX_GRADE).isPresent();
+        boolean isClassPresent = argMultimap.getValue(PREFIX_CLASS).isPresent();
+        boolean isRelativeNamePresent = argMultimap.getValue(PREFIX_RELATIVE_NAME).isPresent();
+        boolean isRelativePhonePresent = argMultimap.getValue(PREFIX_RELATIVE_PHONE).isPresent();
+
+        Role newRole = ParserUtil.parseRole(argMultimap.getValue(PREFIX_ROLE).get());
+
+        if (newRole.getType().equals(Role.Type.STAFF)) {
+            // grade, class, relative's name and relative's phone should not be present
+            if (isGradePresent || isClassPresent || isRelativeNamePresent || isRelativePhonePresent) {
+                throw new ParseException(MESSAGE_PARSE_STAFF_ERROR);
+            }
+            editPersonDescriptor.setRole(newRole);
+            editPersonDescriptor.setGrade(new Grade("Not applicable"));
+            editPersonDescriptor.setStudentClass(new Class("Not applicable"));
+            editPersonDescriptor.setRelativeName(new Name("Not applicable"));
+            editPersonDescriptor.setRelativePhone(new Phone("Not applicable"));
+            return editPersonDescriptor;
+        }
+
+        // new role is not of type STAFF
+        if (!(isGradePresent && isClassPresent && isRelativeNamePresent && isRelativePhonePresent)) {
+            throw new ParseException(MESSAGE_PARSE_NON_STAFF_ERROR);
+        } else {
+            editPersonDescriptor.setRole(newRole);
+        }
+
+        return editPersonDescriptor;
     }
 
     /**
