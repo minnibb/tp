@@ -183,8 +183,8 @@ Format: `note INDEX nt/NOTE`
   </box>
 
 Examples:
-* `note 1 n/student needs help with English` Adds a note about academic needs to the 1st person in the list.
-* `note 3 n/prefers to be contacted after 5pm` Adds a note about contact preferences to the 3rd person.
+* `note 1 nt/student needs help with English` Adds a note about academic needs to the 1st person in the list.
+* `note 3 nt/prefers to be contacted after 5pm` Adds a note about contact preferences to the 3rd person.
 
 ### Locating persons by name or phone number: `find`
 
