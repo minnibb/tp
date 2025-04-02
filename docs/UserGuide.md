@@ -204,9 +204,18 @@ Examples:
 
 ### Clearing all entries : `clear`
 
-Clears all entries from the address book.
+When you first download ClassHive, you might want to use the `clear` command to ensure you're starting with a
+fresh database. The `clear` command allows you to remove all contacts from ClassHive with a single command. 
 
 Format: `clear`
+
+![clear command result](images/clearCommand.png)
+
+<box type="warning" seamless>
+**Caution:**
+This will remove ALL your contacts from ClassHive. Consider backing up your data before clearing (see FAQ section
+on transferring data).
+</box>
 
 ### Exiting the program : `exit`
 
