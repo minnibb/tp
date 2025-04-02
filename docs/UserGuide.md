@@ -8,8 +8,8 @@
 
 :rotating_light: ATTENTION ALL TEACHERS! :rotating_light: Introducing ClassHive, a **desktop app for managing all your 
 school contacts**! ClassHive is a fast and easy to use app that helps you keep track of all the people you will need to 
-contact, including colleagues, parents and students. In ClassHive, instead of clicking many buttons, you can simply type 
-in commands to access any function! Let's now explore the different features that were built just for you! :rocket:
+contact, including colleagues, parents and students. In ClassHive, instead of having to click many buttons, you can 
+simply type in commands to access any function! Let's now explore the different features that were built just for you! :rocket:
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -59,7 +59,9 @@ Getting started with ClassHive is easy! Just follow these steps:
 
 <box type="info" seamless>
 
-**Notes about the command format:**<br>
+It will be useful to keep some information about the command format before getting started on the features!
+
+**Here are some notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
