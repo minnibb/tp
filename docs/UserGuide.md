@@ -59,7 +59,7 @@ Getting started with ClassHive is easy! Just follow these steps:
 
 <box type="info" seamless>
 
-It will be useful to keep some information about the command format before getting started on the features!
+It will be useful to know some information about the command format before getting started on the features!
 
 **Here are some notes about the command format:**<br>
 
@@ -84,7 +84,7 @@ It will be useful to keep some information about the command format before getti
 ### Viewing help : `help`
 
 Help is always near when using ClassHive! At any point in time, if you need instructions on how to use the app, 
-click on the `Help` button in the top bar.
+type `help`.
 
 ![help message](images/helpMessage.png)
 
@@ -120,7 +120,7 @@ To make ClassHive ready for your personal use, add contacts into the app using t
 _Before adding the new contact:_
 ![add command before](images/beforeAddCommand.png)
 _After adding the new contact:_
-![add command after](images/afterAddCommand.png)
+![add command result](images/afterAddCommand.png)
 
 Format: 
 - For adding Students: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]… r/Student g/GRADE c/CLASS rn/PARENT'S_NAME rp/PARENT'S_PHONE​`
@@ -147,7 +147,7 @@ If a contact's information has changed, simply use the `edit` command to change 
 _Before editing the second contact in the list:_
 ![edit command before](images/beforeEditCommand.png)
 _After editing the second contact in the list:_
-![edit command after](images/afterEditCommand.png)
+![edit command result](images/afterEditCommand.png)
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 
@@ -171,13 +171,13 @@ Examples:
 
 ### Deleting a person : `delete`
 
-As you use ClassHive, there may be some contacts that have left the school. Since you no longer need to contact them, 
+As you use ClassHive, there may be some contacts that will leave the school. Since you no longer need to contact them, 
 you can use the `delete` command to delete their information, ensuring ClassHive remains uncluttered with unnecessary information.
 
 _Before deleting the old contact:_
 ![add command before](images/beforeAddCommand.png)
 _After deleting the old contact:_
-![add command after](images/afterAddCommand.png)
+![add command result](images/afterAddCommand.png)
 
 Format: `delete n/NAME p/PHONE_NUMBER`
 <box type="tip" seamless>
