@@ -97,9 +97,9 @@ Format: `help`
 When you first download ClassHive, you might want to use the `clear` command to ensure you're starting with a
 fresh database. The `clear` command allows you to remove all contacts from ClassHive with a single command.
 
-Format: `clear`
-
 ![clear command result](images/clearCommand.png)
+
+Format: `clear`
 
 <box type="warning" seamless>
 **Caution:**
@@ -167,6 +167,25 @@ Examples:
 
 ### Adding note to a contact : `note`
 
+As you add more contacts into ClassHive, you might want to remember important details about them. The `note` command 
+allows you to add this information to specific contacts for easy reference later.
+
+![note command result](images/noteCommand.png)
+
+Format: `note INDEX nt/NOTE`
+
+<box type="tip" seamless>
+
+**Note:**
+* The INDEX refers to the index number shown in the displayed person list.
+* The index must be a positive integer (1, 2, 3, ...).
+* Any existing note for the contact will be replaced by the new note.
+  </box>
+
+Examples:
+* `note 1 n/student needs help with English` Adds a note about academic needs to the 1st person in the list.
+* `note 3 n/prefers to be contacted after 5pm` Adds a note about contact preferences to the 3rd person.
+
 ### Locating persons by name or phone number: `find`
 
 The `find` command allows you to search for people by either their name or phone number, and handles partial matches.
@@ -197,7 +216,11 @@ Format: `list`
 
 ### Sorting contacts : `sort`
 
-Sorts all contacts in the address book based on specified criteria.
+As a teacher managing multiple classes, your contact list will eventually get larger over time. If you want to keep your 
+ClassHive contacts organized in a logical order, the `sort` command lets you arrange your contacts alphabetically by name 
+or chronologically by when they were added, making it easier to scan through your list.
+
+![sort command result](images/sortCommand.png)
 
 Format: `sort by/[FIELD] [ORDER]`
 <box type="tip" seamless>
@@ -251,7 +274,8 @@ Filters and groups contacts by a specific role.
 
 ### Exiting the program : `exit`
 
-After you have finished updating your contacts, you will want to safely close ClassHive. The `exit` command allows you to 
+After you have finished updating your contacts, you will want to safely close ClassHive. The `exit` command allows you to
+properly shut down the application, ensuring all changes are saved.
 
 Format: `exit`
 
@@ -297,18 +321,18 @@ _Details coming soon ..._
 
 ## Command summary
 
-| Action       | Format, Examples                                                                                                                                                                                                 |
-|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Action       | Format, Examples                                                                                                                                                                                                                                        |
+|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Add**      | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]… r/Student g/GRADE c/CLASS rn/KIN'S_NAME rp/KIN'S_PHONE` <br> e.g., `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/Student g/Sec 1 c/1A rn/Bob Doe rp/92932011` |
-| **Clear**    | `clear`                                                                                                                                                                                                          |
-| **Delete**   | `delete n/NAME p/PHONE`<br> e.g., `delete n/Betsy Crowe p/12345678`                                                                                                                                              |
-| **Edit**     | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                       |
-| **Exit**     | `exit`                                                                                                                                                                                                           |
-| **Favourite** |                                                                                                                                                                                                                  |
-| **Find**     | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Tan` <br> `find NUMBER` <br> e.g, `find 98765432`                                                                                                           |
-| **Group**    | `group by [VALUE]`<br>e.g., `group by student`, `group by staff`                                                                                                                                                 |
-| **Help**     | `help`                                                                                                                                                                                                           |
-| **List**     | `list`                                                                                                                                                                                                           |
-| **Note**     |                                                                                                                                                                                                                  |
-| **Sort**     | `sort by/[FIELD] [ORDER]`<br> e.g., `sort by/name asc`, `sort by/date desc`   
+| **Clear**    | `clear`                                                                                                                                                                                                                                                 |
+| **Delete**   | `delete n/NAME p/PHONE`<br> e.g., `delete n/Betsy Crowe p/12345678`                                                                                                                                                                                     |
+| **Edit**     | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                                              |
+| **Exit**     | `exit`                                                                                                                                                                                                                                                  |
+| **Favourite** |                                                                                                                                                                                                                                                         |
+| **Find**     | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Tan` <br> `find NUMBER` <br> e.g, `find 98765432`                                                                                                                                                  |
+| **Group**    | `group by [VALUE]`<br>e.g., `group by student`, `group by staff`                                                                                                                                                                                        |
+| **Help**     | `help`                                                                                                                                                                                                                                                  |
+| **List**     | `list`                                                                                                                                                                                                                                                  |
+| **Note**     | `note INDEX n/NOTE`<br> e.g., `note 1 nt/student needs extra help with Mathematics`                                                                                                                                                                     |
+| **Sort**     | `sort by/[FIELD] [ORDER]`<br> e.g., `sort by/name asc`, `sort by/date desc`                                                                                                                                                                             
 
