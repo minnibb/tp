@@ -97,7 +97,8 @@ Format: `help`
 When you first download ClassHive, you might want to use the `clear` command to ensure you're starting with a
 fresh database. The `clear` command allows you to remove all contacts from ClassHive with a single command.
 
-![clear command result](images/clearCommand.png)
+![clear command before](images/clearCommand.png)
+![clear command result](images/clearCommand2.png)
 
 Format: `clear`
 
@@ -170,7 +171,8 @@ Examples:
 As you add more contacts into ClassHive, you might want to remember important details about them. The `note` command 
 allows you to add this information to specific contacts for easy reference later.
 
-![note command result](images/noteCommand.png)
+![note command before](images/noteCommand.png)
+![note command result](images/noteCommand2.png)
 
 Format: `note INDEX nt/NOTE`
 
@@ -220,7 +222,8 @@ As a teacher managing multiple classes, your contact list will eventually get la
 ClassHive contacts organized in a logical order, the `sort` command lets you arrange your contacts alphabetically by name 
 or chronologically by when they were added, making it easier to scan through your list.
 
-![sort command result](images/sortCommand.png)
+![sort command before](images/sortCommand.png)
+![sort command result](images/sortCommand2.png)
 
 Format: `sort by/[FIELD] [ORDER]`
 <box type="tip" seamless>
