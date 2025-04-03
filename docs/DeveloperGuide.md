@@ -564,7 +564,7 @@ testers are expected to do more *exploratory* testing.
       Expected: Displays contacts containing “Alice” (e.g., "Alice Lim", "Alicia Tan").
       
    1. Test case: `find $#@`<br>
-      Expected: Displays contacts containing “Alice” (e.g., "Alice Lim", "Alicia Tan").Displays an error message for invalid characters.
+      Expected: Displays an error message for invalid characters.
       
 1. Searching by phone number
 
@@ -595,17 +595,9 @@ testers are expected to do more *exploratory* testing.
 
 ## **Appendix: Planned Enhancements**
 
-1. Allow more than one parent’s name and phone number to be added to a student contact.
-2. Allow more than one student’s name and phone number to be added to a parent contact.
-3. Allow the Grade, Class, Relative’s Name and Relative’s Phone to missing when using the Edit Command to change roles from Student to Parent or Parent to Student.
-4. Restrict the editing of Grade, Class, Relative’s Name and Relative’s Phone when the contact is currently given the Staff role.
-5. Allow grouping by multiple criteria.
-6. Enforcing Naming Restrictions for Classes. Prohibiting spaces in class names to prevent parsing issues. Disallowing names that match predefined grade categories to avoid ambiguity.
-7. Allow users to set priority levels to differentiate important contacts (e.g. “high priority favourite”).
-8. Support fuzzy search and typo tolerance to make finding contacts more user-friendly.
-9. Add an archive feature .
-10. Add multi-level sorting capability, meaning first sort by name then sort by date etc.
-11. Allow user to format texts like bold,italic etc to highlight important information.
+Team size: 4
+
+1.
 
 --------------------------------------------------------------------------------------------------------------------
 
