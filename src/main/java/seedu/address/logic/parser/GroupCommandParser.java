@@ -22,7 +22,8 @@ public class GroupCommandParser implements Parser<GroupCommand> {
 
         if (!trimmedArgs.startsWith("by ")) {
             if (trimmedArgs.startsWith("by")) {
-                throw new ParseException("Missing space after 'by'. Usage: group by ROLE/CLASS/GRADE/FAVOURITE [specific criteria]");
+                throw new ParseException("Missing space after 'by'. "
+                        + "Usage: group by ROLE/CLASS/GRADE/FAVOURITE [specific criteria]");
             }
             throw new ParseException("Invalid format. Usage: group by ROLE/CLASS/GRADE/FAVOURITE [specific criteria]");
         }
