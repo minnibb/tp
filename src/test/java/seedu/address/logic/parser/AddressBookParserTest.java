@@ -174,4 +174,24 @@ public class AddressBookParserTest {
         assertThrows(ParseException.class, () ->
                 parser.parseCommand(SortCommand.COMMAND_WORD + " name asc"));
     }
+
+    @Test
+    public void parseCommand_sortDefaultField() throws Exception {
+        assertThrows(ParseException.class, () ->
+                parser.parseCommand(SortCommand.COMMAND_WORD + " by"));
+    }
+
+    @Test
+    public void parseCommand_sortWithFieldNoOrder() throws Exception {
+        SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " by name");
+        assertEquals(new SortCommand("name", true), command);
+        SortCommand dateCommand = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " by date");
+        assertEquals(new SortCommand("date", true), dateCommand);
+    }
+
+    @Test
+    public void parseCommand_sortWithExtraWhitespace() throws Exception {
+        SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + "    by   name    asc   ");
+        assertEquals(new SortCommand("name", true), command);
+    }
 }
