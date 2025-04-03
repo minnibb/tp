@@ -3,25 +3,41 @@ package seedu.address.logic.parser;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.CLASS_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.GRADE_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ADDRESS_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_CLASS_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_GRADE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_RELATIVE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_RELATIVE_PHONE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ROLE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.PARENT_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.PARENT_PHONE_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.ROLE_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.ROLE_DESC_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.ROLE_DESC_CHARLES;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_CLASS_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_GRADE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PARENT_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PARENT_PHONE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ROLE_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ROLE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
@@ -30,6 +46,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
+import static seedu.address.logic.parser.EditCommandParser.MESSAGE_PARSE_NON_STAFF_ERROR;
+import static seedu.address.logic.parser.EditCommandParser.MESSAGE_PARSE_STAFF_ERROR;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_PERSON;
@@ -41,7 +59,9 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Class;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Grade;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Role;
@@ -92,6 +112,12 @@ public class EditCommandParserTest {
         assertParseFailure(parser, "1" + INVALID_ADDRESS_DESC, Address.MESSAGE_CONSTRAINTS); // invalid address
         assertParseFailure(parser, "1" + INVALID_TAG_DESC, Tag.MESSAGE_CONSTRAINTS); // invalid tag
         assertParseFailure(parser, "1" + INVALID_ROLE_DESC, Role.MESSAGE_CONSTRAINTS); // invalid role
+        assertParseFailure(parser, "1" + INVALID_GRADE_DESC, Grade.MESSAGE_CONSTRAINTS); // invalid grade
+        assertParseFailure(parser, "1" + INVALID_CLASS_DESC, Class.MESSAGE_CONSTRAINTS); // invalid class
+        // invalid name of relative
+        assertParseFailure(parser, "1" + INVALID_RELATIVE_DESC, Name.MESSAGE_CONSTRAINTS);
+        // invalid phone of relative
+        assertParseFailure(parser, "1" + INVALID_RELATIVE_PHONE_DESC, Phone.MESSAGE_CONSTRAINTS);
         // invalid phone followed by valid email
         assertParseFailure(parser, "1" + INVALID_PHONE_DESC + EMAIL_DESC_AMY, Phone.MESSAGE_CONSTRAINTS);
 
@@ -111,18 +137,21 @@ public class EditCommandParserTest {
     public void parse_allFieldsSpecified_success() {
         Index targetIndex = INDEX_SECOND_PERSON;
         String userInput = targetIndex.getOneBased() + PHONE_DESC_BOB + TAG_DESC_HUSBAND
-                + EMAIL_DESC_AMY + ADDRESS_DESC_AMY + NAME_DESC_AMY + TAG_DESC_FRIEND;
+                + EMAIL_DESC_AMY + ADDRESS_DESC_AMY + NAME_DESC_AMY + TAG_DESC_FRIEND + ROLE_DESC_AMY
+                + GRADE_DESC_AMY + CLASS_DESC_AMY + PARENT_DESC_AMY + PARENT_PHONE_DESC_AMY;
 
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
-                .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
+                .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).withRole(VALID_ROLE_AMY).withGrade(VALID_GRADE_AMY)
+                .withClass(VALID_CLASS_AMY).withRelativeName(VALID_PARENT_AMY)
+                .withRelativePhone(VALID_PARENT_PHONE_AMY).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
     }
 
     @Test
-    public void parse_someFieldsSpecified_success() {
+    public void parse_someFieldsSpecifiedWhenRoleIsUnchanged_success() {
         Index targetIndex = INDEX_FIRST_PERSON;
         String userInput = targetIndex.getOneBased() + PHONE_DESC_BOB + EMAIL_DESC_AMY;
 
@@ -134,7 +163,7 @@ public class EditCommandParserTest {
     }
 
     @Test
-    public void parse_oneFieldSpecified_success() {
+    public void parse_oneFieldSpecifiedWhenRoleIsUnchanged_success() {
         // name
         Index targetIndex = INDEX_THIRD_PERSON;
         String userInput = targetIndex.getOneBased() + NAME_DESC_AMY;
@@ -165,6 +194,88 @@ public class EditCommandParserTest {
         descriptor = new EditPersonDescriptorBuilder().withTags(VALID_TAG_FRIEND).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
+    }
+
+    @Test
+    public void parse_specifyRoleAndNoOtherFields() {
+        // change role to Staff
+        Index targetIndex = INDEX_THIRD_PERSON;
+        String userInput = targetIndex.getOneBased() + ROLE_DESC_BOB;
+        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withRole(VALID_ROLE_BOB)
+                .withGrade("Not applicable").withClass("Not applicable")
+                .withRelativeName("Not applicable").withRelativePhone("Not applicable").build();
+        EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        // change role to Parent
+        userInput = targetIndex.getOneBased() + ROLE_DESC_CHARLES;
+        assertParseFailure(parser, userInput, MESSAGE_PARSE_NON_STAFF_ERROR);
+
+        // change role to Student
+        userInput = targetIndex.getOneBased() + ROLE_DESC_AMY;
+        assertParseFailure(parser, userInput, MESSAGE_PARSE_NON_STAFF_ERROR);
+    }
+
+    @Test
+    public void parse_specifyStaffRoleAndOtherFields() {
+        // all test cases change the role to Staff, along with another field
+
+        // change name
+        Index targetIndex = INDEX_THIRD_PERSON;
+        String userInput = targetIndex.getOneBased() + ROLE_DESC_BOB + NAME_DESC_AMY;
+        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withRole(VALID_ROLE_BOB)
+                .withName(VALID_NAME_AMY).withGrade("Not applicable").withClass("Not applicable")
+                .withRelativeName("Not applicable").withRelativePhone("Not applicable").build();
+        EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        // change phone
+        userInput = targetIndex.getOneBased() + ROLE_DESC_BOB + PHONE_DESC_AMY;
+        descriptor = new EditPersonDescriptorBuilder().withRole(VALID_ROLE_BOB).withPhone(VALID_PHONE_AMY)
+                .withGrade("Not applicable").withClass("Not applicable")
+                .withRelativeName("Not applicable").withRelativePhone("Not applicable").build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        // change address
+        userInput = targetIndex.getOneBased() + ROLE_DESC_BOB + ADDRESS_DESC_AMY;
+        descriptor = new EditPersonDescriptorBuilder().withRole(VALID_ROLE_BOB).withAddress(VALID_ADDRESS_AMY)
+                .withGrade("Not applicable").withClass("Not applicable")
+                .withRelativeName("Not applicable").withRelativePhone("Not applicable").build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        // change email
+        userInput = targetIndex.getOneBased() + ROLE_DESC_BOB + EMAIL_DESC_AMY;
+        descriptor = new EditPersonDescriptorBuilder().withRole(VALID_ROLE_BOB).withEmail(VALID_EMAIL_AMY)
+                .withGrade("Not applicable").withClass("Not applicable")
+                .withRelativeName("Not applicable").withRelativePhone("Not applicable").build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        // change tag
+        userInput = targetIndex.getOneBased() + ROLE_DESC_BOB + TAG_DESC_FRIEND;
+        descriptor = new EditPersonDescriptorBuilder().withRole(VALID_ROLE_BOB).withTags(VALID_TAG_FRIEND)
+                .withGrade("Not applicable").withClass("Not applicable")
+                .withRelativeName("Not applicable").withRelativePhone("Not applicable").build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        // change grade
+        userInput = targetIndex.getOneBased() + ROLE_DESC_BOB + GRADE_DESC_AMY;
+        assertParseFailure(parser, userInput, MESSAGE_PARSE_STAFF_ERROR);
+
+        // change class
+        userInput = targetIndex.getOneBased() + ROLE_DESC_BOB + CLASS_DESC_AMY;
+        assertParseFailure(parser, userInput, MESSAGE_PARSE_STAFF_ERROR);
+
+        // change relative's name
+        userInput = targetIndex.getOneBased() + ROLE_DESC_BOB + PARENT_DESC_AMY;
+        assertParseFailure(parser, userInput, MESSAGE_PARSE_STAFF_ERROR);
+
+        // change relative's phone
+        userInput = targetIndex.getOneBased() + ROLE_DESC_BOB + PARENT_PHONE_DESC_AMY;
+        assertParseFailure(parser, userInput, MESSAGE_PARSE_STAFF_ERROR);
     }
 
     @Test
