@@ -565,20 +565,20 @@ testers are expected to do more *exploratory* testing.
 
    1. Prerequisites: Contact list must not be empty.
     
-   1. Test case: `sort by/name asc`  
+   1. Test case: `sort by name asc`  
       Expected: Displays contacts sorted by name in ascending order.
       
-   1. Test case: `sort by/name desc`  
+   1. Test case: `sort by name desc`  
       Expected: Displays contacts sorted by name in descending order.
 
 1. Sorting by date
    
    1. Prerequisites: Contact list must not be empty.
       
-   1. Test case: `sort by/date asc`  
+   1. Test case: `sort by date asc`  
       Expected: Displays contacts sorted by date added in ascending order.
       
-   1. Test case: `sort by/date desc`  
+   1. Test case: `sort by date desc`  
       Expected: Displays contacts sorted by date added in descending order.
 
 1. Default sorting
@@ -594,17 +594,17 @@ testers are expected to do more *exploratory* testing.
 
    1. Prerequisites: A valid index within the displayed contact list must be provided.
     
-   1. Test case: `note 1 Needs help with Math`  
+   1. Test case: `note 1 nt/Needs help with Math`  
       Expected: Adds note "Needs help with Math" to the first contact.
       
-   1. Test case: `note 3 Call parent tomorrow`  
+   1. Test case: `note 3 nt/Call parent tomorrow`  
       Expected: Adds note "Call parent tomorrow" to the third contact.
 
 1. Replacing an existing note
 
    1. Prerequisites: Contact already has a note.
       
-   1. Test case: `note 1 Student is doing well`  
+   1. Test case: `note 1 nt/Student is doing well`  
       Expected: Replaces the existing note on the first contact with "Student is doing well".
 
 ### Saving data
