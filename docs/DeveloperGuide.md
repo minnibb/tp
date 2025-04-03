@@ -524,6 +524,56 @@ testers are expected to do more *exploratory* testing.
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
+### Adding a Contact
+
+1. Adding a contact in ClassHive
+
+    1. Prerequisites: The contact to be added should not exist in the app.
+
+    2. Test case: `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 t/top student r/Student g/Sec 1 c/1A rn/Bob Doe rp/92932011`<br>
+        * Expected UI and status bar changes: John Doe is added to the contact list. Status bar timestamp is updated.
+        * Expected output message: `New person added: John Doe; Phone: 98765432; Email: johnd@example.com; Address: John street, block 123, #01-01; Role: Student; Grade: Sec 1; Class: 1A; Parent's Name: Bob Doe; Parent's Phone: 92932011; Tags: [top student]`
+
+2. Adding a duplicate contact
+
+    1. Prerequisites: The contact already exists in the app.
+
+    2. Test case: Re-run the same command as above (in test case 1).
+       Expected: No person is deleted. Error message shown in the status message. Status bar remains the same.
+       Expected error message: `This person already exists in the address book` <br>
+
+3. Missing required fields
+
+    1. Test cases: ` add n/Alex Yeoh a/Some Street r/Student`
+       Expected: Command fails with error message, `Missing required field(s)! Please ensure all required details are provided.`. 
+
+### Editing a Contact
+
+1. Deleting a contact in ClassHive
+
+    1. Prerequisites: The contact to be deleted should exist in the app.
+
+    2. Test case: `edit 1 n/Betty Crowne` <br>
+       Expected UI and status bar changes: The name of the first person in the list is changed to Betty Crowne. Details of the edited contact shown in the status message. Timestamp in the status bar is updated.
+
+2. Editing a contact not in ClassHive
+
+    1. Prerequisites: The index of the contact to be edited is bigger than the list of contacts in ClassHive.
+
+    2. Test case: `edit 9999 n/Joe p/911` <br>
+       Expected: No contact will be edited. Error details shown in the status message. Status bar remains the same.
+       Expected error message: `The person index provided is invalid` <br>
+
+3. Incorrect Edit Command format
+
+    1. Test cases: `edit`, `delete Joe`
+       Expected: No contact will be edited. Error details shown in the status message. Status bar remains the same.
+
+4. No optional fields provided
+    1. Test case: `edit 2` <br>
+       * Expected: No contact will be edited. Error details shown in the status message. Status bar remains the same.
+       * Error message: `At least one field to edit must be provided.` <br>
+
 ### Deleting a Contact
 
 1. Deleting a contact in ClassHive
