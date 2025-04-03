@@ -20,7 +20,8 @@ public class GroupCommandParserTest {
     @Test
     public void parse_missingSpaceAfterBy_throwsException() {
         assertParseFailure(parser, "byrole",
-                "Missing space after 'by'. Usage: group by ROLE");
+                "Missing space after 'by'. "
+                        + "Usage: group by ROLE/CLASS/GRADE/FAVOURITE [specific criteria]");
     }
 
     @Test
@@ -37,7 +38,8 @@ public class GroupCommandParserTest {
     @Test
     public void parse_missingCategory_throwsParseException() {
         assertParseFailure(parser, "by",
-                "Missing space after 'by'. Usage: group by ROLE");
+                "Missing space after 'by'. "
+                        + "Usage: group by ROLE/CLASS/GRADE/FAVOURITE [specific criteria]");
     }
 
 
