@@ -540,8 +540,6 @@ testers are expected to do more *exploratory* testing.
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
-
 ### Deleting a person
 
 1. Deleting a person while all persons are being shown
@@ -556,16 +554,42 @@ testers are expected to do more *exploratory* testing.
 
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
+      
+### Finding a Contact
 
-1. _{ more test cases …​ }_
+1. Searching by name
+   1. Prerequisites: A valid name must be provided, and the contact must exist.
+      
+   1. Test case: `find Alice`<br>
+      Expected: Displays contacts containing “Alice” (e.g., "Alice Lim", "Alicia Tan").
+      
+   1. Test case: `find $#@`<br>
+      Expected: Displays contacts containing “Alice” (e.g., "Alice Lim", "Alicia Tan").Displays an error message for invalid characters.
+      
+1. Searching by phone number
 
+   1. Prerequisites: A valid number must be provided, and the contact must exist.
+      
+   1. Test case: `find 9876`<br>
+      Expected: Displays contacts whose phone number contains “9876” (e.g., "98765432").
+
+### Favourite feature
+
+1. Mark and unmark contact as favourite
+   1. Prerequisites: A valid index within the displayed contact list must be provided.
+      
+   1. Test case: `favourite 1`<br>
+      Expected: Marks first contact as favorite (★ appears).
+      
+   1. Test case: `favourite 1` (again) <br>
+      Expected: Unmarks the contact as a favorite.
+      
 ### Saving data
 
 1. Dealing with missing/corrupted data files
 
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
-1. _{ more test cases …​ }_
 
 --------------------------------------------------------------------------------------------------------------------
 
