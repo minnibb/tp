@@ -303,6 +303,23 @@ Filters and groups contacts by a specific role.
 
 ### Favourite contacts: `favourite`
 
+The `favourite` command allows you to mark a contact as a favourite so that you can easily identify them later or retrieve them quickly when needed.
+
+Format : `favourite INDEX`
+<box type="tip" seamless>
+
+**Note:**
+* The `INDEX` refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …
+* To **unmark** a contact as favourite, simply mark them as favourite again. This toggles the favourite status.
+</box>
+
+**Examples**:
+* `favourite 1` Marks the first contact on the list as favourite.
+  ![favourite 1](images/markFavourite.png)
+* `favourite 1` **AGAIN**, unfavourite the first contact on the list.
+![unfavourite 1](images/unmarkFavourite.png)
+
 ### Exiting the program : `exit`
 
 After you have finished updating your contacts, you will want to safely close ClassHive. The `exit` command allows you to
@@ -354,16 +371,16 @@ _Details coming soon ..._
 
 | Action       | Format, Examples                                                                                                                                                                                                                                        |
 |--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add**      | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]… r/Student g/GRADE c/CLASS rn/KIN'S_NAME rp/KIN'S_PHONE` <br> e.g., `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/Student g/Sec 1 c/1A rn/Bob Doe rp/92932011` |
+| **Help**     | `help`                                                                                                                                                                                                                                                  |
 | **Clear**    | `clear`                                                                                                                                                                                                                                                 |
+| **Add**      | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]… r/Student g/GRADE c/CLASS rn/KIN'S_NAME rp/KIN'S_PHONE` <br> e.g., `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/Student g/Sec 1 c/1A rn/Bob Doe rp/92932011` |
 | **Delete**   | `delete n/NAME p/PHONE`<br> e.g., `delete n/Betsy Crowe p/12345678`                                                                                                                                                                                     |
 | **Edit**     | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                                              |
-| **Exit**     | `exit`                                                                                                                                                                                                                                                  |
-| **Favourite** |                                                                                                                                                                                                                                                         |
-| **Find**     | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Tan` <br> `find NUMBER` <br> e.g, `find 98765432`                                                                                                                                                  |
-| **Group**    | `group by [VALUE]`<br>e.g., `group by student`, `group by staff`                                                                                                                                                                                        |
-| **Help**     | `help`                                                                                                                                                                                                                                                  |
-| **List**     | `list`                                                                                                                                                                                                                                                  |
 | **Note**     | `note INDEX n/NOTE`<br> e.g., `note 1 nt/student needs extra help with Mathematics`                                                                                                                                                                     |
-| **Sort**     | `sort by/[FIELD] [ORDER]`<br> e.g., `sort by/name asc`, `sort by/date desc`                                                                                                                                                                             
-
+| **Find**     | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Tan` <br> `find NUMBER` <br> e.g, `find 98765432`                                                                                                                                                  |
+| **List**     | `list`                                                                                                                                                                                                                                                  |
+| **Sort**     | `sort by/[FIELD] [ORDER]`<br> e.g., `sort by/name asc`, `sort by/date desc`         
+                                                         |
+| **Group**    | `group by [VALUE]`<br>e.g., `group by student`, `group by staff`                                                                                                                                                                                        |
+| **Favourite** | `favourite [INDEX]`<br> e.g., `favourite 1                                                                                                                                                                                                             |
+| **Exit**     | `exit`                                                                                                                                                                                                                                                  |
