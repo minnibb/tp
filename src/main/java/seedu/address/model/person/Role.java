@@ -13,7 +13,7 @@ public class Role {
         STUDENT, STAFF, PARENT
     }
 
-    public static final String MESSAGE_CONSTRAINTS = "Choose only one from Student, Parent or Staff";
+    public static final String MESSAGE_CONSTRAINTS = "The role should be either Student, Parent or Staff";
 
     private final Type value;
 

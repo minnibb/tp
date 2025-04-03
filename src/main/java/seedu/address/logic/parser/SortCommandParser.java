@@ -13,6 +13,7 @@ public class SortCommandParser implements Parser<SortCommand> {
     /**
      * Parses the given {@code String} of arguments in the context of the SortCommand
      * and returns a SortCommand object for execution.
+     *
      * @throws ParseException if the user input does not conform the expected format
      */
     public SortCommand parse(String args) throws ParseException {
@@ -22,21 +23,23 @@ public class SortCommandParser implements Parser<SortCommand> {
             // Default to sorting by name ascending if no arguments provided
             return new SortCommand("name", true);
         }
-        // Parse the format: by/[FIELD] [ORDER]
-        String[] parts = trimmedArgs.split("\\s+", 2);
-        if (!parts[0].startsWith("by/")) {
+        // Parse the format: by [FIELD] [ORDER]
+        String[] parts = trimmedArgs.split("\\s+");
+        // Check if the first part is "by"
+        if (parts.length < 2 || !parts[0].equals("by")) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
         }
-        String field = parts[0].substring(3).toLowerCase(); // Remove "by/" prefix
+        // Extract the field
+        String field = parts[1].toLowerCase();
         // Determine sort field
         if (!field.equals("name") && !field.equals("date")) {
             throw new ParseException("Invalid sorting field. Please use 'name' or 'date' only.");
         }
         // Determine sort order (default to ascending if not specified)
         boolean isAscending = true;
-        if (parts.length > 1) {
-            String order = parts[1].toLowerCase();
+        if (parts.length > 2) {
+            String order = parts[2].toLowerCase();
             if (order.equals("asc")) {
                 isAscending = true;
             } else if (order.equals("desc")) {

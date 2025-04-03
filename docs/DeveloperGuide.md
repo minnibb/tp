@@ -607,7 +607,6 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `ungroup`
       Expected: Grouping is removed, and all contacts are displayed normally
       
-
 ### Favourite feature
 
 1. Mark and unmark contact as favourite
@@ -619,11 +618,53 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `favourite 1` (again) <br>
       Expected: Unmarks the contact as a favorite.
       
-### Saving data
+### Sorting Contacts
 
-1. Dealing with missing/corrupted data files
+1. Sorting by name
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+   1. Prerequisites: Contact list must not be empty.
+    
+   1. Test case: `sort by name asc`  
+      Expected: Displays contacts sorted by name in ascending order.
+      
+   1. Test case: `sort by name desc`  
+      Expected: Displays contacts sorted by name in descending order.
+
+1. Sorting by date
+   
+   1. Prerequisites: Contact list must not be empty.
+      
+   1. Test case: `sort by date asc`  
+      Expected: Displays contacts sorted by date added in ascending order.
+      
+   1. Test case: `sort by date desc`  
+      Expected: Displays contacts sorted by date added in descending order.
+
+1. Default sorting
+   
+   1. Prerequisites: Contact list must not be empty.
+    
+   1. Test case: `sort`  
+      Expected: Displays contacts sorted by name in ascending order (same behavior as `sort by name asc`).
+
+### Adding and Replacing Notes
+
+1. Adding a note to a contact
+
+   1. Prerequisites: A valid index within the displayed contact list must be provided.
+    
+   1. Test case: `note 1 nt/Needs help with Math`  
+      Expected: Adds note "Needs help with Math" to the first contact.
+      
+   1. Test case: `note 3 nt/Call parent tomorrow`  
+      Expected: Adds note "Call parent tomorrow" to the third contact.
+
+1. Replacing an existing note
+
+   1. Prerequisites: Contact already has a note.
+      
+   1. Test case: `note 1 nt/Student is doing well`  
+      Expected: Replaces the existing note on the first contact with "Student is doing well".
 
 
 --------------------------------------------------------------------------------------------------------------------

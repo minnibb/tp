@@ -19,10 +19,10 @@ public class SortCommand extends Command {
     public static final String COMMAND_WORD = "sort";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts all persons in the address book "
             + "by the specified field in the specified order.\n"
-            + "Parameters: by/[FIELD] [ORDER]\n"
+            + "Parameters: by [FIELD] [ORDER]\n"
             + "FIELD: name, date\n"
             + "ORDER: asc, desc\n"
-            + "Example: " + COMMAND_WORD + " by/name desc";
+            + "Example: " + COMMAND_WORD + " by name desc";
 
     public static final String MESSAGE_SUCCESS_NAME_ASC = "Sorted all persons by name in ascending order";
     public static final String MESSAGE_SUCCESS_NAME_DESC = "Sorted all persons by name in descending order";
