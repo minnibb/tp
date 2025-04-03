@@ -316,7 +316,9 @@ Format : `favourite INDEX`
 
 **Examples**:
 * `favourite 1` Marks the first contact on the list as favourite.
+  ![favourite 1](images/markFavourite.png)
 * `favourite 1` **AGAIN**, unfavourite the first contact on the list.
+![unfavourite 1](images/unmarkFavourite.png)
 
 ### Exiting the program : `exit`
 
