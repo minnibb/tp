@@ -16,6 +16,10 @@ public class NameContainsKeywordsPredicate implements Predicate<Person> {
         this.keywords = keywords;
     }
 
+    public boolean isValid() {
+        return keywords.stream().allMatch(keyword -> keyword.matches("[a-zA-Z ]+"));
+    }
+
     @Override
     public boolean test(Person person) {
         return keywords.stream()

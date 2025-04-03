@@ -3,6 +3,8 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_NAME;
+import static seedu.address.logic.Messages.MESSAGE_NO_RESULTS;
 import static seedu.address.logic.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalPersons.BENSON;
@@ -77,6 +79,18 @@ public class FindCommandTest {
     }
 
     @Test
+    public void execute_invalidKeywords_returnsInvalidMessage() {
+        List<String> invalidKeywords = Arrays.asList("John123", "Do!");
+        FindCommand command = new FindCommand(invalidKeywords);
+
+        String expectedMessage = MESSAGE_INVALID_NAME;
+
+        CommandResult result = command.execute(model);
+
+        assertEquals(expectedMessage, result.getFeedbackToUser());
+    }
+
+    @Test
     public void execute_zeroKeywords_allPersonsFound() {
         String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size());
         NameContainsKeywordsPredicate predicate = preparePredicate(" ");
@@ -100,7 +114,7 @@ public class FindCommandTest {
 
     @Test
     public void execute_noMatchingKeywords_noPersonFound() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
+        String expectedMessage = MESSAGE_NO_RESULTS;
         NameContainsKeywordsPredicate predicate = preparePredicate("Edward");
         List<String> keywords = Collections.singletonList("Edward");
         FindCommand command = new FindCommand(keywords);
@@ -127,7 +141,7 @@ public class FindCommandTest {
 
     @Test
     public void execute_noMatchingNumbers_noPersonFound() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
+        String expectedMessage = MESSAGE_NO_RESULTS;
         PhoneContainsSubstringPredicate predicate = new PhoneContainsSubstringPredicate("000000");
         String number = "000000";
         FindCommand command = new FindCommand(number);

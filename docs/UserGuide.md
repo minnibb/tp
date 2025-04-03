@@ -8,8 +8,8 @@
 
 :rotating_light: ATTENTION ALL TEACHERS! :rotating_light: Introducing ClassHive, a **desktop app for managing all your 
 school contacts**! ClassHive is a fast and easy to use app that helps you keep track of all the people you will need to 
-contact, including colleagues, parents and students. In ClassHive, instead of clicking many buttons, you can simply type 
-in commands to access any function! Let's now explore the different features that were built just for you! :rocket:
+contact, including colleagues, parents and students. In ClassHive, instead of having to click many buttons, you can 
+simply type in commands to access any function! Let's now explore the different features that were built just for you! :rocket:
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -59,7 +59,9 @@ Getting started with ClassHive is easy! Just follow these steps:
 
 <box type="info" seamless>
 
-**Notes about the command format:**<br>
+It will be useful to know some information about the command format before getting started on the features!
+
+**Here are some notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
@@ -81,7 +83,8 @@ Getting started with ClassHive is easy! Just follow these steps:
 
 ### Viewing help : `help`
 
-Shows a message explaning how to access the help page. Help page contains instructions for all the features in ClassHive. 
+Help is always near when using ClassHive! At any point in time, if you need instructions on how to use the app, 
+type `help`.
 
 ![help message](images/helpMessage.png)
 
@@ -92,9 +95,32 @@ Format: `help`
   **Tip**: You can also access help window by clicking on F1 or the help menu on the top left.
 </box>
 
+### Clearing all entries : `clear`
+
+When you first download ClassHive, you might want to use the `clear` command to ensure you're starting with a
+fresh database. The `clear` command allows you to remove all contacts from ClassHive with a single command.
+
+_Before clearing the entries:_
+![clear command before](images/clearCommand.png)
+_After clearing the entries:_
+![clear command result](images/clearCommand2.png)
+
+Format: `clear`
+
+<box type="warning" seamless>
+**Caution:**
+This will remove ALL your contacts from ClassHive. Consider backing up your data before clearing (see FAQ section
+on transferring data).
+</box>
+
 ### Adding a person: `add`
 
-Adds a new contact into the ClassHive app.
+To make ClassHive ready for your personal use, add contacts into the app using the `add` command!
+
+_Before adding the new contact:_
+![add command before](images/beforeAddCommand.png)
+_After adding the new contact:_
+![add command result](images/afterAddCommand.png)
 
 Format: 
 - For adding Students: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]… r/Student g/GRADE c/CLASS rn/PARENT'S_NAME rp/PARENT'S_PHONE​`
@@ -114,15 +140,14 @@ Examples:
 * `add n/Bob Doe p/92932011 e/bobd@example.com a/John street, block 123, #01-01 r/Parent rn/John Doe rp/98765432 g/Sec 1 c/1A`
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Serangoon Avenue 2 p/12345678 r/Staff`
 
-### Listing all contacts : `list`
-
-Shows a list of all contacts in ClassHive.
-
-Format: `list`
-
 ### Editing a person : `edit`
 
-Edits an existing person in the address book.
+If a contact's information has changed, simply use the `edit` command to change the contact's details. 
+
+_Before editing the second contact in the list:_
+![edit command before](images/beforeEditCommand.png)
+_After editing the second contact in the list:_
+![edit command result](images/afterEditCommand.png)
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 
@@ -133,13 +158,61 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person’s tags by typing `t/` without
-    specifying any tags after it.
-</box>
+* You can remove all the person’s tags by typing `t/` without specifying any tags after it.
+* If you are changing the role to `Staff`, make sure that the fields `[g/GRADE]`, `[c/CLASS]`, `[rn/RELATIVE'S_NAME]` and
+  `[rp/RELATIVE'S_PHONE]` are not included. 
+* If you are changing the role to `Student` or `Parent`, make sure that the fields `[g/GRADE]`, `[c/CLASS]`, `[rn/RELATIVE'S_NAME]` and
+  `[rp/RELATIVE'S_PHONE]` are included.
+    </box>
 
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+
+### Deleting a person : `delete`
+
+As you use ClassHive, there may be some contacts that will leave the school. Since you no longer need to contact them, 
+you can use the `delete` command to delete their information, ensuring ClassHive remains uncluttered with unnecessary information.
+
+_Before deleting the old contact:_
+![add command before](images/beforeAddCommand.png)
+_After deleting the old contact:_
+![add command result](images/afterAddCommand.png)
+
+Format: `delete n/NAME p/PHONE_NUMBER`
+<box type="tip" seamless>
+
+**Note:**
+* Deletes the person with the specified `NAME` and `PHONE_NUMBER`.
+* The person specified in the command must already be a contact in the app.
+  </box>
+
+Examples:
+* `delete n/Betsy Crowe p/12345678` deletes `Betsy Crowe` with the phone number `12345678` from the app.
+
+### Adding note to a contact : `note`
+
+As you add more contacts into ClassHive, you might want to remember important details about them. The `note` command 
+allows you to add this information to specific contacts for easy reference later.
+
+_Before adding a note to the first contact in the list:_
+![note command before](images/noteCommand.png)
+_After adding a note to the first contact in the list:_
+![note command result](images/noteCommand2.png)
+
+Format: `note INDEX nt/NOTE`
+
+<box type="tip" seamless>
+
+**Note:**
+* The INDEX refers to the index number shown in the displayed person list.
+* The index must be a positive integer (1, 2, 3, ...).
+* Any existing note for the contact will be replaced by the new note.
+  </box>
+
+Examples:
+* `note 1 nt/student needs help with English` Adds a note about academic needs to the 1st person in the list.
+* `note 3 nt/prefers to be contacted after 5pm` Adds a note about contact preferences to the 3rd person.
 
 ### Locating persons by name or phone number: `find`
 
@@ -162,10 +235,23 @@ Examples:
 * `find John` returns `Johnny Lee` and `John Doe`
 * `find al` returns `Roy Balakrishnan` and `Alex Yeoh`<br>
   ![result for 'find ale'](images/findFeatureExample.png)
-  
+
+### Listing all contacts : `list`
+
+Shows a list of all contacts in ClassHive.
+
+Format: `list`
+
 ### Sorting contacts : `sort`
 
-Sorts all contacts in the address book based on specified criteria.
+As a teacher managing multiple classes, your contact list will eventually get larger over time. If you want to keep your 
+ClassHive contacts organized in a logical order, the `sort` command lets you arrange your contacts alphabetically by name 
+or chronologically by when they were added, making it easier to scan through your list.
+
+_Before sorting by contacts' names in descending order:_
+![sort command before](images/sortCommand.png)
+_After sorting by contacts' names in descending order:_
+![sort command result](images/sortCommand2.png)
 
 Format: `sort by/[FIELD] [ORDER]`
 <box type="tip" seamless>
@@ -186,52 +272,6 @@ Examples:
 
 **Tip:** Simply typing `sort` without any parameters will sort contacts alphabetically by name from A to Z.
 </box>
-
-### Deleting a person : `delete`
-
-Deletes the specified person from the ClassHive app.
-
-Format: `delete n/NAME p/PHONE_NUMBER`
-<box type="tip" seamless>
-
-**Note:**
-* Deletes the person with the specified `NAME` and `PHONE_NUMBER`.
-* The person specified in the command must already be a contact in the app. 
-</box>
-
-Examples:
-* `delete n/Betsy Crowe p/12345678` deletes `Betsy Crowe` with the phone number `12345678` from the app.
-
-### Clearing all entries : `clear`
-
-Clears all entries from the address book.
-
-Format: `clear`
-
-### Exiting the program : `exit`
-
-Exits the program.
-
-Format: `exit`
-
-### Saving the data
-
-AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
-
-### Editing the data file
-
-AddressBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
-
-<box type="warning" seamless>
-
-**Caution:**
-If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
-</box>
-
-### Archiving data files `[coming in v2.0]`
-
-_Details coming soon ..._
 
 ### Grouping contacts : group
 
@@ -266,6 +306,53 @@ Filters and groups contacts by a specific role.
 **Examples**:
 1. `group by ROLE student`   
    *Shows all contacts with the **Student** role.*
+
+
+### Favourite contacts: `favourite`
+
+The `favourite` command allows you to mark a contact as a favourite so that you can easily identify them later or retrieve them quickly when needed.
+
+Format : `favourite INDEX`
+<box type="tip" seamless>
+
+**Note:**
+* The `INDEX` refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …
+* To **unmark** a contact as favourite, simply mark them as favourite again. This toggles the favourite status.
+</box>
+
+**Examples**:
+* `favourite 1` Marks the first contact on the list as favourite.
+  ![favourite 1](images/markFavourite.png)
+* `favourite 1` **AGAIN**, unfavourite the first contact on the list.
+![unfavourite 1](images/unmarkFavourite.png)
+
+### Exiting the program : `exit`
+
+After you have finished updating your contacts, you will want to safely close ClassHive. The `exit` command allows you to
+properly shut down the application, ensuring all changes are saved.
+
+Format: `exit`
+
+### Saving the data
+
+ClassHive data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+
+### Editing the data file
+
+ClassHive data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
+
+<box type="warning" seamless>
+
+**Caution:**
+If your changes to the data file makes its format invalid, ClassHive will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
+Furthermore, certain edits can cause the ClassHive to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+</box>
+
+### Archiving data files `[coming in v2.0]`
+
+_Details coming soon ..._
+
 
 ### Ungrouping contacts : ungroup
 ungroup contacts
@@ -302,16 +389,21 @@ ungroup contacts
 
 ## Command summary
 
-| Action      | Format, Examples                                                                                                                                                                                                                                        |
-|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add**     | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]… r/Student g/GRADE c/CLASS rn/KIN'S_NAME rp/KIN'S_PHONE` <br> e.g., `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/Student g/Sec 1 c/1A rn/Bob Doe rp/92932011` |
-| **Clear**   | `clear`                                                                                                                                                                                                                                                 |
-| **Delete**  | `delete n/NAME p/PHONE`<br> e.g., `delete n/Betsy Crowe p/12345678`                                                                                                                                                                                     |
-| **Edit**    | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                                              |
-| **Find**    | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Tan` <br> `find NUMBER` <br> e.g, `find 98765432`                                                                                                                                                  |
-| **Sort**    | `sort by/[FIELD] [ORDER]`<br> e.g., `sort by/name asc`, `sort by/date desc`                                                                                                                                                                             |
-| **List**    | `list`                                                                                                                                                                                                                                                  |
-| **Help**    | `help`                                                                                                                                                                                                                                                  |
+
+| Action       | Format, Examples                                                                                                                                                                                                                                        |
+|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Help**     | `help`                                                                                                                                                                                                                                                  |
+| **Clear**    | `clear`                                                                                                                                                                                                                                                 |
+| **Add**      | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]… r/Student g/GRADE c/CLASS rn/KIN'S_NAME rp/KIN'S_PHONE` <br> e.g., `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/Student g/Sec 1 c/1A rn/Bob Doe rp/92932011` |
+| **Delete**   | `delete n/NAME p/PHONE`<br> e.g., `delete n/Betsy Crowe p/12345678`                                                                                                                                                                                     |
+| **Edit**     | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                                              |
+| **Note**     | `note INDEX n/NOTE`<br> e.g., `note 1 nt/student needs extra help with Mathematics`                                                                                                                                                                     |
+| **Find**     | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Tan` <br> `find NUMBER` <br> e.g, `find 98765432`                                                                                                                                                  |
+| **List**     | `list`                                                                                                                                                                                                                                                  |
+| **Sort**     | `sort by/[FIELD] [ORDER]`<br> e.g., `sort by/name asc`, `sort by/date desc`         
+                                                         |
 | **Group**   | `group by [category] [criteria]`<br>e.g., `group by ROLE student`, `group by CLASS 1A, group by FAVOURITE, group by GRADE pri 1`                                                                                                                        |
-| **Ungroup** | `ungroup` <br> e.g., `ungroup`                                                                                                                                                                                                                          |
+| **Ungroup** | `ungroup` <br> e.g., `ungroup`                                                                                                                                                                                      |
+| **Favourite** | `favourite [INDEX]`<br> e.g., `favourite 1                                                                                                                                                                                                             |
+| **Exit**     | `exit`                                                                                                                                                                                                                                                  |
 

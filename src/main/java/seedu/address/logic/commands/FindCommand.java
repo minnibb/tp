@@ -49,7 +49,19 @@ public class FindCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
+
+        if (predicate instanceof NameContainsKeywordsPredicate namePredicate) {
+            if (!namePredicate.isValid()) {
+                return new CommandResult(Messages.MESSAGE_INVALID_NAME);
+            }
+        }
+
         model.updateFilteredPersonList(predicate);
+
+        if (model.getFilteredPersonList().isEmpty()) {
+            return new CommandResult(Messages.MESSAGE_NO_RESULTS);
+        }
+
         return new CommandResult(
                 String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size()));
     }
