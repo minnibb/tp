@@ -573,6 +573,41 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `find 9876`<br>
       Expected: Displays contacts whose phone number contains “9876” (e.g., "98765432").
 
+### Grouping Contacts
+1. Group by Role
+   
+   1. Prerequisites: Contact list have 2 contacts of the role Student.
+      
+   1. Test case: `group by ROLE Student`
+      Expected: Status message: "Results are grouped by: ROLE Student. 2 contacts found."
+1. Group by Favourite
+   
+   1. Prerequisites: Contact list consists of favourited contacts.
+  
+   1. Test case: `group by FAVOURITE`
+      Expected: Status message: "Results are grouped by: Favourite. X contacts found."
+1. Group by Class
+
+   1. Prerequisites: Contact list have 2 contacts in class 1A.
+  
+   1. Test case: `group by CLASS 1A`
+      Expected: Status message: "Results are grouped by: CLASS 1A. 2 contacts found."
+      
+1. Group by Grade
+   
+   1. Prerequisites: Contact list have 2 contacts in the grade Sec 1.
+  
+   1. Test case: `group by GRADE Sec 1`
+      Expected: Status message: "Results are grouped by: GRADE Sec 1. 2 contacts found."
+
+1. Removing grouping
+   
+   1. Prerequisites: Contact list is already grouped.
+  
+   1. Test case: `ungroup`
+      Expected: Grouping is removed, and all contacts are displayed normally
+      
+
 ### Favourite feature
 
 1. Mark and unmark contact as favourite
