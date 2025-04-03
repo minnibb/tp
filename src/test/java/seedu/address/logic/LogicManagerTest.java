@@ -316,3 +316,4 @@ public class LogicManagerTest {
         assertCommandFailure(addCommand, CommandException.class, expectedMessage, expectedModel);
     }
 }
+
