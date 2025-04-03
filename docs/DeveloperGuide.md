@@ -578,33 +578,33 @@ testers are expected to do more *exploratory* testing.
    
    1. Prerequisites: Contact list have 2 contacts of the role Student.
       
-   1. Test case: `group by ROLE Student`
+   1. Test case: `group by ROLE Student`<br>
       Expected: Status message: "Results are grouped by: ROLE Student. 2 contacts found."
 1. Group by Favourite
    
    1. Prerequisites: Contact list consists of favourited contacts.
   
-   1. Test case: `group by FAVOURITE`
+   1. Test case: `group by FAVOURITE`<br>
       Expected: Status message: "Results are grouped by: Favourite. X contacts found."
 1. Group by Class
 
    1. Prerequisites: Contact list have 2 contacts in class 1A.
   
-   1. Test case: `group by CLASS 1A`
+   1. Test case: `group by CLASS 1A`<br>
       Expected: Status message: "Results are grouped by: CLASS 1A. 2 contacts found."
       
 1. Group by Grade
    
    1. Prerequisites: Contact list have 2 contacts in the grade Sec 1.
   
-   1. Test case: `group by GRADE Sec 1`
+   1. Test case: `group by GRADE Sec 1`<br>
       Expected: Status message: "Results are grouped by: GRADE Sec 1. 2 contacts found."
 
 1. Removing grouping
    
    1. Prerequisites: Contact list is already grouped.
   
-   1. Test case: `ungroup`
+   1. Test case: `ungroup`<br>
       Expected: Grouping is removed, and all contacts are displayed normally
       
 ### Favourite feature
@@ -673,14 +673,30 @@ testers are expected to do more *exploratory* testing.
 
 Team size: 4
 
-1. **Allow more than one parent’s name and phone number to be added to a student contact:** The current issue allows only a single parent's name and phone number to the student contact. This is restrictive and there are cases where multiple guardians need to be recorded. We plan to modify the add and edit command to allow the user to input more than one parent’s name and phone number on a contact with a student role.
-1. **Allow more than one student’s name and phone number to be added to a parent contact:** A parent can have multiple children in the same school, but the current system only allows a single student association. We plan to modify the add and edit command to allow the user to input multiple student names and phone numbers on a contact with a parent role.
-1. **Allow missing Grade, Class, Relative’s Name and Relative’s Phone when using the Edit Command to change roles from Student to Parent or Parent to Student:** When changing a contact’s role to Student or Parent, the current edit command forces the user to add the grade, class, relative’s name and relative’s phone number fields. This is because these fields would not have been filled previously if the original role of the contact was Staff. However, if the original role of the contact is a Parent or a Student, these fields would have already been filled. We plan to modify the edit command to take into account the original role of the contact and allow these four fields to be missing when switching roles between Parent and Student.  
-1. **Restrict the editing of Grade, Class, Relative’s Name and Relative’s Phone when the contact is currently given the Staff role:** Even when the current role of the contact is Staff, the current implementation of the app still allows the user to change the Grade, Class, Relative’s Name and Relative’s Phone fields. Editing these fields will not make any changes to the UI as these information are not reflected for Staff. We plan to modify the edit command to take into account the original role of the contact, and disallow users from editing these four fields when the contact is currently a Staff
-1. **Allow grouping by multiple criteria:** While users are able to group contacts by a single field, there is no functionality to group contacts meaningfully based on multiple fields. This might be difficult for users to manage the contact list efficiently. We plan to implement a grouping feature that allows users to group based on two or more specified fields. 
-1. **Enforcing Naming Restrictions for Classes:** Users can create class names with spaces or names that conflict with predefined grade categories, causing parsing issues. Prohibiting spaces in class names and restricting class names that match predefined grade categories to avoid ambiguity.
-1. **Support fuzzy search and typo tolerance to make finding contacts more user-friendly:** Users must enter the exact or partial of a contact name to find a match.This makes it less user-friendly. Implement fuzzy search with typo tolerances, so slight misspellings still have relevant results.
-1. **Add multi-level sorting capability:** The current contact list only allows basic sorting by one attribute. This limits the ability to organize and view contacts effectively, especially if the user wants to prioritise based on multiple fields. We plan to enhance the sorting system to support multi-level sorting allowing users to multiple fields to sort by in a chosen order.
+1. **Allow more than one parent’s name and phone number to be added to a student contact:** <br>
+The current issue allows only a single parent's name and phone number to the student contact. This is restrictive and there are cases where multiple guardians need to be recorded.<br>
+We plan to modify the add and edit command to allow the user to input more than one parent’s name and phone number on a contact with a student role.
+1. **Allow more than one student’s name and phone number to be added to a parent contact:** <br>
+A parent can have multiple children in the same school, but the current system only allows a single student association.<br>
+We plan to modify the add and edit command to allow the user to input multiple student names and phone numbers on a contact with a parent role.
+1. **Allow missing Grade, Class, Relative’s Name and Relative’s Phone when using the Edit Command to change roles from Student to Parent or Parent to Student:**<br>
+When changing a contact’s role to Student or Parent, the current edit command forces the user to add the grade, class, relative’s name and relative’s phone number fields. This is because these fields would not have been filled previously if the original role of the contact was Staff. However, if the original role of the contact is a Parent or a Student, these fields would have already been filled.<br>
+We plan to modify the edit command to take into account the original role of the contact and allow these four fields to be missing when switching roles between Parent and Student.  
+1. **Restrict the editing of Grade, Class, Relative’s Name and Relative’s Phone when the contact is currently given the Staff role:**<br>
+Even when the current role of the contact is Staff, the current implementation of the app still allows the user to change the Grade, Class, Relative’s Name and Relative’s Phone fields. Editing these fields will not make any changes to the UI as these information are not reflected for Staff.<br>
+ We plan to modify the edit command to take into account the original role of the contact, and disallow users from editing these four fields when the contact is currently a Staff
+1. **Allow grouping by multiple criteria:**<br>
+While users are able to group contacts by a single field, there is no functionality to group contacts meaningfully based on multiple fields. This might be difficult for users to manage the contact list efficiently.<br>
+We plan to implement a grouping feature that allows users to group based on two or more specified fields. 
+1. **Enforcing Naming Restrictions for Classes:**<br>
+Users can create class names with spaces or names that conflict with predefined grade categories, causing parsing issues.<br>
+Prohibiting spaces in class names and restricting class names that match predefined grade categories to avoid ambiguity.
+1. **Support fuzzy search and typo tolerance to make finding contacts more user-friendly:**<br>
+Users must enter the exact or partial of a contact name to find a match.This makes it less user-friendly.<br>
+Implement fuzzy search with typo tolerances, so slight misspellings still have relevant results.
+1. **Add multi-level sorting capability:**<br>
+The current contact list only allows basic sorting by one attribute. This limits the ability to organize and view contacts effectively, especially if the user wants to prioritise based on multiple fields.<br>
+We plan to enhance the sorting system to support multi-level sorting allowing users to multiple fields to sort by in a chosen order.
 
 
 --------------------------------------------------------------------------------------------------------------------
