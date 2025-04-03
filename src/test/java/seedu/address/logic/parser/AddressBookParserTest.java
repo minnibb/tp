@@ -72,9 +72,10 @@ public class AddressBookParserTest {
     public void parseCommand_note() throws Exception {
         final String noteText = "Test note";
         NoteCommand command = (NoteCommand) parser.parseCommand(
-            NoteCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() + " nt/" + noteText);
+                NoteCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() + " nt/" + noteText);
         assertEquals(new NoteCommand(INDEX_FIRST_PERSON, noteText), command);
     }
+
     @Test
     public void parseCommand_exit() throws Exception {
         assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD) instanceof ExitCommand);
@@ -112,7 +113,7 @@ public class AddressBookParserTest {
     @Test
     public void parseCommand_unrecognisedInput_throwsParseException() {
         assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE), ()
-            -> parser.parseCommand(""));
+                -> parser.parseCommand(""));
     }
 
     @Test
@@ -128,37 +129,69 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_sortNameAscending() throws Exception {
-        SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " by/name asc");
+        SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " by name asc");
         assertEquals(new SortCommand("name", true), command);
     }
 
     @Test
     public void parseCommand_sortNameDescending() throws Exception {
-        SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " by/name desc");
+        SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " by name desc");
         assertEquals(new SortCommand("name", false), command);
     }
 
     @Test
     public void parseCommand_sortDateAscending() throws Exception {
-        SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " by/date asc");
+        SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " by date asc");
         assertEquals(new SortCommand("date", true), command);
     }
 
     @Test
     public void parseCommand_sortDateDescending() throws Exception {
-        SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " by/date desc");
+        SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " by date desc");
         assertEquals(new SortCommand("date", false), command);
     }
 
     @Test
     public void parseCommand_sortInvalid() throws Exception {
         assertThrows(ParseException.class, () ->
-            parser.parseCommand(SortCommand.COMMAND_WORD + " by/invalid asc"));
+                parser.parseCommand(SortCommand.COMMAND_WORD + " by invalid asc"));
     }
 
     @Test
     public void parseCommand_sortInvalidOrder() throws Exception {
         assertThrows(ParseException.class, () ->
-            parser.parseCommand(SortCommand.COMMAND_WORD + " by/name invalid"));
+                parser.parseCommand(SortCommand.COMMAND_WORD + " by name invalid"));
+    }
+
+    @Test
+    public void parseCommand_sortMissingField() throws Exception {
+        assertThrows(ParseException.class, () ->
+                parser.parseCommand(SortCommand.COMMAND_WORD + " by"));
+    }
+
+    @Test
+    public void parseCommand_sortNoBy() throws Exception {
+        assertThrows(ParseException.class, () ->
+                parser.parseCommand(SortCommand.COMMAND_WORD + " name asc"));
+    }
+
+    @Test
+    public void parseCommand_sortDefaultField() throws Exception {
+        assertThrows(ParseException.class, () ->
+                parser.parseCommand(SortCommand.COMMAND_WORD + " by"));
+    }
+
+    @Test
+    public void parseCommand_sortWithFieldNoOrder() throws Exception {
+        SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " by name");
+        assertEquals(new SortCommand("name", true), command);
+        SortCommand dateCommand = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " by date");
+        assertEquals(new SortCommand("date", true), dateCommand);
+    }
+
+    @Test
+    public void parseCommand_sortWithExtraWhitespace() throws Exception {
+        SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + "    by   name    asc   ");
+        assertEquals(new SortCommand("name", true), command);
     }
 }
