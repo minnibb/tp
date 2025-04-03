@@ -4,7 +4,7 @@
   pageNav: 3
 ---
 
-# AB-3 Developer Guide
+# ClassHive Developer Guide
 
 <!-- * Table of Contents -->
 <page-nav-print />
