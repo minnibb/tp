@@ -273,33 +273,40 @@ Examples:
 **Tip:** Simply typing `sort` without any parameters will sort contacts alphabetically by name from A to Z.
 </box>
 
-### Grouping contacts: `group`
+### Grouping contacts : group
 
 Filters and groups contacts by a specific role.
 
 **Format:**  
-`group by SPECIFIC_VALUE`
+`group by CATEGORY CRITERIA`
+
+* **Supported category**:
+    - `ROLE`/`CLASS`/`GRADE`/`FAVOURITE`
 
 * **Supported criteria**:
     - `Parent`/`Student`/`Staff`  
-      Example: `group by Parent`
+    - `pri 1 ~ pri 6`/`sec 1 ~ sec 5`
+
+* **Example: `group by ROLE Parent`**
 
 <box type="tip" seamless>
 
 **Note**:
 1. **Strict format**:
-    - Criterion and value must be separated by a space.
+    - Category and criteria must be separated by a space.
     - Values are case-insensitive (e.g., `Parent` = `parent`).
 
 2. **Validation rules**:
     - Role: Only `Parent`, `Student`, `Staff`.
-
+    - Grade: Only `pri 1 ~ pri 6`/`sec 1 ~ sec 5`
+    
 3. Non-matching contacts will be hidden from view.
    </box>
 
 **Examples**:
-1. `group by student`   
+1. `group by ROLE student`   
    *Shows all contacts with the **Student** role.*
+
 
 ### Favourite contacts: `favourite`
 
@@ -347,6 +354,19 @@ Furthermore, certain edits can cause the ClassHive to behave in unexpected ways 
 _Details coming soon ..._
 
 
+### Ungrouping contacts : ungroup
+ungroup contacts
+**Format:**  
+`ungroup`
+
+
+* **Example: `ungroup`**
+
+<box type="tip" seamless>
+
+**Examples**:
+1. `ungroup`   
+   *Showing all contacts (no grouping).*
 
 ---
 
@@ -369,6 +389,7 @@ _Details coming soon ..._
 
 ## Command summary
 
+
 | Action       | Format, Examples                                                                                                                                                                                                                                        |
 |--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Help**     | `help`                                                                                                                                                                                                                                                  |
@@ -381,6 +402,8 @@ _Details coming soon ..._
 | **List**     | `list`                                                                                                                                                                                                                                                  |
 | **Sort**     | `sort by/[FIELD] [ORDER]`<br> e.g., `sort by/name asc`, `sort by/date desc`         
                                                          |
-| **Group**    | `group by [VALUE]`<br>e.g., `group by student`, `group by staff`                                                                                                                                                                                        |
+| **Group**   | `group by [category] [criteria]`<br>e.g., `group by ROLE student`, `group by CLASS 1A, group by FAVOURITE, group by GRADE pri 1`                                                                                                                        |
+| **Ungroup** | `ungroup` <br> e.g., `ungroup`                                                                                                                                                                                      |
 | **Favourite** | `favourite [INDEX]`<br> e.g., `favourite 1                                                                                                                                                                                                             |
 | **Exit**     | `exit`                                                                                                                                                                                                                                                  |
+
