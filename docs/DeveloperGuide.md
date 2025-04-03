@@ -540,8 +540,6 @@ testers are expected to do more *exploratory* testing.
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
-
 ### Deleting a person
 
 1. Deleting a person while all persons are being shown
@@ -556,9 +554,70 @@ testers are expected to do more *exploratory* testing.
 
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
+      
+### Finding a Contact
 
-1. _{ more test cases …​ }_
+1. Searching by name
+   1. Prerequisites: A valid name must be provided, and the contact must exist.
+      
+   1. Test case: `find Alice`<br>
+      Expected: Displays contacts containing “Alice” (e.g., "Alice Lim", "Alicia Tan").
+      
+   1. Test case: `find $#@`<br>
+      Expected: Displays an error message for invalid characters.
+      
+1. Searching by phone number
 
+   1. Prerequisites: A valid number must be provided, and the contact must exist.
+      
+   1. Test case: `find 9876`<br>
+      Expected: Displays contacts whose phone number contains “9876” (e.g., "98765432").
+
+### Grouping Contacts
+1. Group by Role
+   
+   1. Prerequisites: Contact list have 2 contacts of the role Student.
+      
+   1. Test case: `group by ROLE Student`<br>
+      Expected: Status message: "Results are grouped by: ROLE Student. 2 contacts found."
+1. Group by Favourite
+   
+   1. Prerequisites: Contact list consists of favourited contacts.
+  
+   1. Test case: `group by FAVOURITE`<br>
+      Expected: Status message: "Results are grouped by: Favourite. X contacts found."
+1. Group by Class
+
+   1. Prerequisites: Contact list have 2 contacts in class 1A.
+  
+   1. Test case: `group by CLASS 1A`<br>
+      Expected: Status message: "Results are grouped by: CLASS 1A. 2 contacts found."
+      
+1. Group by Grade
+   
+   1. Prerequisites: Contact list have 2 contacts in the grade Sec 1.
+  
+   1. Test case: `group by GRADE Sec 1`<br>
+      Expected: Status message: "Results are grouped by: GRADE Sec 1. 2 contacts found."
+
+1. Removing grouping
+   
+   1. Prerequisites: Contact list is already grouped.
+  
+   1. Test case: `ungroup`<br>
+      Expected: Grouping is removed, and all contacts are displayed normally
+      
+### Favourite feature
+
+1. Mark and unmark contact as favourite
+   1. Prerequisites: A valid index within the displayed contact list must be provided.
+      
+   1. Test case: `favourite 1`<br>
+      Expected: Marks first contact as favorite (★ appears).
+      
+   1. Test case: `favourite 1` (again) <br>
+      Expected: Unmarks the contact as a favorite.
+      
 ### Sorting Contacts
 
 1. Sorting by name
@@ -607,10 +666,55 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `note 1 nt/Student is doing well`  
       Expected: Replaces the existing note on the first contact with "Student is doing well".
 
-### Saving data
 
-1. Dealing with missing/corrupted data files
+--------------------------------------------------------------------------------------------------------------------
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+## **Appendix: Planned Enhancements**
 
-1. _{ more test cases …​ }_
+Team size: 4
+
+1. **Allow more than one parent’s name and phone number to be added to a student contact:** <br>
+The current issue allows only a single parent's name and phone number to the student contact. This is restrictive and there are cases where multiple guardians need to be recorded.<br>
+We plan to modify the add and edit command to allow the user to input more than one parent’s name and phone number on a contact with a student role.
+1. **Allow more than one student’s name and phone number to be added to a parent contact:** <br>
+A parent can have multiple children in the same school, but the current system only allows a single student association.<br>
+We plan to modify the add and edit command to allow the user to input multiple student names and phone numbers on a contact with a parent role.
+1. **Allow missing Grade, Class, Relative’s Name and Relative’s Phone when using the Edit Command to change roles from Student to Parent or Parent to Student:**<br>
+When changing a contact’s role to Student or Parent, the current edit command forces the user to add the grade, class, relative’s name and relative’s phone number fields. This is because these fields would not have been filled previously if the original role of the contact was Staff. However, if the original role of the contact is a Parent or a Student, these fields would have already been filled.<br>
+We plan to modify the edit command to take into account the original role of the contact and allow these four fields to be missing when switching roles between Parent and Student.  
+1. **Restrict the editing of Grade, Class, Relative’s Name and Relative’s Phone when the contact is currently given the Staff role:**<br>
+Even when the current role of the contact is Staff, the current implementation of the app still allows the user to change the Grade, Class, Relative’s Name and Relative’s Phone fields. Editing these fields will not make any changes to the UI as these information are not reflected for Staff.<br>
+ We plan to modify the edit command to take into account the original role of the contact, and disallow users from editing these four fields when the contact is currently a Staff
+1. **Allow grouping by multiple criteria:**<br>
+While users are able to group contacts by a single field, there is no functionality to group contacts meaningfully based on multiple fields. This might be difficult for users to manage the contact list efficiently.<br>
+We plan to implement a grouping feature that allows users to group based on two or more specified fields. 
+1. **Enforcing Naming Restrictions for Classes:**<br>
+Users can create class names with spaces or names that conflict with predefined grade categories, causing parsing issues.<br>
+Prohibiting spaces in class names and restricting class names that match predefined grade categories to avoid ambiguity.
+1. **Support fuzzy search and typo tolerance to make finding contacts more user-friendly:**<br>
+Users must enter the exact or partial of a contact name to find a match.This makes it less user-friendly.<br>
+Implement fuzzy search with typo tolerances, so slight misspellings still have relevant results.
+1. **Add multi-level sorting capability:**<br>
+The current contact list only allows basic sorting by one attribute. This limits the ability to organize and view contacts effectively, especially if the user wants to prioritise based on multiple fields.<br>
+We plan to enhance the sorting system to support multi-level sorting allowing users to multiple fields to sort by in a chosen order.
+
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Appendix: Effort**
+
+### **Difficulty level**
+Unlike AB3, which manages a single type of entity (persons), ClassHive categorizes contacts into students, parents, and senior management. It also introduces sorting and a favorite feature, adding complexity to data handling, commands, and UI design while ensuring ease of use for teachers.
+
+### **Challenges Faced**
+* Ensuring full test coverage for all features, including refactoring and handling edge cases.
+* Managing merge conflicts while collaborating in a multi-developer environment.
+* Adhering to Checkstyle guidelines consistently.
+
+### **Effort Required**
+Inclusive of adding and modifying test cases, the total time taken for each feature to be implemented or for an existing feature to be modified to fit our target audience was 5-6 hours
+
+### **Achievements**
+* Transformed AB3 into ClassHive, a specialised tool for teachers.
+* Enhanced usability with role-based contacts, sorting, and favourites.
+* Easy-to-use application that simplifies contact management for teachers.
