@@ -159,6 +159,18 @@ public class AddressBookParserTest {
     @Test
     public void parseCommand_sortInvalidOrder() throws Exception {
         assertThrows(ParseException.class, () ->
-            parser.parseCommand(SortCommand.COMMAND_WORD + " by name invalid"));
+                parser.parseCommand(SortCommand.COMMAND_WORD + " by name invalid"));
+    }
+
+    @Test
+    public void parseCommand_sortMissingField() throws Exception {
+        assertThrows(ParseException.class, () ->
+                parser.parseCommand(SortCommand.COMMAND_WORD + " by"));
+    }
+
+    @Test
+    public void parseCommand_sortMalformedFormat() throws Exception {
+        assertThrows(ParseException.class, () ->
+                parser.parseCommand(SortCommand.COMMAND_WORD + " byname asc"));
     }
 }
