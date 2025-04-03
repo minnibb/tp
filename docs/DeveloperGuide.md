@@ -586,7 +586,7 @@ testers are expected to do more *exploratory* testing.
    1. Prerequisites: Contact list must not be empty.
     
    1. Test case: `sort`  
-      Expected: Displays contacts sorted by name in ascending order (same behavior as `sort by/name asc`).
+      Expected: Displays contacts sorted by name in ascending order (same behavior as `sort by name asc`).
 
 ### Adding and Replacing Notes
 
