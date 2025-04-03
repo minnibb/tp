@@ -24,7 +24,6 @@ public class SortCommandParser implements Parser<SortCommand> {
         }
         // Parse the format: by [FIELD] [ORDER]
         String[] parts = trimmedArgs.split("\\s+");
-        // Check if the first part is "by"
         if (parts.length < 2 || !parts[0].equals("by")) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
