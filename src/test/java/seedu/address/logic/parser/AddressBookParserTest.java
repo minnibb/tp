@@ -173,4 +173,16 @@ public class AddressBookParserTest {
         assertThrows(ParseException.class, () ->
                 parser.parseCommand(SortCommand.COMMAND_WORD + " byname asc"));
     }
+
+    @Test
+    public void parseCommand_sortByOnly() throws Exception {
+        assertThrows(ParseException.class, () ->
+                parser.parseCommand(SortCommand.COMMAND_WORD + " by"));
+    }
+
+    @Test
+    public void parseCommand_sortNoBy() throws Exception {
+        assertThrows(ParseException.class, () ->
+                parser.parseCommand(SortCommand.COMMAND_WORD + " name asc"));
+    }
 }
