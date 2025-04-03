@@ -566,3 +566,39 @@ testers are expected to do more *exploratory* testing.
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
 1. _{ more test cases …​ }_
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Appendix: Planned Enhancements**
+
+1. Allow more than one parent’s name and phone number to be added to a student contact.
+2. Allow more than one student’s name and phone number to be added to a parent contact.
+3. Allow the Grade, Class, Relative’s Name and Relative’s Phone to missing when using the Edit Command to change roles from Student to Parent or Parent to Student.
+4. Restrict the editing of Grade, Class, Relative’s Name and Relative’s Phone when the contact is currently given the Staff role.
+5. Allow grouping by multiple criteria.
+6. Enforcing Naming Restrictions for Classes. Prohibiting spaces in class names to prevent parsing issues. Disallowing names that match predefined grade categories to avoid ambiguity.
+7. Allow users to set priority levels to differentiate important contacts (e.g. “high priority favourite”).
+8. Support fuzzy search and typo tolerance to make finding contacts more user-friendly.
+9. Add an archive feature .
+10. Add multi-level sorting capability, meaning first sort by name then sort by date etc.
+11. Allow user to format texts like bold,italic etc to highlight important information.
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Appendix: Effort**
+
+### **Difficulty level**
+Unlike AB3, which manages a single type of entity (persons), ClassHive categorizes contacts into students, parents, and senior management. It also introduces sorting and a favorite feature, adding complexity to data handling, commands, and UI design while ensuring ease of use for teachers.
+
+### **Challenges Faced**
+* Ensuring full test coverage for all features, including refactoring and handling edge cases.
+* Managing merge conflicts while collaborating in a multi-developer environment.
+* Adhering to Checkstyle guidelines consistently.
+
+### **Effort Required**
+Inclusive of adding and modifying test cases, the total time taken for each feature to be implemented or for an existing feature to be modified to fit our target audience was 5-6 hours
+
+### **Achievements**
+* Transformed AB3 into ClassHive, a specialised tool for teachers.
+* Enhanced usability with role-based contacts, sorting, and favourites.
+* Easy-to-use application that simplifies contact management for teachers.
