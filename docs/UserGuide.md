@@ -44,17 +44,77 @@ Getting started with ClassHive is easy! Just follow these steps:
       * Press **Enter**, then type:
        ```sh
         java -jar ClassHive.jar
-      ```
+       ```
        * Press **Enter** again. <br>
 
 5. Start using ClassHive!
       * After a few seconds, the ClassHive window should appear, ready to help you manage your contacts easily.
-      * It should look like this. <br>
-   ![Ui](images/v1.3Ui.png)
+      * It should look like this! It will contain some sample data. <br>
+        <img src="images/v1.3Ui.png" width="400px" /> <br>
 
 6. Refer to the [Features](#features) below for details of each command.
-
+7. 💡 If you're unfamiliar with using commands in a command-line interface (CLI), check out the [CLI Tutorial](#cli-tutorial) to get comfortable before diving in!
 --------------------------------------------------------------------------------------------------------------------
+
+## CLI Tutorial
+If you've never used a CLI before don’t worry! This short tutorial will walk you through the basics, and you’ll be managing your contacts like a pro in no time!
+
+### Getting Familiar with the Interface
+<img src="images/annotatedUI.png" width="400px" /> <br>
+
+1️⃣ #r#Command box## <br>
+  * This is where users type their commands to interact with ClassHive. <br>
+  
+2️⃣ #c#Result Display Box## <br>
+  * Displays messages about the executed command. <br>
+  
+3️⃣ #g#Contact List Panel## <br>
+  * Shows the list of contacts stored in ClassHive, including their details. <br>
+
+### Try Your First Commands!
+Now that you're familiar with the interface, let's try executing some commands!
+
+#### Command 1: ⭐ Favourite
+
+1️⃣ Type the following command into the **Command Box**:
+<box>
+favourite 1
+</box>
+
+2️⃣ Press **Enter**. <br>
+3️⃣ You should see this. <br>
+   input image after fixing favourite bug.
+<br>
+#### Command 2: ➕ Add
+
+1️⃣ Type the following command into the **Command Box**:
+<box>
+add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Serangoon Avenue 2 p/12345678 r/Staff
+</box>
+
+2️⃣ Press **Enter**. <br>
+3️⃣ Scroll down the **Contact List Panel**. <br>
+4️⃣ You should see this. <br>
+   <img src="images/addTutorial.png" width="400px" /> 
+<br>
+
+#### Command 3: 🗑️ Delete
+
+1️⃣ Type the following command into the **Command Box**:
+<box>
+delete n/Betsy Crowe p/12345678
+</box>
+
+2️⃣ Press **Enter**. <br>
+3️⃣ Scroll down the **Contact List Panel**. <br>
+4️⃣ You should see this. <br>
+   <img src="images/deleteTutorial.png" width="400px" /> 
+<br>
+
+#### 🎊 Congratulations!
+
+You have completed your first few commands in ClassHive!🥳 <br>
+You're now officially a **ClassHive Pro**. Head over to the [Features](#features) section to explore more commands ClassHive has to offer.
 
 ## Features
 
@@ -92,7 +152,7 @@ type `help`.
 
 ![help message](images/helpMessage.png)
 
-Format: `help`
+**Format:** `help`
 
 <box type="tip" seamless>
 
@@ -109,7 +169,7 @@ _Before clearing the entries:_
 _After clearing the entries:_
 ![clear command result](images/clearCommand2.png)
 
-Format: `clear`
+**Format:** `clear`
 
 <box type="warning" seamless>
 
@@ -127,7 +187,7 @@ _Before adding the new contact:_
 _After adding the new contact:_
 ![add command result](images/afterAddCommand.png)
 
-Format: 
+**Format:** 
 - For adding Students: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]… r/Student g/GRADE c/CLASS rn/PARENT'S_NAME rp/PARENT'S_PHONE​`
 - For adding Parents: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]… r/Parent g/CHILD'S_GRADE c/CHILD'S_CLASS rn/CHILD'S_NAME rp/CHILD'S_PHONE​`
 - For adding Staffs/Colleagues: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDESS [t/TAG]… r/Staff​`
@@ -140,7 +200,7 @@ Format:
 - For Staff contacts, do not add the grade, class, family member's name and family member's phone number.
 </box>
 
-Examples:
+**Examples:**
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/Student g/Sec 1 c/1A rn/Bob Doe rp/92932011`
 * `add n/Bob Doe p/92932011 e/bobd@example.com a/John street, block 123, #01-01 r/Parent rn/John Doe rp/98765432 g/Sec 1 c/1A`
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Serangoon Avenue 2 p/12345678 r/Staff`
@@ -154,7 +214,7 @@ _Before editing the second contact in the list:_
 _After editing the second contact in the list:_
 ![edit command result](images/afterEditCommand.png)
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
+**Format:** `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 
 <box type="info" seamless>
 
@@ -170,7 +230,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
   `[rp/RELATIVE'S_PHONE]` are included.
     </box>
 
-Examples:
+**Examples:**
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st contact to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd contact to be `Betsy Crower` and clears all existing tags.
 
@@ -184,7 +244,7 @@ _Before deleting the old contact:_
 _After deleting the old contact:_
 ![add command result](images/afterAddCommand.png)
 
-Format: `delete n/NAME p/PHONE_NUMBER`
+**Format:** `delete n/NAME p/PHONE_NUMBER`
 <box type="info" seamless>
 
 **Note:** <br>
@@ -192,7 +252,7 @@ Format: `delete n/NAME p/PHONE_NUMBER`
 * The contact specified in the command must already be a contact in the app.
   </box>
 
-Examples:
+**Examples:**
 * `delete n/Betsy Crowe p/12345678` deletes `Betsy Crowe` with the phone number `12345678` from the app.
 
 ### Adding note to a contact : `note`
@@ -205,7 +265,7 @@ _Before adding a note to the first contact in the list:_
 _After adding a note to the first contact in the list:_
 ![note command result](images/noteCommand2.png)
 
-Format: `note INDEX nt/NOTE`
+**Format:** `note INDEX nt/NOTE`
 
 <box type="info" seamless>
 
@@ -215,7 +275,7 @@ Format: `note INDEX nt/NOTE`
 * Any existing note for the contact will be replaced by the new note.
   </box>
 
-Examples:
+**Examples:**
 * `note 1 nt/student needs help with English` Adds a note about academic needs to the 1st contact in the list.
 * `note 3 nt/prefers to be contacted after 5pm` Adds a note about contact preferences to the 3rd contact.
 
@@ -223,7 +283,7 @@ Examples:
 
 The `find` command allows you to search for people by either their name or phone number, and handles partial matches.
 
-Format:
+**Format:**
 - For searching name: `find KEYWORD [MORE_KEYWORDS]` <br>
 - For searching phone number: `find NUMBER`
 
@@ -235,7 +295,7 @@ Format:
 * Partial words/numbers will be matched e.g. `Han` will match with `Hans` or '9876' will match with '98765432'.
 </box>
 
-Examples:
+**Examples:**
 * `find 9876` returns `987665432`, `97654678` and `90873648`
 * `find John` returns `Johnny Lee` and `John Doe`
 * `find al` returns `Roy Balakrishnan` and `Alex Yeoh`<br>
@@ -245,7 +305,7 @@ Examples:
 
 Shows a list of all contacts in ClassHive.
 
-Format: `list`
+**Format:** `list`
 
 ### Sorting contacts : `sort`
 
@@ -258,7 +318,7 @@ _Before sorting by contacts' names in descending order:_
 _After sorting by contacts' names in descending order:_
 ![sort command result](images/sortCommand2.png)
 
-Format: `sort by/[FIELD] [ORDER]`
+**Format:** `sort by/[FIELD] [ORDER]`
 <box type="tip" seamless>
 
 **Note:** <br>
@@ -267,7 +327,7 @@ Format: `sort by/[FIELD] [ORDER]`
 - `ORDER` can be either `asc` (ascending) or `desc` (descending)
 </box>
 
-Examples:
+**Examples:**
 * `sort by/name asc` sorts all contacts alphabetically by name from A to Z
 * `sort by/name desc` sorts all contacts alphabetically by name from Z to A
 * `sort by/date asc` sorts all contacts from oldest to newest added
@@ -282,8 +342,7 @@ Examples:
 
 Filters and groups contacts by a specific role.
 
-**Format:**  
-`group by CATEGORY CRITERIA`
+**Format:** `group by CATEGORY CRITERIA`
 
 * **Supported category**:
     - `ROLE`/`CLASS`/`GRADE`/`FAVOURITE`
@@ -292,7 +351,7 @@ Filters and groups contacts by a specific role.
     - `Parent`/`Student`/`Staff`  
     - `pri 1 ~ pri 6`/`sec 1 ~ sec 5`
 
-* **Example: `group by ROLE Parent`**
+* **Example:** `group by ROLE Parent`
 
 <box type="info" seamless>
 
@@ -308,7 +367,7 @@ Filters and groups contacts by a specific role.
 3. Non-matching contacts will be hidden from view.
    </box>
 
-**Examples**:
+**Example**:
 1. `group by ROLE student`   
    *Shows all contacts with the **Student** role.*
 
@@ -317,7 +376,7 @@ Filters and groups contacts by a specific role.
 
 The `favourite` command allows you to mark a contact as a favourite so that you can easily identify them later or retrieve them quickly when needed.
 
-Format : `favourite INDEX`
+**Format:** `favourite INDEX`
 <box type="info" seamless>
 
 **Note:** <br>
@@ -337,7 +396,7 @@ Format : `favourite INDEX`
 After you have finished updating your contacts, you will want to safely close ClassHive. The `exit` command allows you to
 properly shut down the application, ensuring all changes are saved.
 
-Format: `exit`
+**Format:** `exit`
 
 ### Saving the data
 
