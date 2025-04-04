@@ -130,7 +130,7 @@ Format:
 - For adding Staffs/Colleagues: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDESS [t/TAG]… r/Staff​`
 <box type="info" seamless>
 
-**Note:** 
+**Note:** <br>
 - A contact can have any number of tags (including 0).
 - The role of each contact must be either a "Student", "Staff" or "Parent" (roles are not case-sensitive).
 - Only grades from Primary 1 to 6 and Secondary 1 to 5 are currently supported.
@@ -155,7 +155,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 
 <box type="info" seamless>
 
-**Note:**
+**Note:** <br>
 * Edits the contact at the specified `INDEX`. The index refers to the index number shown in the displayed contact list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
@@ -184,7 +184,7 @@ _After deleting the old contact:_
 Format: `delete n/NAME p/PHONE_NUMBER`
 <box type="info" seamless>
 
-**Note:**
+**Note:** <br>
 * Deletes the contact with the specified `NAME` and `PHONE_NUMBER`.
 * The contact specified in the command must already be a contact in the app.
   </box>
@@ -206,7 +206,7 @@ Format: `note INDEX nt/NOTE`
 
 <box type="info" seamless>
 
-**Note:**
+**Note:** <br>
 * The INDEX refers to the index number shown in the displayed contact list.
 * The index must be a positive integer (1, 2, 3, ...).
 * Any existing note for the contact will be replaced by the new note.
@@ -226,7 +226,7 @@ Format:
 
 <box type="info" seamless>
 
-**Note:** 
+**Note:** <br>
 * The search is case-insensitive. e.g `hans` will match `Hans`.
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`.
 * Partial words/numbers will be matched e.g. `Han` will match with `Hans` or '9876' will match with '98765432'.
@@ -258,7 +258,7 @@ _After sorting by contacts' names in descending order:_
 Format: `sort by/[FIELD] [ORDER]`
 <box type="tip" seamless>
 
-**Note:**
+**Note:** <br>
 - Sorts the contacts based on the specified `FIELD` (name or date) and `ORDER` (asc or desc)
 - `FIELD` can be either `name` or `date` (referring to when the contact was added)
 - `ORDER` can be either `asc` (ascending) or `desc` (descending)
@@ -293,7 +293,7 @@ Filters and groups contacts by a specific role.
 
 <box type="info" seamless>
 
-**Note**:
+**Note**:<br>
 1. **Strict format**:
     - Category and criteria must be separated by a space.
     - Values are case-insensitive (e.g., `Parent` = `parent`).
@@ -317,7 +317,7 @@ The `favourite` command allows you to mark a contact as a favourite so that you 
 Format : `favourite INDEX`
 <box type="info" seamless>
 
-**Note:**
+**Note:** <br>
 * The `INDEX` refers to the index number shown in the displayed contact list.
 * The index **must be a positive integer** 1, 2, 3, …
 * To **unmark** a contact as favourite, simply mark them as favourite again. This toggles the favourite status.
