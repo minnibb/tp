@@ -60,7 +60,7 @@ Getting started with ClassHive is easy! Just follow these steps:
 If you've never used a CLI before don’t worry! This short tutorial will walk you through the basics, and you’ll be managing your contacts like a pro in no time!
 
 ### Getting Familiar with the Interface
-input annotated image
+<img src="images/annotatedUI.png" width="400px" /> <br>
 
 1️⃣ #r#Command box## <br>
   * This is where users type their commands to interact with ClassHive. <br>
@@ -93,9 +93,9 @@ add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Serangoon Avenue 2 p/12345
 </box>
 
 2️⃣ Press **Enter**. <br>
-3️⃣ Scroll down the **Contact List Panel**.
+3️⃣ Scroll down the **Contact List Panel**. <br>
 4️⃣ You should see this. <br>
-   input image after fixing favourite bug.
+   <img src="images/addTutorial.png" width="400px" /> 
 <br>
 
 #### Command 3: 🗑️ Delete
@@ -106,9 +106,9 @@ delete n/Betsy Crowe p/12345678
 </box>
 
 2️⃣ Press **Enter**. <br>
-3️⃣ Scroll down the **Contact List Panel**.
+3️⃣ Scroll down the **Contact List Panel**. <br>
 4️⃣ You should see this. <br>
-   input image after fixing favourite bug.
+   <img src="images/deleteTutorial.png" width="400px" /> 
 <br>
 
 #### 🎊 Congratulations!
