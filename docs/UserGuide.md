@@ -6,7 +6,8 @@
 
 # ClassHive User Guide
 
-:rotating_light: ATTENTION ALL TEACHERS! :rotating_light: Introducing ClassHive, a **desktop app for managing all your 
+## :rotating_light: ATTENTION ALL TEACHERS! :rotating_light:
+Introducing ClassHive, a **desktop app for managing all your 
 school contacts**! ClassHive is a fast and easy to use app that helps you keep track of all the people you will need to 
 contact, including colleagues, parents and students. In ClassHive, instead of having to click many buttons, you can 
 simply type in commands to access any function! Let's now explore the different features that were built just for you! :rocket:
@@ -16,12 +17,12 @@ simply type in commands to access any function! Let's now explore the different 
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Quick start
+## 🚀 Let's get you started!
 
 Getting started with ClassHive is easy! Just follow these steps:
 1. Check your Java Version
     * To use ClassHive, you need Java `17` or above installed in your Computer.<br>
-    * **Mac users:** If you're unsure, follow [this guide](https://se-education.org/guides/tutorials/javaInstallationMac.html) to set it up.
+    * ❗**Mac users:** If you're unsure, follow [this guide](https://se-education.org/guides/tutorials/javaInstallationMac.html) to set it up.
 
 2. Download ClassHive
     * Click [here](https://github.com/AY2425S2-CS2103T-F13-4/tp/releases) to download the latest version of ClassHive (`.jar` file).
@@ -57,7 +58,7 @@ Getting started with ClassHive is easy! Just follow these steps:
 
 ## Features
 
-<box type="info" seamless>
+<box type="tip" seamless>
 
 It will be useful to know some information about the command format before getting started on the features!
 
@@ -77,8 +78,11 @@ It will be useful to know some information about the command format before getti
 
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
+</box>
 
-* If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
+<box type="warning" seamless>
+
+**Caution:** If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </box>
 
 ### Viewing help : `help`
@@ -108,12 +112,13 @@ _After clearing the entries:_
 Format: `clear`
 
 <box type="warning" seamless>
+
 **Caution:**
 This will remove ALL your contacts from ClassHive. Consider backing up your data before clearing (see FAQ section
 on transferring data).
 </box>
 
-### Adding a person: `add`
+### Adding a contact: `add`
 
 To make ClassHive ready for your personal use, add contacts into the app using the `add` command!
 
@@ -126,10 +131,10 @@ Format:
 - For adding Students: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]… r/Student g/GRADE c/CLASS rn/PARENT'S_NAME rp/PARENT'S_PHONE​`
 - For adding Parents: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]… r/Parent g/CHILD'S_GRADE c/CHILD'S_CLASS rn/CHILD'S_NAME rp/CHILD'S_PHONE​`
 - For adding Staffs/Colleagues: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDESS [t/TAG]… r/Staff​`
-<box type="tip" seamless>
+<box type="info" seamless>
 
-**Note:** 
-- A person can have any number of tags (including 0).
+**Note:** <br>
+- A contact can have any number of tags (including 0).
 - The role of each contact must be either a "Student", "Staff" or "Parent" (roles are not case-sensitive).
 - Only grades from Primary 1 to 6 and Secondary 1 to 5 are currently supported.
 - For Staff contacts, do not add the grade, class, family member's name and family member's phone number.
@@ -140,7 +145,7 @@ Examples:
 * `add n/Bob Doe p/92932011 e/bobd@example.com a/John street, block 123, #01-01 r/Parent rn/John Doe rp/98765432 g/Sec 1 c/1A`
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Serangoon Avenue 2 p/12345678 r/Staff`
 
-### Editing a person : `edit`
+### Editing a contact : `edit`
 
 If a contact's information has changed, simply use the `edit` command to change the contact's details. 
 
@@ -151,14 +156,14 @@ _After editing the second contact in the list:_
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 
-<box type="tip" seamless>
+<box type="info" seamless>
 
-**Note:**
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+**Note:** <br>
+* Edits the contact at the specified `INDEX`. The index refers to the index number shown in the displayed contact list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person’s tags by typing `t/` without specifying any tags after it.
+* When editing tags, the existing tags of the contact will be removed i.e adding of tags is not cumulative.
+* You can remove all the contact’s tags by typing `t/` without specifying any tags after it.
 * If you are changing the role to `Staff`, make sure that the fields `[g/GRADE]`, `[c/CLASS]`, `[rn/RELATIVE'S_NAME]` and
   `[rp/RELATIVE'S_PHONE]` are not included. 
 * If you are changing the role to `Student` or `Parent`, make sure that the fields `[g/GRADE]`, `[c/CLASS]`, `[rn/RELATIVE'S_NAME]` and
@@ -166,10 +171,10 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
     </box>
 
 Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st contact to be `91234567` and `johndoe@example.com` respectively.
+*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd contact to be `Betsy Crower` and clears all existing tags.
 
-### Deleting a person : `delete`
+### Deleting a contact : `delete`
 
 As you use ClassHive, there may be some contacts that will leave the school. Since you no longer need to contact them, 
 you can use the `delete` command to delete their information, ensuring ClassHive remains uncluttered with unnecessary information.
@@ -180,11 +185,11 @@ _After deleting the old contact:_
 ![add command result](images/afterAddCommand.png)
 
 Format: `delete n/NAME p/PHONE_NUMBER`
-<box type="tip" seamless>
+<box type="info" seamless>
 
-**Note:**
-* Deletes the person with the specified `NAME` and `PHONE_NUMBER`.
-* The person specified in the command must already be a contact in the app.
+**Note:** <br>
+* Deletes the contact with the specified `NAME` and `PHONE_NUMBER`.
+* The contact specified in the command must already be a contact in the app.
   </box>
 
 Examples:
@@ -202,19 +207,19 @@ _After adding a note to the first contact in the list:_
 
 Format: `note INDEX nt/NOTE`
 
-<box type="tip" seamless>
+<box type="info" seamless>
 
-**Note:**
-* The INDEX refers to the index number shown in the displayed person list.
+**Note:** <br>
+* The INDEX refers to the index number shown in the displayed contact list.
 * The index must be a positive integer (1, 2, 3, ...).
 * Any existing note for the contact will be replaced by the new note.
   </box>
 
 Examples:
-* `note 1 nt/student needs help with English` Adds a note about academic needs to the 1st person in the list.
-* `note 3 nt/prefers to be contacted after 5pm` Adds a note about contact preferences to the 3rd person.
+* `note 1 nt/student needs help with English` Adds a note about academic needs to the 1st contact in the list.
+* `note 3 nt/prefers to be contacted after 5pm` Adds a note about contact preferences to the 3rd contact.
 
-### Locating persons by name or phone number: `find`
+### Finding contacts by name or phone number: `find`
 
 The `find` command allows you to search for people by either their name or phone number, and handles partial matches.
 
@@ -222,9 +227,9 @@ Format:
 - For searching name: `find KEYWORD [MORE_KEYWORDS]` <br>
 - For searching phone number: `find NUMBER`
 
-<box type="tip" seamless>
+<box type="info" seamless>
 
-**Note:** 
+**Note:** <br>
 * The search is case-insensitive. e.g `hans` will match `Hans`.
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`.
 * Partial words/numbers will be matched e.g. `Han` will match with `Hans` or '9876' will match with '98765432'.
@@ -256,7 +261,7 @@ _After sorting by contacts' names in descending order:_
 Format: `sort by/[FIELD] [ORDER]`
 <box type="tip" seamless>
 
-**Note:**
+**Note:** <br>
 - Sorts the contacts based on the specified `FIELD` (name or date) and `ORDER` (asc or desc)
 - `FIELD` can be either `name` or `date` (referring to when the contact was added)
 - `ORDER` can be either `asc` (ascending) or `desc` (descending)
@@ -270,7 +275,7 @@ Examples:
 
 <box type="tip" seamless>
 
-**Tip:** Simply typing `sort` without any parameters will sort contacts alphabetically by name from A to Z.
+**info:** Simply typing `sort` without any parameters will sort contacts alphabetically by name from A to Z.
 </box>
 
 ### Grouping contacts : group
@@ -289,9 +294,9 @@ Filters and groups contacts by a specific role.
 
 * **Example: `group by ROLE Parent`**
 
-<box type="tip" seamless>
+<box type="info" seamless>
 
-**Note**:
+**Note**:<br>
 1. **Strict format**:
     - Category and criteria must be separated by a space.
     - Values are case-insensitive (e.g., `Parent` = `parent`).
@@ -313,10 +318,10 @@ Filters and groups contacts by a specific role.
 The `favourite` command allows you to mark a contact as a favourite so that you can easily identify them later or retrieve them quickly when needed.
 
 Format : `favourite INDEX`
-<box type="tip" seamless>
+<box type="info" seamless>
 
-**Note:**
-* The `INDEX` refers to the index number shown in the displayed person list.
+**Note:** <br>
+* The `INDEX` refers to the index number shown in the displayed contact list.
 * The index **must be a positive integer** 1, 2, 3, …
 * To **unmark** a contact as favourite, simply mark them as favourite again. This toggles the favourite status.
 </box>
@@ -362,8 +367,6 @@ ungroup contacts
 
 * **Example: `ungroup`**
 
-<box type="tip" seamless>
-
 **Examples**:
 1. `ungroup`   
    *Showing all contacts (no grouping).*
@@ -387,7 +390,7 @@ ungroup contacts
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Command summary
+## 💻 Command summary
 
 
 | Action       | Format, Examples                                                                                                                                                                                                                                        |
@@ -402,7 +405,7 @@ ungroup contacts
 | **List**     | `list`                                                                                                                                                                                                                                                  |
 | **Sort**     | `sort by/[FIELD] [ORDER]`<br> e.g., `sort by/name asc`, `sort by/date desc`          |
 | **Group**   | `group by [category] [criteria]`<br>e.g., `group by ROLE student`, `group by CLASS 1A, group by FAVOURITE, group by GRADE pri 1`                                                                                                                        |
-| **Ungroup** | `ungroup` <br> e.g., `ungroup`                                                                                                                                                                                      |
+| **Ungroup** | `ungroup`                                                                                                                                                                                     |
 | **Favourite** | `favourite [INDEX]`<br> e.g., `favourite 1                                                                                                                                                                                                             |
 | **Exit**     | `exit`                                                                                                                                                                                                                                                  |
 
