@@ -44,17 +44,77 @@ Getting started with ClassHive is easy! Just follow these steps:
       * Press **Enter**, then type:
        ```sh
         java -jar ClassHive.jar
-      ```
+       ```
        * Press **Enter** again. <br>
 
 5. Start using ClassHive!
       * After a few seconds, the ClassHive window should appear, ready to help you manage your contacts easily.
-      * It should look like this. <br>
-   ![Ui](images/v1.3Ui.png)
+      * It should look like this! It will contain some sample data. <br>
+        <img src="images/v1.3Ui.png" width="400px" /> <br>
 
 6. Refer to the [Features](#features) below for details of each command.
-
+7. 💡 If you're unfamiliar with using commands in a command-line interface (CLI), check out the [CLI Tutorial](#cli-tutorial) to get comfortable before diving in!
 --------------------------------------------------------------------------------------------------------------------
+
+## CLI Tutorial
+If you've never used a CLI before don’t worry! This short tutorial will walk you through the basics, and you’ll be managing your contacts like a pro in no time!
+
+### Getting Familiar with the Interface
+input annotated image
+
+1️⃣ #r#Command box## <br>
+  * This is where users type their commands to interact with ClassHive. <br>
+  
+2️⃣ #c#Result Display Box## <br>
+  * Displays messages about the executed command. <br>
+  
+3️⃣ #g#Contact List Panel## <br>
+  * Shows the list of contacts stored in ClassHive, including their details. <br>
+
+### Try Your First Commands!
+Now that you're familiar with the interface, let's try executing some commands!
+
+#### Command 1: ⭐ Favourite
+
+1️⃣ Type the following command into the **Command Box**:
+<box>
+favourite 1
+</box>
+
+2️⃣ Press **Enter**. <br>
+3️⃣ You should see this. <br>
+   input image after fixing favourite bug.
+<br>
+#### Command 2: ➕ Add
+
+1️⃣ Type the following command into the **Command Box**:
+<box>
+add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Serangoon Avenue 2 p/12345678 r/Staff
+</box>
+
+2️⃣ Press **Enter**. <br>
+3️⃣ Scroll down the **Contact List Panel**.
+4️⃣ You should see this. <br>
+   input image after fixing favourite bug.
+<br>
+
+#### Command 3: 🗑️ Delete
+
+1️⃣ Type the following command into the **Command Box**:
+<box>
+delete n/Betsy Crowe p/12345678
+</box>
+
+2️⃣ Press **Enter**. <br>
+3️⃣ Scroll down the **Contact List Panel**.
+4️⃣ You should see this. <br>
+   input image after fixing favourite bug.
+<br>
+
+#### 🎊 Congratulations!
+
+You have completed your first few commands in ClassHive!🥳 <br>
+You're now officially a **ClassHive Pro**. Head over to the [Features](#features) section to explore more commands ClassHive has to offer.
 
 ## Features
 
