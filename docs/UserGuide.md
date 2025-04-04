@@ -6,7 +6,8 @@
 
 # ClassHive User Guide
 
-:rotating_light: ATTENTION ALL TEACHERS! :rotating_light: Introducing ClassHive, a **desktop app for managing all your 
+## :rotating_light: ATTENTION ALL TEACHERS! :rotating_light:
+Introducing ClassHive, a **desktop app for managing all your 
 school contacts**! ClassHive is a fast and easy to use app that helps you keep track of all the people you will need to 
 contact, including colleagues, parents and students. In ClassHive, instead of having to click many buttons, you can 
 simply type in commands to access any function! Let's now explore the different features that were built just for you! :rocket:
@@ -16,12 +17,12 @@ simply type in commands to access any function! Let's now explore the different 
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Quick start
+## 🚀 Let's get you started!
 
 Getting started with ClassHive is easy! Just follow these steps:
 1. Check your Java Version
     * To use ClassHive, you need Java `17` or above installed in your Computer.<br>
-    * **Mac users:** If you're unsure, follow [this guide](https://se-education.org/guides/tutorials/javaInstallationMac.html) to set it up.
+    * ❗**Mac users:** If you're unsure, follow [this guide](https://se-education.org/guides/tutorials/javaInstallationMac.html) to set it up.
 
 2. Download ClassHive
     * Click [here](https://github.com/AY2425S2-CS2103T-F13-4/tp/releases) to download the latest version of ClassHive (`.jar` file).
@@ -57,7 +58,7 @@ Getting started with ClassHive is easy! Just follow these steps:
 
 ## Features
 
-<box type="info" seamless>
+<box type="tip" seamless>
 
 It will be useful to know some information about the command format before getting started on the features!
 
@@ -108,6 +109,7 @@ _After clearing the entries:_
 Format: `clear`
 
 <box type="warning" seamless>
+
 **Caution:**
 This will remove ALL your contacts from ClassHive. Consider backing up your data before clearing (see FAQ section
 on transferring data).
@@ -126,7 +128,7 @@ Format:
 - For adding Students: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]… r/Student g/GRADE c/CLASS rn/PARENT'S_NAME rp/PARENT'S_PHONE​`
 - For adding Parents: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]… r/Parent g/CHILD'S_GRADE c/CHILD'S_CLASS rn/CHILD'S_NAME rp/CHILD'S_PHONE​`
 - For adding Staffs/Colleagues: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDESS [t/TAG]… r/Staff​`
-<box type="tip" seamless>
+<box type="info" seamless>
 
 **Note:** 
 - A contact can have any number of tags (including 0).
@@ -151,7 +153,7 @@ _After editing the second contact in the list:_
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 
-<box type="tip" seamless>
+<box type="info" seamless>
 
 **Note:**
 * Edits the contact at the specified `INDEX`. The index refers to the index number shown in the displayed contact list. The index **must be a positive integer** 1, 2, 3, …​
@@ -180,7 +182,7 @@ _After deleting the old contact:_
 ![add command result](images/afterAddCommand.png)
 
 Format: `delete n/NAME p/PHONE_NUMBER`
-<box type="tip" seamless>
+<box type="info" seamless>
 
 **Note:**
 * Deletes the contact with the specified `NAME` and `PHONE_NUMBER`.
@@ -202,7 +204,7 @@ _After adding a note to the first contact in the list:_
 
 Format: `note INDEX nt/NOTE`
 
-<box type="tip" seamless>
+<box type="info" seamless>
 
 **Note:**
 * The INDEX refers to the index number shown in the displayed contact list.
@@ -222,7 +224,7 @@ Format:
 - For searching name: `find KEYWORD [MORE_KEYWORDS]` <br>
 - For searching phone number: `find NUMBER`
 
-<box type="tip" seamless>
+<box type="info" seamless>
 
 **Note:** 
 * The search is case-insensitive. e.g `hans` will match `Hans`.
@@ -270,7 +272,7 @@ Examples:
 
 <box type="tip" seamless>
 
-**Tip:** Simply typing `sort` without any parameters will sort contacts alphabetically by name from A to Z.
+**info:** Simply typing `sort` without any parameters will sort contacts alphabetically by name from A to Z.
 </box>
 
 ### Grouping contacts : group
@@ -289,7 +291,7 @@ Filters and groups contacts by a specific role.
 
 * **Example: `group by ROLE Parent`**
 
-<box type="tip" seamless>
+<box type="info" seamless>
 
 **Note**:
 1. **Strict format**:
@@ -313,7 +315,7 @@ Filters and groups contacts by a specific role.
 The `favourite` command allows you to mark a contact as a favourite so that you can easily identify them later or retrieve them quickly when needed.
 
 Format : `favourite INDEX`
-<box type="tip" seamless>
+<box type="info" seamless>
 
 **Note:**
 * The `INDEX` refers to the index number shown in the displayed contact list.
@@ -361,8 +363,6 @@ ungroup contacts
 
 
 * **Example: `ungroup`**
-
-<box type="tip" seamless>
 
 **Examples**:
 1. `ungroup`   
