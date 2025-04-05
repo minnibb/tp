@@ -12,7 +12,7 @@
 
 * _ClassHive_ was developed to help teachers keep track of their professional contacts and related tasks efficiently.
 
-* For the detailed documentation of this project, see the **[ClassHive]([https://se-education.org/addressbook-level3](https://ay2425s2-cs2103t-f13-4.github.io/tp/index.html))**.
+* For the detailed documentation of this project, see the **[ClassHive](https://ay2425s2-cs2103t-f13-4.github.io/tp/index.html)**.
 
 * This project is a **part of the se-education.org** initiative. If you would like to contribute code to this project, see [se-education.org](https://se-education.org/#contributing-to-se-edu) for more info.
 
