@@ -35,7 +35,7 @@ public class GroupCommand extends Command {
     public static final String MESSAGE_NO_RESULTS = "No contacts found for specified group criteria.";
     public static final String MESSAGE_INVALID_GROUP = "Invalid group. "
             + "Allowed categories: ROLE, CLASS, GRADE, FAVOURITE."
-            + "Allowed criteria: ROLE: Student, staff, parent, GRADE: sec 1~sec 5, pri 1~pri 6";
+            + "Allowed criteria: ROLE: Student, staff, parent, GRADE: sec 1/sec 2/sec 3/sec 4/sec 5/pri 1/pri 2/pri 3/pri 4/pri 5/pri 6";
 
     public static final String FAVOURITE = "favourite";
     private final String category;
