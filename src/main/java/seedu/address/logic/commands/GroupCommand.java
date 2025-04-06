@@ -21,21 +21,30 @@ public class GroupCommand extends Command {
     public static final String COMMAND_WORD = "group";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Groups contacts by specified role, class, grade or favourite status.\n"
-            + "Format: group by ROLE/CLASS/GRADE/FAVOURITE [specified_criteria]\n"
-            + "Valid roles: Student, Parent, Staff\n"
-            + "Valid groupings: Favourite\n"
-            + "Example: " + COMMAND_WORD + " by ROLE Student\n"
-            + "Example: " + COMMAND_WORD + " by CLASS 2025\n"
-            + "Example: " + COMMAND_WORD + " by GRADE sec 1\n"
-            + "Example: " + COMMAND_WORD + " by FAVOURITE";
+            + ": Groups contacts from the FULL LIST by specified category.\n"
+            + "Format: group by ROLE/CLASS/GRADE/FAVOURITE [CRITERIA]\n"
+            + "- ROLE requires: Student, Parent, Staff\n"
+            + "- CLASS accepts any non-empty value\n"
+            + "- GRADE requires: pri 1~6/sec 1~5\n"
+            + "- FAVOURITE needs no criteria\n"
+            + "Examples:\n"
+            + "  " + COMMAND_WORD + " by ROLE Student\n"
+            + "  " + COMMAND_WORD + " by CLASS 1A\n"
+            + "  " + COMMAND_WORD + " by GRADE sec 1\n"
+            + "  " + COMMAND_WORD + " by FAVOURITE";
 
     public static final String MESSAGE_SUCCESS = "Results are grouped by: %1$s %2$s\n"
-            + "%3$d contacts found.";
+            + "%3$d contacts found.\n";
+
     public static final String MESSAGE_NO_RESULTS = "No contacts found for specified group criteria.";
-    public static final String MESSAGE_INVALID_GROUP = "Invalid group. "
-            + "Allowed categories: ROLE, CLASS, GRADE, FAVOURITE."
-            + "Allowed criteria: ROLE: Student, staff, parent, GRADE: sec 1/sec 2/sec 3/sec 4/sec 5/pri 1/pri 2/pri 3/pri 4/pri 5/pri 6";
+
+    public static final String MESSAGE_INVALID_GROUP = "Invalid group.\n"
+            + "Allowed categories: ROLE, CLASS, GRADE, FAVOURITE\n"
+            + "Criteria rules:\n"
+            + "- ROLE: Student, Parent, Staff (case-insensitive)\n"
+            + "- CLASS: Any non-empty text (e.g. 2B, ScienceClub)\n"
+            + "- GRADE: pri 1~6/sec 1~5 (e.g. 'pri 3', 'sec 4')\n"
+            + "- FAVOURITE: No criteria needed";
 
     public static final String FAVOURITE = "favourite";
     private final String category;
@@ -81,11 +90,13 @@ public class GroupCommand extends Command {
             throw new CommandException(MESSAGE_INVALID_GROUP);
         }
 
+        model.updateFilteredPersonList(this::isMatchingGroup);
+        filteredList = model.getFilteredPersonList();
+
         if (filteredList.isEmpty()) {
             return new CommandResult(MESSAGE_NO_RESULTS);
         }
 
-        model.updateFilteredPersonList(this::isMatchingGroup);
 
         return new CommandResult(
                 String.format(MESSAGE_SUCCESS, category, criteria.isEmpty() ? "" : criteria, filteredList.size()));
