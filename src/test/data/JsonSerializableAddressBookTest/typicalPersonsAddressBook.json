@@ -11,7 +11,7 @@
     "favourite": false,
     "studentClass": "3K",
     "familyMemberName": "Elle Meyer",
-    "familyMemberPhone": "9482224"
+    "familyMemberPhone": "94822241"
   }, {
     "name" : "Benson Meier",
     "phone" : "98765432",
@@ -50,7 +50,7 @@
     "familyMemberPhone": "98765432"
   }, {
     "name" : "Elle Meyer",
-    "phone" : "9482224",
+    "phone" : "94822241",
     "email" : "werner@example.com",
     "address" : "michegan ave",
     "tags" : [ ],
@@ -62,7 +62,7 @@
     "familyMemberPhone": "94351253"
   }, {
     "name" : "Fiona Kunz",
-    "phone" : "9482427",
+    "phone" : "94824271",
     "email" : "lydia@example.com",
     "address" : "little tokyo",
     "tags" : [ ],
@@ -74,7 +74,7 @@
     "familyMemberPhone": "Not applicable"
   }, {
     "name" : "George Best",
-    "phone" : "9482442",
+    "phone" : "94824421",
     "email" : "anna@example.com",
     "address" : "4th street",
     "tags" : [ ],
