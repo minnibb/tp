@@ -198,10 +198,17 @@ To make ClassHive ready for your personal use, add contacts into the app using t
 - Only grades from Primary 1 to 6 and Secondary 1 to 5 are currently supported.
 - For Staff contacts, do not add the grade, class, family member's name and family member's phone number.
 </box>
+  
+<box type="tip" seamless>
+
+**Tip:** <br>
+- As the phone number field is compulsory, if a student does not have a contact number, you can add his or her parent's phone number instead!
+  </box>
 
 **Examples:**
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/Student g/Sec 1 c/1A rn/Bob Doe rp/92932011` adds the student `John Doe` into ClassHive. 
 * `add n/Bob Doe p/92932011 e/bobd@example.com a/John street, block 123, #01-01 r/Parent rn/John Doe rp/98765432 g/Sec 1 c/1A` adds the parent `Bob Doe` into ClassHive.
+* `add n/Jamie Goh p/98128281 e/jamie@example.com a/Jamie street, block 123, #01-02 r/Student g/Pri 2 c/2C rn/Joseph Goh rp/98128272` adds the student `Jamie Goh` into ClassHive.
 * `add n/Betsy Crowe t/boss e/betsycrowe@example.com a/Serangoon Avenue 2 p/12345678 r/Staff` adds the staff member `Betsy Crowe` into ClassHive. 
 
 **Expected output:**
