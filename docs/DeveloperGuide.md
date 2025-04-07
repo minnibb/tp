@@ -628,22 +628,15 @@ Team size: 4
 3. **Allow missing Grade, Class, Relative’s Name and Relative’s Phone when using the Edit Command to change roles from Student to Parent or Parent to Student**
    * When changing a contact’s role to Student or Parent, the current edit command forces the user to add the grade, class, relative’s name and relative’s phone number fields. This is because these fields would not have been filled previously if the original role of the contact was Staff. However, if the original role of the contact is a Parent or a Student, these fields would have already been filled.<br>
    * We plan to modify the edit command to take into account the original role of the contact and allow these four fields to be missing when switching roles between Parent and Student. <br>
-4. **Restrict the editing of Grade, Class, Relative’s Name and Relative’s Phone when the contact is currently given the Staff role**
-   * Even when the current role of the contact is Staff, the current implementation of the app still allows the user to change the Grade, Class, Relative’s Name and Relative’s Phone fields. Editing these fields will not make any changes to the UI as these information are not reflected for Staff.<br>
-   * We plan to modify the edit command to take into account the original role of the contact, and disallow users from editing these four fields when the contact is currently a Staff. <br>
-5. **Allow grouping by multiple criteria**
-   * While users are able to group contacts by a single field, there is no functionality to group contacts meaningfully based on multiple fields. This might be difficult for users to manage the contact list efficiently.<br>
-   * We plan to implement a grouping feature that allows users to group based on two or more specified fields. <br>
-6. **Enforcing Naming Restrictions for Classes**
-   * Users can create class names with spaces or names that conflict with predefined grade categories, causing parsing issues.
-   * Prohibiting spaces in class names and restricting class names that match predefined grade categories to avoid ambiguity. <br>
-7. **Support fuzzy search and typo tolerance to make finding contacts more user-friendly**
-   * Users must enter the exact or partial of a contact name to find a match.This makes it less user-friendly.
-   * Implement fuzzy search with typo tolerances, so slight misspellings still have relevant results. <br>
-8. **Add multi-level sorting capability:**
-   * The current contact list only allows basic sorting by one attribute. This limits the ability to organize and view contacts effectively, especially if the user wants to prioritise based on multiple fields.<br>
-   * We plan to enhance the sorting system to support multi-level sorting allowing users to multiple fields to sort by in a chosen order. <br>
-
+4. **Disallow users from editing fields when the input is the same as before:**
+    * Currently, users can edit contact’s fields even when the input is identical to the existing values. This leads to unnecessary updates.
+    * We plan to implement a check that prevents users from submitting a change if the input value matches the previous one.
+5. **Enforce proper parent-student assignments:**
+    * A single child can be assigned to more than two parents, which can cause data inconsistencies.
+    * We plan to implement a rule that limits each child to a maximum of two parents, ensuring data integrity and reflecting realistic family structures.
+6. **Provide clear feedback on missing command prefixes:**
+    * Currently, when users forget to include required prefixes in their commands, the error messages are not specific enough to guide them effectively.
+    * We plan to enhance the parser to detect missing prefixes and inform users exactly which ones are absent. This will improve user experience and reduce confusion when constructing commands.
 
 --------------------------------------------------------------------------------------------------------------------
 
