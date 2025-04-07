@@ -101,5 +101,4 @@ public class PersonCardTest {
         assertEquals(expected.size(), actual.size());
         assertEquals(expected, actual);
     }
-
 }

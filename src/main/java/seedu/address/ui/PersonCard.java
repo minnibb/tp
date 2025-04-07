@@ -1,5 +1,9 @@
 package seedu.address.ui;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -68,7 +72,12 @@ public class PersonCard extends UiPart<Region> {
 
         ArrayList<String> schoolDetails = getSchoolRelatedInformation(person);
         schoolDetails.forEach(detail -> details.getChildren().add(new Label(detail)));
-
+        LocalDateTime dateAdded = LocalDateTime.ofInstant(
+                Instant.ofEpochMilli(person.getTimeAdded()),
+                ZoneId.systemDefault());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        String dateInfo = "Date modified: " + dateAdded.format(formatter);
+        details.getChildren().add(new Label(dateInfo));
         ArrayList<String> familyInformation = getFamilyInformation(person);
         familyInformation.forEach(information -> family.getChildren().add(new Label(information)));
 
