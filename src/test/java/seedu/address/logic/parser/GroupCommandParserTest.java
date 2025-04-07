@@ -28,6 +28,16 @@ public class GroupCommandParserTest {
                         + "- GRADE: pri 1~6/sec 1~5 (e.g. 'pri 3' or 'sec 4')\n"
                         + "- FAVOURITE: No criteria needed");
     }
+    @Test
+    public void parse_invalidFormat_throwsException() {
+        assertParseFailure(parser, "ba",
+                "Invalid format. Usage: group by ROLE/CLASS/GRADE/FAVOURITE [specific criteria]"
+                        + "Criteria rules:\n"
+                        + "- ROLE: Student, Parent, Staff (case-insensitive)\n"
+                        + "- CLASS: Any non-empty text (e.g. 2B, ScienceClub)\n"
+                        + "- GRADE: pri 1~6/sec 1~5 (e.g. 'pri 3' or 'sec 4')\n"
+                        + "- FAVOURITE: No criteria needed");
+    }
 
     @Test
     public void parse_favouriteWithCriteria_throwsException() {
