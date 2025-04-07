@@ -362,6 +362,10 @@ Shows a list of all contacts in ClassHive.
 
 **Format:** `list`
 
+**Expected output:**
+* Expected message displayed in the output box: `Listed all persons`
+* The full list of contacts will be displayed in the UI, regardless of the previous view or filters applied.
+
 ### Sorting contacts : `sort`
 
 As a teacher managing multiple classes, your contact list will eventually get larger over time. If you want to keep your 
@@ -476,7 +480,7 @@ The `favourite` command lets you mark important contacts as favourites, making i
 * Expected message displayed in the output box: `Toggled favourite status for: [CONTACT]`, where `CONTACT` eflects the details of the contact whose favourite status was toggled.
   For example, upon running the command in the first example shown above, the expected output will be 
   `Toggled favourite status for: Alex Yeoh; Phone: 87438807; Email: alexyeoh@example.com; Address: Blk 30 Geylang Street 29, #06-40; Role: Parent; Child's Name: Anthony Yeoh; Child's Phone: 93282842; Child's Grade: SEC 1; Child's Class: 1A; Tags: [pta member]`
-* The grouped list of contacts will be reflected immediately in the results panel:
+* The star icon will appear or disappear next to the contact in the list, depending on their updated favourite status.
   ![favourite](images/afterFavourite.png)
 
 ### Exiting the program : `exit`
