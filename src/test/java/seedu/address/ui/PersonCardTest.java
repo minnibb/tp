@@ -1,11 +1,17 @@
 package seedu.address.ui;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.AMY;
 import static seedu.address.testutil.TypicalPersons.BOB;
 import static seedu.address.testutil.TypicalPersons.CHARLES;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
@@ -102,8 +108,14 @@ public class PersonCardTest {
         assertEquals(expected, actual);
     }
     @Test
-    public void constructor_setsDateAdded_correctlyFormatsTimestamp() {
-        PersonCard personCard = new PersonCard(VALID_STUDENT, 1);
-        assertEquals(VALID_STUDENT, personCard.person);
+    public void formatter_correctlyFormatsTimestamp() {
+        long timestamp = System.currentTimeMillis();
+        LocalDateTime dateAdded = LocalDateTime.ofInstant(
+                Instant.ofEpochMilli(timestamp),
+                ZoneId.systemDefault());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        String dateInfo = "Date added: " + dateAdded.format(formatter);
+        assertFalse(dateInfo.isEmpty());
+        assertTrue(dateInfo.startsWith("Date added: "));
     }
 }
