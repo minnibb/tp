@@ -197,6 +197,7 @@ To make ClassHive ready for your personal use, add contacts into the app using t
 - The role of each contact must be either a "Student", "Staff" or "Parent" (roles are not case-sensitive).
 - Only grades from Primary 1 to 6 and Secondary 1 to 5 are currently supported.
 - For Staff contacts, do not add the grade, class, family member's name and family member's phone number.
+- Phone numbers must be an 8-digit Singapore number, without specification of the country code. Ensure that there are also no spaces in the middle of the phone number. 
 </box>
   
 <box type="tip" seamless>
