@@ -120,6 +120,29 @@ public class Person {
         this.notes = notes == null ? "" : notes;
     }
 
+    /**
+     * Every field must be present and not null.
+     * Constructor with notes field included and custom timeAdded.
+     */
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Role role,
+                  Grade grade, Class studentClass, Name relativeName, Phone relativePhone,
+                  Favourite favourite, String notes, long timeAdded) {
+        requireAllNonNull(name, phone, email, address, tags, role, grade, studentClass, favourite);
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.tags.addAll(tags);
+        this.timeAdded = timeAdded;
+        this.role = role;
+        this.grade = grade;
+        this.studentClass = studentClass;
+        this.relativeName = relativeName;
+        this.relativePhone = relativePhone;
+        this.favourite = favourite;
+        this.notes = notes == null ? "" : notes;
+    }
+
     public Name getName() {
         return name;
     }

@@ -40,6 +40,7 @@ class JsonAdaptedPerson {
     private final String familyMemberName;
     private final String familyMemberPhone;
     private final String notes;
+    private final long timeAdded;
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
      */
@@ -51,7 +52,7 @@ class JsonAdaptedPerson {
             @JsonProperty("family member's name") String familyMemberName,
             @JsonProperty("family member's phone") String familyMemberPhone,
             @JsonProperty("favourite") Boolean favourite,
-            @JsonProperty("notes") String notes) {
+            @JsonProperty("notes") String notes, @JsonProperty("timeAdded") Long timeAdded) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -66,6 +67,7 @@ class JsonAdaptedPerson {
         this.familyMemberName = familyMemberName;
         this.familyMemberPhone = familyMemberPhone;
         this.notes = notes;
+        this.timeAdded = (timeAdded == null) ? System.currentTimeMillis() : timeAdded;
     }
 
     /**
@@ -86,6 +88,7 @@ class JsonAdaptedPerson {
         familyMemberName = source.getRelativeName().fullName;
         familyMemberPhone = source.getRelativePhone().value;
         notes = source.getNotes();
+        timeAdded = source.getTimeAdded();
     }
 
     /**
@@ -176,7 +179,7 @@ class JsonAdaptedPerson {
         final Phone modelRelativePhone = new Phone(familyMemberPhone);
 
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelRole, modelGrade,
-            modelClass, modelRelativeName, modelRelativePhone, modelFavourite, notes);
+            modelClass, modelRelativeName, modelRelativePhone, modelFavourite, notes, timeAdded);
     }
 
 }
