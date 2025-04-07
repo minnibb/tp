@@ -384,13 +384,13 @@ or chronologically by when they were added, making it easier to scan through you
 
 <box type="tip" seamless>
 
-**Caution:** `sort` command can only be used on the **full contact list**. If you've recently used `find`, `group`,
-or any other filter-based command, run `list` first to reset the view.
+**Tip:** Simply typing `sort` without any parameters will sort contacts alphabetically by name from A to Z.
 </box>
 
-<box type="tip" seamless>
+<box type="warning" seamless>
 
-**Tip:** Simply typing `sort` without any parameters will sort contacts alphabetically by name from A to Z.
+**Caution:** `sort` command can only be used on the **full contact list**. If you've recently used `find`, `group`,
+or any other filter-based command, run `list` first to reset the view.
 </box>
 
 **Examples:**
