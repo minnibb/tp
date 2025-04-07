@@ -150,13 +150,13 @@ It will be useful to know some information about the command format before getti
 Help is always near when using ClassHive! At any point in time, if you need instructions on how to use the app, 
 type `help`.
 
-![help message](images/helpMessage.png)
+<img src="images/helpMessage.png" width="400px" />
 
 **Format:** `help`
 
 <box type="tip" seamless>
 
-  **Tip**: You can also access help window by clicking on F1 or the help menu on the top left.
+  **Tip**: You can also access help window by clicking on F1 or the help menu on the top left bar.
 </box>
 
 ### Clearing all entries : `clear`
