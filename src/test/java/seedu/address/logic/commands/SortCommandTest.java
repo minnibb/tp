@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.nio.file.Path;
@@ -23,6 +24,7 @@ import seedu.address.model.person.Person;
 import seedu.address.testutil.PersonBuilder;
 
 public class SortCommandTest {
+
 
     @Test
     public void execute_emptyList_success() throws CommandException {
@@ -106,6 +108,7 @@ public class SortCommandTest {
         assertTrue(sortCommand.toString().contains("isAscending=true"));
     }
 
+
     @Test
     public void execute_exceptionThrown_returnsErrorMessage() throws CommandException {
         ModelStub modelStub = new ModelStub() {
@@ -130,6 +133,8 @@ public class SortCommandTest {
         assertEquals(SortCommand.MESSAGE_ERROR_PREFIX + "Test exception", result.getFeedbackToUser());
     }
 
+
+
     /**
      * A Model stub with an empty address book.
      */
@@ -151,6 +156,35 @@ public class SortCommandTest {
             requireNonNull(addressBook);
         }
     }
+    @Test
+    public void execute_filteredListNotFull_throwsCommandException() {
+
+        Person alice = new PersonBuilder().withName("Alice").build();
+        Person bob = new PersonBuilder().withName("Bob").build();
+
+        ModelStub modelStub = new ModelStub() {
+            @Override
+            public ObservableList<Person> getFilteredPersonList() {
+
+                return FXCollections.observableArrayList(alice);
+            }
+
+            @Override
+            public ReadOnlyAddressBook getAddressBook() {
+                AddressBook ab = new AddressBook();
+                ab.addPerson(alice);
+                ab.addPerson(bob);
+                return ab;
+            }
+        };
+
+        SortCommand sortCommand = new SortCommand("name", true);
+
+        assertThrows(CommandException.class, () -> sortCommand.execute(modelStub),
+                SortCommand.MESSAGE_INVALID_SORT);
+    }
+
+
 
     /**
      * A Model stub with a few persons.
