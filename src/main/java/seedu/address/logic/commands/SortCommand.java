@@ -17,7 +17,7 @@ import seedu.address.model.person.Person;
 public class SortCommand extends Command {
 
     public static final String COMMAND_WORD = "sort";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts all persons in the address book "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts all persons saved in the ClassHive "
             + "by the specified field in the specified order.\n"
             + "Parameters: by [FIELD] [ORDER]\n"
             + "FIELD: name, date\n"
