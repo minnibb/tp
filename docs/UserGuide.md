@@ -51,18 +51,17 @@ Getting started with ClassHive is easy! Just follow these steps:
 5. Start using ClassHive!
       * After a few seconds, the ClassHive window should appear, ready to help you manage your contacts easily.
       * It should look like this! It will contain some sample data. <br>
-        <img src="images/v1.6Ui.png" width="400px" /> <br>
+        <img src="images/Ui.png" width="400px" /> <br>
 
 6. Refer to the [Features](#features) below for details of each command.
 7. 💡 If you're unfamiliar with using commands in a command-line interface (CLI), check out the [CLI Tutorial](#cli-tutorial) to get comfortable before diving in! <br>
-[[🔝 Back to Table of Contents]](#table-of-contents)
 --------------------------------------------------------------------------------------------------------------------
 
 ## CLI Tutorial
 If you've never used a CLI before don’t worry! This short tutorial will walk you through the basics, and you’ll be managing your contacts like a pro in no time!
 
 ### Getting Familiar with the Interface
-<img src="images/annotatedUI.png" width="400px" /> <br>
+<img src="images/annotatedUi.png" width="400px" /> <br>
 
 1️⃣ #r#Command box## <br>
   * This is where users type their commands to interact with ClassHive. <br>
@@ -85,7 +84,7 @@ favourite 1
 
 2️⃣ Press **Enter**. <br>
 3️⃣ You should see this. <br>
-   (+input image after fixing favourite bug)
+   <img src="images/favouriteTutorial.png" width="400px" /> 
 <br>
 #### Command 2: ➕ Add
 
@@ -178,21 +177,18 @@ fresh database. The `clear` command allows you to remove all contacts from Class
 This is an irreversible action that will remove ALL your contacts from ClassHive.
 Consider backing up your data before clearing (see FAQ section on transferring data).
 </box>
-
-| _Before clearing the entries:_ <br> <img src="images/clearCommand.png" width="300px" /> <br> | _After clearing the entries:_ <br> <img src="images/clearCommand2.png" width="300px" /> <br> |
-|----------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
-
+<br>
 <div style="display: flex; justify-content: space-between; text-align: center; width: 100%;">
   <div style="width: 48%;">
     <p>Before clearing the entries:</p>
-    <img src="images/clearCommand.png" alt="Image 1" style="width: 100%;">
+    <img src="images/Ui.png" alt="Image 1" style="width: 100%;">
   </div>
   <div style="width: 48%;">
     <p>After clearing the entries:</p>
-    <img src="images/clearCommand2.png" alt="Image 2" style="width: 100%;">
+    <img src="images/clear.png" alt="Image 2" style="width: 100%;">
   </div>
 </div>
-
+<br>
 ### Adding a contact: `add`
 
 To make ClassHive ready for your personal use, add contacts into the app using the `add` command!
@@ -269,9 +265,18 @@ If a contact's information has changed, simply use the `edit` command to change 
   For example, running the command in the first example above results in the output message `Edited Person: Charlie Olive; Phone: 98989898; Email: charlotte@example.com; Address: Blk 11 Ang Mo Kio Street 74, #11-04; Role: Staff; Tags: [mentor]`.
 * The edited details will also be reflected on ClassHive, as shown in the images below:
 
-| _Before editing the 3rd contact:_ <br> <img src="images/beforeEditCommand.png" width="300px" /> <br> | _After editing the 3rd contact:_ <br> <img src="images/afterEditCommand.png" width="300px" /> <br> |
-|------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
-
+<br>
+<div style="display: flex; justify-content: space-between; text-align: center; width: 100%;">
+  <div style="width: 48%;">
+    <p>Before editing the 3rd contact:</p>
+    <img src="images/beforeEditCommand.png" alt="Image 1" style="width: 100%;">
+  </div>
+  <div style="width: 48%;">
+    <p>After editing the 3rd contact:</p>
+    <img src="images/afterEditCommand.png" alt="Image 2" style="width: 100%;">
+  </div>
+</div>
+<br>
 
 ### Deleting a contact : `delete`
 
@@ -312,11 +317,12 @@ allows you to add this information to specific contacts for easy reference later
 **Examples:**
 * `note 3 nt/prefers to be contacted after 5pm` Adds a note about contact preferences to the 3rd contact.
 * `note 1 nt/student needs help with English` Adds a note about academic needs to the 1st contact in the list. <br>
-  (+ADD NOTE IMAGE HEREEEEEEEEEEEEEEEE)
+<img src="images/afterNote.png" width="400px" /> 
+<br>
 
 ### Finding contacts by name or phone number: `find`
 
-The `find` command allows you to search for people by either their name or phone number, and handles partial matches.
+There will be times when you need to quickly locate someone by name or phone number, the `find` command helps you do just that!
 
 **Format:**
 - For searching name: `find KEYWORD [MORE_KEYWORDS]` <br>
@@ -336,8 +342,8 @@ The `find` command allows you to search for people by either their name or phone
 * `find 9876` returns `98766543`, `97659876` and `90987648`
 * `find John` returns `Johnny Lee` and `John Doe`
 * `find al` returns `Roy Balakrishnan` and `Alex Yeoh`<br>
-  ![result for 'find ale'](images/findFeatureExample.png) (+change image)
-
+  <img src="images/find.png" width="400px" /> 
+<br>
 ### Listing all contacts : `list`
 
 Shows a list of all contacts in ClassHive.
@@ -377,14 +383,22 @@ or any other filter-based command, run `list` first to reset the view.
 * `sort by date asc` sorts all contacts from oldest to newest added
 * `sort by date desc` sorts all contacts from newest to oldest added
 
-_Before sorting by contacts' names in descending order:_
-![sort command before](images/sortCommand.png) (+ADD BEFORE SORT IMAGE HEREEEEEEEEEEEEEEEEE)
-_After sorting by contacts' names in descending order:_
-![sort command result](images/sortCommand2.png) (+ADD AFTER SORT IMAGE HEREEEEEEEEEEEEEEEEE
+<br>
+<div style="display: flex; justify-content: space-between; text-align: center; width: 100%;">
+  <div style="width: 48%;">
+    <p>Before sorting by contacts' names in descending order:</p>
+    <img src="images/Ui.png" alt="Image 1" style="width: 100%;">
+  </div>
+  <div style="width: 48%;">
+    <p>After sorting by contacts' names in descending order:</p>
+    <img src="images/sortAfter.png" alt="Image 2" style="width: 100%;">
+  </div>
+</div>
+<br>
 
 ### Grouping contacts : group
 
-Filters and groups contacts by a specific category.  `group by` **always operates on the full contact list**, not the currently displayed subset.
+With the `group` command, you can organize your contacts into specific categories, helping you quickly find the people you're looking for. Whether it’s by their role, class, grade, or favorite status, you can filter and group your contacts to keep your list well-organized.
 
 **Format**:  
 `group by CATEGORY [CRITERIA]`
@@ -402,6 +416,7 @@ Filters and groups contacts by a specific category.  `group by` **always operate
 - Group handles only **one category** at a time.
 - Values are case-insensitive (e.g., `Parent` = `parent`).
 - Contacts that don't match will be hidden.
+- Group by always operates on your full contact list, not just the currently displayed subset.
 </box>
 
 <box type="tip" seamless>
@@ -414,12 +429,12 @@ Filters and groups contacts by a specific category.  `group by` **always operate
 * `group by CLASS 2A` shows students and their parents from class 2A. <br>  
 * `group by GRADE pri 4` shows contacts in Primary 4.
 * `group by FAVOURITE` shows all favourited contacts. <br>
-  (+input image)
-
-
+  <img src="images/group.png" width="400px" />
+  <br>
+  
 ### Favourite contacts: `favourite`
 
-The `favourite` command allows you to mark a contact as a favourite so that you can easily identify them later or retrieve them quickly when needed.
+The `favourite` command lets you mark important contacts as favourites, making it easy to find and highlight them later. Whether it's a key student, parent, or colleague, you can quickly access your favourite contacts whenever needed.
 
 **Format:** `favourite INDEX`
 <box type="info" seamless>
@@ -432,9 +447,9 @@ The `favourite` command allows you to mark a contact as a favourite so that you 
 
 **Examples**:
 * `favourite 1` marks the first contact on the list as favourite.
-  ![favourite 1](images/markFavourite.png)
+  ![favourite 1](images/afterFavourite.png)
 * `favourite 1` **AGAIN**, unfavourite the first contact on the list.
-![unfavourite 1](images/unmarkFavourite.png)
+![unfavourite 1](images/unfavourite.png)
 
 ### Exiting the program : `exit`
 
