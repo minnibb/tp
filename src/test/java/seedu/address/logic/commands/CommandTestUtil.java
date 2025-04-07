@@ -83,7 +83,7 @@ public class CommandTestUtil {
     public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;
     public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
 
-    public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
+    public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "  "; // names cannot be empty
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
@@ -91,7 +91,7 @@ public class CommandTestUtil {
     public static final String INVALID_ROLE_DESC = " " + PREFIX_ROLE + "admin"; // admin is not a supported role
     public static final String INVALID_CLASS_DESC = " " + PREFIX_CLASS + " "; // not allowed to have a space only
     public static final String INVALID_GRADE_DESC = " " + PREFIX_GRADE + "Pri 7"; // must be from Pri 1-6 or Sec 1-5
-    public static final String INVALID_RELATIVE_DESC = " " + PREFIX_RELATIVE_NAME + "James&"; // '&' not allowed
+    public static final String INVALID_RELATIVE_DESC = " " + PREFIX_RELATIVE_NAME + "  "; // names cannot be empty
     public static final String INVALID_RELATIVE_PHONE_DESC = " " + PREFIX_RELATIVE_PHONE + "911a"; // letters disallowed
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
