@@ -21,7 +21,7 @@ import seedu.address.model.person.Phone;
 import seedu.address.model.person.Role;
 
 public class JsonAdaptedPersonTest {
-    private static final String INVALID_NAME = "R@chel";
+    private static final String INVALID_NAME = " ";
     private static final String INVALID_PHONE = "+651234";
     private static final String INVALID_ADDRESS = " ";
     private static final String INVALID_EMAIL = "example.com";
@@ -29,7 +29,7 @@ public class JsonAdaptedPersonTest {
     private static final String INVALID_ROLE = "admin";
     private static final String INVALID_GRADE = "Pri 7";
     private static final String INVALID_CLASS = " ";
-    private static final String INVALID_RELATIVE_NAME = "R@@@chel!";
+    private static final String INVALID_RELATIVE_NAME = " ";
     private static final String INVALID_RELATIVE_PHONE = "a651234";
 
     private static final String VALID_NAME = BENSON.getName().toString();
