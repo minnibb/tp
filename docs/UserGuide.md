@@ -54,7 +54,7 @@ Getting started with ClassHive is easy! Just follow these steps:
         <img src="images/v1.6Ui.png" width="400px" /> <br>
 
 6. Refer to the [Features](#features) below for details of each command.
-7. 💡 If you're unfamiliar with using commands in a command-line interface (CLI), check out the [CLI Tutorial](#cli-tutorial) to get comfortable before diving in!
+7. 💡 If you're unfamiliar with using commands in a command-line interface (CLI), check out the [CLI Tutorial](#cli-tutorial) to get comfortable before diving in! <br>
 <button onclick="location.href='#table-of-contents'">🔝 Back to Table of Contents</button>
 --------------------------------------------------------------------------------------------------------------------
 
