@@ -181,6 +181,17 @@ Consider backing up your data before clearing (see FAQ section on transferring d
 | _Before clearing the entries:_ <br> <img src="images/clearCommand.png" width="300px" /> <br> | _After clearing the entries:_ <br> <img src="images/clearCommand2.png" width="300px" /> <br> |
 |----------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
 
+<div style="display: flex; justify-content: space-between; text-align: center; width: 100%;">
+  <div style="width: 48%;">
+    <p>_Before clearing the entries:_</p>
+    <img src="images/clearCommand.png" alt="Image 1" style="width: 100%;">
+  </div>
+  <div style="width: 48%;">
+    <p>_After clearing the entries:_</p>
+    <img src="images/clearCommand2.png" alt="Image 2" style="width: 100%;">
+  </div>
+</div>
+
 ### Adding a contact: `add`
 
 To make ClassHive ready for your personal use, add contacts into the app using the `add` command!
