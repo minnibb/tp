@@ -1,10 +1,10 @@
 package seedu.address.ui;
 
-import java.util.ArrayList;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Comparator;
 
 import javafx.fxml.FXML;
