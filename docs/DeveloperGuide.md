@@ -13,7 +13,9 @@
 
 ## **Acknowledgements**
 
-1. Removal of whitespace inside a String: Taken from https://stackoverflow.com/questions/33381237/string-doesnt-equal-string-with-spaces
+1. This project is based on the [AddressBook Level-3](https://se-education.org/addressbook-level3/) desktop application. 
+
+2. Removal of whitespace inside a String: Taken from https://stackoverflow.com/questions/33381237/string-doesnt-equal-string-with-spaces
 * Used in lines 61-62 in [Name.java](https://github.com/AY2425S2-CS2103T-F13-4/tp/blob/master/src/main/java/seedu/address/model/person/Name.java)
 
 --------------------------------------------------------------------------------------------------------------------
@@ -36,7 +38,7 @@ Given below is a quick overview of main components and how they interact with ea
 
 **Main components of the architecture**
 
-**`Main`** (consisting of classes [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
+**`Main`** (consisting of classes [`Main`](https://github.com/AY2425S2-CS2103T-F13-4/tp/blob/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2425S2-CS2103T-F13-4/tp/blob/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
 * At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
 * At shut down, it shuts down the other components and invokes cleanup methods where necessary.
 
@@ -51,7 +53,7 @@ The bulk of the app's work is done by the following four components:
 
 **How the architecture components interact with each other**
 
-The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
+The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete n/John Doe p/98765432`.
 
 <puml src="diagrams/ArchitectureSequenceDiagram.puml" width="574" />
 
@@ -87,7 +89,7 @@ The `UI` component,
 
 **API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
 
-Here's a (partial) class diagram of the `Logic` component:
+This is a (partial) class diagram of the `Logic` component:
 
 <puml src="diagrams/LogicClassDiagram.puml" width="550"/>
 
@@ -162,18 +164,26 @@ This section describes some noteworthy details on how certain features are imple
 ### Find feature
 
 #### Current Implementation
+The find feature parses the search keys given by the user, and finds all contacts that match the search key in the 
+currently displayed list. These contacts are then returned and displayed in the UI. The sequence diagram below 
+illustrates the interactions between the different components:
 <puml src="diagrams/FindSequenceDiagram.puml" width="550" />
 
 
 ### Sort feature
 
 #### Current Implementation
+The sort feature parses the user-given parameters required for sorting, and displays the list of contacts in the UI in 
+the user's preferred manner. The sequence diagram below illustrates the interactions between the different components: 
 <puml src="diagrams/SortSequenceDiagram.puml" width="550" />
 
 
 ### Favourite feature
 
 #### Current Implementation
+The favourite feature parses the index given by the user, and finds the contact with the matching index. This contact
+is marked as a favourite (or unmarked as a favourite) and the changes are displayed in the UI. The sequence diagram 
+below illustrates the interactions between the different components:
 <puml src="diagrams/FavouriteSequenceDiagram.puml" width="550" />
 
 
@@ -248,7 +258,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   * 2b2. Use case ends.
 
 * 2c. The user provides multiple roles.
-  * 2c1. System indicates that only one role can be selected.
+  * 2c1. System shows an appropriate error message.
   * 2c2. Use case ends.
 
 * 2d. The user provides a role with incorrect format.
@@ -258,10 +268,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 3a. No contacts are found for the specified role.
   * 3a1. System indicates no matching contacts.
   * 3a2. Use case ends.
-
-* 3b. The system is processing a large contact list.
-  * 3b1. System indicates processing is in progress.
-  * 3b2. Use case continues normally.
 
 ## Use case: UC02 - Add a new contact
 
@@ -279,7 +285,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 * 3a. User enters incomplete information.
-  * 3a1. System indicates missing required fields.
+  * 3a1. System indicates an invalid command format.
   * 3a2. Use case resumes at step 3.
 
 * 3b. User enters duplicate parameters.
@@ -294,9 +300,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   * 5a1. System indicates the contact already exists.
   * 5a2. Use case ends.
 
-* 5b. System storage is full.
-  * 5b1. System indicates storage limitation.
-  * 5b2. Use case ends.
 
 ## Use case: UC03 - Delete a contact
 
@@ -305,24 +308,22 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1. User requests to list contacts.
 2. System shows the contact list.
 3. User selects a contact to delete.
-4. System requests confirmation.
-5. User confirms the deletion.
-6. System deletes the contact and shows confirmation.
+4. System deletes the contact and shows confirmation.
 
    Use case ends.
 
 **Extensions**
 
 * 2a. The contact list is empty.
-  * 2a1. System indicates no contacts available.
+  * 2a1. System indicates contact to be deleted cannot be found.
   * 2a2. Use case ends.
 
 * 3a. User provides incomplete selection information.
-  * 3a1. System indicates required selection criteria.
+  * 3a1. System indicates shows an appropriate error message.
   * 3a2. Use case resumes at step 3.
 
 * 4a. The specified contact cannot be found.
-  * 4a1. System indicates contact not found.
+  * 4a1. System indicates contact to be deleted cannot be found.
   * 4a2. Use case resumes at step 3.
 
 ## Use case: UC04 - Search for contacts
@@ -342,10 +343,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   * 2a1. System indicates search criteria required.
   * 2a2. Use case resumes at step 2.
 
-* 3a. System is processing a large contact list.
-  * 3a1. System indicates search is in progress.
-  * 3a2. Use case continues normally.
-
 * 4a. No contacts match the search criteria.
   * 4a1. System indicates no matches found.
   * 4a2. Use case ends.
@@ -354,7 +351,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS (Main Success Scenario)**
 
-1. User requests to view contacts.
+1. User requests to view all contacts.
 2. System displays the contact list.
 3. User requests to sort contacts by a field and order.
 4. System validates sorting parameters.
@@ -388,33 +385,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Glossary
 
-* **Mainstream OS**: Windows, Linux, Unix, MacOS
-* **Private contact detail**: A contact detail that is not meant to be shared with others
-* **API**: Defines how software components interact
-* **CLI (Command Line Interface)**: Text-based command input
-* **GUI (Graphical User Interface)**: Visual interaction with software
-* **Parser**: Converts user input into executable commands
-* **Version Control**: Tracks changes in files (e.g., Git)
-* **JavaFX**: Platform for building desktop applications
-* **PlantUML**: Text-based tool for creating UML diagrams
-* **Activity Diagram**: UML diagram for workflow representation
-* **Sequence Diagram**: UML diagram for object interactions
-* **Class Diagram**: UML diagram for system structure
-* **Undo/Redo Mechanism**: Reverses or reapplies changes
-* **Performance Testing**: Evaluates system speed and stability
-* **Unit Testing**: Tests individual software components
-* **Integration Testing**: Tests combined software components
-* **DevOps**: Combines development and operations for efficiency
+* **Mainstream OS**: Windows, Linux, Unix, MacOS.
+* **Private contact detail**: A contact detail that is not meant to be shared with others.
 * **Role**: Defines the type of contact (**Student**, **Parent**, or **Staff**) and determines required information fields.
-* **Grade**: Represents a **Student**'s academic level, restricted to **PRI 1 to PRI 6** or **SEC 1 to SEC 5**.
-* **Parent**: A **Student**'s guardian, required to provide a name, phone number, and email.
+* **Grade**: Represents a **Student**'s academic level, restricted to grades from **PRI 1 to PRI 6** or **SEC 1 to SEC 5**.
 * **Class**: A **Student**'s class designation with no format restrictions, allowing flexibility across different schools.
 * **Phone**: An **8-digit integer** representing a contact's phone number. If a **Student** lacks a phone number, their **Parent**'s phone number is used.
-* **Email**: Must contain **"@"** and **".com"** to ensure validity.
-* **Add Command**: Command used to register a new contact, with fields varying by role. Example formats:
-    - **Student**: `add n/Johnny Tan ph/09876543 e/john.tan@email.com r/Student p/James Tan c/1A g/Sec 1`
-    - **Parent**: `add n/James Tan ph/98765432 e/james.tan@email.com r/Parent`
-    - **Staff**: `add n/Regina Hancox ph/29312432 e/regina.hancox@email.com r/Staff`
+* **Email**: An email address that must contain **"@"** and **".com"** to ensure validity.
+* **Name**: The name of a contact. Names are **do not consider additional white spaces and is not case-sensitive** when deciding if two names are duplicates.
+* **Person**: A contact, **uniquely identified by their name and phone number**.
+* **Relative**: The family member of a contact that must either be a Parent or a Student. 
 
     
 --------------------------------------------------------------------------------------------------------------------
@@ -452,7 +432,7 @@ testers are expected to do more *exploratory* testing.
     1. Prerequisites: The contact to be added should not exist in the app.
 
     2. Test case: `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 t/top student r/Student g/Sec 1 c/1A rn/Bob Doe rp/92932011`<br>
-        * Expected UI and status bar changes: John Doe is added to the contact list. Status bar timestamp is updated.
+        * Expected UI and Terminal log changes: John Doe is added to the contact list. A log regarding the command execution will be printed in the Terminal (where the `.jar` file is run).
         * Expected output message: `New person added: John Doe; Phone: 98765432; Email: johnd@example.com; Address: John street, block 123, #01-01; Role: Student; Grade: Sec 1; Class: 1A; Parent's Name: Bob Doe; Parent's Phone: 92932011; Tags: [top student]`
 
 2. Adding a duplicate contact
@@ -460,7 +440,7 @@ testers are expected to do more *exploratory* testing.
     1. Prerequisites: The contact already exists in the app.
 
     2. Test case: Re-run the same command as above (in test case 1).
-       Expected: No person is deleted. Error message shown in the status message. Status bar remains the same.
+       Expected: No person is deleted. Error message shown in the output box. No logs regarding the command execution will be printed in the Terminal (where the `.jar` file is run).
        Expected error message: `This person already exists in the address book` <br>
 
 3. Missing required fields
@@ -475,24 +455,24 @@ testers are expected to do more *exploratory* testing.
     1. Prerequisites: The contact to be deleted should exist in the app.
 
     2. Test case: `edit 1 n/Betty Crowne` <br>
-       Expected UI and status bar changes: The name of the first person in the list is changed to Betty Crowne. Details of the edited contact shown in the status message. Timestamp in the status bar is updated.
+       Expected UI and Terminal log changes: The name of the first person in the list is changed to Betty Crowne. Details of the edited contact shown in the output message. A log regarding the command execution will be printed in the Terminal (where the `.jar` file is run).
 
 2. Editing a contact not in ClassHive
 
     1. Prerequisites: The index of the contact to be edited is bigger than the list of contacts in ClassHive.
 
     2. Test case: `edit 9999 n/Joe p/911` <br>
-       Expected: No contact will be edited. Error details shown in the status message. Status bar remains the same.
+       Expected: No contact will be edited. Error details shown in the output box. No logs regarding the command execution will be printed in the Terminal (where the `.jar` file is run).
        Expected error message: `The person index provided is invalid` <br>
 
 3. Incorrect Edit Command format
 
     1. Test cases: `edit`, `delete Joe`
-       Expected: No contact will be edited. Error details shown in the status message. Status bar remains the same.
+       Expected: No contact will be edited. Error details shown in the output box. No logs regarding the command execution will be printed in the Terminal (where the `.jar` file is run).
 
 4. No optional fields provided
     1. Test case: `edit 2` <br>
-       * Expected: No contact will be edited. Error details shown in the status message. Status bar remains the same.
+       * Expected: No contact will be edited. Error details shown in the output box. No logs regarding the command execution will be printed in the Terminal (where the `.jar` file is run).
        * Error message: `At least one field to edit must be provided.` <br>
 
 ### Deleting a Contact
@@ -504,7 +484,7 @@ testers are expected to do more *exploratory* testing.
    2. Test case: 
       * Step 1: `add n/Betsy Crowe t/principal e/betsycrowe@example.com a/Serangoon Avenue 2 p/12345678 r/Staff`<br>
       * Step 2: `delete n/Betsy Crowe p/12345678` <br>
-      * Expected UI and status bar changes: Betsy Crowe is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+      * Expected UI and Terminal changes: Betsy Crowe is deleted from the list. Details of the deleted contact shown in the output message. A log regarding the command execution will be printed in the Terminal (where the `.jar` file is run).
       * Expected output message: `Deleted Person: Betsy Crowe; Phone: 12345678; Email: betsycrowe@example.com; Address: Serangoon Avenue 2; Role: Staff; Tags: [principal]`
 
 2. Deleting a contact not in ClassHive
@@ -512,13 +492,13 @@ testers are expected to do more *exploratory* testing.
     1. Prerequisites: The contact to be deleted should not exist in the app.
    
     2. Test case: `delete n/Joe p/911` <br>
-       Expected: No person is deleted. Error message shown in the status message. Status bar remains the same.
+       Expected: No person is deleted. Error message shown in the output box. A log regarding the command execution will be printed in the Terminal (where the `.jar` file is run).
        Expected error message: `The person's name and phone number provided cannot be found!` <br>
 
 3. Incorrect Delete Command format
 
     1. Test cases: `delete`, `delete Joe`, `delete 123`
-       Expected: No person is deleted. Error message regarding an invalid command format is shown in the status message. Status bar remains the same.
+       Expected: No person is deleted. Error message regarding an invalid command format is shown in the output box. Status bar remains the same. No logs regarding the command execution will be printed in the Terminal (where the `.jar` file is run).
 
       
 ### Finding a Contact
@@ -527,17 +507,17 @@ testers are expected to do more *exploratory* testing.
    1. Prerequisites: A valid name must be provided, and the contact must exist.
       
    1. Test case: `find Alice`<br>
-      Expected: Displays contacts containing “Alice” (e.g., "Alice Lim", "Alicia Tan").
+      Expected: Contacts whose name contains “Alice” (e.g., "Alice Lim", "Alicia Tan") are displayed.
       
    1. Test case: `find $#@`<br>
-      Expected: Displays an error message for invalid characters.
+      Expected: An error message for invalid characters is displayed.
       
 1. Searching by phone number
 
    1. Prerequisites: A valid number must be provided, and the contact must exist.
       
    1. Test case: `find 9876`<br>
-      Expected: Displays contacts whose phone number contains “9876” (e.g., "98765432").
+      Expected: Contacts whose phone number contains “9876” (e.g., "98765432") are displayed.
 
 ### Grouping Contacts
 1. Group by Role
@@ -545,33 +525,33 @@ testers are expected to do more *exploratory* testing.
    1. Prerequisites: Contact list have 2 contacts of the role Student.
       
    1. Test case: `group by ROLE Student`<br>
-      Expected: Status message: "Results are grouped by: ROLE Student. 2 contacts found."
+      Expected output message: `Results are grouped by: ROLE Student. 2 contacts found.`
 1. Group by Favourite
    
-   1. Prerequisites: Contact list consists of favourited contacts.
+   1. Prerequisites: Contact list consists of favourite contacts.
   
    1. Test case: `group by FAVOURITE`<br>
-      Expected: Status message: "Results are grouped by: Favourite. X contacts found."
+      Expected output message: `Results are grouped by: Favourite. X contacts found.`
 1. Group by Class
 
    1. Prerequisites: Contact list have 2 contacts in class 1A.
   
    1. Test case: `group by CLASS 1A`<br>
-      Expected: Status message: "Results are grouped by: CLASS 1A. 2 contacts found."
+      Expected output message: `Results are grouped by: CLASS 1A. 2 contacts found.`
       
 1. Group by Grade
    
    1. Prerequisites: Contact list have 2 contacts in the grade Sec 1.
   
    1. Test case: `group by GRADE Sec 1`<br>
-      Expected: Status message: "Results are grouped by: GRADE Sec 1. 2 contacts found."
+      Expected output message: `Results are grouped by: GRADE Sec 1. 2 contacts found.`
 
 1. Removing grouping
    
    1. Prerequisites: Contact list is already grouped.
   
    1. Test case: `ungroup`<br>
-      Expected: Grouping is removed, and all contacts are displayed normally
+      Expected UI changes: Grouping is removed, and all contacts are displayed.
       
 ### Favourite feature
 
@@ -579,10 +559,10 @@ testers are expected to do more *exploratory* testing.
    1. Prerequisites: A valid index within the displayed contact list must be provided.
       
    1. Test case: `favourite 1`<br>
-      Expected: Marks first contact as favorite (★ appears).
+      Expected UI changes: First contact is marked as favorite (★ appears).
       
    1. Test case: `favourite 1` (again) <br>
-      Expected: Unmarks the contact as a favorite.
+      Expected UI changes: First contact is unmarked as favorite (★ is removed).
       
 ### Sorting Contacts
 
@@ -591,27 +571,27 @@ testers are expected to do more *exploratory* testing.
    1. Prerequisites: Contact list must not be empty.
     
    1. Test case: `sort by name asc`  
-      Expected: Displays contacts sorted by name in ascending order.
+      Expected UI changes: Contacts displayed are sorted by name in ascending order.
       
    1. Test case: `sort by name desc`  
-      Expected: Displays contacts sorted by name in descending order.
+      Expected UI changes: Contacts displayed are sorted by name in descending order.
 
 1. Sorting by date
    
    1. Prerequisites: Contact list must not be empty.
       
    1. Test case: `sort by date asc`  
-      Expected: Displays contacts sorted by date added in ascending order.
+      Expected UI changes: Contacts displayed are sorted by date added in ascending order.
       
    1. Test case: `sort by date desc`  
-      Expected: Displays contacts sorted by date added in descending order.
+      Expected UI changes: Contacts displayed are sorted by date added in descending order.
 
 1. Default sorting
    
    1. Prerequisites: Contact list must not be empty.
     
    1. Test case: `sort`  
-      Expected: Displays contacts sorted by name in ascending order (same behavior as `sort by name asc`).
+      Expected UI changes: Contacts displayed sorted by name in ascending order (same behavior as `sort by name asc`).
 
 ### Adding and Replacing Notes
 
@@ -620,17 +600,17 @@ testers are expected to do more *exploratory* testing.
    1. Prerequisites: A valid index within the displayed contact list must be provided.
     
    1. Test case: `note 1 nt/Needs help with Math`  
-      Expected: Adds note "Needs help with Math" to the first contact.
+      Expected UI changes: A note, "Needs help with Math", is added to the first contact.
       
    1. Test case: `note 3 nt/Call parent tomorrow`  
-      Expected: Adds note "Call parent tomorrow" to the third contact.
+      Expected UI changes: A note, "Call parent tomorrow", is added to the third contact.
 
 1. Replacing an existing note
 
    1. Prerequisites: Contact already has a note.
       
    1. Test case: `note 1 nt/Student is doing well`  
-      Expected: Replaces the existing note on the first contact with "Student is doing well".
+      Expected UI changes: The existing note on the first contact is replaced with "Student is doing well".
 
 
 --------------------------------------------------------------------------------------------------------------------
@@ -673,8 +653,8 @@ Team size: 4
 Unlike AB3, which manages a single type of entity (persons), ClassHive categorizes contacts into students, parents, and senior management. It also introduces sorting and a favorite feature, adding complexity to data handling, commands, and UI design while ensuring ease of use for teachers.
 
 ### **Challenges Faced**
-* Ensuring full test coverage for all features, including refactoring and handling edge cases.
-* Managing merge conflicts while collaborating in a multi-developer environment.
+* Ensuring full test coverage for all features, especially for the UI components.
+* Managing merge conflicts while collaborating as a team.
 * Adhering to Checkstyle guidelines consistently.
 
 ### **Effort Required**
