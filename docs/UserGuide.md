@@ -189,6 +189,7 @@ Consider backing up your data before clearing (see FAQ section on transferring d
   </div>
 </div>
 <br>
+
 ### Adding a contact: `add`
 
 To make ClassHive ready for your personal use, add contacts into the app using the `add` command!
@@ -316,9 +317,14 @@ allows you to add this information to specific contacts for easy reference later
 
 **Examples:**
 * `note 3 nt/prefers to be contacted after 5pm` Adds a note about contact preferences to the 3rd contact.
-* `note 1 nt/student needs help with English` Adds a note about academic needs to the 1st contact in the list. <br>
-<img src="images/afterNote.png" width="400px" /> 
-<br>
+* `note 1 nt/student needs help with English` Adds a note about academic needs to the 1st contact in the list.
+  
+**Expected output:**
+* Expected message displayed in the output box: `Added note to Person: CONTACT`, where `CONTACT` reflects the details of the contact added.
+  For example, upon running the command in the second example shown above, the expected output will be 
+  `Added note to Person: Alex Yeoh; Phone: 87438807; Email: alexyeoh@example.com; Address: Blk 30 Geylang Street 29, #06-40; Role: Parent; Child's Name: Anthony Yeoh; Child's Phone: 93282842; Child's Grade: SEC 1; Child's Class: 1A; Tags: [pta member]`
+* The added note will also be reflected in ClassHive, as shown in the images below.
+![note](images/afterNote.png)
 
 ### Finding contacts by name or phone number: `find`
 
@@ -341,9 +347,15 @@ There will be times when you need to quickly locate someone by name or phone num
 **Examples:**
 * `find 9876` returns `98766543`, `97659876` and `90987648`
 * `find John` returns `Johnny Lee` and `John Doe`
-* `find al` returns `Roy Balakrishnan` and `Alex Yeoh`<br>
-  <img src="images/find.png" width="400px" /> 
-<br>
+* `find al` returns `Roy Balakrishnan` and `Alex Yeoh`
+
+**Expected output:**
+* Expected message displayed in the output box: `[NUMBER] persons listed!`, where `NUMBER` reflects the number of contacts that match the keyword entered.
+  For example, upon running the command in the third example shown above, the expected output will be 
+  `2 persons listed!`
+* The matching contacts will be displayed in the results panel:
+  ![find](images/find.png)
+
 ### Listing all contacts : `list`
 
 Shows a list of all contacts in ClassHive.
@@ -383,6 +395,11 @@ or any other filter-based command, run `list` first to reset the view.
 * `sort by date asc` sorts all contacts from oldest to newest added
 * `sort by date desc` sorts all contacts from newest to oldest added
 
+**Expected output:**
+* Expected message displayed in the output box: `Sorted all persons by [FIELD] in [ORDER] order`.
+  For example, upon running the command in the second example shown above, the expected output will be 
+  `Sorted all persons by name in descending order`
+* The sorted list of contacts will be reflected immediately in the results panel:
 <br>
 <div style="display: flex; justify-content: space-between; text-align: center; width: 100%;">
   <div style="width: 48%;">
@@ -428,9 +445,15 @@ With the `group` command, you can organize your contacts into specific categorie
 * `group by ROLE student` shows all students in your contact list. <br>
 * `group by CLASS 2A` shows students and their parents from class 2A. <br>  
 * `group by GRADE pri 4` shows contacts in Primary 4.
-* `group by FAVOURITE` shows all favourited contacts. <br>
-  <img src="images/group.png" width="400px" />
-  <br>
+* `group by FAVOURITE` shows all favourited contacts.
+
+**Expected output:**
+* Expected message displayed in the output box: `[NUMBER] persons listed!`, where `NUMBER` reflects the number of contacts that match the keyword entered.
+  For example, upon running the command in the first example shown above, the expected output will be <br>
+  `Results are grouped by: ROLE student` <br>
+  `2 contacts found.`
+* The grouped list of contacts will be reflected immediately in the results panel:
+  ![group](images/group.png)
   
 ### Favourite contacts: `favourite`
 
@@ -447,9 +470,14 @@ The `favourite` command lets you mark important contacts as favourites, making i
 
 **Examples**:
 * `favourite 1` marks the first contact on the list as favourite.
-  ![favourite 1](images/afterFavourite.png)
 * `favourite 1` **AGAIN**, unfavourite the first contact on the list.
-![unfavourite 1](images/unfavourite.png)
+
+**Expected output:**
+* Expected message displayed in the output box: `Toggled favourite status for: [CONTACT]`, where `CONTACT` eflects the details of the contact whose favourite status was toggled.
+  For example, upon running the command in the first example shown above, the expected output will be 
+  `Toggled favourite status for: Alex Yeoh; Phone: 87438807; Email: alexyeoh@example.com; Address: Blk 30 Geylang Street 29, #06-40; Role: Parent; Child's Name: Anthony Yeoh; Child's Phone: 93282842; Child's Grade: SEC 1; Child's Class: 1A; Tags: [pta member]`
+* The grouped list of contacts will be reflected immediately in the results panel:
+  ![favourite](images/afterFavourite.png)
 
 ### Exiting the program : `exit`
 
