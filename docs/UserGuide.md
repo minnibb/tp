@@ -83,7 +83,7 @@ favourite 1
 
 2️⃣ Press **Enter**. <br>
 3️⃣ You should see this. <br>
-   input image after fixing favourite bug.
+   (+input image after fixing favourite bug)
 <br>
 #### Command 2: ➕ Add
 
@@ -181,6 +181,16 @@ Consider backing up your data before clearing (see FAQ section on transferring d
 | _Before clearing the entries:_ <br> <img src="images/clearCommand.png" width="300px" /> <br> | _After clearing the entries:_ <br> <img src="images/clearCommand2.png" width="300px" /> <br> |
 |----------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
 
+<div style="display: flex; justify-content: space-between; text-align: center; width: 100%;">
+  <div style="width: 48%;">
+    <p>_Before clearing the entries:_</p>
+    <img src="images/clearCommand.png" alt="Image 1" style="width: 100%;">
+  </div>
+  <div style="width: 48%;">
+    <p>_After clearing the entries:_</p>
+    <img src="images/clearCommand2.png" alt="Image 2" style="width: 100%;">
+  </div>
+</div>
 
 ### Adding a contact: `add`
 
@@ -299,11 +309,10 @@ allows you to add this information to specific contacts for easy reference later
   </box>
 
 **Examples:**
-* `note 1 nt/student needs help with English` Adds a note about academic needs to the 1st contact in the list.
 * `note 3 nt/prefers to be contacted after 5pm` Adds a note about contact preferences to the 3rd contact.
+* `note 1 nt/student needs help with English` Adds a note about academic needs to the 1st contact in the list. <br>
+  (+ADD NOTE IMAGE HEREEEEEEEEEEEEEEEE)
 
-_After adding a note to the first contact in the list:_
-![note command result](images/noteCommand.png) ADD NOTE IMAGE HEREEEEEEEEEEEEEEEE
 ### Finding contacts by name or phone number: `find`
 
 The `find` command allows you to search for people by either their name or phone number, and handles partial matches.
@@ -318,13 +327,15 @@ The `find` command allows you to search for people by either their name or phone
 * The search is case-insensitive. e.g `hans` will match `Hans`.
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`.
 * Partial words/numbers will be matched e.g. `Han` will match with `Hans` or '9876' will match with '98765432'.
+* If you search with **only numbers** (e.g., 12345), it will be treated as a **phone number** search.
+* **Spaces** between numbers (e.g., 123 456) will be treated as a **name** search containing those numbers.
 </box>
 
 **Examples:**
 * `find 9876` returns `98766543`, `97659876` and `90987648`
 * `find John` returns `Johnny Lee` and `John Doe`
 * `find al` returns `Roy Balakrishnan` and `Alex Yeoh`<br>
-  ![result for 'find ale'](images/findFeatureExample.png)
+  ![result for 'find ale'](images/findFeatureExample.png) (+change image)
 
 ### Listing all contacts : `list`
 
@@ -339,14 +350,24 @@ ClassHive contacts organized in a logical order, the `sort` command lets you arr
 or chronologically by when they were added, making it easier to scan through your list.
 
 **Format:** `sort by [FIELD] [ORDER]`
-<box type="tip" seamless>
+
+<box type="info" seamless>
 
 **Note:** <br>
 - Sorts the contacts based on the specified `FIELD` (name or date) and `ORDER` (asc or desc)
 - `FIELD` can be either `name` or `date` (referring to when the contact was added)
 - `ORDER` can be either `asc` (ascending) or `desc` (descending)
-- ❗`sort` command can only be used on the **full contact list**. If you've recently used `find`, `group`,
+</box>
+
+<box type="tip" seamless>
+
+**Caution:** `sort` command can only be used on the **full contact list**. If you've recently used `find`, `group`,
 or any other filter-based command, run `list` first to reset the view.
+</box>
+
+<box type="tip" seamless>
+
+**Tip:** Simply typing `sort` without any parameters will sort contacts alphabetically by name from A to Z.
 </box>
 
 **Examples:**
@@ -356,77 +377,43 @@ or any other filter-based command, run `list` first to reset the view.
 * `sort by date desc` sorts all contacts from newest to oldest added
 
 _Before sorting by contacts' names in descending order:_
-![sort command before](images/sortCommand.png) ADD BEFORE SORT IMAGE HEREEEEEEEEEEEEEEEEE
+![sort command before](images/sortCommand.png) (+ADD BEFORE SORT IMAGE HEREEEEEEEEEEEEEEEEE)
 _After sorting by contacts' names in descending order:_
-![sort command result](images/sortCommand2.png) ADD AFTER SORT IMAGE HEREEEEEEEEEEEEEEEEE
-
-<box type="tip" seamless>
-
-**Tip:** Simply typing `sort` without any parameters will sort contacts alphabetically by name from A to Z.
-</box>
+![sort command result](images/sortCommand2.png) (+ADD AFTER SORT IMAGE HEREEEEEEEEEEEEEEEEE
 
 ### Grouping contacts : group
 
-Filters and groups contacts by a specific category.
+Filters and groups contacts by a specific category.  `group by` **always operates on the full contact list**, not the currently displayed subset.
 
 **Format**:  
 `group by CATEGORY [CRITERIA]`
 
-**Scope of Operation**:
-- `group by` **always operates on the full contact list**, not the currently displayed subset.
 
-#### Supported Categories and Criteria
-- **`ROLE`**:
-    - Criteria: `Parent`, `Student`, `Staff`
-    - Example: `group by ROLE Parent`
+| Category      | Criteria                                                                                                                                                                                                                                      |
+|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Role**     | `Parent`, `Student`, `Staff`                                                                                                                                                                                                                   |
+| **Class**     | **Any non-empty value**                                                                                                                                                                                                                       |
+| **Grade**     | `pri 1` to `pri 6` or `sec 1` to `sec 5`                                                                                                                                                                                                      |
+| **Favourite** | **No criteria needed**                                                                                                                                                                                                                        |
+<box type="info" seamless>
 
-- **`CLASS`**:
-    - Criteria: **Any non-empty value** (e.g., `1A`, `ScienceClub`, `2023Batch`)
-    - Example: `group by CLASS ArtClub`
+**Note:** <br>
+- Group handles only **one category** at a time.
+- Values are case-insensitive (e.g., `Parent` = `parent`).
+- Contacts that don't match will be hidden.
+</box>
 
-- **`GRADE`**:
-    - Criteria: `pri 1` to `pri 6` or `sec 1` to `sec 5`
-    - Example: `group by GRADE sec 3`
+<box type="tip" seamless>
 
-- **`FAVOURITE`**:
-    - **No criteria needed** (automatically groups favourited contacts)
-    - Example: `group by FAVOURITE`
+**Tip:** to clear any active group and show all contacts again, type `ungroup`.
+</box>
 
----
-
-#### Notes
-
-1. **Format Rules**:
-    - Only **one category** per command.
-    - For `FAVOURITE`, **omit criteria** (e.g., `group by FAVOURITE`).
-    - For `CLASS`, specify a **non-empty value** (e.g., `group by CLASS 2B`).
-    - Values are case-insensitive (e.g., `Parent` = `parent`).
-
-2. **Validation Rules**:
-    - `CLASS`: Must be a **non-empty string** (e.g., `1A`, `Math2024`).
-    - `GRADE`: Only valid levels (`pri 1`–`pri 6` or `sec 1`–`sec 5`).
-
-3. Non-matching contacts will be hidden from view.
-
----
-
-#### Examples
-
-1. `group by ROLE student`  
-   *Shows all contacts with the **Student** role.*
-
-2. `group by CLASS ScienceClub`  
-   *Groups contacts in class **ScienceClub**.*
-
-3. `group by FAVOURITE`  
-   *Displays all favourited contacts.*
-
----
-
-**Key Features**:
-- Simplified command structure for `FAVOURITE` (no criteria required).
-- Flexible `CLASS` criteria (accepts any non-empty input).
-- Case-insensitive values for ease of use.
+**Examples:**
+* `group by ROLE student` shows all students in your contact list. <br>
+* `group by CLASS 2A` shows students and their parents from class 2A. <br>  
+* `group by GRADE pri 4` shows contacts in Primary 4.
+* `group by FAVOURITE` shows all favourited contacts. <br>
+  (+input image)
 
 
 ### Favourite contacts: `favourite`
@@ -443,7 +430,7 @@ The `favourite` command allows you to mark a contact as a favourite so that you 
 </box>
 
 **Examples**:
-* `favourite 1` Marks the first contact on the list as favourite.
+* `favourite 1` marks the first contact on the list as favourite.
   ![favourite 1](images/markFavourite.png)
 * `favourite 1` **AGAIN**, unfavourite the first contact on the list.
 ![unfavourite 1](images/unmarkFavourite.png)
@@ -461,7 +448,7 @@ ClassHive data are saved in the hard disk automatically after any command that c
 
 ### Editing the data file
 
-ClassHive data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
+ClassHive data are saved automatically as a JSON file `[JAR file location]/data/classhive.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <box type="warning" seamless>
 
@@ -470,31 +457,12 @@ If your changes to the data file makes its format invalid, ClassHive will discar
 Furthermore, certain edits can cause the ClassHive to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
 
-### Archiving data files `[coming in v2.0]`
-
-_Details coming soon ..._
-
-
-### Ungrouping contacts : ungroup
-ungroup contacts
-**Format:**  
-`ungroup`
-
-
-* **Example: `ungroup`**
-
-**Examples**:
-1. `ungroup`   
-   *Showing all contacts (no grouping).*
-
----
-
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous ClassHive home folder.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -521,7 +489,7 @@ ungroup contacts
 | **Sort**      | `sort by [FIELD] [ORDER]`<br> e.g., `sort by name asc`, `sort by date desc`                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | **Group**     | `group by [category] [criteria]`<br>e.g., `group by ROLE student`, `group by CLASS 1A, group by FAVOURITE, group by GRADE pri 1`                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | **Ungroup**   | `ungroup`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| **Favourite** | `favourite [INDEX]`<br> e.g., `favourite 1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| **Favourite** | `favourite [INDEX]`<br> e.g., `favourite` 1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | **Exit**      | `exit`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 
 <box type="tip" seamless>
@@ -546,5 +514,4 @@ All fields with square brackets around it, such as `[t/TAG]`, denote an optional
 | rn/    | relative's name (child's name or parent's name)    | `add`, `delete`, `edit` for Parent and Student contacts only |
 | rp/    | relative's phone (child's phone or parent's phone) | `add`, `delete`, `edit` for Parent and Student contacts only |
 | nt/    | note                                               | `note` for contacts of all roles                             |
-
 
