@@ -260,11 +260,6 @@ _After deleting the old contact:_
 As you add more contacts into ClassHive, you might want to remember important details about them. The `note` command 
 allows you to add this information to specific contacts for easy reference later.
 
-_Before adding a note to the first contact in the list:_
-![note command before](images/noteCommand.png)
-_After adding a note to the first contact in the list:_
-![note command result](images/noteCommand2.png)
-
 **Format:** `note INDEX nt/NOTE`
 
 <box type="info" seamless>
@@ -279,6 +274,8 @@ _After adding a note to the first contact in the list:_
 * `note 1 nt/student needs help with English` Adds a note about academic needs to the 1st contact in the list.
 * `note 3 nt/prefers to be contacted after 5pm` Adds a note about contact preferences to the 3rd contact.
 
+_After adding a note to the first contact in the list:_
+![note command result](images/noteCommand.png)
 ### Finding contacts by name or phone number: `find`
 
 The `find` command allows you to search for people by either their name or phone number, and handles partial matches.
@@ -313,11 +310,6 @@ As a teacher managing multiple classes, your contact list will eventually get la
 ClassHive contacts organized in a logical order, the `sort` command lets you arrange your contacts alphabetically by name 
 or chronologically by when they were added, making it easier to scan through your list.
 
-_Before sorting by contacts' names in descending order:_
-![sort command before](images/sortCommand.png)
-_After sorting by contacts' names in descending order:_
-![sort command result](images/sortCommand2.png)
-
 **Format:** `sort by [FIELD] [ORDER]`
 <box type="tip" seamless>
 
@@ -334,6 +326,11 @@ or any other filter-based command, run `list` first to reset the view.
 * `sort by name desc` sorts all contacts alphabetically by name from Z to A
 * `sort by date asc` sorts all contacts from oldest to newest added
 * `sort by date desc` sorts all contacts from newest to oldest added
+
+_Before sorting by contacts' names in descending order:_
+![sort command before](images/sortCommand.png)
+_After sorting by contacts' names in descending order:_
+![sort command result](images/sortCommand2.png)
 
 <box type="tip" seamless>
 
