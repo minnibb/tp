@@ -50,7 +50,7 @@ Getting started with ClassHive is easy! Just follow these steps:
 5. Start using ClassHive!
       * After a few seconds, the ClassHive window should appear, ready to help you manage your contacts easily.
       * It should look like this! It will contain some sample data. <br>
-        <img src="images/v1.3Ui.png" width="400px" /> <br>
+        <img src="images/v1.6Ui.png" width="400px" /> <br>
 
 6. Refer to the [Features](#features) below for details of each command.
 7. 💡 If you're unfamiliar with using commands in a command-line interface (CLI), check out the [CLI Tutorial](#cli-tutorial) to get comfortable before diving in!
