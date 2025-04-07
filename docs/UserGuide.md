@@ -318,24 +318,26 @@ _Before sorting by contacts' names in descending order:_
 _After sorting by contacts' names in descending order:_
 ![sort command result](images/sortCommand2.png)
 
-**Format:** `sort by/[FIELD] [ORDER]`
+**Format:** `sort by [FIELD] [ORDER]`
 <box type="tip" seamless>
 
 **Note:** <br>
 - Sorts the contacts based on the specified `FIELD` (name or date) and `ORDER` (asc or desc)
 - `FIELD` can be either `name` or `date` (referring to when the contact was added)
 - `ORDER` can be either `asc` (ascending) or `desc` (descending)
+- ❗`sort` command can only be used on the **full contact list**. If you've recently used `find`, `group`,
+or any other filter-based command, run `list` first to reset the view.
 </box>
 
 **Examples:**
-* `sort by/name asc` sorts all contacts alphabetically by name from A to Z
-* `sort by/name desc` sorts all contacts alphabetically by name from Z to A
-* `sort by/date asc` sorts all contacts from oldest to newest added
-* `sort by/date desc` sorts all contacts from newest to oldest added
+* `sort by name asc` sorts all contacts alphabetically by name from A to Z
+* `sort by name desc` sorts all contacts alphabetically by name from Z to A
+* `sort by date asc` sorts all contacts from oldest to newest added
+* `sort by date desc` sorts all contacts from newest to oldest added
 
 <box type="tip" seamless>
 
-**info:** Simply typing `sort` without any parameters will sort contacts alphabetically by name from A to Z.
+**Tip:** Simply typing `sort` without any parameters will sort contacts alphabetically by name from A to Z.
 </box>
 
 ### Grouping contacts : group
@@ -492,9 +494,9 @@ ungroup contacts
 | **Note**     | `note INDEX n/NOTE`<br> e.g., `note 1 nt/student needs extra help with Mathematics`                                                                                                                                                                     |
 | **Find**     | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Tan` <br> `find NUMBER` <br> e.g, `find 98765432`                                                                                                                                                  |
 | **List**     | `list`                                                                                                                                                                                                                                                  |
-| **Sort**     | `sort by/[FIELD] [ORDER]`<br> e.g., `sort by/name asc`, `sort by/date desc`          |
+| **Sort**     | `sort by [FIELD] [ORDER]`<br> e.g., `sort by name asc`, `sort by date desc`                                                                                                                                                                             |
 | **Group**   | `group by [category] [criteria]`<br>e.g., `group by ROLE student`, `group by CLASS 1A, group by FAVOURITE, group by GRADE pri 1`                                                                                                                        |
-| **Ungroup** | `ungroup`                                                                                                                                                                                     |
-| **Favourite** | `favourite [INDEX]`<br> e.g., `favourite 1                                                                                                                                                                                                             |
+| **Ungroup** | `ungroup`                                                                                                                                                                                                                                               |
+| **Favourite** | `favourite [INDEX]`<br> e.g., `favourite 1                                                                                                                                                                                                              |
 | **Exit**     | `exit`                                                                                                                                                                                                                                                  |
 
