@@ -13,7 +13,8 @@
 
 ## **Acknowledgements**
 
-_{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well }_
+1. Removal of whitespace inside a String: Taken from https://stackoverflow.com/questions/33381237/string-doesnt-equal-string-with-spaces
+* Used in lines 61-62 in [Name.java](https://github.com/AY2425S2-CS2103T-F13-4/tp/blob/master/src/main/java/seedu/address/model/person/Name.java)
 
 --------------------------------------------------------------------------------------------------------------------
 
