@@ -108,8 +108,8 @@ public class PersonCardTest {
         assertEquals(expected, actual);
     }
     @Test
-    public void formatter_correctlyFormatsTimestamp() {
-        long timestamp = System.currentTimeMillis();
+    public void formatter_correctlyFormatsSpecificTimestamp() {
+        long timestamp = 1712506800000L;
         LocalDateTime dateAdded = LocalDateTime.ofInstant(
                 Instant.ofEpochMilli(timestamp),
                 ZoneId.systemDefault());
