@@ -117,5 +117,6 @@ public class PersonCardTest {
         String dateInfo = "Date added: " + dateAdded.format(formatter);
         assertFalse(dateInfo.isEmpty());
         assertTrue(dateInfo.startsWith("Date added: "));
+        assertTrue(dateInfo.matches("Date added: \\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}"));
     }
 }
