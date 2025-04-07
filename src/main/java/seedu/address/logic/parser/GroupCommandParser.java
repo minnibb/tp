@@ -23,9 +23,19 @@ public class GroupCommandParser implements Parser<GroupCommand> {
         if (!trimmedArgs.startsWith("by ")) {
             if (trimmedArgs.startsWith("by")) {
                 throw new ParseException("Missing space after 'by'. "
-                        + "Usage: group by ROLE/CLASS/GRADE/FAVOURITE [specific criteria]");
+                        + "Usage: group by ROLE/CLASS/GRADE/FAVOURITE [specific criteria]"
+                        + "Criteria rules:\n"
+                        + "- ROLE: Student, Parent, Staff (case-insensitive)\n"
+                        + "- CLASS: Any non-empty text (e.g. 2B, ScienceClub)\n"
+                        + "- GRADE: pri 1~6/sec 1~5 (e.g. 'pri 3' or 'sec 4')\n"
+                        + "- FAVOURITE: No criteria needed");
             }
-            throw new ParseException("Invalid format. Usage: group by ROLE/CLASS/GRADE/FAVOURITE [specific criteria]");
+            throw new ParseException("Invalid format. Usage: group by ROLE/CLASS/GRADE/FAVOURITE [specific criteria]"
+                    + "Criteria rules:\n"
+                    + "- ROLE: Student, Parent, Staff (case-insensitive)\n"
+                    + "- CLASS: Any non-empty text (e.g. 2B, ScienceClub)\n"
+                    + "- GRADE: pri 1~6/sec 1~5 (e.g. 'pri 3' or 'sec 4')\n"
+                    + "- FAVOURITE: No criteria needed");
         }
 
         String content = trimmedArgs.substring(3).trim();

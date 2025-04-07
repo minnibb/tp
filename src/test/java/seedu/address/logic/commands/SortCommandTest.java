@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.nio.file.Path;
@@ -14,6 +15,7 @@ import org.junit.jupiter.api.Test;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
@@ -23,8 +25,9 @@ import seedu.address.testutil.PersonBuilder;
 
 public class SortCommandTest {
 
+
     @Test
-    public void execute_emptyList_success() {
+    public void execute_emptyList_success() throws CommandException {
         ModelStubWithEmptyAddressBook modelStub = new ModelStubWithEmptyAddressBook();
         SortCommand sortCommand = new SortCommand("name", true);
 
@@ -33,7 +36,7 @@ public class SortCommandTest {
     }
 
     @Test
-    public void execute_nonEmptyListNameAscending_success() {
+    public void execute_nonEmptyListNameAscending_success() throws CommandException {
         ModelStubWithPersons modelStub = new ModelStubWithPersons();
         SortCommand sortCommand = new SortCommand("name", true);
 
@@ -42,7 +45,7 @@ public class SortCommandTest {
     }
 
     @Test
-    public void execute_nonEmptyListNameDescending_success() {
+    public void execute_nonEmptyListNameDescending_success() throws CommandException {
         ModelStubWithPersons modelStub = new ModelStubWithPersons();
         SortCommand sortCommand = new SortCommand("name", false);
 
@@ -51,7 +54,7 @@ public class SortCommandTest {
     }
 
     @Test
-    public void execute_nonEmptyListDateAscending_success() {
+    public void execute_nonEmptyListDateAscending_success() throws CommandException {
         ModelStubWithPersons modelStub = new ModelStubWithPersons();
         SortCommand sortCommand = new SortCommand("date", true);
 
@@ -60,7 +63,7 @@ public class SortCommandTest {
     }
 
     @Test
-    public void execute_nonEmptyListDateDescending_success() {
+    public void execute_nonEmptyListDateDescending_success() throws CommandException {
         ModelStubWithPersons modelStub = new ModelStubWithPersons();
         SortCommand sortCommand = new SortCommand("date", false);
 
@@ -105,13 +108,20 @@ public class SortCommandTest {
         assertTrue(sortCommand.toString().contains("isAscending=true"));
     }
 
+
     @Test
-    public void execute_exceptionThrown_returnsErrorMessage() {
+    public void execute_exceptionThrown_returnsErrorMessage() throws CommandException {
         ModelStub modelStub = new ModelStub() {
+            private final Person person = new PersonBuilder().build();
             @Override
             public ObservableList<Person> getFilteredPersonList() {
-                Person person = new PersonBuilder().build();
                 return FXCollections.observableArrayList(person);
+            }
+            @Override
+            public ReadOnlyAddressBook getAddressBook() {
+                AddressBook ab = new AddressBook();
+                ab.addPerson(person);
+                return ab;
             }
             @Override
             public void setAddressBook(ReadOnlyAddressBook addressBook) {
@@ -122,6 +132,8 @@ public class SortCommandTest {
         CommandResult result = sortCommand.execute(modelStub);
         assertEquals(SortCommand.MESSAGE_ERROR_PREFIX + "Test exception", result.getFeedbackToUser());
     }
+
+
 
     /**
      * A Model stub with an empty address book.
@@ -144,6 +156,35 @@ public class SortCommandTest {
             requireNonNull(addressBook);
         }
     }
+    @Test
+    public void execute_filteredListNotFull_throwsCommandException() {
+
+        Person alice = new PersonBuilder().withName("Alice").build();
+        Person bob = new PersonBuilder().withName("Bob").build();
+
+        ModelStub modelStub = new ModelStub() {
+            @Override
+            public ObservableList<Person> getFilteredPersonList() {
+
+                return FXCollections.observableArrayList(alice);
+            }
+
+            @Override
+            public ReadOnlyAddressBook getAddressBook() {
+                AddressBook ab = new AddressBook();
+                ab.addPerson(alice);
+                ab.addPerson(bob);
+                return ab;
+            }
+        };
+
+        SortCommand sortCommand = new SortCommand("name", true);
+
+        assertThrows(CommandException.class, () -> sortCommand.execute(modelStub),
+                SortCommand.MESSAGE_INVALID_SORT);
+    }
+
+
 
     /**
      * A Model stub with a few persons.
