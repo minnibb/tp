@@ -316,7 +316,7 @@ allows you to add this information to specific contacts for easy reference later
 
 ### Finding contacts by name or phone number: `find`
 
-The `find` command allows you to search for people by either their name or phone number, and handles partial matches.
+There will be times when you need to quickly locate someone by name or phone number, the `find` command helps you do just that!
 
 **Format:**
 - For searching name: `find KEYWORD [MORE_KEYWORDS]` <br>
@@ -384,7 +384,7 @@ _After sorting by contacts' names in descending order:_
 
 ### Grouping contacts : group
 
-Filters and groups contacts by a specific category.  `group by` **always operates on the full contact list**, not the currently displayed subset.
+With the `group` command, you can organize your contacts into specific categories, helping you quickly find the people you're looking for. Whether it’s by their role, class, grade, or favorite status, you can filter and group your contacts to keep your list well-organized.
 
 **Format**:  
 `group by CATEGORY [CRITERIA]`
@@ -402,6 +402,7 @@ Filters and groups contacts by a specific category.  `group by` **always operate
 - Group handles only **one category** at a time.
 - Values are case-insensitive (e.g., `Parent` = `parent`).
 - Contacts that don't match will be hidden.
+- Group by always operates on your full contact list, not just the currently displayed subset.
 </box>
 
 <box type="tip" seamless>
@@ -419,7 +420,7 @@ Filters and groups contacts by a specific category.  `group by` **always operate
 
 ### Favourite contacts: `favourite`
 
-The `favourite` command allows you to mark a contact as a favourite so that you can easily identify them later or retrieve them quickly when needed.
+The `favourite` command lets you mark important contacts as favourites, making it easy to find and highlight them later. Whether it's a key student, parent, or colleague, you can quickly access your favourite contacts whenever needed.
 
 **Format:** `favourite INDEX`
 <box type="info" seamless>
