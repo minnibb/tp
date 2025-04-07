@@ -323,7 +323,7 @@ allows you to add this information to specific contacts for easy reference later
 * Expected message displayed in the output box: `Added note to Person: CONTACT`, where `CONTACT` reflects the details of the contact added.
   For example, upon running the command in the second example shown above, the expected output will be 
   `Added note to Person: Alex Yeoh; Phone: 87438807; Email: alexyeoh@example.com; Address: Blk 30 Geylang Street 29, #06-40; Role: Parent; Child's Name: Anthony Yeoh; Child's Phone: 93282842; Child's Grade: SEC 1; Child's Class: 1A; Tags: [pta member]`
-* The added note will also be reflected in ClassHive, as shown in the images below.
+* The added note will also be reflected in ClassHive, as shown in the image below.
 ![note](images/afterNote.png)
 
 ### Finding contacts by name or phone number: `find`
@@ -353,7 +353,7 @@ There will be times when you need to quickly locate someone by name or phone num
 * Expected message displayed in the output box: `[NUMBER] persons listed!`, where `NUMBER` reflects the number of contacts that match the keyword entered.
   For example, upon running the command in the third example shown above, the expected output will be 
   `2 persons listed!`
-* The matching contacts will be displayed in the results panel:
+* The matching contacts will be displayed in ClassHive, as shown in the image below:
   ![find](images/find.png)
 
 ### Listing all contacts : `list`
@@ -384,13 +384,13 @@ or chronologically by when they were added, making it easier to scan through you
 
 <box type="tip" seamless>
 
-**Caution:** `sort` command can only be used on the **full contact list**. If you've recently used `find`, `group`,
-or any other filter-based command, run `list` first to reset the view.
+**Tip:** Simply typing `sort` without any parameters will sort contacts alphabetically by name from A to Z.
 </box>
 
-<box type="tip" seamless>
+<box type="warning" seamless>
 
-**Tip:** Simply typing `sort` without any parameters will sort contacts alphabetically by name from A to Z.
+**Caution:** `sort` command can only be used on the **full contact list**. If you've recently used `find`, `group`,
+or any other filter-based command, run `list` first to reset the view.
 </box>
 
 **Examples:**
@@ -403,7 +403,7 @@ or any other filter-based command, run `list` first to reset the view.
 * Expected message displayed in the output box: `Sorted all persons by [FIELD] in [ORDER] order`.
   For example, upon running the command in the second example shown above, the expected output will be 
   `Sorted all persons by name in descending order`
-* The sorted list of contacts will be reflected immediately in the results panel:
+* The sorted contacts will also be reflected on ClassHive, as shown in the images below:
 <br>
 <div style="display: flex; justify-content: space-between; text-align: center; width: 100%;">
   <div style="width: 48%;">
@@ -456,7 +456,7 @@ With the `group` command, you can organize your contacts into specific categorie
   For example, upon running the command in the first example shown above, the expected output will be <br>
   `Results are grouped by: ROLE student` <br>
   `2 contacts found.`
-* The grouped list of contacts will be reflected immediately in the results panel:
+*  You’ll see the grouped contacts reflected on ClassHive, as shown in the image below:
   ![group](images/group.png)
   
 ### Favourite contacts: `favourite`
@@ -518,7 +518,6 @@ Furthermore, certain edits can cause the ClassHive to behave in unexpected ways 
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
-3. **Adding more than one family member is currently not supported.** Only one family member can be added per contact. Currently, the developer team is working to allow support for the addition of more than one child or parent!
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -547,7 +546,7 @@ All fields with square brackets around it, such as `[t/TAG]`, denote an optional
 </box>
 
 
-## Prefix Summary 
+## 🗝️ Prefix Summary 
 
 | Prefix | Used for specifying which field?                   | Used in which commands?                                      |
 |--------|----------------------------------------------------|--------------------------------------------------------------|
