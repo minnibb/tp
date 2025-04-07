@@ -106,5 +106,4 @@ public class PersonCardTest {
         PersonCard personCard = new PersonCard(VALID_STUDENT, 1);
         assertEquals(VALID_STUDENT, personCard.person);
     }
-    
 }
