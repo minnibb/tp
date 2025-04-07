@@ -7,8 +7,8 @@
 # ClassHive User Guide
 
 ## :rotating_light: ATTENTION ALL TEACHERS! :rotating_light:
-Introducing ClassHive, a **desktop app for managing all your 
-school contacts**! ClassHive is a fast and easy to use app that helps you keep track of all the people you will need to 
+Introducing ClassHive, a **desktop app for managing all your school contacts**! 
+ClassHive is a fast and easy to use app that helps you keep track of all the people you will need to 
 contact, including colleagues, parents and students. In ClassHive, instead of having to click many buttons, you can 
 simply type in commands to access any function! Let's now explore the different features that were built just for you! :rocket:
 
@@ -124,20 +124,25 @@ It will be useful to know some information about the command format before getti
 
 **Here are some notes about the command format:**<br>
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+* Words in `UPPER_CASE` are the inputs for you to key in.<br>
+  e.g. in `add n/NAME`, `NAME` is to be filled in by you. If `NAME` is `John Doe`, then type into the command box `add n/John Doe`.
 
-* Items in square brackets are optional.<br>
+* Items in square brackets are optional to specify.<br>
   e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
 
-* Items with `…`​ after them can be used multiple times including zero times.<br>
+* Items with `…`​ after them can be used zero, one or more times.<br>
   e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 
-* Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+* Parameters can be specified in any order.<br>
+  e.g. if the command needs your input for a contact's name and phone number, `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
-* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
+* Commands that do not take in user inputs (such as `help`, `list`, `exit` and `clear`) ignores the addition of any extra inputs.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
+
+* All commands are case-sensitive, so make sure to type in the command in **small letters**. <br>
+  e.g. use `add` instead of `ADD` or `Add`
+
+* You can refer to the [Command Summary](#-command-summary) and the [Prefix Summary](#prefix-summary-) to see a summary of all commands and their related prefixes.
 </box>
 
 <box type="warning" seamless>
@@ -164,28 +169,22 @@ type `help`.
 When you first download ClassHive, you might want to use the `clear` command to ensure you're starting with a
 fresh database. The `clear` command allows you to remove all contacts from ClassHive with a single command.
 
-_Before clearing the entries:_
-![clear command before](images/clearCommand.png)
-_After clearing the entries:_
-![clear command result](images/clearCommand2.png)
-
 **Format:** `clear`
 
 <box type="warning" seamless>
 
 **Caution:**
-This will remove ALL your contacts from ClassHive. Consider backing up your data before clearing (see FAQ section
-on transferring data).
+This is an irreversible action that will remove ALL your contacts from ClassHive.
+Consider backing up your data before clearing (see FAQ section on transferring data).
 </box>
+
+| _Before clearing the entries:_ <br> <img src="images/clearCommand.png" width="300px" /> <br> | _After clearing the entries:_ <br> <img src="images/clearCommand2.png" width="300px" /> <br> |
+|----------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
+
 
 ### Adding a contact: `add`
 
 To make ClassHive ready for your personal use, add contacts into the app using the `add` command!
-
-_Before adding the new contact:_
-![add command before](images/beforeAddCommand.png)
-_After adding the new contact:_
-![add command result](images/afterAddCommand.png)
 
 **Format:** 
 - For adding Students: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]… r/Student g/GRADE c/CLASS rn/PARENT'S_NAME rp/PARENT'S_PHONE​`
@@ -201,9 +200,15 @@ _After adding the new contact:_
 </box>
 
 **Examples:**
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/Student g/Sec 1 c/1A rn/Bob Doe rp/92932011`
-* `add n/Bob Doe p/92932011 e/bobd@example.com a/John street, block 123, #01-01 r/Parent rn/John Doe rp/98765432 g/Sec 1 c/1A`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Serangoon Avenue 2 p/12345678 r/Staff`
+* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/Student g/Sec 1 c/1A rn/Bob Doe rp/92932011` adds the student `John Doe` into ClassHive. 
+* `add n/Bob Doe p/92932011 e/bobd@example.com a/John street, block 123, #01-01 r/Parent rn/John Doe rp/98765432 g/Sec 1 c/1A` adds the parent `Bob Doe` into ClassHive.
+* `add n/Betsy Crowe t/boss e/betsycrowe@example.com a/Serangoon Avenue 2 p/12345678 r/Staff` adds the staff member `Betsy Crowe` into ClassHive. 
+
+**Expected output:**
+* Expected message displayed in the output box: `New person added: CONTACT`, where `CONTACT` reflects the details of the contact added.
+  For example, upon running the command in the first example shown above, the expected output will be 
+  `New person added: John Doe; Phone: 98765432; Email: johnd@example.com; Address: John street, block 123, #01-01; Role: Student; Grade: SEC 1; Class: 1A; Parent's Name: Bob Doe; Parent's Phone: 92932011; Tags: `
+* The new contact will be added to the bottom of the list of contacts. Scroll to the bottom to see it!
 
 
 ### Editing a contact : `edit`
@@ -254,11 +259,6 @@ If a contact's information has changed, simply use the `edit` command to change 
 As you use ClassHive, there may be some contacts that will leave the school. Since you no longer need to contact them, 
 you can use the `delete` command to delete their information, ensuring ClassHive remains uncluttered with unnecessary information.
 
-_Before deleting the old contact:_
-![add command before](images/beforeAddCommand.png)
-_After deleting the old contact:_
-![add command result](images/afterAddCommand.png)
-
 **Format:** `delete n/NAME p/PHONE_NUMBER`
 <box type="info" seamless>
 
@@ -268,7 +268,12 @@ _After deleting the old contact:_
   </box>
 
 **Examples:**
-* `delete n/Betsy Crowe p/12345678` deletes `Betsy Crowe` with the phone number `12345678` from the app.
+* `delete n/John Doe p/98765432` deletes `John Doe` with the phone number `98765432` from the app.
+
+**Expected output:**
+* Expected message displayed in the output box: `Deleted Person: CONTACT`, where `CONTACT` reflects the details of the contact deleted. 
+  For example, running the command in the example above will result in the output message `Deleted Person: John Doe; Phone: 98765432; Email: johnd@example.com; Address: John street, block 123, #01-01; Role: Student; Grade: SEC 1; Class: 1A; Parent's Name: Bob Doe; Parent's Phone: 92932011; Tags: `.
+
 
 ### Adding note to a contact : `note`
 
