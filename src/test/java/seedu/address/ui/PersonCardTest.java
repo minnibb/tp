@@ -101,11 +101,10 @@ public class PersonCardTest {
         assertEquals(expected.size(), actual.size());
         assertEquals(expected, actual);
     }
-    
     @Test
     public void constructor_setsDateAdded_correctlyFormatsTimestamp() {
         PersonCard personCard = new PersonCard(VALID_STUDENT, 1);
         assertEquals(VALID_STUDENT, personCard.person);
     }
-
+    
 }
