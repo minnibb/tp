@@ -1,6 +1,6 @@
 [![Java CI](https://github.com/AY2425S2-CS2103T-F13-4/tp/actions/workflows/gradle.yml/badge.svg)](https://github.com/AY2425S2-CS2103T-F13-4/tp/actions/workflows/gradle.yml)
 
-![Ui](docs/images/v1.6Ui.png)
+![Ui](docs/images/Ui.png)
 
 * This is **a contact management application for primary and secondary school teachers**.<br>
   Example usages:
