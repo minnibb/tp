@@ -504,17 +504,14 @@ testers are expected to do more *exploratory* testing.
 ### Finding a Contact
 
 1. Searching by name
-   1. Prerequisites: A valid name must be provided, and the contact must exist.
+   1. Prerequisites: Tthe contact must exist.
       
    1. Test case: `find Alice`<br>
       Expected: Contacts whose name contains “Alice” (e.g., "Alice Lim", "Alicia Tan") are displayed.
       
-   1. Test case: `find $#@`<br>
-      Expected: An error message for invalid characters is displayed.
-      
 1. Searching by phone number
 
-   1. Prerequisites: A valid number must be provided, and the contact must exist.
+   1. Prerequisites: The input must be an integer, and the contact must exist.
       
    1. Test case: `find 9876`<br>
       Expected: Contacts whose phone number contains “9876” (e.g., "98765432") are displayed.
@@ -568,7 +565,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Sorting by name
 
-   1. Prerequisites: Contact list must not be empty.
+   1. Prerequisites: Contact list must not be empty and the current view must display the full contact list.
     
    1. Test case: `sort by name asc`  
       Expected UI changes: Contacts displayed are sorted by name in ascending order.
@@ -578,7 +575,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Sorting by date
    
-   1. Prerequisites: Contact list must not be empty.
+   1. Prerequisites: Contact list must not be empty and the current view must display the full contact list.
       
    1. Test case: `sort by date asc`  
       Expected UI changes: Contacts displayed are sorted by date added in ascending order.
@@ -588,7 +585,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Default sorting
    
-   1. Prerequisites: Contact list must not be empty.
+   1. Prerequisites: Contact list must not be empty and the current view must display the full contact list.
     
    1. Test case: `sort`  
       Expected UI changes: Contacts displayed sorted by name in ascending order (same behavior as `sort by name asc`).
