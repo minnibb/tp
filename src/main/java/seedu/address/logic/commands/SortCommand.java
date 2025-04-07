@@ -7,6 +7,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
@@ -30,6 +31,7 @@ public class SortCommand extends Command {
     public static final String MESSAGE_SUCCESS_DATE_DESC = "Sorted all persons by date added in descending order";
     public static final String MESSAGE_EMPTY_LIST = "No contacts to sort.";
     public static final String MESSAGE_ERROR_PREFIX = "Error sorting: ";
+    public static final String MESSAGE_INVALID_SORT = "Sort can only be used on full contact list.";
 
     private final String sortField;
     private final boolean isAscending;
@@ -43,10 +45,13 @@ public class SortCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(Model model) {
+    public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         // Get current contacts
         List<Person> persons = new ArrayList<>(model.getFilteredPersonList());
+        if (persons.size() != model.getAddressBook().getPersonList().size()) {
+            throw new CommandException(MESSAGE_INVALID_SORT);
+        }
         // Skip if empty
         if (persons.isEmpty()) {
             return new CommandResult(MESSAGE_EMPTY_LIST);
