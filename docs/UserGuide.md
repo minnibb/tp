@@ -22,13 +22,13 @@ simply type in commands to access any function! Let's now explore the different 
 Getting started with ClassHive is easy! Just follow these steps:
 1. Check your Java Version
     * To use ClassHive, you need Java `17` or above installed in your Computer.<br>
-    * ❗**Mac users:** If you're unsure, follow [this guide](https://se-education.org/guides/tutorials/javaInstallationMac.html) to set it up.
+    * ❗**Mac users:** If you're unsure, follow [this guide](https://se-education.org/guides/tutorials/javaInstallationMac.html) to set it up. <br>
 
 2. Download ClassHive
-    * Click [here](https://github.com/AY2425S2-CS2103T-F13-4/tp/releases) to download the latest version of ClassHive (`.jar` file).
+    * Click [here](https://github.com/AY2425S2-CS2103T-F13-4/tp/releases) to download the latest version of ClassHive (`.jar` file). <br>
 
 3. Choose where to keep ClassHive
-    * Move the downloaded file to a folder where you'd like to store ClassHive (e.g., "Documents" or "Desktop").
+    * Move the downloaded file to a folder where you'd like to store ClassHive (e.g., "Documents" or "Desktop"). <br>
 
 4. Open ClassHive
     * On Windows
@@ -38,6 +38,7 @@ Getting started with ClassHive is easy! Just follow these steps:
       ```sh
         java -jar ClassHive.jar
       ```
+      
     * On Mac
       * Open **Terminal** (you can find it using spotlight search, `Command (⌘) + Space`).
       * Type `cd ` (followed by a space), then **drag and drop** the folder where you saved ClassHive into the Terminal window.
@@ -53,7 +54,8 @@ Getting started with ClassHive is easy! Just follow these steps:
         <img src="images/v1.6Ui.png" width="400px" /> <br>
 
 6. Refer to the [Features](#features) below for details of each command.
-7. 💡 If you're unfamiliar with using commands in a command-line interface (CLI), check out the [CLI Tutorial](#cli-tutorial) to get comfortable before diving in!
+7. 💡 If you're unfamiliar with using commands in a command-line interface (CLI), check out the [CLI Tutorial](#cli-tutorial) to get comfortable before diving in! <br>
+<button onclick="location.href='#table-of-contents'">🔝 Back to Table of Contents</button>
 --------------------------------------------------------------------------------------------------------------------
 
 ## CLI Tutorial
