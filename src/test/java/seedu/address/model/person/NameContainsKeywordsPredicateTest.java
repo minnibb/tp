@@ -38,21 +38,7 @@ public class NameContainsKeywordsPredicateTest {
         // different person -> returns false
         assertFalse(firstPredicate.equals(secondPredicate));
     }
-
-    @Test
-    public void isValid_validAndInvalidInputs() {
-        // Valid keywords (only alphabets and spaces)
-        assertTrue(new NameContainsKeywordsPredicate(Collections.singletonList("John Doe")).isValid());
-
-        // Invalid keywords (contains numbers)
-        assertFalse(new NameContainsKeywordsPredicate(Collections.singletonList("John2 Doe")).isValid());
-
-        // Invalid keywords (contains special characters)
-        assertFalse(new NameContainsKeywordsPredicate(Collections.singletonList("John@Doe")).isValid());
-
-        // Edge case: Empty keyword list should be valid
-        assertTrue(new NameContainsKeywordsPredicate(Collections.emptyList()).isValid());
-    }
+    
 
     @Test
     public void test_nameContainsKeywords_returnsTrue() {

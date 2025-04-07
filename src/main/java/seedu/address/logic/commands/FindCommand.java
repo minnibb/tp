@@ -24,8 +24,10 @@ public class FindCommand extends Command {
             + "Search by name (case-insensitive, partial match allowed):\n"
             + "  Example: " + COMMAND_WORD + " alice \n"
             + "Search by phone number (partial match allowed):\n"
-            + "  Example: " + COMMAND_WORD + " 91234567\n";
-
+            + "  Example: " + COMMAND_WORD + " 91234567\n"
+            + "Note: Numbers without spaces are treated as phone numbers.\n"
+            + "To search for a name containing numbers, include letters or special characters after the numbers.\n"
+            + "  Example: " + COMMAND_WORD + " john2";
     private final Predicate<Person> predicate;
 
     /**
@@ -49,12 +51,6 @@ public class FindCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-
-        if (predicate instanceof NameContainsKeywordsPredicate namePredicate) {
-            if (!namePredicate.isValid()) {
-                return new CommandResult(Messages.MESSAGE_INVALID_NAME);
-            }
-        }
 
         model.updateFilteredPersonList(predicate);
 

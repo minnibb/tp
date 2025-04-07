@@ -3,7 +3,6 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.Messages.MESSAGE_INVALID_NAME;
 import static seedu.address.logic.Messages.MESSAGE_NO_RESULTS;
 import static seedu.address.logic.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
@@ -78,17 +77,6 @@ public class FindCommandTest {
         assertFalse(findFirstCommandByPhone.equals(findSecondCommandByPhone));
     }
 
-    @Test
-    public void execute_invalidKeywords_returnsInvalidMessage() {
-        List<String> invalidKeywords = Arrays.asList("John123", "Do!");
-        FindCommand command = new FindCommand(invalidKeywords);
-
-        String expectedMessage = MESSAGE_INVALID_NAME;
-
-        CommandResult result = command.execute(model);
-
-        assertEquals(expectedMessage, result.getFeedbackToUser());
-    }
 
     @Test
     public void execute_zeroKeywords_allPersonsFound() {
