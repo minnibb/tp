@@ -340,36 +340,66 @@ _After sorting by contacts' names in descending order:_
 
 ### Grouping contacts : group
 
-Filters and groups contacts by a specific role.
+Filters and groups contacts by a specific category.
 
-**Format:** `group by CATEGORY CRITERIA`
+**Format**:  
+`group by CATEGORY [CRITERIA]`
 
-* **Supported category**:
-    - `ROLE`/`CLASS`/`GRADE`/`FAVOURITE`
+**Scope of Operation**:
+- `group by` **always operates on the full contact list**, not the currently displayed subset.
 
-* **Supported criteria**:
-    - `Parent`/`Student`/`Staff`  
-    - `pri 1 ~ pri 6`/`sec 1 ~ sec 5`
+#### Supported Categories and Criteria
+- **`ROLE`**:
+    - Criteria: `Parent`, `Student`, `Staff`
+    - Example: `group by ROLE Parent`
 
-* **Example:** `group by ROLE Parent`
+- **`CLASS`**:
+    - Criteria: **Any non-empty value** (e.g., `1A`, `ScienceClub`, `2023Batch`)
+    - Example: `group by CLASS ArtClub`
 
-<box type="info" seamless>
+- **`GRADE`**:
+    - Criteria: `pri 1` to `pri 6` or `sec 1` to `sec 5`
+    - Example: `group by GRADE sec 3`
 
-**Note**:<br>
-1. **Strict format**:
-    - Category and criteria must be separated by a space.
+- **`FAVOURITE`**:
+    - **No criteria needed** (automatically groups favourited contacts)
+    - Example: `group by FAVOURITE`
+
+---
+
+#### Notes
+
+1. **Format Rules**:
+    - Only **one category** per command.
+    - For `FAVOURITE`, **omit criteria** (e.g., `group by FAVOURITE`).
+    - For `CLASS`, specify a **non-empty value** (e.g., `group by CLASS 2B`).
     - Values are case-insensitive (e.g., `Parent` = `parent`).
 
-2. **Validation rules**:
-    - Role: Only `Parent`, `Student`, `Staff`.
-    - Grade: Only `pri 1 ~ pri 6`/`sec 1 ~ sec 5`
-    
-3. Non-matching contacts will be hidden from view.
-   </box>
+2. **Validation Rules**:
+    - `CLASS`: Must be a **non-empty string** (e.g., `1A`, `Math2024`).
+    - `GRADE`: Only valid levels (`pri 1`–`pri 6` or `sec 1`–`sec 5`).
 
-**Example**:
-1. `group by ROLE student`   
+3. Non-matching contacts will be hidden from view.
+
+---
+
+#### Examples
+
+1. `group by ROLE student`  
    *Shows all contacts with the **Student** role.*
+
+2. `group by CLASS ScienceClub`  
+   *Groups contacts in class **ScienceClub**.*
+
+3. `group by FAVOURITE`  
+   *Displays all favourited contacts.*
+
+---
+
+**Key Features**:
+- Simplified command structure for `FAVOURITE` (no criteria required).
+- Flexible `CLASS` criteria (accepts any non-empty input).
+- Case-insensitive values for ease of use.
 
 
 ### Favourite contacts: `favourite`
