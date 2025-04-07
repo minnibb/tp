@@ -47,7 +47,7 @@ public class TypicalPersons {
             .withGrade("Sec 3")
             .withClass("3K")
             .withRelativeName("Elle Meyer")
-            .withRelativePhone("9482224")
+            .withRelativePhone("94822241")
             .withFavourite(false).build();
     public static final Person BENSON = new PersonBuilder().withName("Benson Meier")
             .withAddress("311, Clementi Ave 2, #02-25")
@@ -69,7 +69,7 @@ public class TypicalPersons {
             .withRelativeName("Benson Meier")
             .withRelativePhone("98765432")
             .withFavourite(true).build();
-    public static final Person ELLE = new PersonBuilder().withName("Elle Meyer").withPhone("9482224")
+    public static final Person ELLE = new PersonBuilder().withName("Elle Meyer").withPhone("94822241")
             .withEmail("werner@example.com").withAddress("michegan ave")
             .withRole("Student")
             .withGrade("Pri 3")
@@ -77,11 +77,11 @@ public class TypicalPersons {
             .withRelativeName("Alice Pauline")
             .withRelativePhone("94351253")
             .withFavourite(false).build();
-    public static final Person FIONA = new PersonBuilder().withName("Fiona Kunz").withPhone("9482427")
+    public static final Person FIONA = new PersonBuilder().withName("Fiona Kunz").withPhone("94824271")
             .withEmail("lydia@example.com").withAddress("little tokyo")
             .withRole("Staff")
             .withFavourite(false).build();
-    public static final Person GEORGE = new PersonBuilder().withName("George Best").withPhone("9482442")
+    public static final Person GEORGE = new PersonBuilder().withName("George Best").withPhone("94824421")
             .withEmail("anna@example.com").withAddress("4th street")
             .withRole("Parent").withGrade("Sec 2").withClass("2D")
             .withRelativeName("Mason Best")
@@ -89,11 +89,11 @@ public class TypicalPersons {
             .withFavourite(false).build();
 
     // Manually added
-    public static final Person HOON = new PersonBuilder().withName("Hoon Meier").withPhone("8482424")
+    public static final Person HOON = new PersonBuilder().withName("Hoon Meier").withPhone("84824242")
             .withEmail("stefan@example.com").withAddress("little india")
             .withRole("Staff")
             .withFavourite(true).build();
-    public static final Person IDA = new PersonBuilder().withName("Ida Mueller").withPhone("8482131")
+    public static final Person IDA = new PersonBuilder().withName("Ida Mueller").withPhone("84821311")
             .withEmail("hans@example.com").withAddress("chicago ave")
             .withRole("Staff")
             .withFavourite(true).build();

@@ -10,13 +10,13 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Name {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Names should only contain alphanumeric characters and spaces, and it should not be blank";
+            "Names should not be blank, and should not contain more than 40 characters";
 
     /*
      * The first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
+    public static final String VALIDATION_REGEX = "[^\\s].*";
 
     public final String fullName;
 
@@ -35,7 +35,7 @@ public class Name {
      * Returns true if a given string is a valid name.
      */
     public static boolean isValidName(String test) {
-        return test.matches(VALIDATION_REGEX);
+        return test.matches(VALIDATION_REGEX) && (test.length() <= 40);
     }
 
 
@@ -56,7 +56,13 @@ public class Name {
         }
 
         Name otherName = (Name) other;
-        return fullName.equals(otherName.fullName);
+        //@@author ambertan77-reused
+        // reused from https://stackoverflow.com/questions/33381237/string-doesnt-equal-string-with-spaces
+        // with minor modifications
+        String otherNameWithoutSpace = otherName.fullName.replaceAll("\\s+", "");
+        String fullNameWithoutSpace = fullName.replaceAll("\\s+", "");
+        //@@author
+        return fullNameWithoutSpace.equalsIgnoreCase(otherNameWithoutSpace);
     }
 
     @Override
