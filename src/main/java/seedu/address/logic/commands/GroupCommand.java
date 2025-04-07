@@ -44,7 +44,8 @@ public class GroupCommand extends Command {
             + "- ROLE: Student, Parent, Staff (case-insensitive)\n"
             + "- CLASS: Any non-empty text (e.g. 2B, ScienceClub)\n"
             + "- GRADE: pri 1~6/sec 1~5 (e.g. 'pri 3', 'sec 4')\n"
-            + "- FAVOURITE: No criteria needed";
+            + "- FAVOURITE: No criteria needed\n"
+            + "only one category and one criteria can be selected";
 
     public static final String FAVOURITE = "favourite";
     private final String category;
