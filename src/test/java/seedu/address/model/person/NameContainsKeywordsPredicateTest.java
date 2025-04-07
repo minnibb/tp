@@ -38,7 +38,6 @@ public class NameContainsKeywordsPredicateTest {
         // different person -> returns false
         assertFalse(firstPredicate.equals(secondPredicate));
     }
-    
 
     @Test
     public void test_nameContainsKeywords_returnsTrue() {
