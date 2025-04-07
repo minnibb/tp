@@ -56,7 +56,13 @@ public class Name {
         }
 
         Name otherName = (Name) other;
-        return fullName.equals(otherName.fullName);
+        //@@author ambertan77-reused
+        // reused from https://stackoverflow.com/questions/33381237/string-doesnt-equal-string-with-spaces
+        // with minor modifications
+        String otherNameWithoutSpace = otherName.fullName.replaceAll("\\s+", "");
+        String fullNameWithoutSpace = fullName.replaceAll("\\s+", "");
+        //@@author
+        return fullNameWithoutSpace.equalsIgnoreCase(otherNameWithoutSpace);
     }
 
     @Override
