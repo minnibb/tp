@@ -205,34 +205,49 @@ _After adding the new contact:_
 * `add n/Bob Doe p/92932011 e/bobd@example.com a/John street, block 123, #01-01 r/Parent rn/John Doe rp/98765432 g/Sec 1 c/1A`
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Serangoon Avenue 2 p/12345678 r/Staff`
 
+
 ### Editing a contact : `edit`
 
-If a contact's information has changed, simply use the `edit` command to change the contact's details. 
-
-_Before editing the second contact in the list:_
-![edit command before](images/beforeEditCommand.png)
-_After editing the second contact in the list:_
-![edit command result](images/afterEditCommand.png)
+If a contact's information has changed, simply use the `edit` command to change the contact's details.
 
 **Format:** `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 
 <box type="info" seamless>
 
 **Note:** <br>
-* Edits the contact at the specified `INDEX`. The index refers to the index number shown in the displayed contact list. The index **must be a positive integer** 1, 2, 3, …​
+* Edits the contact at the specified `INDEX`, which refers to the index number shown in the displayed contact list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-* When editing tags, the existing tags of the contact will be removed i.e adding of tags is not cumulative.
-* You can remove all the contact’s tags by typing `t/` without specifying any tags after it.
 * If you are changing the role to `Staff`, make sure that the fields `[g/GRADE]`, `[c/CLASS]`, `[rn/RELATIVE'S_NAME]` and
   `[rp/RELATIVE'S_PHONE]` are not included. 
 * If you are changing the role to `Student` or `Parent`, make sure that the fields `[g/GRADE]`, `[c/CLASS]`, `[rn/RELATIVE'S_NAME]` and
   `[rp/RELATIVE'S_PHONE]` are included.
     </box>
 
+<box type="tip" seamless>
+
+**Tip:** <br>
+* You can remove all the contact’s tags by typing `t/` without specifying any tags after it.
+* After running the edit command, the existing contact will reflect the new fields you have input.
+    </box>
+
+<box type="warning" seamless>
+
+**Warning:** <br>
+* When editing tags, all existing tags of the contact will be removed and replaced with the new tag.
+    </box>
+
 **Examples:**
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st contact to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd contact to be `Betsy Crower` and clears all existing tags.
+*  `edit 3 n/Charlie Olive p/98989898` edits the name and phone number of the 3rd contact to be `Charlie Olive` and `98989898` respectively. 
+*  `edit 2 n/Betsy Crower t/` edits the name of the 2nd contact to be `Betsy Crower` and clears all existing tags.
+
+**Expected output:**
+* Expected message displayed in the output box: `Edited Person: CONTACT`, where `CONTACT` reflects the details of the contact edited.
+  For example, running the command in the first example above results in the output message `Edited Person: Charlie Olive; Phone: 98989898; Email: charlotte@example.com; Address: Blk 11 Ang Mo Kio Street 74, #11-04; Role: Staff; Tags: [mentor]`.
+* The edited details will also be reflected on ClassHive, as shown in the images below:
+
+| _Before editing the 3rd contact:_ <br> <img src="images/beforeEditCommand.png" width="300px" /> <br> | _After editing the 3rd contact:_ <br> <img src="images/afterEditCommand.png" width="300px" /> <br> |
+|------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
+
 
 ### Deleting a contact : `delete`
 
