@@ -76,7 +76,7 @@ public class PersonCard extends UiPart<Region> {
                 Instant.ofEpochMilli(person.getTimeAdded()),
                 ZoneId.systemDefault());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        String dateInfo = "Date modified: " + dateAdded.format(formatter);
+        String dateInfo = "Date added: " + dateAdded.format(formatter);
         details.getChildren().add(new Label(dateInfo));
         ArrayList<String> familyInformation = getFamilyInformation(person);
         familyInformation.forEach(information -> family.getChildren().add(new Label(information)));
