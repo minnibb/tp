@@ -55,7 +55,6 @@ Getting started with ClassHive is easy! Just follow these steps:
 
 6. Refer to the [Features](#features) below for details of each command.
 7. 💡 If you're unfamiliar with using commands in a command-line interface (CLI), check out the [CLI Tutorial](#cli-tutorial) to get comfortable before diving in! <br>
-[[🔝 Back to Table of Contents]](#table-of-contents)
 --------------------------------------------------------------------------------------------------------------------
 
 ## CLI Tutorial
