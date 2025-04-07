@@ -7,8 +7,8 @@
 # ClassHive User Guide
 
 ## :rotating_light: ATTENTION ALL TEACHERS! :rotating_light:
-Introducing ClassHive, a **desktop app for managing all your 
-school contacts**! ClassHive is a fast and easy to use app that helps you keep track of all the people you will need to 
+Introducing ClassHive, a **desktop app for managing all your school contacts**! 
+ClassHive is a fast and easy to use app that helps you keep track of all the people you will need to 
 contact, including colleagues, parents and students. In ClassHive, instead of having to click many buttons, you can 
 simply type in commands to access any function! Let's now explore the different features that were built just for you! :rocket:
 
@@ -124,20 +124,25 @@ It will be useful to know some information about the command format before getti
 
 **Here are some notes about the command format:**<br>
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+* Words in `UPPER_CASE` are the inputs for you to key in.<br>
+  e.g. in `add n/NAME`, `NAME` is to be filled in by you. If `NAME` is `John Doe`, then type into the command box `add n/John Doe`.
 
-* Items in square brackets are optional.<br>
+* Items in square brackets are optional to specify.<br>
   e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
 
-* Items with `…`​ after them can be used multiple times including zero times.<br>
+* Items with `…`​ after them can be used zero, one or more times.<br>
   e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 
-* Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+* Parameters can be specified in any order.<br>
+  e.g. if the command needs your input for a contact's name and phone number, `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
-* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
+* Commands that do not take in user inputs (such as `help`, `list`, `exit` and `clear`) ignores the addition of any extra inputs.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
+
+* All commands are case-sensitive, so make sure to type in the command in **small letters**. <br>
+  e.g. use `add` instead of `ADD` or `Add`
+
+* You can refer to the [Command Summary](#-command-summary) and the [Prefix Summary](#prefix-summary-) to see a summary of all commands and their related prefixes.
 </box>
 
 <box type="warning" seamless>
@@ -150,13 +155,13 @@ It will be useful to know some information about the command format before getti
 Help is always near when using ClassHive! At any point in time, if you need instructions on how to use the app, 
 type `help`.
 
-![help message](images/helpMessage.png)
+<img src="images/helpMessage.png" width="400px" />
 
 **Format:** `help`
 
 <box type="tip" seamless>
 
-  **Tip**: You can also access help window by clicking on F1 or the help menu on the top left.
+  **Tip**: You can also access help window by clicking on F1 or the help menu on the top left bar.
 </box>
 
 ### Clearing all entries : `clear`
@@ -164,28 +169,22 @@ type `help`.
 When you first download ClassHive, you might want to use the `clear` command to ensure you're starting with a
 fresh database. The `clear` command allows you to remove all contacts from ClassHive with a single command.
 
-_Before clearing the entries:_
-![clear command before](images/clearCommand.png)
-_After clearing the entries:_
-![clear command result](images/clearCommand2.png)
-
 **Format:** `clear`
 
 <box type="warning" seamless>
 
 **Caution:**
-This will remove ALL your contacts from ClassHive. Consider backing up your data before clearing (see FAQ section
-on transferring data).
+This is an irreversible action that will remove ALL your contacts from ClassHive.
+Consider backing up your data before clearing (see FAQ section on transferring data).
 </box>
+
+| _Before clearing the entries:_ <br> <img src="images/clearCommand.png" width="300px" /> <br> | _After clearing the entries:_ <br> <img src="images/clearCommand2.png" width="300px" /> <br> |
+|----------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
+
 
 ### Adding a contact: `add`
 
 To make ClassHive ready for your personal use, add contacts into the app using the `add` command!
-
-_Before adding the new contact:_
-![add command before](images/beforeAddCommand.png)
-_After adding the new contact:_
-![add command result](images/afterAddCommand.png)
 
 **Format:** 
 - For adding Students: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]… r/Student g/GRADE c/CLASS rn/PARENT'S_NAME rp/PARENT'S_PHONE​`
@@ -198,51 +197,75 @@ _After adding the new contact:_
 - The role of each contact must be either a "Student", "Staff" or "Parent" (roles are not case-sensitive).
 - Only grades from Primary 1 to 6 and Secondary 1 to 5 are currently supported.
 - For Staff contacts, do not add the grade, class, family member's name and family member's phone number.
+- Phone numbers must be an 8-digit Singapore number, without specification of the country code. Ensure that there are also no spaces in the middle of the phone number. 
 </box>
+  
+<box type="tip" seamless>
+
+**Tip:** <br>
+- As the phone number field is compulsory, if a student does not have a contact number, you can add his or her parent's phone number instead!
+  </box>
 
 **Examples:**
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/Student g/Sec 1 c/1A rn/Bob Doe rp/92932011`
-* `add n/Bob Doe p/92932011 e/bobd@example.com a/John street, block 123, #01-01 r/Parent rn/John Doe rp/98765432 g/Sec 1 c/1A`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Serangoon Avenue 2 p/12345678 r/Staff`
+* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/Student g/Sec 1 c/1A rn/Bob Doe rp/92932011` adds the student `John Doe` into ClassHive. 
+* `add n/Bob Doe p/92932011 e/bobd@example.com a/John street, block 123, #01-01 r/Parent rn/John Doe rp/98765432 g/Sec 1 c/1A` adds the parent `Bob Doe` into ClassHive.
+* `add n/Jamie Goh p/98128281 e/jamie@example.com a/Jamie street, block 123, #01-02 r/Student g/Pri 2 c/2C rn/Joseph Goh rp/98128272` adds the student `Jamie Goh` into ClassHive.
+* `add n/Betsy Crowe t/boss e/betsycrowe@example.com a/Serangoon Avenue 2 p/12345678 r/Staff` adds the staff member `Betsy Crowe` into ClassHive. 
+
+**Expected output:**
+* Expected message displayed in the output box: `New person added: CONTACT`, where `CONTACT` reflects the details of the contact added.
+  For example, upon running the command in the first example shown above, the expected output will be 
+  `New person added: John Doe; Phone: 98765432; Email: johnd@example.com; Address: John street, block 123, #01-01; Role: Student; Grade: SEC 1; Class: 1A; Parent's Name: Bob Doe; Parent's Phone: 92932011; Tags: `
+* The new contact will be added to the bottom of the list of contacts. Scroll to the bottom to see it!
+
 
 ### Editing a contact : `edit`
 
-If a contact's information has changed, simply use the `edit` command to change the contact's details. 
-
-_Before editing the second contact in the list:_
-![edit command before](images/beforeEditCommand.png)
-_After editing the second contact in the list:_
-![edit command result](images/afterEditCommand.png)
+If a contact's information has changed, simply use the `edit` command to change the contact's details.
 
 **Format:** `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 
 <box type="info" seamless>
 
 **Note:** <br>
-* Edits the contact at the specified `INDEX`. The index refers to the index number shown in the displayed contact list. The index **must be a positive integer** 1, 2, 3, …​
+* Edits the contact at the specified `INDEX`, which refers to the index number shown in the displayed contact list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-* When editing tags, the existing tags of the contact will be removed i.e adding of tags is not cumulative.
-* You can remove all the contact’s tags by typing `t/` without specifying any tags after it.
 * If you are changing the role to `Staff`, make sure that the fields `[g/GRADE]`, `[c/CLASS]`, `[rn/RELATIVE'S_NAME]` and
   `[rp/RELATIVE'S_PHONE]` are not included. 
 * If you are changing the role to `Student` or `Parent`, make sure that the fields `[g/GRADE]`, `[c/CLASS]`, `[rn/RELATIVE'S_NAME]` and
   `[rp/RELATIVE'S_PHONE]` are included.
     </box>
 
+<box type="tip" seamless>
+
+**Tip:** <br>
+* You can remove all the contact’s tags by typing `t/` without specifying any tags after it.
+* After running the edit command, the existing contact will reflect the new fields you have input.
+    </box>
+
+<box type="warning" seamless>
+
+**Warning:** <br>
+* When editing tags, all existing tags of the contact will be removed and replaced with the new tag.
+    </box>
+
 **Examples:**
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st contact to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd contact to be `Betsy Crower` and clears all existing tags.
+*  `edit 3 n/Charlie Olive p/98989898` edits the name and phone number of the 3rd contact to be `Charlie Olive` and `98989898` respectively. 
+*  `edit 2 n/Betsy Crower t/` edits the name of the 2nd contact to be `Betsy Crower` and clears all existing tags.
+
+**Expected output:**
+* Expected message displayed in the output box: `Edited Person: CONTACT`, where `CONTACT` reflects the details of the contact edited.
+  For example, running the command in the first example above results in the output message `Edited Person: Charlie Olive; Phone: 98989898; Email: charlotte@example.com; Address: Blk 11 Ang Mo Kio Street 74, #11-04; Role: Staff; Tags: [mentor]`.
+* The edited details will also be reflected on ClassHive, as shown in the images below:
+
+| _Before editing the 3rd contact:_ <br> <img src="images/beforeEditCommand.png" width="300px" /> <br> | _After editing the 3rd contact:_ <br> <img src="images/afterEditCommand.png" width="300px" /> <br> |
+|------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
+
 
 ### Deleting a contact : `delete`
 
 As you use ClassHive, there may be some contacts that will leave the school. Since you no longer need to contact them, 
 you can use the `delete` command to delete their information, ensuring ClassHive remains uncluttered with unnecessary information.
-
-_Before deleting the old contact:_
-![add command before](images/beforeAddCommand.png)
-_After deleting the old contact:_
-![add command result](images/afterAddCommand.png)
 
 **Format:** `delete n/NAME p/PHONE_NUMBER`
 <box type="info" seamless>
@@ -253,7 +276,12 @@ _After deleting the old contact:_
   </box>
 
 **Examples:**
-* `delete n/Betsy Crowe p/12345678` deletes `Betsy Crowe` with the phone number `12345678` from the app.
+* `delete n/John Doe p/98765432` deletes `John Doe` with the phone number `98765432` from the app.
+
+**Expected output:**
+* Expected message displayed in the output box: `Deleted Person: CONTACT`, where `CONTACT` reflects the details of the contact deleted. 
+  For example, running the command in the example above will result in the output message `Deleted Person: John Doe; Phone: 98765432; Email: johnd@example.com; Address: John street, block 123, #01-01; Role: Student; Grade: SEC 1; Class: 1A; Parent's Name: Bob Doe; Parent's Phone: 92932011; Tags: `.
+
 
 ### Adding note to a contact : `note`
 
@@ -480,20 +508,43 @@ ungroup contacts
 
 ## 💻 Command summary
 
+| Action        | Format, Examples                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Help**      | `help`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| **Clear**     | `clear`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **Add**       | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]… r/Student g/GRADE c/CLASS rn/KIN'S_NAME rp/KIN'S_PHONE` <br> <br> Examples: <br> Adding students:`add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/Student g/Sec 1 c/1A rn/Bob Doe rp/92932011` <br> Adding parents:`add n/Bob Doe p/92932011 e/bobd@example.com a/John street, block 123, #01-01 r/Parent rn/John Doe rp/98765432 g/Sec 1 c/1A` <br> Adding staff: `add n/Betsy Crowe t/boss e/betsycrowe@example.com a/Serangoon Avenue 2 p/12345678 r/Staff` |
+| **Delete**    | `delete n/NAME p/PHONE`<br> e.g., `delete n/Betsy Crowe p/12345678`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| **Edit**      | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| **Note**      | `note INDEX nt/NOTE`<br> e.g., `note 1 nt/student needs extra help with Mathematics`                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| **Find**      | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Tan` <br> `find NUMBER` <br> e.g, `find 98765432`                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| **List**      | `list`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| **Sort**      | `sort by [FIELD] [ORDER]`<br> e.g., `sort by name asc`, `sort by date desc`                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| **Group**     | `group by [category] [criteria]`<br>e.g., `group by ROLE student`, `group by CLASS 1A, group by FAVOURITE, group by GRADE pri 1`                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| **Ungroup**   | `ungroup`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| **Favourite** | `favourite [INDEX]`<br> e.g., `favourite 1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| **Exit**      | `exit`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 
-| Action       | Format, Examples                                                                                                                                                                                                                                        |
-|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Help**     | `help`                                                                                                                                                                                                                                                  |
-| **Clear**    | `clear`                                                                                                                                                                                                                                                 |
-| **Add**      | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]… r/Student g/GRADE c/CLASS rn/KIN'S_NAME rp/KIN'S_PHONE` <br> e.g., `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/Student g/Sec 1 c/1A rn/Bob Doe rp/92932011` |
-| **Delete**   | `delete n/NAME p/PHONE`<br> e.g., `delete n/Betsy Crowe p/12345678`                                                                                                                                                                                     |
-| **Edit**     | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                                              |
-| **Note**     | `note INDEX n/NOTE`<br> e.g., `note 1 nt/student needs extra help with Mathematics`                                                                                                                                                                     |
-| **Find**     | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Tan` <br> `find NUMBER` <br> e.g, `find 98765432`                                                                                                                                                  |
-| **List**     | `list`                                                                                                                                                                                                                                                  |
-| **Sort**     | `sort by [FIELD] [ORDER]`<br> e.g., `sort by name asc`, `sort by date desc`                                                                                                                                                                             |
-| **Group**   | `group by [category] [criteria]`<br>e.g., `group by ROLE student`, `group by CLASS 1A, group by FAVOURITE, group by GRADE pri 1`                                                                                                                        |
-| **Ungroup** | `ungroup`                                                                                                                                                                                                                                               |
-| **Favourite** | `favourite [INDEX]`<br> e.g., `favourite 1                                                                                                                                                                                                              |
-| **Exit**     | `exit`                                                                                                                                                                                                                                                  |
+<box type="tip" seamless>
+
+**Tip:**
+All fields with square brackets around it, such as `[t/TAG]`, denote an optional field. 
+</box>
+
+
+## Prefix Summary 
+
+| Prefix | Used for specifying which field?                   | Used in which commands?                                      |
+|--------|----------------------------------------------------|--------------------------------------------------------------|
+| n/     | name                                               | `add`, `delete`, `edit` for contacts of all roles            |
+| p/     | phone number                                       | `add`, `delete`, `edit` for contacts of all roles            |
+| a/     | address                                            | `add`, `delete`, `edit` for contacts of all roles            |
+| e/     | email                                              | `add`, `delete`, `edit` for contacts of all roles            |
+| t/     | tags                                               | `add`, `delete`, `edit` for contacts of all roles            |
+| r/     | role                                               | `add`, `delete`, `edit` for contacts of all roles            |
+| g/     | student's grade                                    | `add`, `delete`, `edit` for Parent and Student contacts only |
+| c/     | student's class                                    | `add`, `delete`, `edit` for Parent and Student contacts only |
+| rn/    | relative's name (child's name or parent's name)    | `add`, `delete`, `edit` for Parent and Student contacts only |
+| rp/    | relative's phone (child's phone or parent's phone) | `add`, `delete`, `edit` for Parent and Student contacts only |
+| nt/    | note                                               | `note` for contacts of all roles                             |
+
 
