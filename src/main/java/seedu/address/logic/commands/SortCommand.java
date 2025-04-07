@@ -31,7 +31,8 @@ public class SortCommand extends Command {
     public static final String MESSAGE_SUCCESS_DATE_DESC = "Sorted all persons by date added in descending order";
     public static final String MESSAGE_EMPTY_LIST = "No contacts to sort.";
     public static final String MESSAGE_ERROR_PREFIX = "Error sorting: ";
-    public static final String MESSAGE_INVALID_SORT = "Sort can only be used on full contact list.";
+    public static final String MESSAGE_INVALID_SORT = "Sort can only be used on full contact list. "
+            + "Please use the list command before using sort";
 
     private final String sortField;
     private final boolean isAscending;
