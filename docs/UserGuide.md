@@ -323,7 +323,7 @@ allows you to add this information to specific contacts for easy reference later
 * Expected message displayed in the output box: `Added note to Person: CONTACT`, where `CONTACT` reflects the details of the contact added.
   For example, upon running the command in the second example shown above, the expected output will be 
   `Added note to Person: Alex Yeoh; Phone: 87438807; Email: alexyeoh@example.com; Address: Blk 30 Geylang Street 29, #06-40; Role: Parent; Child's Name: Anthony Yeoh; Child's Phone: 93282842; Child's Grade: SEC 1; Child's Class: 1A; Tags: [pta member]`
-* The added note will also be reflected in ClassHive, as shown in the images below.
+* The added note will also be reflected in ClassHive, as shown in the image below.
 ![note](images/afterNote.png)
 
 ### Finding contacts by name or phone number: `find`
@@ -353,7 +353,7 @@ There will be times when you need to quickly locate someone by name or phone num
 * Expected message displayed in the output box: `[NUMBER] persons listed!`, where `NUMBER` reflects the number of contacts that match the keyword entered.
   For example, upon running the command in the third example shown above, the expected output will be 
   `2 persons listed!`
-* The matching contacts will be displayed in the results panel:
+* The matching contacts will be displayed in ClassHive, as shown in the image below:
   ![find](images/find.png)
 
 ### Listing all contacts : `list`
@@ -403,7 +403,7 @@ or any other filter-based command, run `list` first to reset the view.
 * Expected message displayed in the output box: `Sorted all persons by [FIELD] in [ORDER] order`.
   For example, upon running the command in the second example shown above, the expected output will be 
   `Sorted all persons by name in descending order`
-* The sorted list of contacts will be reflected immediately in the results panel:
+* The sorted contacts will also be reflected on ClassHive, as shown in the images below:
 <br>
 <div style="display: flex; justify-content: space-between; text-align: center; width: 100%;">
   <div style="width: 48%;">
@@ -456,7 +456,7 @@ With the `group` command, you can organize your contacts into specific categorie
   For example, upon running the command in the first example shown above, the expected output will be <br>
   `Results are grouped by: ROLE student` <br>
   `2 contacts found.`
-* The grouped list of contacts will be reflected immediately in the results panel:
+*  You’ll see the grouped contacts reflected on ClassHive, as shown in the image below:
   ![group](images/group.png)
   
 ### Favourite contacts: `favourite`
