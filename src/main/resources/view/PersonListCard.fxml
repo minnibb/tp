@@ -33,6 +33,7 @@
       <Label fx:id="address" styleClass="cell_small_label" text="\$address" />
       <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
       <FlowPane fx:id="family" styleClass="cell_small_label" />
+      <Region minHeight="10" maxHeight="10" />
       <Label fx:id="notes"
              styleClass="cell_small_label"
              style="-fx-font-style: italic;"
