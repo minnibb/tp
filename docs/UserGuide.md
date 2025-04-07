@@ -500,20 +500,43 @@ ungroup contacts
 
 ## 💻 Command summary
 
-
-| Action       | Format, Examples                                                                                                                                                                                                                                        |
-|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Help**     | `help`                                                                                                                                                                                                                                                  |
-| **Clear**    | `clear`                                                                                                                                                                                                                                                 |
-| **Add**      | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]… r/Student g/GRADE c/CLASS rn/KIN'S_NAME rp/KIN'S_PHONE` <br> e.g., `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/Student g/Sec 1 c/1A rn/Bob Doe rp/92932011` |
-| **Delete**   | `delete n/NAME p/PHONE`<br> e.g., `delete n/Betsy Crowe p/12345678`                                                                                                                                                                                     |
-| **Edit**     | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                                              |
-| **Note**     | `note INDEX n/NOTE`<br> e.g., `note 1 nt/student needs extra help with Mathematics`                                                                                                                                                                     |
-| **Find**     | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Tan` <br> `find NUMBER` <br> e.g, `find 98765432`                                                                                                                                                  |
-| **List**     | `list`                                                                                                                                                                                                                                                  |
-| **Sort**     | `sort by [FIELD] [ORDER]`<br> e.g., `sort by name asc`, `sort by date desc`                                                                                                                                                                             |
-| **Group**   | `group by [category] [criteria]`<br>e.g., `group by ROLE student`, `group by CLASS 1A, group by FAVOURITE, group by GRADE pri 1`                                                                                                                        |
-| **Ungroup** | `ungroup`                                                                                                                                                                                                                                               |
+| Action        | Format, Examples                                                                                                                                                                                                                                        |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Help**      | `help`                                                                                                                                                                                                                                                  |
+| **Clear**     | `clear`                                                                                                                                                                                                                                                 |
+| **Add**       | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]… r/Student g/GRADE c/CLASS rn/KIN'S_NAME rp/KIN'S_PHONE` <br> e.g., `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/Student g/Sec 1 c/1A rn/Bob Doe rp/92932011` |
+| **Delete**    | `delete n/NAME p/PHONE`<br> e.g., `delete n/Betsy Crowe p/12345678`                                                                                                                                                                                     |
+| **Edit**      | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                                              |
+| **Note**      | `note INDEX n/NOTE`<br> e.g., `note 1 nt/student needs extra help with Mathematics`                                                                                                                                                                     |
+| **Find**      | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Tan` <br> `find NUMBER` <br> e.g, `find 98765432`                                                                                                                                                  |
+| **List**      | `list`                                                                                                                                                                                                                                                  |
+| **Sort**      | `sort by [FIELD] [ORDER]`<br> e.g., `sort by name asc`, `sort by date desc`                                                                                                                                                                             |
+| **Group**     | `group by [category] [criteria]`<br>e.g., `group by ROLE student`, `group by CLASS 1A, group by FAVOURITE, group by GRADE pri 1`                                                                                                                        |
+| **Ungroup**   | `ungroup`                                                                                                                                                                                                                                               |
 | **Favourite** | `favourite [INDEX]`<br> e.g., `favourite 1                                                                                                                                                                                                              |
-| **Exit**     | `exit`                                                                                                                                                                                                                                                  |
+| **Exit**      | `exit`                                                                                                                                                                                                                                                  |
+
+<box type="tip" seamless>
+
+**Tip:**
+All fields with square brackets around it, such as `[t/TAG]`, denote an optional field. 
+</box>
+
+
+## Prefix Summary 
+
+| Prefix | Used for specifying which field?                   | Used in which commands?                                      |
+|--------|----------------------------------------------------|--------------------------------------------------------------|
+| n/     | name                                               | `add`, `delete`, `edit` for contacts of all roles            |
+| p/     | phone number                                       | `add`, `delete`, `edit` for contacts of all roles            |
+| a/     | address                                            | `add`, `delete`, `edit` for contacts of all roles            |
+| e/     | email                                              | `add`, `delete`, `edit` for contacts of all roles            |
+| t/     | tags                                               | `add`, `delete`, `edit` for contacts of all roles            |
+| r/     | role                                               | `add`, `delete`, `edit` for contacts of all roles            |
+| g/     | student's grade                                    | `add`, `delete`, `edit` for Parent and Student contacts only |
+| c/     | student's class                                    | `add`, `delete`, `edit` for Parent and Student contacts only |
+| rn/    | relative's name (child's name or parent's name)    | `add`, `delete`, `edit` for Parent and Student contacts only |
+| rp/    | relative's phone (child's phone or parent's phone) | `add`, `delete`, `edit` for Parent and Student contacts only |
+| nt/    | note                                               | `note` for contacts of all roles                             |
+
 
