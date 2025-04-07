@@ -275,7 +275,7 @@ allows you to add this information to specific contacts for easy reference later
 * `note 3 nt/prefers to be contacted after 5pm` Adds a note about contact preferences to the 3rd contact.
 
 _After adding a note to the first contact in the list:_
-![note command result](images/noteCommand.png)
+![note command result](images/noteCommand.png) ADD NOTE IMAGE HEREEEEEEEEEEEEEEEE
 ### Finding contacts by name or phone number: `find`
 
 The `find` command allows you to search for people by either their name or phone number, and handles partial matches.
@@ -328,9 +328,9 @@ or any other filter-based command, run `list` first to reset the view.
 * `sort by date desc` sorts all contacts from newest to oldest added
 
 _Before sorting by contacts' names in descending order:_
-![sort command before](images/sortCommand.png)
+![sort command before](images/sortCommand.png) ADD BEFORE SORT IMAGE HEREEEEEEEEEEEEEEEEE
 _After sorting by contacts' names in descending order:_
-![sort command result](images/sortCommand2.png)
+![sort command result](images/sortCommand2.png) ADD AFTER SORT IMAGE HEREEEEEEEEEEEEEEEEE
 
 <box type="tip" seamless>
 
