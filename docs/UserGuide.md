@@ -293,6 +293,8 @@ The `find` command allows you to search for people by either their name or phone
 * The search is case-insensitive. e.g `hans` will match `Hans`.
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`.
 * Partial words/numbers will be matched e.g. `Han` will match with `Hans` or '9876' will match with '98765432'.
+* If you search with **only numbers** (e.g., 12345), it will be treated as a **phone number** search.
+* **Spaces** between numbers (e.g., 123 456) will be treated as a **name** search containing those numbers.
 </box>
 
 **Examples:**
