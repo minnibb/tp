@@ -55,7 +55,7 @@ Getting started with ClassHive is easy! Just follow these steps:
 
 6. Refer to the [Features](#features) below for details of each command.
 7. 💡 If you're unfamiliar with using commands in a command-line interface (CLI), check out the [CLI Tutorial](#cli-tutorial) to get comfortable before diving in! <br>
-<button onclick="location.href='#table-of-contents'">🔝 Back to Table of Contents</button>
+[[🔝 Back to Table of Contents]](#table-of-contents)
 --------------------------------------------------------------------------------------------------------------------
 
 ## CLI Tutorial
@@ -143,10 +143,9 @@ It will be useful to know some information about the command format before getti
 
 * All commands are case-sensitive, so make sure to type in the command in **small letters**. <br>
   e.g. use `add` instead of `ADD` or `Add`
-
-* You can refer to the [Command Summary](#-command-summary) and the [Prefix Summary](#prefix-summary-) to see a summary of all commands and their related prefixes.
 </box>
 
+You can refer to the [Command Summary](#-command-summary) and the [Prefix Summary](#prefix-summary) to see a summary of all commands and their related prefixes.
 <box type="warning" seamless>
 
 **Caution:** If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
@@ -185,11 +184,11 @@ Consider backing up your data before clearing (see FAQ section on transferring d
 
 <div style="display: flex; justify-content: space-between; text-align: center; width: 100%;">
   <div style="width: 48%;">
-    <p>_Before clearing the entries:_</p>
+    <p>Before clearing the entries:</p>
     <img src="images/clearCommand.png" alt="Image 1" style="width: 100%;">
   </div>
   <div style="width: 48%;">
-    <p>_After clearing the entries:_</p>
+    <p>After clearing the entries:</p>
     <img src="images/clearCommand2.png" alt="Image 2" style="width: 100%;">
   </div>
 </div>
