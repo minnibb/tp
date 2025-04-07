@@ -547,7 +547,7 @@ All fields with square brackets around it, such as `[t/TAG]`, denote an optional
 </box>
 
 
-## Prefix Summary 
+## 🗝️ Prefix Summary 
 
 | Prefix | Used for specifying which field?                   | Used in which commands?                                      |
 |--------|----------------------------------------------------|--------------------------------------------------------------|
