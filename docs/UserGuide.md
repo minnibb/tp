@@ -23,12 +23,15 @@ Getting started with ClassHive is easy! Just follow these steps:
 1. Check your Java Version
     * To use ClassHive, you need Java `17` or above installed in your Computer.<br>
     * ❗**Mac users:** If you're unsure, follow [this guide](https://se-education.org/guides/tutorials/javaInstallationMac.html) to set it up. <br>
+<br>
 
 2. Download ClassHive
     * Click [here](https://github.com/AY2425S2-CS2103T-F13-4/tp/releases) to download the latest version of ClassHive (`.jar` file). <br>
+<br>
 
 3. Choose where to keep ClassHive
     * Move the downloaded file to a folder where you'd like to store ClassHive (e.g., "Documents" or "Desktop"). <br>
+<br>
 
 4. Open ClassHive
     * On Windows
@@ -47,11 +50,14 @@ Getting started with ClassHive is easy! Just follow these steps:
         java -jar ClassHive.jar
        ```
        * Press **Enter** again. <br>
+<br>
 
 5. Start using ClassHive!
       * After a few seconds, the ClassHive window should appear, ready to help you manage your contacts easily.
       * It should look like this! It will contain some sample data. <br>
         <img src="images/Ui.png" width="400px" /> <br>
+
+<br>
 
 6. Refer to the [Features](#features) below for details of each command.
 7. 💡 If you're unfamiliar with using commands in a command-line interface (CLI), check out the [CLI Tutorial](#cli-tutorial) to get comfortable before diving in! <br>
@@ -59,6 +65,7 @@ Getting started with ClassHive is easy! Just follow these steps:
 
 ## CLI Tutorial
 If you've never used a CLI before don’t worry! This short tutorial will walk you through the basics, and you’ll be managing your contacts like a pro in no time!
+<br>
 
 ### Getting Familiar with the Interface
 <img src="images/annotatedUi.png" width="400px" /> <br>
@@ -71,6 +78,8 @@ If you've never used a CLI before don’t worry! This short tutorial will walk y
   
 3️⃣ #g#Contact List Panel## <br>
   * Shows the list of contacts stored in ClassHive, including their details. <br>
+
+<br>
 
 ### Try Your First Commands!
 Now that you're familiar with the interface, let's try executing some commands!
@@ -86,6 +95,7 @@ favourite 1
 3️⃣ You should see this. <br>
    <img src="images/favouriteTutorial.png" width="400px" /> 
 <br>
+<br>
 #### Command 2: ➕ Add
 
 1️⃣ Type the following command into the **Command Box**:
@@ -97,6 +107,7 @@ add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Serangoon Avenue 2 p/12345
 3️⃣ Scroll down the **Contact List Panel**. <br>
 4️⃣ You should see this. <br>
    <img src="images/addTutorial.png" width="400px" /> 
+<br>
 <br>
 
 #### Command 3: 🗑️ Delete
@@ -111,12 +122,14 @@ delete n/Betsy Crowe p/12345678
 4️⃣ You should see this. <br>
    <img src="images/deleteTutorial.png" width="400px" /> 
 <br>
+<br>
 
 #### 🎊 Congratulations!
 
 You have completed your first few commands in ClassHive!🥳 <br>
 You're now officially a **ClassHive Pro**. Head over to the [Features](#features) section to explore more commands ClassHive has to offer.
 
+--------------------------------------------------------------------------------------------------------------------
 ## Features
 
 <box type="tip" seamless>
@@ -163,6 +176,7 @@ type `help`.
 
   **Tip**: You can also access help window by clicking on F1 or the help menu on the top left bar.
 </box>
+<br>
 
 ### Clearing all entries : `clear`
 
@@ -189,6 +203,7 @@ Consider backing up your data before clearing (see FAQ section on transferring d
   </div>
 </div>
 <br>
+<br>
 
 ### Adding a contact: `add`
 
@@ -210,8 +225,7 @@ To make ClassHive ready for your personal use, add contacts into the app using t
   
 <box type="tip" seamless>
 
-**Tip:** <br>
-- As the phone number field is compulsory, if a student does not have a contact number, you can add his or her parent's phone number instead!
+**Tip:** As the phone number field is compulsory, if a student does not have a contact number, you can add his or her parent's phone number instead!
   </box>
 
 **Examples:**
@@ -225,7 +239,7 @@ To make ClassHive ready for your personal use, add contacts into the app using t
   For example, upon running the command in the first example shown above, the expected output will be 
   `New person added: John Doe; Phone: 98765432; Email: johnd@example.com; Address: John street, block 123, #01-01; Role: Student; Grade: SEC 1; Class: 1A; Parent's Name: Bob Doe; Parent's Phone: 92932011; Tags: `
 * The new contact will be added to the bottom of the list of contacts. Scroll to the bottom to see it!
-
+<br>
 
 ### Editing a contact : `edit`
 
@@ -253,8 +267,7 @@ If a contact's information has changed, simply use the `edit` command to change 
 
 <box type="warning" seamless>
 
-**Warning:** <br>
-* When editing tags, all existing tags of the contact will be removed and replaced with the new tag.
+**Caution:** When editing tags, all existing tags of the contact will be removed and replaced with the new tag.
     </box>
 
 **Examples:**
@@ -278,6 +291,7 @@ If a contact's information has changed, simply use the `edit` command to change 
   </div>
 </div>
 <br>
+<br>
 
 ### Deleting a contact : `delete`
 
@@ -298,7 +312,7 @@ you can use the `delete` command to delete their information, ensuring ClassHive
 **Expected output:**
 * Expected message displayed in the output box: `Deleted Person: CONTACT`, where `CONTACT` reflects the details of the contact deleted. 
   For example, running the command in the example above will result in the output message `Deleted Person: John Doe; Phone: 98765432; Email: johnd@example.com; Address: John street, block 123, #01-01; Role: Student; Grade: SEC 1; Class: 1A; Parent's Name: Bob Doe; Parent's Phone: 92932011; Tags: `.
-
+<br>
 
 ### Adding note to a contact : `note`
 
@@ -316,15 +330,16 @@ allows you to add this information to specific contacts for easy reference later
   </box>
 
 **Examples:**
-* `note 3 nt/prefers to be contacted after 5pm` Adds a note about contact preferences to the 3rd contact.
-* `note 1 nt/student needs help with English` Adds a note about academic needs to the 1st contact in the list.
+* `note 3 nt/prefers to be contacted after 5pm` adds a note about contact preferences to the 3rd contact.
+* `note 1 nt/student needs help with English` adds a note about academic needs to the 1st contact in the list.
   
 **Expected output:**
 * Expected message displayed in the output box: `Added note to Person: CONTACT`, where `CONTACT` reflects the details of the contact added.
   For example, upon running the command in the second example shown above, the expected output will be 
   `Added note to Person: Alex Yeoh; Phone: 87438807; Email: alexyeoh@example.com; Address: Blk 30 Geylang Street 29, #06-40; Role: Parent; Child's Name: Anthony Yeoh; Child's Phone: 93282842; Child's Grade: SEC 1; Child's Class: 1A; Tags: [pta member]`
 * The added note will also be reflected in ClassHive, as shown in the image below.
-![note](images/afterNote.png)
+  <img src="images/afterNote.png" width="400px" />
+<br>
 
 ### Finding contacts by name or phone number: `find`
 
@@ -354,7 +369,8 @@ There will be times when you need to quickly locate someone by name or phone num
   For example, upon running the command in the third example shown above, the expected output will be 
   `2 persons listed!`
 * The matching contacts will be displayed in ClassHive, as shown in the image below:
-  ![find](images/find.png)
+  <img src="images/find.png" width="400px" />
+  <br>
 
 ### Listing all contacts : `list`
 
@@ -365,6 +381,7 @@ Shows a list of all contacts in ClassHive.
 **Expected output:**
 * Expected message displayed in the output box: `Listed all persons`
 * The full list of contacts will be displayed in the UI, regardless of the previous view or filters applied.
+  <br>
 
 ### Sorting contacts : `sort`
 
@@ -407,7 +424,7 @@ or any other filter-based command, run `list` first to reset the view.
 <br>
 <div style="display: flex; justify-content: space-between; text-align: center; width: 100%;">
   <div style="width: 48%;">
-    <p>Before sorting by contacts' names in descending order:</p>
+    <p>Before any sorting is done:</p>
     <img src="images/Ui.png" alt="Image 1" style="width: 100%;">
   </div>
   <div style="width: 48%;">
@@ -415,6 +432,7 @@ or any other filter-based command, run `list` first to reset the view.
     <img src="images/sortAfter.png" alt="Image 2" style="width: 100%;">
   </div>
 </div>
+<br>
 <br>
 
 ### Grouping contacts : group
@@ -448,8 +466,8 @@ With the `group` command, you can organize your contacts into specific categorie
 **Examples:**
 * `group by ROLE student` shows all students in your contact list. <br>
 * `group by CLASS 2A` shows students and their parents from class 2A. <br>  
-* `group by GRADE pri 4` shows contacts in Primary 4.
-* `group by FAVOURITE` shows all favourited contacts.
+* `group by GRADE pri 4` shows all Primary 4 students and their parents. <br>
+* `group by FAVOURITE` shows all contacts marked as favourite.
 
 **Expected output:**
 * Expected message displayed in the output box: `[NUMBER] persons listed!`, where `NUMBER` reflects the number of contacts that match the keyword entered.
@@ -457,7 +475,7 @@ With the `group` command, you can organize your contacts into specific categorie
   `Results are grouped by: ROLE student` <br>
   `2 contacts found.`
 *  You’ll see the grouped contacts reflected on ClassHive, as shown in the image below:
-  ![group](images/group.png)
+   <img src="images/group.png" width="400px" />
   
 ### Favourite contacts: `favourite`
 
@@ -481,7 +499,7 @@ The `favourite` command lets you mark important contacts as favourites, making i
   For example, upon running the command in the first example shown above, the expected output will be 
   `Toggled favourite status for: Alex Yeoh; Phone: 87438807; Email: alexyeoh@example.com; Address: Blk 30 Geylang Street 29, #06-40; Role: Parent; Child's Name: Anthony Yeoh; Child's Phone: 93282842; Child's Grade: SEC 1; Child's Class: 1A; Tags: [pta member]`
 * The star icon will appear or disappear next to the contact in the list, depending on their updated favourite status.
-  ![favourite](images/afterFavourite.png)
+  <img src="images/afterFavourite.png" width="400px" />
 
 ### Exiting the program : `exit`
 
@@ -510,14 +528,15 @@ Furthermore, certain edits can cause the ClassHive to behave in unexpected ways 
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous ClassHive home folder.
+**A**: Install the app in the other computer by following the instructions in the [Quick Start section](#-lets-get-you-started) 
+and replace the empty data file it creates with the file that contains the data of your previous ClassHive home folder.
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Known issues
 
-1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
-2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
+1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. To fix this issue, delete the `preferences.json` file created by the application before running the application again.
+2. **If you minimise the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimised, and no new Help Window will appear. To fix this issue, manually restore the minimised Help Window.
 
 --------------------------------------------------------------------------------------------------------------------
 
