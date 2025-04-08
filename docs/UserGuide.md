@@ -59,7 +59,10 @@ Getting started with ClassHive is easy! Just follow these steps:
 
 <br>
 
-6. Refer to the [Features](#features) below for details of each command. <br>
+6. Refer to the [Features](#features) below for details of each command. 
+
+<br>
+
 7. 💡 If you're unfamiliar with using commands in a command-line interface (CLI), check out the [CLI Tutorial](#cli-tutorial) to get comfortable before diving in! <br>
 --------------------------------------------------------------------------------------------------------------------
 
@@ -83,6 +86,8 @@ If you've never used a CLI before don’t worry! This short tutorial will walk y
 
 ### Try Your First Commands!
 Now that you're familiar with the interface, let's try executing some commands!
+<br>
+<br>
 
 #### Command 1: ⭐ Favourite
 
@@ -162,6 +167,8 @@ You can refer to the [Command Summary](#-command-summary) and the [Prefix Summar
 
 **Caution:** If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </box>
+<br>
+<br>
 
 ### Viewing help : `help`
 
@@ -177,6 +184,7 @@ type `help`.
   **Tip**: You can also access help window by clicking on F1 or the help menu on the top left bar.
 </box>
 <br>
+<br>
 
 ### Clearing all entries : `clear`
 
@@ -191,7 +199,6 @@ fresh database. The `clear` command allows you to remove all contacts from Class
 This is an irreversible action that will remove ALL your contacts from ClassHive.
 Consider backing up your data before clearing (see FAQ section on transferring data).
 </box>
-<br>
 <div style="display: flex; justify-content: space-between; text-align: center; width: 100%;">
   <div style="width: 48%;">
     <p>Before clearing the entries:</p>
@@ -240,6 +247,7 @@ To make ClassHive ready for your personal use, add contacts into the app using t
   `New person added: John Doe; Phone: 98765432; Email: johnd@example.com; Address: John street, block 123, #01-01; Role: Student; Grade: SEC 1; Class: 1A; Parent's Name: Bob Doe; Parent's Phone: 92932011; Tags: `
 * The new contact will be added to the bottom of the list of contacts. Scroll to the bottom to see it!
 <br>
+<br>
 
 ### Editing a contact : `edit`
 
@@ -278,8 +286,6 @@ If a contact's information has changed, simply use the `edit` command to change 
 * Expected message displayed in the output box: `Edited Person: CONTACT`, where `CONTACT` reflects the details of the contact edited.
   For example, running the command in the first example above results in the output message `Edited Person: Charlie Olive; Phone: 98989898; Email: charlotte@example.com; Address: Blk 11 Ang Mo Kio Street 74, #11-04; Role: Staff; Tags: [mentor]`.
 * The edited details will also be reflected on ClassHive, as shown in the images below:
-
-<br>
 <div style="display: flex; justify-content: space-between; text-align: center; width: 100%;">
   <div style="width: 48%;">
     <p>Before editing the 3rd contact:</p>
@@ -313,6 +319,7 @@ you can use the `delete` command to delete their information, ensuring ClassHive
 * Expected message displayed in the output box: `Deleted Person: CONTACT`, where `CONTACT` reflects the details of the contact deleted. 
   For example, running the command in the example above will result in the output message `Deleted Person: John Doe; Phone: 98765432; Email: johnd@example.com; Address: John street, block 123, #01-01; Role: Student; Grade: SEC 1; Class: 1A; Parent's Name: Bob Doe; Parent's Phone: 92932011; Tags: `.
 <br>
+<br>
 
 ### Adding note to a contact : `note`
 
@@ -339,6 +346,7 @@ allows you to add this information to specific contacts for easy reference later
   `Added note to Person: Alex Yeoh; Phone: 87438807; Email: alexyeoh@example.com; Address: Blk 30 Geylang Street 29, #06-40; Role: Parent; Child's Name: Anthony Yeoh; Child's Phone: 93282842; Child's Grade: SEC 1; Child's Class: 1A; Tags: [pta member]`
 * The added note will also be reflected in ClassHive, as shown in the image below.
   <img src="images/afterNote.png" width="400px" />
+<br>
 <br>
 
 ### Finding contacts by name or phone number: `find`
@@ -371,6 +379,7 @@ There will be times when you need to quickly locate someone by name or phone num
 * The matching contacts will be displayed in ClassHive, as shown in the image below:
   <img src="images/find.png" width="400px" />
   <br>
+  <br>
 
 ### Listing all contacts : `list`
 
@@ -381,6 +390,7 @@ Shows a list of all contacts in ClassHive.
 **Expected output:**
 * Expected message displayed in the output box: `Listed all persons`
 * The full list of contacts will be displayed in the UI, regardless of the previous view or filters applied.
+  <br>
   <br>
 
 ### Sorting contacts : `sort`
@@ -476,6 +486,8 @@ With the `group` command, you can organize your contacts into specific categorie
   `2 contacts found.`
 *  You’ll see the grouped contacts reflected on ClassHive, as shown in the image below:
    <img src="images/group.png" width="400px" />
+<br> 
+<br>
   
 ### Favourite contacts: `favourite`
 
@@ -500,6 +512,8 @@ The `favourite` command lets you mark important contacts as favourites, making i
   `Toggled favourite status for: Alex Yeoh; Phone: 87438807; Email: alexyeoh@example.com; Address: Blk 30 Geylang Street 29, #06-40; Role: Parent; Child's Name: Anthony Yeoh; Child's Phone: 93282842; Child's Grade: SEC 1; Child's Class: 1A; Tags: [pta member]`
 * The star icon will appear or disappear next to the contact in the list, depending on their updated favourite status. <br>
   <img src="images/afterFavourite.png" width="400px" />
+<br>
+<br>
 
 ### Exiting the program : `exit`
 
@@ -507,10 +521,14 @@ After you have finished updating your contacts, you will want to safely close Cl
 properly shut down the application, ensuring all changes are saved.
 
 **Format:** `exit`
+<br>
+<br>
 
 ### Saving the data
 
 ClassHive data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+<br>
+<br>
 
 ### Editing the data file
 
@@ -522,6 +540,7 @@ ClassHive data are saved automatically as a JSON file `[JAR file location]/data/
 If your changes to the data file makes its format invalid, ClassHive will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
 Furthermore, certain edits can cause the ClassHive to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
+<br>
 
 --------------------------------------------------------------------------------------------------------------------
 
