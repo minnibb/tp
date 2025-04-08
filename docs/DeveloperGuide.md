@@ -16,7 +16,7 @@
 1. This project is based on the [AddressBook Level-3](https://se-education.org/addressbook-level3/) desktop application. 
 
 2. Removal of whitespace inside a String: Taken from https://stackoverflow.com/questions/33381237/string-doesnt-equal-string-with-spaces
-* Used in lines 61-62 in [Name.java](https://github.com/AY2425S2-CS2103T-F13-4/tp/blob/master/src/main/java/seedu/address/model/person/Name.java)
+   * Used in lines 61-62 in [Name.java](https://github.com/AY2425S2-CS2103T-F13-4/tp/blob/master/src/main/java/seedu/address/model/person/Name.java)
 
 --------------------------------------------------------------------------------------------------------------------
 
