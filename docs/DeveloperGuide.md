@@ -652,7 +652,7 @@ Unlike AB3, which manages a single type of entity (persons), ClassHive categoriz
 * Adhering to Checkstyle guidelines consistently.
 
 ### **Effort Required**
-We reused portions of AB3's architecture and core functionality while adapting to our use case. For instance, we modified existing commands (Add,Delete,Edit) to handle the new command types and maintained the command-line interface. We added new features such as Note-taking functionality for contacts, favourite contacts for quick access and more. Inclusive of adding and modifying test cases, the total time taken for each feature to be implemented or for an existing feature to be modified to fit our target audience was 5-6 hours.
+We reused portions of AB3's architecture and core functionality while adapting to our use case. For instance, we modified existing commands (Add,Delete,Edit) to handle the new command types and maintained the command-line interface. We added new features such as note-taking functionality for contacts, favourite contacts for quick access and more. Inclusive of adding and modifying test cases, the total time taken for each feature to be implemented or for an existing feature to be modified to fit our target audience was 5-6 hours.
 
 ### **Achievements**
 * Transformed AB3 into ClassHive, a specialised tool for teachers.
