@@ -441,7 +441,7 @@ testers are expected to do more *exploratory* testing.
 
     2. Test case: Re-run the same command as above (in test case 1).
        Expected: No person is deleted. Error message shown in the output box. No logs regarding the command execution will be printed in the Terminal (where the `.jar` file is run).
-       Expected error message: `This person already exists in the address book` <br>
+       Expected error message: `This person already exists in ClassHive` <br>
 
 3. Missing required fields
 
@@ -461,7 +461,7 @@ testers are expected to do more *exploratory* testing.
 
     1. Prerequisites: The index of the contact to be edited is bigger than the list of contacts in ClassHive.
 
-    2. Test case: `edit 9999 n/Joe p/911` <br>
+    2. Test case: `edit 9999 n/Joe p/91112345` <br>
        Expected: No contact will be edited. Error details shown in the output box. No logs regarding the command execution will be printed in the Terminal (where the `.jar` file is run).
        Expected error message: `The person index provided is invalid` <br>
 
@@ -491,7 +491,7 @@ testers are expected to do more *exploratory* testing.
 
     1. Prerequisites: The contact to be deleted should not exist in the app.
    
-    2. Test case: `delete n/Joe p/911` <br>
+    2. Test case: `delete n/Joe p/91112345` <br>
        Expected: No person is deleted. Error message shown in the output box. A log regarding the command execution will be printed in the Terminal (where the `.jar` file is run).
        Expected error message: `The person's name and phone number provided cannot be found!` <br>
 
