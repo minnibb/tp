@@ -157,7 +157,7 @@ It will be useful to know some information about the command format before getti
   e.g. use `add` instead of `ADD` or `Add`
 </box>
 
-You can refer to the [Command Summary](#-command-summary) and the [Prefix Summary](#prefix-summary) to see a summary of all commands and their related prefixes.
+You can refer to the [Command Summary](#command-summary) and the [Prefix Summary](#prefix-summary) to see a summary of all commands and their related prefixes.
 <box type="warning" seamless>
 
 **Caution:** If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
