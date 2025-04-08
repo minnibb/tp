@@ -5,9 +5,7 @@
 ---
 
 # ClassHive User Guide
-
-<p style="font-size:1.5em; font-weight:bold;">🚨 ATTENTION ALL TEACHERS! 🚨</p>
-Introducing ClassHive, a **desktop app for managing all your school contacts**! 
+🚨 ATTENTION ALL TEACHERS! 🚨 Introducing ClassHive, a **desktop app for managing all your school contacts**! 
 ClassHive is a fast and easy to use app that helps you keep track of all the people you will need to 
 contact, including colleagues, parents and students. In ClassHive, instead of having to click many buttons, you can 
 simply type in commands to access any function! Let's now explore the different features that were built just for you! :rocket:
