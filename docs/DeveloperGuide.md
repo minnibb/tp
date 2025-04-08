@@ -364,6 +364,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 2a. The contact list is empty.
   * 2a1. System indicates no contacts to sort.
   * 2a2. Use case ends.
+    
+* 2b. The current view is not displaying the full contact list.
+  * 2b1. System indicates sorting can only be used on a full contact list and suggests using the list command first.
+  * 2b2. Use case ends.
 
 * 3a. User provides incomplete sorting parameters.
   * 3a1. System indicates proper sorting parameters required.
@@ -648,7 +652,7 @@ Unlike AB3, which manages a single type of entity (persons), ClassHive categoriz
 * Adhering to Checkstyle guidelines consistently.
 
 ### **Effort Required**
-Inclusive of adding and modifying test cases, the total time taken for each feature to be implemented or for an existing feature to be modified to fit our target audience was 5-6 hours
+We reused portions of AB3's architecture and core functionality while adapting to our use case. For instance, we modified existing commands (Add,Delete,Edit) to handle the new command types and maintained the command-line interface. We added new features such as Note-taking functionality for contacts, favourite contacts for quick access and more. Inclusive of adding and modifying test cases, the total time taken for each feature to be implemented or for an existing feature to be modified to fit our target audience was 5-6 hours.
 
 ### **Achievements**
 * Transformed AB3 into ClassHive, a specialised tool for teachers.
